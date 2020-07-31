@@ -7,12 +7,13 @@ from discord.utils import get
 from config_for_bot import *
 import youtube_dl
 import os
-import datetime
+from datetime import datetime
 import logging
 import time
 import asyncio
 from itertools import cycle
 from Cybernator import Paginator as pag
+import moment
 
 ########################################################## Вивод логів ###################################################
 
@@ -58,12 +59,12 @@ async def user(ctx, member: discord.Member):
 
     time_to_join_in_discord = member.created_at
     time_to_join_in_server = member.joined_at
-    now = datetime.datetime.now()
+    now = datetime.now()
     delta_s = now - time_to_join_in_server
     delta_d= now - time_to_join_in_discord
     b= delta_d.days
     a = delta_s.days
-    print(time.localtime())
+    print(moment.now())
 
 
     if member.bot is False and member.nick is not None:
