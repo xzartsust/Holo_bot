@@ -63,6 +63,7 @@ async def user(ctx, member: discord.Member):
     delta_d= now - time_to_join_in_discord
     b= delta_d.days
     a = delta_s.days
+    print(time.ctime())
 
 
     if member.bot is False and member.nick is not None:
