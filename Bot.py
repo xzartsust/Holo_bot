@@ -474,4 +474,4 @@ async def helpmoser_error(ctx, error):
 TOKEN = os.environ.get('TOKEN')
 
 bot.loop.create_task(change_status())
-bot.run('TOKEN')
+bot.run(TOKEN)
