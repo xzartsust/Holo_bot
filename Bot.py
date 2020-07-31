@@ -45,9 +45,8 @@ async def change_status():
 
 
 @bot.event #включення бота
-async def on_ready(ctx):
+async def on_ready():
     print('Bot is online')
-    await ctx.send('Я снова с вами')
 
 
 ######################################################### Команди бота ###################################################
@@ -215,8 +214,9 @@ async def help(ctx):
     emb2.add_field(name='`{}kick @имя причина`'.format(PREFIX),value='- Вигнать игрока с етого сервера', inline=False)
     emb2.add_field(name='`{}clear`'.format(PREFIX),value='- Очыстка чата', inline=False)
     '''
+
     embeds=[emb,emb1,emb2]
-    message= await ctx.send(embed= emb1)
+    message= await ctx.send(embed= emb)
     page= pag(bot, message, only=ctx.author, use_more=False, embeds=embeds, color=0x008000)
 
     await page.start()
