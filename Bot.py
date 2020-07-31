@@ -14,6 +14,7 @@ import asyncio
 from itertools import cycle
 from Cybernator import Paginator as pag
 import moment
+import arrow
 
 ########################################################## Вивод логів ###################################################
 
@@ -30,6 +31,10 @@ logger.addHandler(handler)
 
 bot=commands.Bot(command_prefix='.')
 bot.remove_command('help')
+arrow.get()
+utc= arrow.utcnow()
+local= utc.to('Europe/Kiev')
+now_time=local.format('HH:mm')
 
 
 ############################################################# Події бота #################################################
@@ -64,7 +69,7 @@ async def user(ctx, member: discord.Member):
     delta_d= now - time_to_join_in_discord
     b= delta_d.days
     a = delta_s.days
-    print(moment.now())
+    print(now_time)
 
 
     if member.bot is False and member.nick is not None:
@@ -90,7 +95,7 @@ async def user(ctx, member: discord.Member):
 
         emb.set_thumbnail(url=member.avatar_url)
         emb.set_author(name=member.nick)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: {time.strftime(" %H:%M", time.localtime())}')
+        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: {now_time}')
 
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
@@ -120,7 +125,7 @@ async def user(ctx, member: discord.Member):
             emb.add_field(name='Кастом статус', value='Нету', inline=False)
 
         emb.set_thumbnail(url=member.avatar_url)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: {time.strftime(" %H:%M", time.localtime())}')
+        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: {now_time}')
 
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
@@ -147,7 +152,7 @@ async def user(ctx, member: discord.Member):
         emb.add_field(name='Кастомный статус', value=f'Кастомный статус: {member.activity}')
 
         emb.set_thumbnail(url=member.avatar_url)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: {time.strftime(" %H:%M", time.localtime())}')
+        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: {now_time}')
 
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
@@ -175,7 +180,7 @@ async def user(ctx, member: discord.Member):
 
         emb.set_thumbnail(url=member.avatar_url)
         emb.set_author(name=member.nick)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: {time.strftime(" %H:%M", time.localtime())}')
+        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: {now_time}')
 
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
@@ -197,7 +202,6 @@ async def bot_servers(ctx):
 @bot.command(aliases=['info','i'])#команда .help
 async def help(ctx):
     await ctx.channel.purge(limit=1)
-    now = datetime.datetime.now()
 
     emb= discord.Embed(title='Помощ по использованию бота', description='Здесь вы можете узнать про осноные команды бота')
 
