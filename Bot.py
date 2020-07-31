@@ -206,13 +206,14 @@ async def help(ctx):
     emb1.add_field(name='`{}bot_servers`'.format(PREFIX),value=' - Посмотреть на скольких серверах есть етот бот', inline=False)
     emb1.add_field(name='`{}tuser`'.format(PREFIX), value=' - Посмотреть сколько всего человек используют этого бота',inline=False)
     
-    emb2=discord.Embed(title='Команды для модерации')
+    emb2=discord.Embed(title='Команды для модерации', description='Скоро...')
+    '''
     emb2.add_field(name='`{}ban @имя причина`'.format(PREFIX),value=' - Выдать бан игрок', inline=False)
     emb2.add_field(name='`{}mute @имя`'.format(PREFIX),value=' - Замутить игрока', inline=False)
     emb2.add_field(name='`{}unban @имя`'.format(PREFIX),value='- Розбанить играка на етом сервере', inline=False)
     emb2.add_field(name='`{}kick @имя причина`'.format(PREFIX),value='- Вигнать игрока с етого сервера', inline=False)
     emb2.add_field(name='`{}clear`'.format(PREFIX),value='- Очыстка чата', inline=False)
-
+    '''
     embeds=[emb,emb1,emb2]
     message= await ctx.send(embed= emb1)
     page= pag(bot, message, only=ctx.author, use_more=False, embeds=embeds, color=0x008000)
