@@ -88,7 +88,7 @@ async def user(ctx, member: discord.Member):
 
         emb.set_thumbnail(url=member.avatar_url)
         emb.set_author(name=member.nick)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: {now.strftime("%H:%M")}')
+        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: {datetime.datetime.now().strftime("%H:%M")}')
 
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
