@@ -45,8 +45,9 @@ async def change_status():
 
 
 @bot.event #включення бота
-async def on_ready():
-    print('Connect')
+async def on_ready(ctx):
+    print('Bot is online')
+    await ctx.send('Я снова с вами')
 
 
 ######################################################### Команди бота ###################################################
@@ -227,6 +228,7 @@ async def ping(ctx):
     time_2 = time.perf_counter()
     ping = round((time_2 - time_1) * 1000)
     emb= discord.Embed(description=f'Ping: {ping}ms',colour=discord.Color.blurple())
+    await ctx.channel.purge(limit=1)
     await ctx.send(embed= emb)
 
 
@@ -240,7 +242,7 @@ async def tuser(ctx):
     all_users = set([])
     for user in bot.get_all_members():
         all_users.add(user)
-    await ctx.message.purge(limit=1)
+    await ctx.channel.purge(limit=1)
     await ctx.send('Total users in all my servers combined: ' + str(len(all_users)))
 
 
