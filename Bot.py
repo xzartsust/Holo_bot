@@ -240,6 +240,7 @@ async def tuser(ctx):
     all_users = set([])
     for user in bot.get_all_members():
         all_users.add(user)
+    await ctx.message.purge(limit=1)
     await ctx.send('Total users in all my servers combined: ' + str(len(all_users)))
 
 
