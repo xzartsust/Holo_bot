@@ -64,8 +64,8 @@ async def on_message(message):
 
     if message.content.startswith('.hello'):
         await message.channel.send('Hello {0.author.mention}'.format(message))
-    if bot.mention:
-        await ctx.send('I Holo wise')
+ 
+
 
 
 
