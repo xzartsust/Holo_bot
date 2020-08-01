@@ -58,7 +58,7 @@ async def on_ready():
 
 @bot.command(pass_context= True)#готовий
 async def user(ctx, member: discord.Member = None):
-
+    member = ctx.author if not member else member
     arrow.get()
     utc = arrow.utcnow()
     local = utc.to('Europe/Kiev')
