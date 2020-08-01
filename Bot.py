@@ -1,4 +1,4 @@
-# This Python file uses the following encoding: utf-8
+#This Python file uses the following encoding: utf-8
 import discord
 from discord import utils
 from discord.ext import commands
@@ -16,7 +16,6 @@ from itertools import cycle
 from Cybernator import Paginator as pag
 import moment
 import arrow
-
 ########################################################## Вивод логів ###################################################
 
 
