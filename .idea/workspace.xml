@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2717c9e1-7ac5-4a6d-afbd-4a4fdca9ce8c" name="Default Changelist" comment="" />
+    <list default="true" id="2717c9e1-7ac5-4a6d-afbd-4a4fdca9ce8c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/Bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord.log" beforeDir="false" afterPath="$PROJECT_DIR$/discord.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prefixserv.json" beforeDir="false" afterPath="$PROJECT_DIR$/prefixserv.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -202,7 +206,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="WindowStateProjectService">
     <state x="527" y="249" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596262066751">
