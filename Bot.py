@@ -35,7 +35,6 @@ def get_prefix(bot, message):
 
     return prefixserv[str(message.guild.id)]
 
-
 bot=commands.Bot(command_prefix=get_prefix)
 bot.remove_command('help')
 
