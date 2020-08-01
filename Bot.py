@@ -16,7 +16,6 @@ from itertools import cycle
 from Cybernator import Paginator as pag
 import moment
 import arrow
-import fs
 
 ########################################################## Вивод логів ###################################################
 
