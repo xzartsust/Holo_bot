@@ -54,7 +54,7 @@ async def change_status():
 
 @bot.event #включення бота
 async def on_ready():
-    print('Bot is online')
+    print(f'Connect is {bot.user.name}')
 
 
 @bot.event
