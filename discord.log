@@ -325,3 +325,75 @@
 2020-08-01 09:36:15,534:DEBUG: Dispatching event member_update
 2020-08-01 09:36:21,692:DEBUG: Keeping websocket alive with sequence 50.
 2020-08-01 09:36:21,692:DEBUG: Dispatching event socket_raw_send
+2020-08-01 09:36:21,909:DEBUG: Dispatching event socket_raw_receive
+2020-08-01 09:36:21,909:DEBUG: For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+2020-08-01 09:36:21,909:DEBUG: Dispatching event socket_response
+2020-08-01 09:36:24,270:DEBUG: Sending "{"op":3,"d":{"game":{"type":0,"name":"\u041c\u043e\u0434\u0435\u0440\u043d\u0438\u0437\u0438\u0440\u0443\u0435\u0442 \u0441\u0432\u043e\u0439 \u043a\u043e\u0434","timestamps":{}},"afk":false,"since":0.0,"status":"online"}}" to change status
+2020-08-01 09:36:24,270:DEBUG: Dispatching event socket_raw_send
+2020-08-01 09:36:39,273:DEBUG: Sending "{"op":3,"d":{"game":{"type":0,"name":"\u041c\u043e\u0434\u0435\u0440\u043d\u0438\u0437\u0438\u0440\u0443\u0435\u0442 \u0441\u0432\u043e\u0439 \u043a\u043e\u0434","timestamps":{}},"afk":false,"since":0.0,"status":"online"}}" to change status
+2020-08-01 09:36:39,274:DEBUG: Dispatching event socket_raw_send
+2020-08-01 09:36:45,520:DEBUG: Dispatching event socket_raw_receive
+2020-08-01 09:36:45,521:DEBUG: For Shard ID None: WebSocket Event: {'t': 'PRESENCE_UPDATE', 's': 51, 'op': 0, 'd': {'user': {'id': '656554980114694144'}, 'status': 'idle', 'roles': ['732625122573287514', '734694147025403904'], 'premium_since': None, 'nick': None, 'guild_id': '732623824293724221', 'game': {'type': 0, 'name': 'Всего серверов: 14', 'id': 'ec0b28a579ecb4bd', 'created_at': 1596263808637}, 'client_status': {'web': 'idle'}, 'activities': [{'type': 0, 'name': 'Всего серверов: 14', 'id': 'ec0b28a579ecb4bd', 'created_at': 1596263808637}]}}
+2020-08-01 09:36:45,521:DEBUG: Dispatching event socket_response
+2020-08-01 09:36:45,521:DEBUG: Dispatching event member_update
+2020-08-01 09:36:54,271:DEBUG: Sending "{"op":3,"d":{"game":{"type":0,"name":"\u041c\u043e\u0434\u0435\u0440\u043d\u0438\u0437\u0438\u0440\u0443\u0435\u0442 \u0441\u0432\u043e\u0439 \u043a\u043e\u0434","timestamps":{}},"afk":false,"since":0.0,"status":"online"}}" to change status
+2020-08-01 09:36:54,271:DEBUG: Dispatching event socket_raw_send
+2020-08-01 09:37:00,642:DEBUG: Dispatching event socket_raw_receive
+2020-08-01 09:37:00,642:DEBUG: For Shard ID None: WebSocket Event: {'t': 'PRESENCE_UPDATE', 's': 52, 'op': 0, 'd': {'user': {'id': '656554980114694144'}, 'status': 'idle', 'roles': ['732625122573287514', '734694147025403904'], 'premium_since': None, 'nick': None, 'guild_id': '732623824293724221', 'game': {'type': 0, 'name': 'https://wolfnot.pw', 'id': 'ec0b28a579ecb4bd', 'created_at': 1596263823637}, 'client_status': {'web': 'idle'}, 'activities': [{'type': 0, 'name': 'https://wolfnot.pw', 'id': 'ec0b28a579ecb4bd', 'created_at': 1596263823637}]}}
+2020-08-01 09:37:00,642:DEBUG: Dispatching event socket_response
+2020-08-01 09:37:00,643:DEBUG: Dispatching event member_update
+2020-08-01 09:37:02,943:DEBUG: Keeping websocket alive with sequence 52.
+2020-08-01 09:37:02,944:DEBUG: Dispatching event socket_raw_send
+2020-08-01 09:37:03,086:DEBUG: Dispatching event socket_raw_receive
+2020-08-01 09:37:03,086:DEBUG: For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+2020-08-01 09:37:03,086:DEBUG: Dispatching event socket_response
+2020-08-01 09:37:05,262:INFO: Websocket closed with 4003 (Not authenticated.), attempting a reconnect.
+2020-08-01 09:37:05,262:INFO: Got a request to RESUME the websocket.
+2020-08-01 09:37:05,263:DEBUG: Dispatching event disconnect
+2020-08-01 09:37:05,352:DEBUG: GET https://discordapp.com/api/v7/gateway with None has returned 200
+2020-08-01 09:37:05,352:DEBUG: GET https://discordapp.com/api/v7/gateway has received {'url': 'wss://gateway.discord.gg'}
+2020-08-01 09:37:05,799:INFO: Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6&compress=zlib-stream
+2020-08-01 09:37:05,800:DEBUG: Dispatching event socket_raw_receive
+2020-08-01 09:37:05,801:DEBUG: For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 10, 'd': {'heartbeat_interval': 41250, '_trace': ['["gateway-prd-main-8twb",{"micros":0.0}]']}}
+2020-08-01 09:37:05,801:DEBUG: Dispatching event socket_response
+2020-08-01 09:37:05,801:DEBUG: Dispatching event socket_raw_send
+2020-08-01 09:37:05,803:DEBUG: Dispatching event socket_raw_send
+2020-08-01 09:37:05,803:INFO: Shard ID None has sent the RESUME payload.
+2020-08-01 09:37:05,945:DEBUG: Dispatching event socket_raw_receive
+2020-08-01 09:37:05,946:DEBUG: For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+2020-08-01 09:37:05,946:DEBUG: Dispatching event socket_response
+2020-08-01 09:37:05,992:DEBUG: Dispatching event socket_raw_receive
+2020-08-01 09:37:05,993:DEBUG: For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 9, 'd': False}
+2020-08-01 09:37:05,993:DEBUG: Dispatching event socket_response
+2020-08-01 09:37:05,993:INFO: Shard ID None session has been invalidated.
+2020-08-01 09:37:09,277:DEBUG: Sending "{"op":3,"d":{"game":{"type":0,"name":"\u041c\u043e\u0434\u0435\u0440\u043d\u0438\u0437\u0438\u0440\u0443\u0435\u0442 \u0441\u0432\u043e\u0439 \u043a\u043e\u0434","timestamps":{}},"afk":false,"since":0.0,"status":"online"}}" to change status
+2020-08-01 09:37:09,277:DEBUG: Dispatching event socket_raw_send
+2020-08-01 09:37:10,988:DEBUG: Dispatching event socket_raw_send
+2020-08-01 09:37:10,988:INFO: Shard ID None has sent the IDENTIFY payload.
+2020-08-01 09:37:10,989:INFO: Websocket closed with 4003 (Not authenticated.), attempting a reconnect.
+2020-08-01 09:37:10,989:INFO: Got a request to RESUME the websocket.
+2020-08-01 09:37:10,989:DEBUG: Dispatching event disconnect
+2020-08-01 09:37:11,125:DEBUG: GET https://discordapp.com/api/v7/gateway with None has returned 200
+2020-08-01 09:37:11,126:DEBUG: GET https://discordapp.com/api/v7/gateway has received {'url': 'wss://gateway.discord.gg'}
+2020-08-01 09:37:11,792:INFO: Created websocket connected to wss://gateway.discord.gg?encoding=json&v=6&compress=zlib-stream
+2020-08-01 09:37:11,794:DEBUG: Dispatching event socket_raw_receive
+2020-08-01 09:37:11,794:DEBUG: For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 10, 'd': {'heartbeat_interval': 41250, '_trace': ['["gateway-prd-main-sf01",{"micros":0.0}]']}}
+2020-08-01 09:37:11,794:DEBUG: Dispatching event socket_response
+2020-08-01 09:37:11,795:DEBUG: Dispatching event socket_raw_send
+2020-08-01 09:37:11,796:DEBUG: Dispatching event socket_raw_send
+2020-08-01 09:37:11,796:INFO: Shard ID None has sent the RESUME payload.
+2020-08-01 09:37:11,943:DEBUG: Dispatching event socket_raw_receive
+2020-08-01 09:37:11,943:DEBUG: For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 11, 'd': None}
+2020-08-01 09:37:11,943:DEBUG: Dispatching event socket_response
+2020-08-01 09:37:11,964:DEBUG: Dispatching event socket_raw_receive
+2020-08-01 09:37:11,964:DEBUG: For Shard ID None: WebSocket Event: {'t': None, 's': None, 'op': 9, 'd': False}
+2020-08-01 09:37:11,964:DEBUG: Dispatching event socket_response
+2020-08-01 09:37:11,965:INFO: Shard ID None session has been invalidated.
+2020-08-01 09:37:16,965:DEBUG: Dispatching event socket_raw_send
+2020-08-01 09:37:16,965:INFO: Shard ID None has sent the IDENTIFY payload.
+2020-08-01 09:37:17,151:INFO: Websocket closed with 4004 (Authentication failed.), cannot reconnect.
+2020-08-01 09:37:17,151:DEBUG: Dispatching event disconnect
+2020-08-01 09:37:17,152:INFO: Cleaning up tasks.
+2020-08-01 09:37:17,153:INFO: Cleaning up after 1 tasks.
+2020-08-01 09:37:17,153:INFO: All tasks finished cancelling.
+2020-08-01 09:37:17,154:INFO: Closing the event loop.

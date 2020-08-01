@@ -321,4 +321,4 @@ async def user_error(ctx,error):
 TOKEN = os.environ.get('TOKEN')
 
 bot.loop.create_task(change_status())
-bot.run('NzI5OTU3NzAxMjQwNzUwMTQw.XwQgFQ.GQLuhIErKIYBkAC4CpzBMf8gBH0')
+bot.run(TOKEN)
