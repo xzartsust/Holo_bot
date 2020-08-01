@@ -16,8 +16,6 @@ from itertools import cycle
 from Cybernator import Paginator as pag
 import moment
 import arrow
-
-
 ########################################################## Вивод логів ###################################################
 
 
@@ -252,7 +250,7 @@ async def help(ctx):
     emb1.add_field(name='`{}ping`'.format(PREFIX),value=' - Посмотреть пинг бота', inline=False)
     emb1.add_field(name='`{}bot_servers`'.format(PREFIX),value=' - Посмотреть на скольких серверах есть етот бот', inline=False)
     emb1.add_field(name='`{}tuser`'.format(PREFIX), value=' - Посмотреть сколько всего человек используют этого бота',inline=False)
-    
+
     emb2=discord.Embed(title='Команды для модерации', description='Скоро...')
     '''
     emb2.add_field(name='`{}ban @имя причина`'.format(PREFIX),value=' - Выдать бан игрок', inline=False)
