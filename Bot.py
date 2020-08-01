@@ -57,7 +57,7 @@ async def on_ready():
 
 
 @bot.command(pass_context= True)#готовий
-async def user(ctx, member: discord.Member):
+async def user(ctx, member: discord.Member = None):
 
     arrow.get()
     utc = arrow.utcnow()
