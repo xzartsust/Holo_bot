@@ -32,7 +32,7 @@ logger.addHandler(handler)
 
 
 
-bot=commands.Bot(command_prefix=get_prefix)
+bot=commands.Bot(command_prefix='.')
 bot.remove_command('help')
 
 
