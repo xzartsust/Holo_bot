@@ -16,6 +16,8 @@ from itertools import cycle
 from Cybernator import Paginator as pag
 import moment
 import arrow
+import fs
+
 ########################################################## Вивод логів ###################################################
 
 
@@ -29,11 +31,6 @@ logger.addHandler(handler)
 ########################################################################################################################
 
 
-def get_prefix(bot, message):
-    with open('prefixserv.json','r') as f:
-        prefixserv= json.load(f)
-
-    return prefixserv[str(message.guild.id)]
 
 bot=commands.Bot(command_prefix=get_prefix)
 bot.remove_command('help')
@@ -57,25 +54,6 @@ async def on_ready():
     print(f'Connect is {bot.user.name}')
 
 
-@bot.event
-async def on_guild_join(guild):
-    with open('prefixserv.json','r') as f:
-        prefixserv= json.load(f)
-
-    prefixserv[str(guild.id)]= '.'
-
-    with open('prefixserv.json','w') as f:
-        json.dump(prefixserv, f, indent=4)
-
-@bot.event
-async def on_giuld_remove(guild):
-    with open('prefixserv.json','r') as f:
-        prefixserv= json.load(f)
-
-    prefixserv.pop(str(guild.id))
-
-    with open('prefixserv.json','w') as f:
-        json.dump(prefixserv, f, indent=4)
 ######################################################### Команди бота ###################################################
 
 
@@ -224,18 +202,6 @@ async def bot_servers(ctx):
     await ctx.send(embed= emb)
 
 
-@bot.command(aliases=['change_prefix','new_prefix','nprefix'])
-async def prefix(ctx,prefix):
-    with open('prefixserv.json', 'r') as f:
-        prefixserv = json.load(f)
-
-    prefixserv[str(ctx.guild.id)] = prefix
-
-    with open('prefixserv.json', 'w') as f:
-        json.dump(prefixserv, f, indent=4)
-
-    await ctx.send(f'Префикс был изменен на {prefix}')
-
 @bot.command(aliases=['info','i'])#команда .help
 async def help(ctx):
     await ctx.channel.purge(limit=1)
@@ -320,4 +286,4 @@ async def user_error(ctx,error):
 TOKEN = os.environ.get('TOKEN')
 
 bot.loop.create_task(change_status())
-bot.run(TOKEN)
+bot.run('NzI5OTU3NzAxMjQwNzUwMTQw.XwQgFQ.WBXqDYO6R3ZtLOZpt2HgQv8w4eI')
