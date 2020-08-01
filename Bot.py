@@ -265,14 +265,14 @@ async def clear_error(ctx,error):
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 
-
+'''
 @user.error
 async def user_error(ctx,error):
     if isinstance(error, commands.MissingRequiredArgument):
         emb= discord.Embed(title='Ошибка', colour=discord.Color.red(), description='Пожалуйста укажите игрока о котором хотите узнать информацию')
         await ctx.channel.purge(limit=1)
         await ctx.send(embed= emb)
-
+'''
 
 
 
