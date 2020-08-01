@@ -21,6 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2717c9e1-7ac5-4a6d-afbd-4a4fdca9ce8c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/Bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discord.log" beforeDir="false" afterPath="$PROJECT_DIR$/discord.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,10 +38,39 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../bot" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Bot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="holo_bot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Bot.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Bot" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -109,7 +140,21 @@
       <option name="project" value="LOCAL" />
       <updated>1596222639181</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update">
+      <created>1596261210831</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1596261210831</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update">
+      <created>1596261441755</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1596261441755</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -122,23 +167,48 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="527" y="249" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596262066751">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="527" y="249" key="#com.intellij.fileTypes.FileTypeChooser/0.30.1536.834@0.30.1536.834" timestamp="1596262066751" />
     <state x="449" y="183" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1596215964479">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state x="449" y="183" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.30.1536.834@0.30.1536.834" timestamp="1596215964479" />
+    <state width="1515" height="214" key="GridCell.Tab.0.bottom" timestamp="1596263613836">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state width="1515" height="214" key="GridCell.Tab.0.bottom/0.30.1536.834@0.30.1536.834" timestamp="1596263613836" />
+    <state width="1515" height="214" key="GridCell.Tab.0.center" timestamp="1596263613836">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state width="1515" height="214" key="GridCell.Tab.0.center/0.30.1536.834@0.30.1536.834" timestamp="1596263613836" />
+    <state width="1515" height="214" key="GridCell.Tab.0.left" timestamp="1596263613836">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state width="1515" height="214" key="GridCell.Tab.0.left/0.30.1536.834@0.30.1536.834" timestamp="1596263613836" />
+    <state width="1515" height="214" key="GridCell.Tab.0.right" timestamp="1596263613836">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state width="1515" height="214" key="GridCell.Tab.0.right/0.30.1536.834@0.30.1536.834" timestamp="1596263613836" />
     <state x="277" y="92" key="SettingsEditor" timestamp="1596199483893">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state x="277" y="92" key="SettingsEditor/0.30.1536.834@0.30.1536.834" timestamp="1596199483893" />
-    <state x="361" y="180" key="Vcs.Push.Dialog.v2" timestamp="1596222641915">
+    <state x="361" y="180" key="Vcs.Push.Dialog.v2" timestamp="1596261457650">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="361" y="180" key="Vcs.Push.Dialog.v2/0.30.1536.834@0.30.1536.834" timestamp="1596222641915" />
+    <state x="361" y="180" key="Vcs.Push.Dialog.v2/0.30.1536.834@0.30.1536.834" timestamp="1596261457650" />
+    <state x="431" y="186" width="672" height="678" key="search.everywhere.popup" timestamp="1596263187903">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="431" y="186" width="672" height="678" key="search.everywhere.popup/0.30.1536.834@0.30.1536.834" timestamp="1596263187903" />
   </component>
 </project>

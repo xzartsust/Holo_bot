@@ -10,6 +10,7 @@ import os
 from datetime import datetime
 import logging
 import time
+import json
 import asyncio
 from itertools import cycle
 from Cybernator import Paginator as pag
@@ -29,7 +30,14 @@ logger.addHandler(handler)
 ########################################################################################################################
 
 
-bot=commands.Bot(command_prefix='.')
+def get_prefix(bot, message):
+    with open('prefixserv.json','r') as f:
+        prefixserv= json.load(f)
+
+    return prefixserv[str(message.guild.id)]
+
+
+bot=commands.Bot(command_prefix=get_prefix)
 bot.remove_command('help')
 
 
@@ -51,10 +59,29 @@ async def on_ready():
     print('Bot is online')
 
 
+@bot.event
+async def on_guild_join(guild):
+    with open('prefixserv.json','r') as f:
+        prefixserv= json.load(f)
+
+    prefixserv[str(guild.id)]= '.'
+
+    with open('prefixserv.json','w') as f:
+        json.dump(prefixserv, f, indent=4)
+
+@bot.event
+async def on_giuld_remove(guild):
+    with open('prefixserv.json','r') as f:
+        prefixserv= json.load(f)
+
+    prefixserv.pop(str(guild.id))
+
+    with open('prefixserv.json','w') as f:
+        json.dump(prefixserv, f, indent=4)
 ######################################################### Команди бота ###################################################
 
 
-@bot.command(pass_context= True)
+@bot.command(pass_context= True)#готовий
 async def user(ctx, member: discord.Member):
 
     arrow.get()
@@ -199,6 +226,17 @@ async def bot_servers(ctx):
     await ctx.send(embed= emb)
 
 
+@bot.command(aliases=['change_prefix','new_prefix','nprefix'])
+async def prefix(ctx,prefix):
+    with open('prefixserv.json', 'r') as f:
+        prefixserv = json.load(f)
+
+    prefixserv[str(ctx.guild.id)] = prefix
+
+    with open('prefixserv.json', 'w') as f:
+        json.dump(prefixserv, f, indent=4)
+
+    await ctx.send(f'Префикс был изменен на {prefix}')
 
 @bot.command(aliases=['info','i'])#команда .help
 async def help(ctx):
@@ -207,8 +245,9 @@ async def help(ctx):
     emb= discord.Embed(title='Помощ по использованию бота', description='Здесь вы можете узнать про осноные команды бота')
 
     emb1= discord.Embed(title='Команды бота')
+    emb1.add_field(name='`{}help` или `{}info` или `{}i`'.format(PREFIX, PREFIX, PREFIX), value=' - Команды бота',inline=False)
+    emb1.add_field(name='`{}prefix`'.format(PREFIX), value=' - Изменить префикс бота',inline=False)
     emb1.add_field(name='`{}user @имя`'.format(PREFIX),value=' - Информация про пользователя', inline=False)
-    emb1.add_field(name='`{}help` или `{}info` или `{}i`'.format(PREFIX,PREFIX,PREFIX),value=' - Команды бота', inline=False)
     emb1.add_field(name='`{}ping`'.format(PREFIX),value=' - Посмотреть пинг бота', inline=False)
     emb1.add_field(name='`{}bot_servers`'.format(PREFIX),value=' - Посмотреть на скольких серверах есть етот бот', inline=False)
     emb1.add_field(name='`{}tuser`'.format(PREFIX), value=' - Посмотреть сколько всего человек используют этого бота',inline=False)
@@ -228,7 +267,7 @@ async def help(ctx):
 
     await page.start()
 
-@bot.command()#пінг бота
+@bot.command()#готовий
 async def ping(ctx):
     time_1 = time.perf_counter()
     await ctx.trigger_typing()
@@ -282,4 +321,4 @@ async def user_error(ctx,error):
 TOKEN = os.environ.get('TOKEN')
 
 bot.loop.create_task(change_status())
-bot.run(TOKEN)
+bot.run('NzI5OTU3NzAxMjQwNzUwMTQw.XwQgFQ.GQLuhIErKIYBkAC4CpzBMf8gBH0')
