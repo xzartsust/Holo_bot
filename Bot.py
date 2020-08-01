@@ -30,7 +30,6 @@ logger.addHandler(handler)
 ########################################################################################################################
 
 
-
 bot=commands.Bot(command_prefix='.')
 bot.remove_command('help')
 
@@ -264,15 +263,6 @@ async def clear_error(ctx,error):
         emb = discord.Embed(title='Ошибка!!!', colour=discord.Color.red(),description='У вас нет прав на ету команду')
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
-
-'''
-@user.error
-async def user_error(ctx,error):
-    if isinstance(error, commands.MissingRequiredArgument):
-        emb= discord.Embed(title='Ошибка', colour=discord.Color.red(), description='Пожалуйста укажите игрока о котором хотите узнать информацию')
-        await ctx.channel.purge(limit=1)
-        await ctx.send(embed= emb)
-'''
 
 
 
