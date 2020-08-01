@@ -96,7 +96,7 @@ async def user(ctx, member: discord.Member):
 
         emb.set_thumbnail(url=member.avatar_url)
         emb.set_author(name=member.nick)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: {now_time}')
+        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' • Сегодня об: {now_time}')
 
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
@@ -126,7 +126,7 @@ async def user(ctx, member: discord.Member):
             emb.add_field(name='Кастом статус', value='Нету', inline=False)
 
         emb.set_thumbnail(url=member.avatar_url)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: {now_time}')
+        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' • Сегодня об: {now_time}')
 
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
@@ -153,7 +153,7 @@ async def user(ctx, member: discord.Member):
         emb.add_field(name='Кастомный статус', value=f'Кастомный статус: {member.activity}')
 
         emb.set_thumbnail(url=member.avatar_url)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: {now_time}')
+        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' • Сегодня об: {now_time}')
 
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
@@ -181,7 +181,7 @@ async def user(ctx, member: discord.Member):
 
         emb.set_thumbnail(url=member.avatar_url)
         emb.set_author(name=member.nick)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: {now_time}')
+        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: • {now_time}')
 
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
