@@ -31,10 +31,6 @@ logger.addHandler(handler)
 
 bot=commands.Bot(command_prefix='.')
 bot.remove_command('help')
-arrow.get()
-utc= arrow.utcnow()
-local= utc.to('Europe/Kiev')
-now_time=local.format('HH:mm')
 
 
 ############################################################# Події бота #################################################
@@ -61,6 +57,10 @@ async def on_ready():
 @bot.command(pass_context= True)
 async def user(ctx, member: discord.Member):
 
+    arrow.get()
+    utc = arrow.utcnow()
+    local = utc.to('Europe/Kiev')
+    now_time = local.format('HH:mm')
 
     time_to_join_in_discord = member.created_at
     time_to_join_in_server = member.joined_at
@@ -70,6 +70,7 @@ async def user(ctx, member: discord.Member):
     b= delta_d.days
     a = delta_s.days
     print(now_time)
+
 
 
     if member.bot is False and member.nick is not None:
