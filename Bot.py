@@ -73,7 +73,6 @@ async def user(ctx, member: discord.Member = None):
     print(now_time)
 
 
-
     if member.bot is False and member.nick is not None:
         emb = discord.Embed(title=format(member), colour=discord.Color.green(), url=f'{member.avatar_url}',inline=False)
         emb.add_field(name='Присоединился к Discord',value=f'{time_to_join_in_discord.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)',inline=False)
@@ -215,13 +214,6 @@ async def help(ctx):
     emb1.add_field(name='`{}tuser`'.format(PREFIX), value=' - Посмотреть сколько всего человек используют этого бота',inline=False)
 
     emb2=discord.Embed(title='Команды для модерации', description='Скоро...')
-    '''
-    emb2.add_field(name='`{}ban @имя причина`'.format(PREFIX),value=' - Выдать бан игрок', inline=False)
-    emb2.add_field(name='`{}mute @имя`'.format(PREFIX),value=' - Замутить игрока', inline=False)
-    emb2.add_field(name='`{}unban @имя`'.format(PREFIX),value='- Розбанить играка на етом сервере', inline=False)
-    emb2.add_field(name='`{}kick @имя причина`'.format(PREFIX),value='- Вигнать игрока с етого сервера', inline=False)
-    emb2.add_field(name='`{}clear`'.format(PREFIX),value='- Очыстка чата', inline=False)
-    '''
 
     embeds=[emb,emb1,emb2]
     message= await ctx.send(embed= emb)
