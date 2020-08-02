@@ -151,7 +151,7 @@ async def user(ctx, member: discord.Member = None):
         elif member.status == discord.Status.idle:
             emb.add_field(name='Status', value='Отошол', inline=False)
 
-        emb.add_field(name='Кастомный статус', value=f'Кастомный статус: {member.activity}')
+        emb.add_field(name='Кастомный статус', value=f'{member.activity}')
 
         emb.set_thumbnail(url=member.avatar_url)
         emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' • Сегодня об: {now_time}')
@@ -178,7 +178,7 @@ async def user(ctx, member: discord.Member = None):
         elif member.status == discord.Status.idle:
             emb.add_field(name='Status', value='Отошол', inline=False)
 
-        emb.add_field(name='Кастомный статус',value=f'Кастомный статус: {member.activity}', inline=False)
+        emb.add_field(name='Кастомный статус',value=f'{member.activity}', inline=False)
 
         emb.set_thumbnail(url=member.avatar_url)
         emb.set_author(name=member.nick)
