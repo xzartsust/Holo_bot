@@ -87,7 +87,7 @@ async def user(ctx, member: discord.Member = None):
         elif member.status == discord.Status.offline:
             emb.add_field(name='Status', value=':black_circle: Нет в сети', inline=False)
         elif member.status == discord.Status.idle:
-            emb.add_field(name='Status', value=':no_entry: Отошол', inline=False)
+            emb.add_field(name='Status', value=':crescent_moon: Отошол', inline=False)
 
         if member.activity is not None:
             emb.add_field(name='Кастом статус', value=member.activity, inline=False)
@@ -118,7 +118,7 @@ async def user(ctx, member: discord.Member = None):
         elif member.status == discord.Status.offline:
             emb.add_field(name='Status', value=':black_circle: Нет в сети', inline=False)
         elif member.status == discord.Status.idle:
-            emb.add_field(name='Status', value=':no_entry: Отошол', inline=False)
+            emb.add_field(name='Status', value=':crescent_moon: Отошол', inline=False)
 
         if member.activity is not None:
             emb.add_field(name='Кастом статус', value= member.activity,inline=False)
@@ -148,7 +148,7 @@ async def user(ctx, member: discord.Member = None):
         elif member.status == discord.Status.offline:
             emb.add_field(name='Status', value=':black_circle: Нет в сети', inline=False)
         elif member.status == discord.Status.idle:
-            emb.add_field(name='Status', value=':no_entry: Отошол', inline=False)
+            emb.add_field(name='Status', value=':crescent_moon: Отошол', inline=False)
 
         emb.add_field(name='Кастомный статус', value=f'{member.activity}')
 
@@ -175,7 +175,7 @@ async def user(ctx, member: discord.Member = None):
         elif member.status == discord.Status.offline:
             emb.add_field(name='Status', value=':black_circle: Нет в сети', inline=False)
         elif member.status == discord.Status.idle:
-            emb.add_field(name='Status', value=':no_entry: Отошол', inline=False)
+            emb.add_field(name='Status', value=':crescent_moon: Отошол', inline=False)
 
         emb.add_field(name='Кастомный статус',value=f'{member.activity}', inline=False)
 
