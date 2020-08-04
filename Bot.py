@@ -55,7 +55,7 @@ async def on_ready():
 ######################################################### Commands bot ###################################################
 
 
-@bot.command(pass_context= True)#готовий
+@bot.command(aliases=['userinfo','ui','infouser'])#готовий
 async def user(ctx, member: discord.Member = None):
     member = ctx.author if not member else member
     arrow.get()
