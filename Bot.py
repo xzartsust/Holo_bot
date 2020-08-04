@@ -186,12 +186,12 @@ async def user(ctx, member: discord.Member = None):
         await ctx.send(embed=emb)
 
 @bot.command()
-@bot.commands.is_owner()
+@bot.commands.is_owner(bot_owner)
 async def logout(ctx):
     await bot.logout()
 
 @bot.command()
-@bot.commands.is_owner()
+@bot.commands.is_owner(bot_owner)
 async def bot_servers(ctx):
     emb=discord.Embed(description=f'Присутствует на {str(len(bot.guilds))} серверах', colour=discord.Color.blurple())
     await ctx.send(embed= emb)
@@ -261,6 +261,8 @@ async def clear_error(ctx,error):
 
 
 TOKEN = os.environ.get('TOKEN')
+bot_owner= os.environ.get('bot_owner')
+
 
 bot.loop.create_task(change_status())
 bot.run(TOKEN)
