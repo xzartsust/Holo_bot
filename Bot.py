@@ -38,7 +38,7 @@ bot.remove_command('help')
 
 
 async def is_owner(ctx):
-    return ctx.author.id == 399851432221868033
+    return ctx.author.id == bot_owner
 
 async def change_status():
     await bot.wait_until_ready()
@@ -275,6 +275,6 @@ async def _eval_error(ctx, error):
 
 
 TOKEN = os.environ.get('TOKEN')
-
+bot_owner = os.environ.get('bot_owner')
 bot.loop.create_task(change_status())
 bot.run(TOKEN)
