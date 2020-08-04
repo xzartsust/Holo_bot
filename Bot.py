@@ -255,6 +255,12 @@ async def clear_error(ctx,error):
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 
+@logout.error
+async def logout_error(ctx,error):
+    if isinstance(error, commands.CheckFailure):
+        emb = discord.Embed(title='Ошибка!!!', colour=discord.Color.red(),description='Эту команду имеет право использовать только создатель бота')
+        await ctx.channel.purge(limit=1)
+        await ctx.send(embed=emb)
 
 
 
