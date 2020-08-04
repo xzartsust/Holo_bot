@@ -199,7 +199,7 @@ async def bot_servers(ctx):
     await ctx.send(embed= emb)
 
 
-@bot.command(aliases=['info','i'])#команда .help
+@bot.command(aliases=['i'])#команда .help
 async def help(ctx):
     await ctx.channel.purge(limit=1)
 
