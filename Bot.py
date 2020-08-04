@@ -37,6 +37,9 @@ bot.remove_command('help')
 ############################################################# Events bot #################################################
 
 
+async def is_owner(ctx):
+    return ctx.author.id = bot_owner
+
 async def change_status():
     await bot.wait_until_ready()
     msg= cycle(status)
@@ -186,12 +189,12 @@ async def user(ctx, member: discord.Member = None):
         await ctx.send(embed=emb)
 
 @bot.command()
-@bot.commands.is_owner(bot_owner)
+@commands.check(is_owner)
 async def logout(ctx):
     await bot.logout()
 
 @bot.command()
-@bot.commands.is_owner(bot_owner)
+@commands.check(is_owner)
 async def bot_servers(ctx):
     emb=discord.Embed(description=f'Присутствует на {str(len(bot.guilds))} серверах', colour=discord.Color.blurple())
     await ctx.send(embed= emb)
