@@ -38,7 +38,7 @@ bot.remove_command('help')
 
 
 async def is_owner(ctx):
-    return ctx.author.id = bot_owner
+    return ctx.author.id == bot_owner
 
 async def change_status():
     await bot.wait_until_ready()
