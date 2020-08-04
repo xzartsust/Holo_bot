@@ -255,23 +255,31 @@ async def clear_error(ctx,error):
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 
-@logout.error
+@bot_servers.error
 async def logout_error(ctx,error):
     if isinstance(error, commands.CheckFailure):
         emb = discord.Embed(title='Ошибка!!!', colour=discord.Color.red(), description='Эту команду имеет право использовать только создатель бота')
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 
+@_eval.error
+async def _eval_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        emb = discord.Embed(title='Ошибка!!!', colour=discord.Color.red(), description='Эту команду имеет право использовать только создатель бота')
+        await ctx.channel.purge(limit=1)
+        await ctx.send(embed=emb)
+
+####################################################### Eval ###############################################
 
 
-
-
+@bot.command(aliases=['eval'])
+@commands.is_owner()
+async def _eval(ctx,*,code):
+    await ctx.send(eval(code))
 
 
 
 TOKEN = os.environ.get('TOKEN')
-bot_owner= os.environ.get('bot_owner')
-
 
 bot.loop.create_task(change_status())
 bot.run(TOKEN)
