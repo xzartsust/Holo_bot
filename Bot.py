@@ -46,7 +46,6 @@ async def change_status():
         await bot.change_presence(activity= discord.Game(name=next_status))
         await asyncio.sleep(15)
 
-
 @bot.event #включення бота
 async def on_ready():
     print(f'Connect is {bot.user.name}')
@@ -186,18 +185,15 @@ async def user(ctx, member: discord.Member = None):
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 
-
 @bot.command()
 @commands.has_permissions(administrator= True)
 async def logout(ctx):
     await bot.logout()
 
-
 @bot.command()
 async def bot_servers(ctx):
     emb=discord.Embed(description=f'Присутствует на {str(len(bot.guilds))} серверах', colour=discord.Color.blurple())
     await ctx.send(embed= emb)
-
 
 @bot.command(aliases=['i'])#команда .help
 async def help(ctx):
@@ -230,7 +226,6 @@ async def ping(ctx):
     emb= discord.Embed(description=f'Pong: {ping}ms',colour=discord.Color.blurple())
     await ctx.channel.purge(limit=1)
     await ctx.send(embed= emb)
-
 
 @bot.command()
 async def clear(ctx, arg):
