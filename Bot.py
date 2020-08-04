@@ -244,6 +244,14 @@ async def tuser(ctx):
     await ctx.channel.purge(limit=1)
     await ctx.send('Total users in all my servers combined: ' + str(len(all_users)))
 
+####################################################### Eval ################################################
+
+
+@bot.command(aliases=['eval'])
+@commands.is_owner()
+async def run_code(ctx,*,code):
+    await ctx.send(eval(code))
+
 
 ####################################################### Errors ###############################################
 
@@ -262,20 +270,15 @@ async def logout_error(ctx,error):
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 
-@_eval.error
+@run_code.error
 async def _eval_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         emb = discord.Embed(title='Ошибка!!!', colour=discord.Color.red(), description='Эту команду имеет право использовать только создатель бота')
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 
-####################################################### Eval ###############################################
 
 
-@bot.command(aliases=['eval'])
-@commands.is_owner()
-async def _eval(ctx,*,code):
-    await ctx.send(eval(code))
 
 
 
