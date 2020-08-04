@@ -49,7 +49,7 @@ async def change_status():
         await bot.change_presence(activity= discord.Game(name=next_status))
         await asyncio.sleep(15)
 
-@bot.event #включення бота
+@bot.event
 async def on_ready():
     print(f'Connect is {bot.user.name}')
 
@@ -57,7 +57,7 @@ async def on_ready():
 ######################################################### Commands bot ###################################################
 
 
-@bot.command(aliases=['userinfo','ui','infouser'])#готовий
+@bot.command(aliases=['userinfo','ui','infouser'])
 async def user(ctx, member: discord.Member = None):
     member = ctx.author if not member else member
     arrow.get()
@@ -198,7 +198,7 @@ async def bot_servers(ctx):
     emb=discord.Embed(description=f'Присутствует на {str(len(bot.guilds))} серверах', colour=discord.Color.blurple())
     await ctx.send(embed= emb)
 
-@bot.command(aliases=['i'])#команда .help
+@bot.command(aliases=['i'])
 async def help(ctx):
     await ctx.channel.purge(limit=1)
 
@@ -220,7 +220,7 @@ async def help(ctx):
 
     await page.start()
 
-@bot.command()#готовий
+@bot.command()
 async def ping(ctx):
     time_1 = time.perf_counter()
     await ctx.trigger_typing()
@@ -241,6 +241,7 @@ async def tuser(ctx):
         all_users.add(user)
     await ctx.channel.purge(limit=1)
     await ctx.send('Total users in all my servers combined: ' + str(len(all_users)))
+
 
 ####################################################### Eval ################################################
 
