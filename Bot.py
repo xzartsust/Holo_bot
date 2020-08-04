@@ -185,12 +185,11 @@ async def user(ctx, member: discord.Member = None):
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 
-@bot.command()
-@commands.has_permissions(administrator= True)
+@bot.command.is_owner()
 async def logout(ctx):
     await bot.logout()
 
-@bot.command()
+@bot.command.is_owner()
 async def bot_servers(ctx):
     emb=discord.Embed(description=f'Присутствует на {str(len(bot.guilds))} серверах', colour=discord.Color.blurple())
     await ctx.send(embed= emb)
