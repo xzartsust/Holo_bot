@@ -194,7 +194,6 @@ async def logout(ctx):
     await bot.logout()
 
 @bot.command()
-@commands.check(is_owner)
 async def bot_servers(ctx):
     emb=discord.Embed(description=f'Присутствует на {str(len(bot.guilds))} серверах', colour=discord.Color.blurple())
     await ctx.send(embed= emb)
@@ -235,7 +234,6 @@ async def ping(ctx):
 async def clear(ctx, arg):
     await ctx.channel.purge(limit= int(arg))
 
-
 @bot.command()
 async def tuser(ctx):
     all_users = set([])
@@ -260,13 +258,6 @@ async def run_code(ctx,*,code):
 async def clear_error(ctx,error):
     if isinstance(error, commands.MissingPermissions):
         emb = discord.Embed(title='Ошибка!!!', colour=discord.Color.red(), description='У вас нет прав на ету команду')
-        await ctx.channel.purge(limit=1)
-        await ctx.send(embed=emb)
-
-@bot_servers.error
-async def logout_error(ctx,error):
-    if isinstance(error, commands.CheckFailure):
-        emb = discord.Embed(title='Ошибка!!!', colour=discord.Color.red(), description='Эту команду имеет право использовать только создатель бота')
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 
