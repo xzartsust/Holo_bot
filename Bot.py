@@ -251,14 +251,14 @@ async def tuser(ctx):
 @clear.error
 async def clear_error(ctx,error):
     if isinstance(error, commands.MissingPermissions):
-        emb = discord.Embed(title='Ошибка!!!', colour=discord.Color.red(),description='У вас нет прав на ету команду')
+        emb = discord.Embed(title='Ошибка!!!', colour=discord.Color.red(), description='У вас нет прав на ету команду')
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 
 @logout.error
 async def logout_error(ctx,error):
     if isinstance(error, commands.CheckFailure):
-        emb = discord.Embed(title='Ошибка!!!', colour=discord.Color.red(),description='Эту команду имеет право использовать только создатель бота')
+        emb = discord.Embed(title='Ошибка!!!', colour=discord.Color.red(), description='Эту команду имеет право использовать только создатель бота')
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 
