@@ -239,6 +239,8 @@ async def testembed(ctx):
     emb =discord.Embed(title='hi',description='rgr')
     emb.set_image(url='https://discordpy.readthedocs.io/en/latest/_images/snake.png')
 
+    await ctx.send(embed= emb)
+
 ####################################################### Eval ################################################
 
 
