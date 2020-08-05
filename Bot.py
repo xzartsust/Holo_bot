@@ -87,9 +87,9 @@ async def tuser(ctx):
     await ctx.send('Total users in all my servers combined: ' + str(len(all_users)))
 
 @bot.command()
-async def news(ctx):
-    #emb= discord.Embed(title='Новость!!!',description=f'{text}', timestamp=ctx.message.created_at)
-    await ctx.send(discord.Object(id='735743791889383444'), 'heh')
+async def news(ctx,*,text):
+    emb= discord.Embed(title='Новость!!!',description=f'{text}', timestamp=ctx.message.created_at)
+    await ctx.send(embed=emb)
 
 
 
