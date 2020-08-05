@@ -270,4 +270,4 @@ async def _eval_error(ctx, error):
 TOKEN = os.environ.get('TOKEN')
 bot_owner = os.environ.get('bot_owner')
 bot.loop.create_task(change_status())
-bot.run('NzI5OTU3NzAxMjQwNzUwMTQw.XwQgFQ.C0Kgu9RmnyLmoljg1wu68SnbWGU')
+bot.run(TOKEN)
