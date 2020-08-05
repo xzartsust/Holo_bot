@@ -49,7 +49,6 @@ async def change_status():
         await bot.change_presence(activity= discord.Game(name=next_status))
         await asyncio.sleep(13)
     
-    
 @bot.event
 async def on_ready():
     print(f'Connect is {bot.user.name}')
@@ -235,6 +234,10 @@ async def tuser(ctx):
     await ctx.channel.purge(limit=1)
     await ctx.send('Total users in all my servers combined: ' + str(len(all_users)))
 
+@bot.command()
+async def testembed(ctx):
+    emb =discord.Embed(title='hi',description='rgr')
+    emb.set_image(url='https://discordpy.readthedocs.io/en/latest/_images/snake.png')
 
 ####################################################### Eval ################################################
 
