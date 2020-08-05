@@ -48,7 +48,7 @@ async def change_status():
 
 async def ready():
     channel= bot.get_channel('735743791889383444')
-    await bot.send('Я снова с вами')
+    await channel.send('Я снова с вами')
 
 @bot.event
 async def on_ready():
