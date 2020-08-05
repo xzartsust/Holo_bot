@@ -56,7 +56,7 @@ async def on_ready():
 
 ######################################################### Commands bot ###################################################
 
-
+'''
 @bot.command(aliases=['userinfo','ui','infouser'])
 async def user(ctx, member: discord.Member = None):
     member = ctx.author if not member else member
@@ -179,7 +179,7 @@ async def user(ctx, member: discord.Member = None):
 
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
-
+'''
 @bot.command()
 @commands.check(is_owner)
 async def logout(ctx):
@@ -277,7 +277,14 @@ async def _eval_error(ctx, error):
 
 
 
-
+for cog in os.listdir(".\\commands"):
+    if cog.endswith(".py"):
+        try:
+            cog = f"commands.{replace('.py','')}"
+            bot.load_extension(cog)
+        except Exception as e:
+            print(f'{cog} can not be loaded:')
+            raise e
 
 
 TOKEN = os.environ.get('TOKEN')
