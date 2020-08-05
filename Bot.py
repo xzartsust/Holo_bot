@@ -245,7 +245,7 @@ async def testembed(ctx):
 async def news(ctx,channel_id, text):
     emb= discord.Embed(title='Новость!!!',description=f'{text}', timestamp=ctx.message.created_at)
     channel= bot.get_channel(channel_id)
-    await bot.send(discord.Object(id=channel_id), text)
+    await ctx.send(discord.Object(id=channel_id), text)
 
 
 
