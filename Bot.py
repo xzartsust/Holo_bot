@@ -242,7 +242,7 @@ async def tuser(ctx):
 @bot.command(aliases=['eval'])
 @commands.is_owner()
 async def run_code(ctx,*,code):
-    await ctx.send(eval(code))
+    await ctx.send(f'`{eval(code)}`')
 
 
 ####################################################### Errors ###############################################
