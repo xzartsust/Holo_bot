@@ -280,7 +280,7 @@ async def _eval_error(ctx, error):
 for cog in os.listdir(".\\commands"):
     if cog.endswith(".py"):
         try:
-            cog = f"commands.{replace('.py','')}"
+            cog = f"commands.{cog.replace('.py','')}"
             bot.load_extension(cog)
         except Exception as e:
             print(f'{cog} can not be loaded:')
