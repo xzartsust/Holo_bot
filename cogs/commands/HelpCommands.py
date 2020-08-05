@@ -33,7 +33,7 @@ class HelpCommands(commands.Cog):
 
         embeds=[emb,emb1,emb2]
         message= await ctx.send(embed= emb)
-        page= pag(self.bot, message, only=ctx.author, use_more=False, embeds=embeds, color=0x008000, delete_message=True,time_stamp=True)
+        page= pag(self.bot, message, only=ctx.author, use_more=False, embeds=embeds, color=0x008000,time_stamp=True)
 
         await page.start()
 
