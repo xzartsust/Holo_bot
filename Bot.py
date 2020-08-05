@@ -218,7 +218,7 @@ async def ping(ctx):
     await ctx.trigger_typing()
     time_2 = time.perf_counter()
     ping = round((time_2 - time_1) * 1000)
-    emb= discord.Embed(description=f'Pong: {ping}ms',colour=discord.Color.blurple())
+    emb= discord.Embed(description=f':ping_pong:Pong: {ping}ms',colour=discord.Color.blurple())
     await ctx.channel.purge(limit=1)
     await ctx.send(embed= emb)
 

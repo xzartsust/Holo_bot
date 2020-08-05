@@ -1,6 +1,6 @@
-2020-08-01 22:18:49,811:DEBUG: on_ready has successfully been registered as an event
-2020-08-01 22:18:49,815:INFO: logging in using static token
-2020-08-01 22:18:49,816:INFO: Cleaning up tasks.
-2020-08-01 22:18:49,817:INFO: Cleaning up after 1 tasks.
-2020-08-01 22:18:49,818:INFO: All tasks finished cancelling.
-2020-08-01 22:18:49,819:INFO: Closing the event loop.
+2020-08-05 14:56:24,908:DEBUG: on_ready has successfully been registered as an event
+2020-08-05 14:56:24,913:INFO: logging in using static token
+2020-08-05 14:56:24,914:INFO: Cleaning up tasks.
+2020-08-05 14:56:24,915:INFO: Cleaning up after 1 tasks.
+2020-08-05 14:56:24,917:INFO: All tasks finished cancelling.
+2020-08-05 14:56:24,918:INFO: Closing the event loop.
