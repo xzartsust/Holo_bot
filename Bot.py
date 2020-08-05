@@ -89,6 +89,7 @@ async def tuser(ctx):
 @bot.command()
 async def news(ctx,*,text):
     emb= discord.Embed(title='Новость!!!',description=f'{text}', timestamp=ctx.message.created_at)
+    emb.set_footer(text=f'{ctx.message.author}' + ' создал эту новость!')
     await ctx.send(embed=emb)
 
 
