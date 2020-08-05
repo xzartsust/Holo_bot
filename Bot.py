@@ -55,7 +55,7 @@ async def on_ready():
 
 
 @bot.command()
-@commands.check(is_owner)
+@commands.is_owner()
 async def logout(ctx):
     await bot.logout()
 
