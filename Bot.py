@@ -47,8 +47,9 @@ async def change_status():
     while not bot.is_closed():
         next_status= next(msg)
         await bot.change_presence(activity= discord.Game(name=next_status))
-        await asyncio.sleep(15)
-
+        await asyncio.sleep(13)
+    
+    
 @bot.event
 async def on_ready():
     print(f'Connect is {bot.user.name}')
@@ -269,4 +270,4 @@ async def _eval_error(ctx, error):
 TOKEN = os.environ.get('TOKEN')
 bot_owner = os.environ.get('bot_owner')
 bot.loop.create_task(change_status())
-bot.run(TOKEN)
+bot.run('NzI5OTU3NzAxMjQwNzUwMTQw.XwQgFQ.C0Kgu9RmnyLmoljg1wu68SnbWGU')
