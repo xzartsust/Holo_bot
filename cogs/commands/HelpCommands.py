@@ -15,7 +15,7 @@ class HelpCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.group(name='helpcmd', aliases=['helpcmd','i','help','helpcommands'])
+    @commands.group(aliases=['helpcmd','i','help','helpcommands'])
     async def help_for_commands(self, ctx):
         await ctx.channel.purge(limit=1)
 
