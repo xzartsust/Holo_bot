@@ -8,7 +8,7 @@ import logging
 import time
 from Cybernator import Paginator as pag
 
-PREFIX = open("config_for_bot","r").read()
+PREFIX = '.'
 
 
 class HelpCommands(commands.Cog):
