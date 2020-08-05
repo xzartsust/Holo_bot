@@ -8,7 +8,7 @@ class BotEvent(commands.Cog):
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
-        await ctx.send(ctx.command.name + 'была вызвана некоректно')
+        await ctx.send(ctx.command.name + ' была вызвана некоректно')
     
 
 def setup(bot):

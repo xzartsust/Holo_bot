@@ -277,7 +277,7 @@ bot.load_extension('cogs.commands.HelpCommands')
 ################################################# Cogs Event ######################################################################
 
 
-bot.load_extension('cogs.BotEvent')
+#bot.load_extension('cogs.BotEvent')
 
 
 
