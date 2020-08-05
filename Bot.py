@@ -46,14 +46,9 @@ async def change_status():
         await bot.change_presence(activity= discord.Game(name=next_status))
         await asyncio.sleep(13)
 
-async def ready():
-    channel= bot.get_channel('735743791889383444')
-    await channel.send('Я снова с вами')
-
 @bot.event
 async def on_ready():
     print(f'Connect is {bot.user.name}')
-    await ready()
 
 
 ######################################################### Commands bot ###################################################
