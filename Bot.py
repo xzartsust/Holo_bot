@@ -60,8 +60,10 @@ async def on_ready():
 @bot.command(aliases=['userinfo','ui','infouser'])
 async def user(ctx, member: discord.Member = None):
     member = ctx.author if not member else member
-    roles =  [role for role in member.roles]
-
+    arrow.get()
+    utc = arrow.utcnow()
+    local = utc.to('Europe/Kiev')
+    now_time = local.format('HH:mm')
 
     time_to_join_in_discord = member.created_at
     time_to_join_in_server = member.joined_at
@@ -74,10 +76,9 @@ async def user(ctx, member: discord.Member = None):
 
 
     if member.bot is False and member.nick is not None:
-        emb = discord.Embed(title=format(member), colour=discord.Color.green(), url=f'{member.avatar_url}', timestamp=ctx.message.created_at ,inline=False)
-        emb.add_field(name='Присоединился к Discord',value=f'{member.created_at.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)',inline=False)
-        emb.add_field(name='Присоединился к серверу',value=f'{member.joined_at.strftime("%d.%m.%Y %H:%M")}\n ({a} дней)',inline=False)
-        emb.add_field(name=f'Роли{(len(roles))}',value=" ".join([role.mention for role in roles]))
+        emb = discord.Embed(title=format(member), colour=discord.Color.green(), url=f'{member.avatar_url}',inline=False)
+        emb.add_field(name='Присоединился к Discord',value=f'{time_to_join_in_discord.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)',inline=False)
+        emb.add_field(name='Присоединился к серверу',value=f'{time_to_join_in_server.strftime("%d.%m.%Y %H:%M")}\n ({a} дней)',inline=False)
         emb.add_field(name='Самая высокая роль', value=str(member.top_role.mention), inline=False)
         emb.add_field(name='Айди', value=member.id, inline=False)
 
@@ -97,16 +98,18 @@ async def user(ctx, member: discord.Member = None):
 
         emb.set_thumbnail(url=member.avatar_url)
         emb.set_author(name=member.nick)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}', icon_url=ctx.author.avatar_url)
+        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' • Сегодня об: {now_time}')
 
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 
     if member.bot is False and member.nick is None:
-        emb = discord.Embed(title=format(member), colour=discord.Color.green(), timestamp=ctx.message.created_at ,inline=False)
-        emb.add_field(name='Присоединился к Discord', value=f'{member.created_at.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)', inline=False)
-        emb.add_field(name='Присоединился к серверу', value=f'{member.joined_at.strftime("%d.%m.%Y %H:%M")}\n ({a} дней)', inline=False)
-        emb.add_field(name=f'Роли{(len(roles))}',value=" ".join([role.mention for role in roles]))
+        emb = discord.Embed(title=format(member), colour=discord.Color.green(), url=f'{member.avatar_url}',
+                            inline=False)
+        emb.add_field(name='Присоединился к Discord',
+                      value=f'{time_to_join_in_discord.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)', inline=False)
+        emb.add_field(name='Присоединился к серверу',
+                      value=f'{time_to_join_in_server.strftime("%d.%m.%Y %H:%M")}\n ({a} дней)', inline=False)
         emb.add_field(name='Самая высокая роль', value=str(member.top_role.mention), inline=False)
         emb.add_field(name='Айди', value=member.id, inline=False)
 
@@ -125,16 +128,18 @@ async def user(ctx, member: discord.Member = None):
             emb.add_field(name='Кастом статус', value='Нету', inline=False)
 
         emb.set_thumbnail(url=member.avatar_url)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}', icon_url=ctx.author.avatar_url)
+        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' • Сегодня об: {now_time}')
 
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 
     if member.bot is True and member.nick is None:
-        emb = discord.Embed(title=format(member), colour=discord.Color.green(), url=f'{member.avatar_url}', timestamp=ctx.message.creted_at, inline=False)
-        emb.add_field(name='Присоединился к Discord', value=f'{member.created_at.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)', inline=False)
-        emb.add_field(name='Присоединился к серверу', value=f'{member.joined_at.strftime("%d.%m.%Y %H:%M")}\n ({a} дней)', inline=False)
-        emb.add_field(name=f'Роли{(len(roles))}',value=" ".join([role.mention for role in roles]))
+        emb = discord.Embed(title=format(member), colour=discord.Color.green(), url=f'{member.avatar_url}',
+                            inline=False)
+        emb.add_field(name='Присоединился к Discord',
+                      value=f'{time_to_join_in_discord.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)', inline=False)
+        emb.add_field(name='Присоединился к серверу',
+                      value=f'{time_to_join_in_server.strftime("%d.%m.%Y %H:%M")}\n ({a} дней)', inline=False)
         emb.add_field(name='Самая высокая роль', value=str(member.top_role.mention), inline=False)
         emb.add_field(name='Айди', value=member.id, inline=False)
 
@@ -150,16 +155,18 @@ async def user(ctx, member: discord.Member = None):
         emb.add_field(name='Кастомный статус', value=f'{member.activity}')
 
         emb.set_thumbnail(url=member.avatar_url)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}', icon_url=ctx.author.avatar_url)
+        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' • Сегодня об: {now_time}')
 
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 
     if member.bot is True and member.nick is not None:
-        emb = discord.Embed(title=format(member), colour=discord.Color.green(), url=f'{member.avatar_url}', timestamp=ctx.message.created_at, inline=False)
-        emb.add_field(name='Присоединился к Discord', value=f'{time_to_join_in_discord.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)', inline=False)
-        emb.add_field(name='Присоединился к серверу', value=f'{time_to_join_in_server.strftime("%d.%m.%Y %H:%M")}\n ({a} дней)', inline=False)
-        emb.add_field(name=f'Роли{(len(roles))}',value=" ".join([role.mention for role in roles]))
+        emb = discord.Embed(title=format(member), colour=discord.Color.green(), url=f'{member.avatar_url}',
+                            inline=False)
+        emb.add_field(name='Присоединился к Discord',
+                      value=f'{time_to_join_in_discord.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)', inline=False)
+        emb.add_field(name='Присоединился к серверу',
+                      value=f'{time_to_join_in_server.strftime("%d.%m.%Y %H:%M")}\n ({a} дней)', inline=False)
         emb.add_field(name='Самая высокая роль', value=str(member.top_role.mention), inline=False)
         emb.add_field(name='Айди', value=member.id, inline=False)
 
@@ -176,7 +183,7 @@ async def user(ctx, member: discord.Member = None):
 
         emb.set_thumbnail(url=member.avatar_url)
         emb.set_author(name=member.nick)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}', icon_url=ctx.author.avatar_url)
+        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}' + f' Сегодня об: • {now_time}')
 
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
