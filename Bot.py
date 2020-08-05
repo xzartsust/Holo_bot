@@ -45,138 +45,19 @@ async def change_status():
         next_status= next(msg)
         await bot.change_presence(activity= discord.Game(name=next_status))
         await asyncio.sleep(13)
-    
+
+async def ready():
+    channel= bot.get_channel('735743791889383444')
+    await bot.send('Я снова с вами')
+
 @bot.event
 async def on_ready():
     print(f'Connect is {bot.user.name}')
+    await ready()
 
 
 ######################################################### Commands bot ###################################################
 
-'''
-@bot.command(aliases=['userinfo','ui','infouser'])
-async def user(ctx, member: discord.Member = None):
-    member = ctx.author if not member else member
-    roles =  [role for role in member.roles]
-
-
-    time_to_join_in_discord = member.created_at
-    time_to_join_in_server = member.joined_at
-    now = datetime.now()
-    delta_s = now - time_to_join_in_server
-    delta_d= now - time_to_join_in_discord
-    b= delta_d.days
-    a = delta_s.days
-
-
-    if member.bot is False and member.nick is not None:
-        emb = discord.Embed(title=format(member), colour=discord.Color.green(), url=f'{member.avatar_url}', timestamp=ctx.message.created_at ,inline=False)
-        emb.add_field(name='Присоединился к Discord',value=f'{member.created_at.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)',inline=False)
-        emb.add_field(name='Присоединился к серверу',value=f'{member.joined_at.strftime("%d.%m.%Y %H:%M")}\n ({a} дней)',inline=False)
-        emb.add_field(name=f'Роли ({(len(roles))})',value=" ".join([role.mention for role in roles]), inline=False)
-        emb.add_field(name='Самая высокая роль', value=str(member.top_role.mention), inline=False)
-        emb.add_field(name='Айди', value=member.id, inline=False)
-
-        if member.status == discord.Status.online:
-            emb.add_field(name='Status', value=':green_circle: Онлайн', inline=False)
-        elif member.status == discord.Status.dnd:
-            emb.add_field(name='Status', value=':no_entry: Не беспокоить', inline=False)
-        elif member.status == discord.Status.offline:
-            emb.add_field(name='Status', value=':black_circle: Нет в сети', inline=False)
-        elif member.status == discord.Status.idle:
-            emb.add_field(name='Status', value=':crescent_moon: Отошол', inline=False)
-
-        if member.activity is not None:
-            emb.add_field(name='Кастом статус', value=member.activity, inline=False)
-        else:
-            emb.add_field(name='Кастом статус', value='Нету', inline=False)
-
-        emb.set_thumbnail(url=member.avatar_url)
-        emb.set_author(name=member.nick)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}', icon_url=ctx.author.avatar_url)
-
-        await ctx.channel.purge(limit=1)
-        await ctx.send(embed=emb)
-
-    if member.bot is False and member.nick is None:
-        emb = discord.Embed(title=format(member), colour=discord.Color.green(), timestamp=ctx.message.created_at ,inline=False)
-        emb.add_field(name='Присоединился к Discord', value=f'{member.created_at.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)', inline=False)
-        emb.add_field(name='Присоединился к серверу', value=f'{member.joined_at.strftime("%d.%m.%Y %H:%M")}\n ({a} дней)', inline=False)
-        emb.add_field(name=f'Роли ({(len(roles))})',value=" ".join([role.mention for role in roles]), inline=False)
-        emb.add_field(name='Самая высокая роль', value=str(member.top_role.mention), inline=False)
-        emb.add_field(name='Айди', value=member.id, inline=False)
-
-        if member.status == discord.Status.online:
-            emb.add_field(name='Status', value=':green_circle: Онлайн', inline=False)
-        elif member.status == discord.Status.dnd:
-            emb.add_field(name='Status', value=':no_entry: Не беспокоить', inline=False)
-        elif member.status == discord.Status.offline:
-            emb.add_field(name='Status', value=':black_circle: Нет в сети', inline=False)
-        elif member.status == discord.Status.idle:
-            emb.add_field(name='Status', value=':crescent_moon: Отошол', inline=False)
-
-        if member.activity is not None:
-            emb.add_field(name='Кастом статус', value= member.activity,inline=False)
-        else:
-            emb.add_field(name='Кастом статус', value='Нету', inline=False)
-
-        emb.set_thumbnail(url=member.avatar_url)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}', icon_url=ctx.author.avatar_url)
-
-        await ctx.channel.purge(limit=1)
-        await ctx.send(embed=emb)
-
-    if member.bot is True and member.nick is None:
-        emb = discord.Embed(title=format(member), colour=discord.Color.green(), url=f'{member.avatar_url}', timestamp=ctx.message.created_at, inline=False)
-        emb.add_field(name='Присоединился к Discord', value=f'{member.created_at.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)', inline=False)
-        emb.add_field(name='Присоединился к серверу', value=f'{member.joined_at.strftime("%d.%m.%Y %H:%M")}\n ({a} дней)', inline=False)
-        emb.add_field(name=f'Роли ({(len(roles))})',value=" ".join([role.mention for role in roles]), inline=False)
-        emb.add_field(name='Самая высокая роль', value=str(member.top_role.mention), inline=False)
-        emb.add_field(name='Айди', value=member.id, inline=False)
-
-        if member.status == discord.Status.online:
-            emb.add_field(name='Status', value=':green_circle: Онлайн', inline=False)
-        elif member.status == discord.Status.dnd:
-            emb.add_field(name='Status', value=':no_entry: Не беспокоить', inline=False)
-        elif member.status == discord.Status.offline:
-            emb.add_field(name='Status', value=':black_circle: Нет в сети', inline=False)
-        elif member.status == discord.Status.idle:
-            emb.add_field(name='Status', value=':crescent_moon: Отошол', inline=False)
-
-        emb.add_field(name='Кастомный статус', value=f'{member.activity}')
-
-        emb.set_thumbnail(url=member.avatar_url)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}', icon_url=ctx.author.avatar_url)
-
-        await ctx.channel.purge(limit=1)
-        await ctx.send(embed=emb)
-
-    if member.bot is True and member.nick is not None:
-        emb = discord.Embed(title=format(member), colour=discord.Color.green(), url=f'{member.avatar_url}', timestamp=ctx.message.created_at, inline=False)
-        emb.add_field(name='Присоединился к Discord', value=f'{member.created_at.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)', inline=False)
-        emb.add_field(name='Присоединился к серверу', value=f'{member.joined_at.strftime("%d.%m.%Y %H:%M")}\n ({a} дней)', inline=False)
-        emb.add_field(name=f'Роли ({(len(roles))})',value=" ".join([role.mention for role in roles]), inline=False)
-        emb.add_field(name='Самая высокая роль', value=str(member.top_role.mention), inline=False)
-        emb.add_field(name='Айди', value=member.id, inline=False)
-
-        if member.status == discord.Status.online:
-            emb.add_field(name='Status', value=':green_circle: Онлайн', inline=False)
-        elif member.status == discord.Status.dnd:
-            emb.add_field(name='Status', value=':no_entry: Не беспокоить', inline=False)
-        elif member.status == discord.Status.offline:
-            emb.add_field(name='Status', value=':black_circle: Нет в сети', inline=False)
-        elif member.status == discord.Status.idle:
-            emb.add_field(name='Status', value=':crescent_moon: Отошол', inline=False)
-
-        emb.add_field(name='Кастомный статус',value=f'{member.activity}', inline=False)
-
-        emb.set_thumbnail(url=member.avatar_url)
-        emb.set_author(name=member.nick)
-        emb.set_footer(text='Заптрос от: ' + f'{ctx.author}', icon_url=ctx.author.avatar_url)
-
-        await ctx.channel.purge(limit=1)
-        await ctx.send(embed=emb)
-'''
 
 @bot.command()
 @commands.check(is_owner)
@@ -187,29 +68,7 @@ async def logout(ctx):
 async def bot_servers(ctx):
     emb=discord.Embed(description=f'Присутствует на {str(len(bot.guilds))} серверах', colour=discord.Color.blurple())
     await ctx.send(embed= emb)
-'''
-@bot.command(aliases=['i'])
-async def help(ctx):
-    await ctx.channel.purge(limit=1)
 
-    emb= discord.Embed(title='Помощ по использованию бота', description='Здесь вы можете узнать про осноные команды бота')
-
-    emb1= discord.Embed(title='Команды бота')
-    emb1.add_field(name='`{}help` или `{}info` или `{}i`'.format(PREFIX, PREFIX, PREFIX), value=' - Команды бота',inline=False)
-    emb1.add_field(name='`{}prefix`'.format(PREFIX), value=' - Изменить префикс бота',inline=False)
-    emb1.add_field(name='`{}user @имя`'.format(PREFIX),value=' - Информация про пользователя', inline=False)
-    emb1.add_field(name='`{}ping`'.format(PREFIX),value=' - Посмотреть пинг бота', inline=False)
-    emb1.add_field(name='`{}bot_servers`'.format(PREFIX),value=' - Посмотреть на скольких серверах есть етот бот', inline=False)
-    emb1.add_field(name='`{}tuser`'.format(PREFIX), value=' - Посмотреть сколько всего человек используют этого бота',inline=False)
-
-    emb2=discord.Embed(title='Команды для модерации', description='Скоро...')
-
-    embeds=[emb,emb1,emb2]
-    message= await ctx.send(embed= emb)
-    page= pag(bot, message, only=ctx.author, use_more=False, embeds=embeds, color=0x008000, delete_message=True,time_stamp=True)
-
-    await page.start()
-'''
 @bot.command()
 async def ping(ctx):
     time_1 = time.perf_counter()
@@ -233,9 +92,9 @@ async def tuser(ctx):
     await ctx.send('Total users in all my servers combined: ' + str(len(all_users)))
 
 @bot.command()
-async def news(ctx,*,channel_id = None,text= None):
+async def news(ctx,channel_id,text):
     #emb= discord.Embed(title='Новость!!!',description=f'{text}', timestamp=ctx.message.created_at)
-    channel= bot.get_channel(channel_id)
+    channel= bot.get_channel(id=channel_id)
     await ctx.send(discord.Object(id=f'{channel}'), f'{text}')
 
 
