@@ -277,7 +277,7 @@ async def _eval_error(ctx, error):
 
 
 
-for cog in os.listdir(".//commands"):
+for cog in os.listdir(".//commands/user.py"):
     if cog.endswith(".py"):
         try:
             cog = f"commands.{cog.replace('.py','')}"
