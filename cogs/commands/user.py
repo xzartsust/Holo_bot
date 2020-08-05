@@ -2,14 +2,12 @@ import discord
 from discord.ext import commands
 from datetime import datetime
 import time
-import moment
 
 
 
-class user:
+class user(commands.Cog):
     def __init__(self,bot):
         self.bot=bot
-    
 
     @commands.command()
     async def user(self, ctx, member: discord.Member = None):
@@ -133,7 +131,6 @@ class user:
 
             await ctx.channel.purge(limit=1)
             await ctx.send(embed=emb)
-
 
 
 def setup(bot):

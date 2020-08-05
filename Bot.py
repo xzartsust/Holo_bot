@@ -10,12 +10,10 @@ import os
 from datetime import datetime
 import logging
 import time
-import json
 import asyncio
 from itertools import cycle
 from Cybernator import Paginator as pag
-import moment
-import arrow
+
 
 ########################################################## Logging ###################################################
 
@@ -30,8 +28,7 @@ logger.addHandler(handler)
 ########################################################################################################################
 
 
-bot=commands.Bot(command_prefix='.')
-bot.remove_command('help')
+bot=commands.Bot(command_prefix='.', help_command=None)
 
 
 ############################################################# Events bot #################################################
@@ -180,6 +177,7 @@ async def user(ctx, member: discord.Member = None):
         await ctx.channel.purge(limit=1)
         await ctx.send(embed=emb)
 '''
+
 @bot.command()
 @commands.check(is_owner)
 async def logout(ctx):
@@ -189,7 +187,7 @@ async def logout(ctx):
 async def bot_servers(ctx):
     emb=discord.Embed(description=f'Присутствует на {str(len(bot.guilds))} серверах', colour=discord.Color.blurple())
     await ctx.send(embed= emb)
-
+'''
 @bot.command(aliases=['i'])
 async def help(ctx):
     await ctx.channel.purge(limit=1)
@@ -211,7 +209,7 @@ async def help(ctx):
     page= pag(bot, message, only=ctx.author, use_more=False, embeds=embeds, color=0x008000, delete_message=True,time_stamp=True)
 
     await page.start()
-
+'''
 @bot.command()
 async def ping(ctx):
     time_1 = time.perf_counter()
@@ -223,8 +221,8 @@ async def ping(ctx):
     await ctx.send(embed= emb)
 
 @bot.command()
-async def clear(ctx, arg):
-    await ctx.channel.purge(limit= int(arg))
+async def clear(ctx, arg: int):
+    await ctx.channel.purge(limit= arg + 1)
 
 @bot.command()
 async def tuser(ctx):
@@ -233,13 +231,6 @@ async def tuser(ctx):
         all_users.add(user)
     await ctx.channel.purge(limit=1)
     await ctx.send('Total users in all my servers combined: ' + str(len(all_users)))
-
-@bot.command()
-async def testembed(ctx):
-    emb =discord.Embed(title='hi',description='rgr')
-    emb.set_image(url='https://discordpy.readthedocs.io/en/latest/_images/snake.png')
-
-    await ctx.send(embed= emb)
 
 @bot.command()
 async def news(ctx,channel_id, text):
@@ -259,7 +250,7 @@ async def run_code(ctx,*,code):
 
 
 ####################################################### Errors ###############################################
-
+ 
 
 @clear.error
 async def clear_error(ctx,error):
@@ -276,18 +267,23 @@ async def _eval_error(ctx, error):
         await ctx.send(embed=emb)
 
 
+################################################## Cogs commands #################################################################
 
-for cog in os.listdir(".\\commands"):
-    if cog.endswith(".py"):
-        try:
-            cog = f"commands.{cog.replace('.py','')}"
-            bot.load_extension(cog)
-        except Exception as e:
-            print(f'{cog} can not be loaded:')
-            raise e
+
+bot.load_extension('cogs.commands.user')
+bot.load_extension('cogs.commands.HelpCommands')
+
+
+################################################# Cogs Event ######################################################################
+
+
+bot.load_extension('cogs.BotEvent')
+
 
 
 TOKEN = os.environ.get('TOKEN')
 bot_owner = os.environ.get('bot_owner')
+
+
 bot.loop.create_task(change_status())
 bot.run(TOKEN)
