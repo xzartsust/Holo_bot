@@ -13,6 +13,8 @@ import time
 import asyncio
 from itertools import cycle
 from Cybernator import Paginator as pag
+import psycopg2
+import asyncpg
 
 
 ########################################################## Logging ###################################################
@@ -120,6 +122,7 @@ async def _eval_error(ctx, error):
 bot.load_extension('cogs.commands.user')
 bot.load_extension('cogs.commands.HelpCommands')
 bot.load_extension('cogs.commands.news')
+bot.load_extension('cogs.commands.prefix')
 
 ################################################# Cogs Event ######################################################################
 
@@ -130,7 +133,10 @@ bot.load_extension('cogs.commands.news')
 
 TOKEN = os.environ.get('TOKEN')
 bot_owner = os.environ.get('bot_owner')
+DATABASE_URL = os.environ['DATABASE_URL']
+password_db = os.environ.get('password_db')
 
+con= psycopg2.connect(DATABASE_URL, sslmode='require')
 
 bot.loop.create_task(change_status())
 bot.run(TOKEN)
