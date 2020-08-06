@@ -89,14 +89,12 @@ async def tuser(ctx):
 @bot.command()
 async def news(ctx,channel:discord.TextChannel, *,text):
     await ctx.channel.purge(limit=1)
-    if channel != None:
-        emb= discord.Embed(title='Новость!!!',description=f'{text}', colour= discord.Color.teal(),timestamp=ctx.message.created_at)
-        emb.set_footer(text=f'{ctx.message.author}' + ' создал эту новость!')
-        await channel.send(embed=emb)
-    elif channel == None:
-        emb= discord.Embed(title='Новость!!!',description=f'{text}', colour= discord.Color.teal(),timestamp=ctx.message.created_at)
-        emb.set_footer(text=f'{ctx.message.author}' + ' создал эту новость!')
-        await ctx.send(embed=emb)
+    
+    emb= discord.Embed(title='Новость!!!',description=f'{text}', colour= discord.Color.gold(),timestamp=ctx.message.created_at)
+    emb.set_footer(text=f'{ctx.message.author}' + ' создал эту новость!')
+    
+    await channel.send(embed=emb)
+    
     
 
 
