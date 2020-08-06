@@ -19,7 +19,7 @@ class HelpCommands(commands.Cog):
     async def help_for_commands(self, ctx):
         await ctx.channel.purge(limit=1)
 
-        emb= discord.Embed(title='Помощ по использованию бота', description='Другая информация\nЧтобы получить больше информации о какой либо команде, вы можете написать: {}help `команда` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.'.format(PREFIX))
+        emb= discord.Embed(title=f'Команды бота {bot.user.name}', description='Другая информация\nЧтобы получить больше информации о какой либо команде, вы можете написать: {}help `команда` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.'.format(PREFIX))
 
         emb1= discord.Embed(title='Команды бота')
         emb1.add_field(name='`{}help` или `{}info` или `{}i`'.format(PREFIX, PREFIX, PREFIX), value=' - Команды бота',inline=False)
