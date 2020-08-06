@@ -38,8 +38,8 @@ class HelpCommands(commands.Cog):
     
     @help_for_commands.command(name='user')
     async def user_subcommands(self, ctx):
-        user_emb=discord.Embed(title='Информацыя про команду .user',description='Команда: `[user]` или `[userinfo]` или `[infouser]` или `[iu]`\n Описание: показивает информацию про пользователя')
-
+        user_emb=discord.Embed(title='Информацыя про команду: .user',description='**Команда**: `[user]` или `[userinfo]` или `[infouser]` или `[iu]`\n **Описание**: показивает информацию про пользователя')
+        
 
         await ctx.send(embed=user_emb)
 
