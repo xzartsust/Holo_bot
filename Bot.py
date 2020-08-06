@@ -87,11 +87,6 @@ async def tuser(ctx):
     await ctx.send('Total users in all my servers combined: ' + str(len(all_users)))
 
 
-    
-    
-
-
-
 ####################################################### Eval ################################################
 
 
