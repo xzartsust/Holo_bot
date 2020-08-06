@@ -21,15 +21,15 @@ class HelpCommands(commands.Cog):
 
         emb= discord.Embed(title=f'Команды бота {self.bot.user.name}', description='Другая информация\nЧтобы получить больше информации о какой либо команде, вы можете написать: {}help `команда` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.'.format(PREFIX))
 
-        emb1= discord.Embed(title='Команды бота',description='Что бы узнать больше о команде напишите {}help [команда]. Пример: {}help user'.format(PREFIX,PREFIX))
+        emb1= discord.Embed(title='Команды бота',description='Что бы узнать больше о команде напишите {}help [команда]. **Пример**: {}help user'.format(PREFIX,PREFIX))
         emb1.add_field(name='`{}help` или `{}info` или `{}i`'.format(PREFIX, PREFIX, PREFIX), value=' - Команды бота',inline=False)
         
-        
+        '''
         emb1.add_field(name='`{}user`'.format(PREFIX),value=' - Информация про пользователя', inline=False)
         emb1.add_field(name='`{}ping`'.format(PREFIX),value=' - Посмотреть пинг бота', inline=False)
         emb1.add_field(name='`{}bot_servers`'.format(PREFIX),value=' - Посмотреть на скольких серверах есть етот бот', inline=False)
         emb1.add_field(name='`{}tuser`'.format(PREFIX), value=' - Посмотреть сколько всего человек используют этого бота',inline=False)
-
+        '''
         emb2=discord.Embed(title='Команды для модерации', description='Скоро...')
 
         embeds=[emb,emb1,emb2]
