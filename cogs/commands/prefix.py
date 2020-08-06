@@ -24,7 +24,7 @@ class prefix(commands.Cog):
         
 
     @commands.Cog.listener()
-    async def on_guild_remove(self):
+    async def on_guild_remove(self,ctx):
         pass
 
 
