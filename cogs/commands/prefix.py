@@ -5,6 +5,7 @@ import asyncpg, asyncio
 
 PREFIX=str('.')
 
+conn = asyncpg.connect(f'{url}')
 
 class prefix(commands.Cog):
     def __init__(self,bot):
@@ -17,11 +18,10 @@ class prefix(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
         guildid= str(guild.id)
-        conn = await asyncpg.connect(f'{url}')
-        
-        await conn.execute(f'INSERT INTO prefixDB (guild_id, prefix) VALUES ({guildid},{PREFIX})')
-        
-        await conn.close()
+
+        cursor = conn.cursor()
+        await cursor.execute(f'INSERT INTO prefixDB (guild_id, prefix) VALUES ({guildid},{PREFIX})')
+    
         
 
     @commands.Cog.listener()
