@@ -9,7 +9,7 @@ class user(commands.Cog):
     def __init__(self,bot):
         self.bot=bot
 
-    @commands.command(aliases=['userinfo','ui','infouser'])
+    @commands.command(aliases=['userinfo','ui','infouser','iu'])
     async def user(self, ctx, member: discord.Member = None):
         member = ctx.author if not member else member
         roles =  [role for role in member.roles]
