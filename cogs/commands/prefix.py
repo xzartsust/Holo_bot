@@ -3,7 +3,7 @@ from discord.ext import commands
 import os
 import asyncpg, asyncio
 
-PREFIX='.'
+PREFIX=str('.')
 
 
 class prefix(commands.Cog):
@@ -17,7 +17,7 @@ class prefix(commands.Cog):
     async def on_guild_join(self, guild):
         guildid= str(guild.id)
 
-        await self.bot.pg_con.fetch(f'SELECT * FROM prefixDB WHERE guild_id = {guildid} AND prefix = {PREFIX}')
+        await self.bot.pg_con.execute(f'INSERN INTO prefixDB (guild_id, prefix) VALUES ({guildid},{PREFIX})')
 
     @commands.Cog.listener()
     async def on_guild_remove(self):
