@@ -35,7 +35,7 @@ class HelpCommands(commands.Cog):
     
     @help_for_commands.command(name='user',aliases=['infouser','ui','userinfo','iu'])
     async def user_subcommands(self, ctx):
-        user_emb=discord.Embed(title='Информацыя про команду: .user',description=f'**Команда**: `[user]` или `[userinfo]` или `[infouser]` или `[iu]`\n **Описание**: показивает информацию про пользователя\n**Использования**: `{PREFIX}user` или `{PREFIX}userinfo` или `{PREFIX}infouser` или `{PREFIX}iu` или `{PREFIX}ui`, или если вы хотите узнать информацию о другом пользователя, то после команды пропишите тег пользователя о котором хотите узнать информацию\n**Пример**: {PREFIX}user @имя_пользователя')
+        user_emb=discord.Embed(title='Информацыя про команду: .user',description=f'**Команда**: `[user]` или `[userinfo]` или `[infouser]` или `[iu]`\n **Описание**: показивает информацию про пользователя\n**Использования**: `{PREFIX}user` или `{PREFIX}userinfo` или `{PREFIX}infouser` или `{PREFIX}iu` или `{PREFIX}ui`, или если вы хотите узнать информацию о другом пользователя, то после команды пропишите тег пользователя о котором хотите узнать информацию\n**Пример**: `{PREFIX}user @имя_пользователя`')
         
 
         await ctx.send(embed=user_emb)
