@@ -19,7 +19,7 @@ class prefix(commands.Cog):
     async def on_guild_join(self, guild):
         guildid= str(guild.id)
         conn = await asyncpg.connect(f'{url}')
-        await conn.execute(f'INSERT INTO prefixDB (guild_id, prefix) VALUES ({guildid},{PREFIX})')
+        await conn.execute(f'INSERT INTO users (guild_id, prefix) VALUES ({guildid},{PREFIX})')
         await conn.close()
         
 
