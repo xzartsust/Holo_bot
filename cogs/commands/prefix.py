@@ -10,14 +10,16 @@ class prefix(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
         
+    
 
 
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
         guildid= str(guild.id)
-
-        await cursor.execute(f'INSERT INTO prefixDB (guild_id, prefix) VALUES ({guildid},{PREFIX})')
+        conn = await asyncpg.connect(f'{url}')
+        await conn.execute(f'INSERT INTO prefixDB (guild_id, prefix) VALUES ({guildid},{PREFIX})')
+        await conn.close()
 
     @commands.Cog.listener()
     async def on_guild_remove(self):
@@ -36,3 +38,4 @@ class prefix(commands.Cog):
 def setup(bot):
     bot.add_cog(prefix(bot))
 
+url = os.environ.get('url_bd')
