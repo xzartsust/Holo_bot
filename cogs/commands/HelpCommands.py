@@ -44,9 +44,9 @@ class HelpCommands(commands.Cog):
         await ctx.send(embed=ping_emb)
 
     @help_for_commands.command(name='bot_servers')
-    async def bot_servers_subcommands(self,ctx):
-        bot_servers_emb=discord.Embed(title=f'Информацыя про команду: {PREFIX}server', description=f'**Команда**: `[bot_servers]`\n**Описание**: показивает на сколько серверах присутствует этот бот\n**Использования**: {PREFIX}bot_servers')
-        await ctx.send(embed=bot_servers_emb)   
+    async def botservers_subcommands(self,ctx):
+        botservers_emb=discord.Embed(title=f'Информацыя про команду: {PREFIX}server', description=f'**Команда**: `[bot_servers]`\n**Описание**: показивает на сколько серверах присутствует этот бот\n**Использования**: {PREFIX}bot_servers')
+        await ctx.send(embed=botservers_emb)   
 
     @help_for_commands.command(name='tuser')
     async def tuser_subcommands(self,ctx):
