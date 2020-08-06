@@ -23,7 +23,7 @@ class HelpCommands(commands.Cog):
         emb.add_field(name='**Другая информация**',value='Чтобы получить больше информации о какой либо команде, вы можете написать: {}help `команда` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n'.format(PREFIX))
         
         emb1= discord.Embed(title='Команды информации', description='Что бы узнать больше о команде напишите {}help [команда]. \n**Пример**: {}help user'.format(PREFIX,PREFIX))
-        emb1.add_field(name='**Команды**', value=f'`{PREFIX}user` или `{PREFIX}userinfo` или `{PREFIX}ui` или `{PREFIX}infouser` или `{PREFIX}iu`\n`{PREFIX}ping`\n`{PREFIX}bot_server`\n`{PREFIX}tuser`')
+        emb1.add_field(name='**Команды**', value=f'`{PREFIX}user`\n`{PREFIX}ping`\n`{PREFIX}bot_server`\n`{PREFIX}tuser`')
         
         emb2=discord.Embed(title='Команды модерации', description='Скоро...')
 
