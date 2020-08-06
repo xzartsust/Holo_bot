@@ -87,10 +87,10 @@ async def tuser(ctx):
     await ctx.send('Total users in all my servers combined: ' + str(len(all_users)))
 
 @bot.command()
-async def news(ctx,*,channel_id,text):
-    emb= discord.Embed(title='Новость!!!',description=f'{text}'+f' {channel_id}', colour= discord.Color.teal(),timestamp=ctx.message.created_at)
+async def news(ctx,channel:discord.TextChannel, *,text):
+    emb= discord.Embed(title='Новость!!!',description=f'{text}', colour= discord.Color.teal(),timestamp=ctx.message.created_at)
     emb.set_footer(text=f'{ctx.message.author}' + ' создал эту новость!')
-    await ctx.send(embed=emb)
+    await channel.send(embed=emb)
 
 
 
