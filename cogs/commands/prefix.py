@@ -17,8 +17,8 @@ class prefix(commands.Cog):
     async def on_guild_join(self, guild):
         guildid= str(guild.id)
 
-        await self.bot.pg_con.fetch(f'SELECT * FROM prefixDB WHERE guild_id = {guildid} AND prefix = {PREFIX}')
-    
+        await self.bot.fetch(f'SELECT * FROM prefixDB WHERE guild_id = {guildid} AND prefix = {PREFIX}')
+
     @commands.Cog.listener()
     async def on_guild_remove(self):
         pass
