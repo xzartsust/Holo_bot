@@ -15,16 +15,15 @@ class HelpCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.group(aliases=['helpcmd','i','help','helpcommands'])
+    @commands.group(name='help',aliases=['helpcmd','i','helpcommands'], invoke_without_command=True)
     async def help_for_commands(self, ctx):
         await ctx.channel.purge(limit=1)
 
-        emb= discord.Embed(title='Помощ по использованию бота', description='Здесь вы можете узнать про осноные команды бота')
+        emb= discord.Embed(title='Помощ по использованию бота', description='Другая информация\nЧтобы получить больше информации о какой либо команде, вы можете написать: {}help `команда` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.'.format(PREFIX))
 
         emb1= discord.Embed(title='Команды бота')
         emb1.add_field(name='`{}help` или `{}info` или `{}i`'.format(PREFIX, PREFIX, PREFIX), value=' - Команды бота',inline=False)
-        emb1.add_field(name='`{}prefix`'.format(PREFIX), value=' - Изменить префикс бота',inline=False)
-        emb1.add_field(name='`{}user @имя`'.format(PREFIX),value=' - Информация про пользователя', inline=False)
+        emb1.add_field(name='`{}user`'.format(PREFIX),value=' - Информация про пользователя', inline=False)
         emb1.add_field(name='`{}ping`'.format(PREFIX),value=' - Посмотреть пинг бота', inline=False)
         emb1.add_field(name='`{}bot_servers`'.format(PREFIX),value=' - Посмотреть на скольких серверах есть етот бот', inline=False)
         emb1.add_field(name='`{}tuser`'.format(PREFIX), value=' - Посмотреть сколько всего человек используют этого бота',inline=False)
@@ -36,6 +35,16 @@ class HelpCommands(commands.Cog):
         page= pag(self.bot, message, only=ctx.author, use_more=False, embeds=embeds, color=0x008000,time_stamp=True)
 
         await page.start()
+    
+    @help_for_commands.command(name='user')
+    async def user_subcommands(self, ctx):
+        user_emb=discord.Embed(title='Информацыя про команду .user',description='Команда: `[user]` или `[userinfo]` или `[infouser]` или `[iu]`\n Описание: показивает информацию про пользователя')
+
+
+        await ctx.send(embed=user_emb)
+
+
+
 
 
 def setup(bot):
