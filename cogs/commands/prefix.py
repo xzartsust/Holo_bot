@@ -5,6 +5,8 @@ import asyncpg, asyncio
 
 PREFIX=str('.')
 
+url = os.environ.get('DATABASE_URL')
+
 conn = asyncpg.connect(f'{url}')
 
 class prefix(commands.Cog):
@@ -42,4 +44,3 @@ class prefix(commands.Cog):
 def setup(bot):
     bot.add_cog(prefix(bot))
 
-url = os.environ.get('DATABASE_URL')
