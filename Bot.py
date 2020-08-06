@@ -124,7 +124,7 @@ async def _eval_error(ctx, error):
 
 bot.load_extension('cogs.commands.user')
 bot.load_extension('cogs.commands.HelpCommands')
-
+bot.load_extension('cogs.commands.news')
 
 ################################################# Cogs Event ######################################################################
 
