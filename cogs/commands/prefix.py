@@ -17,7 +17,7 @@ class prefix(commands.Cog):
     async def on_guild_join(self, guild):
         guildid= str(guild.id)
 
-        await self.bot.execute(f'INSERN INTO prefixDB (guild_id, prefix) VALUES ({guildid},{PREFIX})')
+        await cursor.execute(f'INSERT INTO prefixDB (guild_id, prefix) VALUES ({guildid},{PREFIX})')
 
     @commands.Cog.listener()
     async def on_guild_remove(self):
