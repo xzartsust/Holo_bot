@@ -14,7 +14,6 @@ class prefix(commands.Cog):
         self.bot = bot
         
 
-    asyncpg.connect()
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
         guildid= str(guild.id)
