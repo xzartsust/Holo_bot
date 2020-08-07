@@ -14,11 +14,11 @@ class prefix(commands.Cog):
         self.bot = bot
         
 
-
+    asyncpg.connect()
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
         guildid= str(guild.id)
-        conn = await asyncpg.connect(f'{url}')
+        conn = await asyncpg.connect(dsn=f'{url}')
         await conn.execute('INSERT INTO public.users(guild_id, prefix) VALUES ('+ f'{guildid}' + '.' +');' )
         await conn.close()
         
@@ -41,4 +41,4 @@ class prefix(commands.Cog):
 def setup(bot):
     bot.add_cog(prefix(bot))
 
-url = os.environ.get('DATABASE_URL')
+url = os.environ.get('db')
