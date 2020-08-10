@@ -22,7 +22,7 @@ conn = psycopg2.connect(
 
 cursor = conn.cursor()
 
-PREFIX=list('.')
+PREFIX=('.')
 
 def is_owner_guild(ctx):
     return ctx.author.id == ctx.guild.owner.id
@@ -35,7 +35,7 @@ class prefix(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
         join_guild_id = guild.id
-        cursor.execute(f'INSERT INTO public."prefixDB" (guild_id) VALUES ({join_guild_id}' + f'{PREFIX}' + ');')
+        cursor.execute(f'INSERT INTO public."prefixDB" (guild_id) VALUES ({join_guild_id},' + '.' + ');')
         conn.commit()
 
     @commands.Cog.listener()
