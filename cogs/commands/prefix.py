@@ -29,13 +29,17 @@ class prefix(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
-        pass
-        
+        join_guild_id = guild.id
+        cursor.execute(f'INSERT INTO public."prefixDB"(guild_id, prefix) VALUES ({join_guild_id},".");')
+        conn.commit()
 
     @commands.Cog.listener()
-    async def on_guild_remove(self,ctx):
+    async def on_guild_remove(self,guild):
         pass
-
+        '''remove_guild_id = guild.id
+        remove_guild_prefix = cursor.execute()
+        cursor.execute(f'DELETE FROM public."prefixDB" WHERE guild_id = "{remove_guild_id}" AND prefix = {remove_guild_prefix};')
+        conn.commit()'''
 
     @commands.command()
     @commands.has_permissions(administrator=True)
