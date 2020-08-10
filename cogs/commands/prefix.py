@@ -32,7 +32,7 @@ class prefix(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
         join_guild_id = guild.id
-        cursor.execute(f'INSERT INTO public."prefixDB"(guild_id, prefix) VALUES ({join_guild_id},' + '.' + ');')
+        cursor.execute('INSERT INTO public."prefixDB"(guild_id, prefix) VALUES ({}, {});').format(join_guild_id,'.')
         conn.commit()
 
     @commands.Cog.listener()
