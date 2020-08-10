@@ -11,11 +11,11 @@ host = os.environ.get('HOST')
 port = os.environ.get('PORT')
 
 conn = psycopg2.connect(
-    database=f"{database}", 
-    user=f"{user}", 
-    password=f"{password}", 
-    host=f"{host}", 
-    port=f"{port}"
+    database = f"{database}", 
+    user = f"{user}", 
+    password = f"{password}", 
+    host = f"{host}", 
+    port = "5432"
 )
 
 cursor = conn.cursor()
