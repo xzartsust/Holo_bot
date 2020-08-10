@@ -16,10 +16,7 @@ class prefix(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
-        guildid= str(guild.id)
-        conn = asyncpg.connect(dsn=f'{url}')
-        await conn.execute('INSERT INTO public.users(guild_id, prefix) VALUES ('+ f'{guildid}' + '.' +');' )
-        await conn.close()
+        pass
         
 
     @commands.Cog.listener()

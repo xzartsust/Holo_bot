@@ -13,8 +13,6 @@ import time
 import asyncio
 from itertools import cycle
 from Cybernator import Paginator as pag
-import psycopg2
-import asyncpg
 
 
 ########################################################## Logging ###################################################
@@ -133,10 +131,8 @@ bot.load_extension('cogs.commands.prefix')
 
 TOKEN = os.environ.get('TOKEN')
 bot_owner = os.environ.get('bot_owner')
-DATABASE_URL = os.environ['DATABASE_URL']
 password_db = os.environ.get('password_db')
 
-con= psycopg2.connect(DATABASE_URL, sslmode='require')
 
 bot.loop.create_task(change_status())
 bot.run(TOKEN)
