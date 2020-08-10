@@ -10,10 +10,10 @@ password = os.environ.get('PASSWORD')
 host = os.environ.get('HOST')
 
 conn = psycopg2.connect(
-    database="database", 
-    user="user", 
-    password="password", 
-    host="host", 
+    database=f"{database}", 
+    user=f"{user}", 
+    password=f"{password}", 
+    host=f"{host}", 
     port="5432"
 )
 
