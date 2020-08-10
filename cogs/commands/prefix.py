@@ -2,6 +2,15 @@ import discord
 from discord.ext import commands
 import os
 import asyncpg, asyncio
+import psycopg2
+
+conn = psycopg2.connect(
+    database="database", 
+    user="user", 
+    password="password", 
+    host="host", 
+    port="port"
+)
 
 PREFIX=('.')
 
@@ -29,4 +38,8 @@ class prefix(commands.Cog):
 def setup(bot):
     bot.add_cog(prefix(bot))
 
-url = os.environ.get('db')
+database = os.environ.get('DATABASE')
+user = os.environ.get('USER')
+password = os.environ.get('PASSWORD')
+host = os.environ.get('HOST')
+port = os.environ.get('PORT')
