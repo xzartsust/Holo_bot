@@ -4,12 +4,17 @@ import os
 import asyncpg, asyncio
 import psycopg2
 
+database = os.environ.get('DATABASE')
+user = os.environ.get('USER')
+password = os.environ.get('PASSWORD')
+host = os.environ.get('HOST')
+
 conn = psycopg2.connect(
     database="database", 
     user="user", 
     password="password", 
     host="host", 
-    port="port"
+    port="5432"
 )
 
 cursor = conn.cursor()
@@ -40,8 +45,3 @@ class prefix(commands.Cog):
 def setup(bot):
     bot.add_cog(prefix(bot))
 
-database = os.environ.get('DATABASE')
-user = os.environ.get('USER')
-password = os.environ.get('PASSWORD')
-host = os.environ.get('HOST')
-port = os.environ.get('PORT')
