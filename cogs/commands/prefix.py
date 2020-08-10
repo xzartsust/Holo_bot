@@ -2,6 +2,8 @@ import discord
 from discord.ext import commands
 import os
 import asyncpg, asyncio
+import settings
+
 
 PREFIX=('.')
 
