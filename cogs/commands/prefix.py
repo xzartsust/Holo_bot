@@ -40,7 +40,7 @@ class prefix(commands.Cog):
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def prefix(self, ctx):
-        cursor.execute('INSERT INTO public."prefixDB"(guild_id, prefix)	VALUES {};').format(56)
+        cursor.execute('INSERT INTO public."prefixDB"(guild_id, prefix)	VALUES (12);')
 
 
 def setup(bot):
