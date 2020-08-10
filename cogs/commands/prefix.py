@@ -8,13 +8,14 @@ database = os.environ.get('DATABASE')
 user = os.environ.get('USER')
 password = os.environ.get('PASSWORD')
 host = os.environ.get('HOST')
+port = os.environ.get('PORT')
 
 conn = psycopg2.connect(
     database=f"{database}", 
     user=f"{user}", 
     password=f"{password}", 
     host=f"{host}", 
-    port="5432"
+    port=f"{port}"
 )
 
 cursor = conn.cursor()
@@ -39,7 +40,7 @@ class prefix(commands.Cog):
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def prefix(self, ctx):
-        cursor.execute('INSERT INTO public."prefixDB" (guild_id, prefix) VALUES (1,2)')
+        cursor.execute("INSERT INTO prefixDB (guild_id, prefix) VALUES ('22','454')")
 
 
 def setup(bot):
