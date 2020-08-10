@@ -3,13 +3,7 @@ from discord.ext import commands
 import os
 import asyncpg, asyncio
 
-
-
 PREFIX=('.')
-
-
-
-
 
 class prefix(commands.Cog):
     def __init__(self,bot):
@@ -30,10 +24,6 @@ class prefix(commands.Cog):
     @commands.has_permissions(administrator=True)
     async def prefix(self, ctx, prefix):
         pass
-
-
-
-
 
 
 def setup(bot):
