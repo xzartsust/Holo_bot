@@ -24,6 +24,9 @@ cursor = conn.cursor()
 
 PREFIX=list('.')
 
+def is_owner_guild(ctx):
+    return ctx.author.id == ctx.guild.owner.id
+
 class prefix(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
@@ -32,17 +35,17 @@ class prefix(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
         join_guild_id = guild.id
-        cursor.execute(f'INSERT INTO public."prefixDB"(guild_id, prefix) VALUES ({join_guild_id}, {PREFIX});')
+        cursor.execute(f'INSERT INTO public."prefixDB"(guild_id) VALUES ({join_guild_id});')
         conn.commit()
 
     @commands.Cog.listener()
     async def on_guild_remove(self,guild):
         remove_guild_id = guild.id
-        cursor.execute(f'DELETE FROM public."prefixDB" WHERE guild_id = "{remove_guild_id}"')
+        cursor.execute(f'DELETE FROM public."prefixDB" WHERE guild_id = "{remove_guild_id}";')
         conn.commit()
 
     @commands.command()
-    @commands.has_permissions(administrator=True)
+    @commands.check(is_owner_guild)
     async def prefix(self, ctx):
         cursor.execute('INSERT INTO public."prefixDB"(guild_id, prefix)	VALUES (12,12);')
         conn.commit()
