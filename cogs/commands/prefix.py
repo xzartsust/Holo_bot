@@ -12,6 +12,8 @@ conn = psycopg2.connect(
     port="port"
 )
 
+cursor = conn.cursor()
+
 PREFIX=('.')
 
 class prefix(commands.Cog):
@@ -32,7 +34,7 @@ class prefix(commands.Cog):
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def prefix(self, ctx, prefix):
-        pass
+        cursor.execute('INSERT INTO public."prefixDB" (guild_id, prefix) VALUES (1,2)')
 
 
 def setup(bot):
