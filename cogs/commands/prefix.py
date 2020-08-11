@@ -46,7 +46,7 @@ class prefix(commands.Cog):
     
     @commands.command()
     @commands.check(is_owner_guild)
-    async def prefix(self, ctx,* prefix):
+    async def prefix(self, ctx, prefix):
         guildid = ctx.guild.id
         cursor.execute(f'UPDATE public."prefixDB" SET prefix=\'{prefix}\' WHERE guild_id = \'{guildid}\';')
         conn.commit()
