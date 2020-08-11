@@ -45,7 +45,7 @@ class prefix(commands.Cog):
         guildid = ctx.guild.id
         cursor.execute(f'UPDATE public."prefixDB" SET prefix=\'{prefix}\' WHERE guild_id = \'{guildid}\';')
         conn.commit()
-        emb = discord.Embed(title='Выполнено успешно!', description=f'Префикс сервера изменений на {prefix}', colour= discord.Color.green(), timestamp= ctx.message.created_at)
+        emb = discord.Embed(title='Выполнено успешно!', description=f'Префикс сервера изменений на "{prefix}""', colour= discord.Color.green(), timestamp= ctx.message.created_at)
         await ctx.send(embed= emb)
 
 def setup(bot):
