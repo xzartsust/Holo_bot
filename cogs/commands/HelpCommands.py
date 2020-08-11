@@ -54,7 +54,7 @@ class HelpCommands(commands.Cog):
 
         await page.start()
     
-    @help_for_commands.command(name='user')
+    @help_for_commands.command(name='user', aliases=['userinfo','ui','infouser','iu'])
     async def user_subcommands(self, ctx):
         user_emb=discord.Embed(title=f'Информация про команду: {prefix_in_guild}user', colour = discord.Color.teal(), description=f'**Команда**: `[user]` или `[userinfo]` или `[infouser]` или `[iu]` или `[ui]`\n**Описание**: показивает информацию про пользователя\n**Использования**: `{prefix_in_guild}user` или `{prefix_in_guild}userinfo` или `{prefix_in_guild}infouser` или `{prefix_in_guild}iu` или `{prefix_in_guild}ui`, или если вы хотите узнать информацию о другом пользователя, то после команды пропишите тег пользователя о котором хотите узнать информацию\n**Пример**: `{prefix_in_guild}user @имя_пользователя`')
         await ctx.send(embed=user_emb)
