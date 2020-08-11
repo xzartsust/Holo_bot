@@ -37,13 +37,13 @@ class prefix(commands.Cog):
         join_guild_id = guild.id
         cursor.execute(f'INSERT INTO public."prefixDB" (guild_id, prefix) VALUES ({join_guild_id}, \'.\');')
         conn.commit()
-    '''
+    
     @commands.Cog.listener()
     async def on_guild_remove(self,guild):
         remove_guild_id = guild.id
-        cursor.execute(f"DELETE FROM public.`prefixDB` WHERE guild_id = {remove_guild_id};")
+        cursor.execute(f'DELETE FROM public."prefixDB" WHERE guild_id = {remove_guild_id};')
         conn.commit()
-    '''
+    
     @commands.command()
     @commands.check(is_owner_guild)
     async def prefix(self, ctx):
