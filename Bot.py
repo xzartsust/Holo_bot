@@ -39,10 +39,10 @@ cursor = conn.cursor()
 
 def get_prefix(bot,guild):
     guildid = guild.id
-    global prefix
     prefix = cursor.execute(f'SELECT prefix FROM public."prefixDB" WHERE guild_id = \'{guildid}\';')
     conn.commit()
 
+    print(prefix)
     return prefix
 
 bot=commands.Bot(command_prefix=get_prefix, help_command=None)
@@ -66,7 +66,6 @@ async def change_status():
 @bot.event
 async def on_ready():
     print(f'Connect is {bot.user.name}')
-    print(prefix)
 
 
 ######################################################### Commands bot ###################################################
