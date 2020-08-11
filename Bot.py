@@ -64,10 +64,6 @@ async def change_status():
         await bot.change_presence(activity= discord.Game(name=next_status))
         await asyncio.sleep(13)
 
-@bot.event
-async def on_ready():
-    print(f'Connect is {bot.user.name}')
-
 
 ######################################################### Commands bot ###################################################
 
@@ -143,7 +139,7 @@ bot.load_extension('cogs.commands.prefix')
 ################################################# Cogs Event ######################################################################
 
 
-#bot.load_extension('cogs.BotEvent')
+bot.load_extension('cogs.bot_event.ready')
 
 
 TOKEN = os.environ.get('TOKEN')

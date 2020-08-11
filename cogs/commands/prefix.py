@@ -39,13 +39,13 @@ class prefix(commands.Cog):
         cursor.execute(f'DELETE FROM public."prefixDB" WHERE guild_id = {remove_guild_id};')
         conn.commit()
     
-    @commands.command()
+    @commands.command(aliases=['change_prefix','prefix'])
     @commands.check(is_owner_guild)
-    async def prefix(self, ctx, prefix):
+    async def change_prefix_server(self, ctx, prefix):
         guildid = ctx.guild.id
         cursor.execute(f'UPDATE public."prefixDB" SET prefix=\'{prefix}\' WHERE guild_id = \'{guildid}\';')
         conn.commit()
-        emb = discord.Embed(title='Выполнено успешно!', description=f'Префикс сервера изменений на "{prefix}"', colour= discord.Color.green(), timestamp= ctx.message.created_at)
+        emb = discord.Embed(title='Выполнено успешно!', description=f'Префикс сервера изменений на "***{prefix}***"', colour= discord.Color.green(), timestamp= ctx.message.created_at)
         await ctx.send(embed= emb)
 
 def setup(bot):
