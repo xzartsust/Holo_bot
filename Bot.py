@@ -1,4 +1,5 @@
-# This Python file uses the following encoding: utf-8
+######################################################## Библиотеки #########################################################
+
 import discord
 from discord import utils
 from discord.ext import commands
@@ -13,22 +14,38 @@ import time
 import asyncio
 from itertools import cycle
 from Cybernator import Paginator as pag
+import psycopg2
+import asyncpg, asyncio
 
+########################################################## Connect to SQL ###################################################
 
-########################################################## Logging ###################################################
+database = os.environ.get('DATABASE')
+user = os.environ.get('USER')
+password = os.environ.get('PASSWORD')
+host = os.environ.get('HOST')
+port = os.environ.get('PORT')
 
+conn = psycopg2.connect(
+    database = f"{database}", 
+    user = f"{user}", 
+    password = f"{password}", 
+    host = f"{host}", 
+    port = "5432"
+)
 
-logger= logging.getLogger('discord')
-logger.setLevel(logging.DEBUG)
-handler= logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
-handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s: %(message)s'))
-logger.addHandler(handler)
-
+cursor = conn.cursor()
 
 ########################################################################################################################
 
+def get_prefix(bot,guild):
+    guildid = guild.id
 
-bot=commands.Bot(command_prefix='.', help_command=None)
+    prefix = cursor.execute(f'SELECT prefix FROM public."prefixDB" WHERE guild_id = \'{guildid}\';')
+    cursor.commin()
+
+    return  prefix
+
+bot=commands.Bot(command_prefix=get_prefix, help_command=None)
 
 
 ############################################################# Events bot #################################################
@@ -128,10 +145,8 @@ bot.load_extension('cogs.commands.prefix')
 #bot.load_extension('cogs.BotEvent')
 
 
-
 TOKEN = os.environ.get('TOKEN')
 bot_owner = os.environ.get('bot_owner')
-password_db = os.environ.get('password_db')
 
 
 bot.loop.create_task(change_status())
