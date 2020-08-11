@@ -4,8 +4,6 @@ import os
 import asyncpg, asyncio
 import psycopg2
 
-PREFIX = '.'
-
 database = os.environ.get('DATABASE')
 user = os.environ.get('USER')
 password = os.environ.get('PASSWORD')
@@ -21,8 +19,6 @@ conn = psycopg2.connect(
 )
 
 cursor = conn.cursor()
-
-PREFIX=('.')
 
 def is_owner_guild(ctx):
     return ctx.author.id == ctx.guild.owner.id
@@ -53,4 +49,3 @@ class prefix(commands.Cog):
 
 def setup(bot):
     bot.add_cog(prefix(bot))
-
