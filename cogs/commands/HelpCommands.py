@@ -36,6 +36,14 @@ class HelpCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    def prefix_in_guild(self,bot,message):
+        guildid = message.guild.id
+        cursor.execute(f'SELECT prefix FROM public."prefixDB" WHERE guild_id = \'{guildid}\';')
+        prefix = cursor.fetchone()
+        conn.commit()
+        
+        return prefix
+
     @commands.group(name='help',aliases=['helpcmd','i','helpcommands'], invoke_without_command=True)
     async def help_for_commands(self, ctx):
         await ctx.channel.purge(limit=1)
