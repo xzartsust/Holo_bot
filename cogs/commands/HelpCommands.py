@@ -41,9 +41,9 @@ class HelpCommands(commands.Cog):
     
 
         emb= discord.Embed(title=f'Команды бота {self.bot.user.name}', description='Здесь вы узнаете информацию про все команды бота\n')
-        emb.add_field(name='**Другая информация**',value='Чтобы получить больше информации о какой либо команде, вы можете написать: {}help `команда` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n'.format(get_prefix))
+        emb.add_field(name='**Другая информация**',value='Чтобы получить больше информации о какой либо команде, вы можете написать: {get_prefix}help `команда` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n')
         
-        emb1= discord.Embed(title='Команды информации', description='Что бы узнать больше о команде напишите {}help [команда]. \n**Пример**: {}help user'.format(get_prefix,get_prefix))
+        emb1= discord.Embed(title='Команды информации', description=f'Что бы узнать больше о команде напишите {get_prefix}help [команда]. \n**Пример**: {get_prefix}help user')
         emb1.add_field(name='**Команды**', value=f'`{get_prefix}user`\n`{get_prefix}ping`\n`{get_prefix}bot_servers`\n`{get_prefix}tuser`\n')
         
         emb2=discord.Embed(title='Команды администрации', description=f'`{get_prefix}change_prefix` или `{get_prefix}prefix`')
@@ -73,10 +73,6 @@ class HelpCommands(commands.Cog):
     async def tuser_subcommands(self,ctx):
         tuser_emb=discord.Embed(title=f'Информация про команду: {get_prefix}tuser', colour = discord.Color.teal(), description=f'**Команда**: `[tuser]`\n**Описание**: показивает сколько людей используют этого бота\n**Использования**: `{get_prefix}tuser`')
         await ctx.send(embed=tuser_emb)   
-
-
-
-
 
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
