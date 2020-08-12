@@ -22,7 +22,7 @@ conn = psycopg2.connect(
     port = "5432"
 )
 cursor = conn.cursor()
-
+'''
 def prefix_in_guild(bot,message):
     guildid = message.guild.id
     cursor.execute(f'SELECT prefix FROM public."prefixDB" WHERE guild_id = \'{guildid}\';')
@@ -30,7 +30,7 @@ def prefix_in_guild(bot,message):
     conn.commit()
     
     return prefix
-
+'''
 
 class HelpCommands(commands.Cog):
     def __init__(self, bot):
@@ -38,8 +38,13 @@ class HelpCommands(commands.Cog):
 
 
     @commands.group(name='help',aliases=['helpcmd','i','helpcommands'], invoke_without_command=True)
-    async def help_for_commands(self, ctx):
+    async def help_for_commands(self, ctx, message):
         await ctx.channel.purge(limit=1)
+        
+        guildid = message.guild.id
+        cursor.execute(f'SELECT prefix FROM public."prefixDB" WHERE guild_id = \'{guildid}\';')
+        prefix_in_guild = cursor.fetchone()
+        conn.commit()
 
         emb= discord.Embed(title=f'Команды бота {self.bot.user.name}', description='Здесь вы узнаете информацию про все команды бота\n')
         emb.add_field(name='**Другая информация**',value='Чтобы получить больше информации о какой либо команде, вы можете написать: {}help `команда` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n'.format(prefix_in_guild))
