@@ -5,7 +5,6 @@ from discord import utils
 from discord.ext import commands
 from discord.ext.commands import Bot
 from discord.utils import get
-from config_for_bot import *
 import youtube_dl
 import os
 from datetime import datetime
@@ -59,7 +58,7 @@ async def change_status():
         next_status= next(msg)
         await bot.change_presence(activity= discord.Game(name=next_status))
         await asyncio.sleep(13)
-
+status=['Модернизирует свой код','.help']
 ######################################################### Commands bot ###################################################
 
 
