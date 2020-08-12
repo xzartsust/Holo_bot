@@ -97,7 +97,7 @@ bot.load_extension('cogs.commands.news')
 bot.load_extension('cogs.commands.prefix')
 bot.load_extension('cogs.commands.clear')
 bot.load_extension('cogs.commands.ping')
-bot.load_extension('')
+#bot.load_extension('')
 
 ################################################# Cogs Event ######################################################################
 
