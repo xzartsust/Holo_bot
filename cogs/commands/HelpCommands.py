@@ -41,7 +41,7 @@ class HelpCommands(commands.Cog):
     
 
         emb= discord.Embed(title=f'Команды бота {self.bot.user.name}', description='Здесь вы узнаете информацию про все команды бота\n')
-        emb.add_field(name='**Другая информация**',value=f'Чтобы получить больше информации о какой либо команде, вы можете написать: {get_prefix(self.bot, ctx.message)}help `команда` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n')
+        emb.add_field(name='**Другая информация**',value=f'Чтобы получить больше информации о какой либо команде, вы можете написать: {get_prefix(self.bot, message)}help `команда` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n')
         
         emb1= discord.Embed(title='Команды информации', description=f'Что бы узнать больше о команде напишите {get_prefix}help [команда]. \n**Пример**: {get_prefix}help user')
         emb1.add_field(name='**Команды**', value=f'`{get_prefix}user`\n`{get_prefix}ping`\n`{get_prefix}bot_servers`\n`{get_prefix}tuser`\n')
