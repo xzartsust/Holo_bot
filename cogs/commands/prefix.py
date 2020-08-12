@@ -39,9 +39,9 @@ class prefix(commands.Cog):
         cursor.execute(f'DELETE FROM public."prefixDB" WHERE guild_id = {remove_guild_id};')
         conn.commit()
     
-    @commands.command(aliases=['change_prefix','prefix'])
+    @commands.command()
     @commands.check(is_owner_guild)
-    async def change_prefix_server(self, ctx, prefix):
+    async def prefix(self, ctx, prefix):
         guildid = ctx.guild.id
         cursor.execute(f'UPDATE public."prefixDB" SET prefix=\'{prefix}\' WHERE guild_id = \'{guildid}\';')
         conn.commit()
