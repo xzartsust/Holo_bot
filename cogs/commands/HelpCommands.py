@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from datetime import datetime
+from discord.ext.commands import Bot
 import os
 import time
 from Cybernator import Paginator as pag
