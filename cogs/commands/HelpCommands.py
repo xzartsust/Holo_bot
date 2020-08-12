@@ -42,6 +42,7 @@ class HelpCommands(commands.Cog):
         prefix = cursor.fetchone()
         conn.commit()
         
+        print(prefix)
         return prefix
 
     @commands.group(name='help',aliases=['helpcmd','i','helpcommands'], invoke_without_command=True)
