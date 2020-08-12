@@ -60,7 +60,7 @@ class HelpCommands(commands.Cog):
         message= await ctx.send(embed= emb)
         page= pag(self.bot, message, only=ctx.author, use_more=False, embeds=embeds, color=0x008000, time_stamp=True)
 
-        print(prefix)
+        print(prefix_in_guild)
         await page.start()
     
     @help_for_commands.command(name='user', aliases=['userinfo','ui','infouser','iu'])
