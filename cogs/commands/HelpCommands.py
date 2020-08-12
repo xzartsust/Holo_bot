@@ -42,7 +42,6 @@ class HelpCommands(commands.Cog):
         prefix = cursor.fetchone()
         conn.commit()
         
-        print(prefix)
         return prefix
 
     @commands.group(name='help',aliases=['helpcmd','i','helpcommands'], invoke_without_command=True)
@@ -61,6 +60,7 @@ class HelpCommands(commands.Cog):
         message= await ctx.send(embed= emb)
         page= pag(self.bot, message, only=ctx.author, use_more=False, embeds=embeds, color=0x008000, time_stamp=True)
 
+        print(prefix)
         await page.start()
     
     @help_for_commands.command(name='user', aliases=['userinfo','ui','infouser','iu'])
