@@ -23,12 +23,14 @@ conn = psycopg2.connect(
 )
 cursor = conn.cursor()
 
-def get_prefix(bot, message):
+def prefix_in_guild(bot, message):
     guildid = message.guild.id
     cursor.execute(f'SELECT prefix FROM public."prefixDB" WHERE guild_id = \'{guildid}\';')
     prefix = cursor.fetchone()
     conn.commit()
     return prefix
+
+prefix = prefix_in_guild(bot,message)
 
 class HelpCommands(commands.Cog):
     def __init__(self, bot):
@@ -41,12 +43,12 @@ class HelpCommands(commands.Cog):
     
 
         emb= discord.Embed(title=f'Команды бота {self.bot.user.name}', description='Здесь вы узнаете информацию про все команды бота\n')
-        emb.add_field(name='**Другая информация**',value=f'Чтобы получить больше информации о какой либо команде, вы можете написать: {get_prefix(self.bot, ctx.message)}help `команда` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n')
+        emb.add_field(name='**Другая информация**',value=f'Чтобы получить больше информации о какой либо команде, вы можете написать: {prefix}help `команда` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n')
         
-        emb1= discord.Embed(title='Команды информации', description=f'Что бы узнать больше о команде напишите {get_prefix}help [команда]. \n**Пример**: {get_prefix}help user')
-        emb1.add_field(name='**Команды**', value=f'`{get_prefix}user`\n`{get_prefix}ping`\n`{get_prefix}bot_servers`\n`{get_prefix}tuser`\n')
+        emb1= discord.Embed(title='Команды информации', description=f'Что бы узнать больше о команде напишите {prefix}help [команда]. \n**Пример**: {prefix}help user')
+        emb1.add_field(name='**Команды**', value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}bot_servers`\n`{prefix}tuser`\n')
         
-        emb2=discord.Embed(title='Команды администрации', description=f'`{get_prefix}change_prefix` или `{get_prefix}prefix`')
+        emb2=discord.Embed(title='Команды администрации', description=f'`{prefix}change_prefix` или `{prefix}prefix`')
 
         embeds=[emb,emb1,emb2]
         message= await ctx.send(embed= emb)
