@@ -41,7 +41,7 @@ class member_greeting(commands.Cog):
         cursor.execute(f'SELECT channel_for_greet FROM public."prefixDB" WHERE guild_id = \'{guild_channel_id}\';')
         channel = cursor.fetchone()
         
-        await channel.send('ok')
+        await channel[0].send('ok')
 
 
 def setup(bot):
