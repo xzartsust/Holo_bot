@@ -13,6 +13,7 @@ class ping_serv(commands.Cog):
         time_2 = time.perf_counter()
         ping = round((time_2 - time_1) * 1000)
         emb= discord.Embed(description=f':ping_pong:Pong: {ping}ms',colour=discord.Color.blurple())
+        emb.set_footer(text=ctx.message.author)
         await ctx.channel.purge(limit=1)
         await ctx.send(embed= emb)
 

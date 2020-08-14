@@ -45,7 +45,7 @@ def get_prefix(bot, message):
     
     return prefix
 
-bot=commands.Bot(command_prefix = get_prefix, help_command=None)
+bot =commands.Bot(command_prefix = get_prefix, help_command=None)
 
 
 ############################################################# Events bot #################################################
@@ -72,7 +72,6 @@ async def bot_servers(ctx):
     emb=discord.Embed(description=f'Присутствует на {str(len(bot.guilds))} серверах', colour=discord.Color.blurple())
     await ctx.send(embed= emb)
 
-
 @bot.command()
 async def tuser(ctx):
     all_users = set([])
@@ -80,11 +79,6 @@ async def tuser(ctx):
         all_users.add(user)
     await ctx.channel.purge(limit=1)
     await ctx.send('Total users in all my servers combined: ' + str(len(all_users)))
-
-
-###################################################### Errors ###############################################
- 
-
 
 
 ################################################## Cogs commands #################################################################
@@ -96,7 +90,14 @@ bot.load_extension('cogs.commands.news')
 bot.load_extension('cogs.commands.prefix')
 bot.load_extension('cogs.commands.clear')
 bot.load_extension('cogs.commands.ping')
-#bot.load_extension('')
+
+
+################################################## Cogs owner commands #################################################################
+
+
+bot.load_extension('cogs.cogs_owner.out')
+bot.load_extension('cogs.cogs_owner._eval')
+
 
 ################################################# Cogs Event ######################################################################
 
