@@ -49,5 +49,12 @@ class prefix(commands.Cog):
         emb.set_footer(text=ctx.message.author)
         await ctx.send(embed= emb)
 
+    @prefix.error()
+    async def prefix_error(self, ctx, error):
+        if isinstance(error, commands.CheckFailure):
+            emb = discord.Embed(timestamp= ctx.message.created_at, title='Ошибка!!!', colour=discord.Color.red(), description='Эту команду может использовать только владелец сервера')
+            emb.set_footer(text= ctx.message.author)
+            await ctx.channel.purge(limit=1)
+            await ctx.send(embed=emb)
 def setup(bot):
     bot.add_cog(prefix(bot))
