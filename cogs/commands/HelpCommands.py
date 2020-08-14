@@ -7,7 +7,6 @@ from Cybernator import Paginator as pag
 import asyncpg, asyncio
 import psycopg2
 
-
 database = os.environ.get('DATABASE')
 user = os.environ.get('USER')
 password = os.environ.get('PASSWORD')
@@ -22,6 +21,7 @@ conn = psycopg2.connect(
     port = "5432"
 )
 cursor = conn.cursor()
+
 def prefix_in_guild(bot, message):
     guildid = message.guild.id
     cursor.execute(f'SELECT prefix FROM public."prefixDB" WHERE guild_id = \'{guildid}\';')
