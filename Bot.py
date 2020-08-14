@@ -78,12 +78,12 @@ async def tuser(ctx):
 ################################################## Cogs commands #################################################################
 
 
-bot.load_extension('cogs.commands.user')
-bot.load_extension('cogs.commands.HelpCommands')
-bot.load_extension('cogs.commands.news')
-bot.load_extension('cogs.commands.prefix')
-bot.load_extension('cogs.commands.clear')
-bot.load_extension('cogs.commands.ping')
+bot.load_extension('cogs.commands.info.user')
+bot.load_extension('cogs.commands.info.HelpCommands')
+bot.load_extension('cogs.commands.moderation.news')
+bot.load_extension('cogs.commands.moderation.prefix')
+bot.load_extension('cogs.commands.moderation.clear')
+bot.load_extension('cogs.commands.info.ping')
 
 
 ################################################## Cogs owner commands #################################################################
