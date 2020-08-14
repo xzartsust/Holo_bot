@@ -17,7 +17,8 @@ class comp_code(commands.Cog):
     @run_code.error
     async def _eval_error(self, ctx, error):
         if isinstance(error, commands.CheckFailure):
-            emb = discord.Embed(title='Ошибка!!!', colour=discord.Color.red(), description='Эту команду имеет право использовать только создатель бота')
+            emb = discord.Embed(timestamp= ctx.message.created_at, title='Ошибка!!!', colour=discord.Color.red(), description='Эту команду имеет право использовать только создатель бота')
+            emb.set_footer(text=ctx.message.author)
             await ctx.channel.purge(limit=1)
             await ctx.send(embed=emb)
 
