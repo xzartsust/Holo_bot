@@ -15,6 +15,8 @@ class invite(commands.Cog):
             description = '',
         )
         emb.set_thumbnail(url='https://discord.com/api/oauth2/authorize?client_id=729957701240750140&permissions=2147483639&scope=bot')
+        
+        await ctx.send(embed= emb)
 
 
 def setup(bot):
