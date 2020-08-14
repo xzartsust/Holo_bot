@@ -91,7 +91,7 @@ class HelpCommands(commands.Cog):
         tuser_emb=discord.Embed(title=f'Информация про команду: {prefix}tuser', colour = discord.Color.teal(), description=f'**Команда**: `[tuser]`\n**Описание**: показивает сколько людей используют этого бота\n**Использования**: `{prefix}tuser`')
         await ctx.send(embed=tuser_emb)   
 
-    @help_for_commands.commands(name='prefix')
+    @help_for_commands.command(name='prefix')
     async def prefix_subcommands(self, ctx):
         
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
