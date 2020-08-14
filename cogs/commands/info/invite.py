@@ -11,10 +11,10 @@ class invite(commands.Cog):
         
         emb = discord.Embed(
             timestamp = ctx.message.created_at,
-            title = 'Мои силки',
+            title = f'Мои силки[https://discord.com/api/oauth2/authorize?client_id=729957701240750140&permissions=2147483639&scope=bot]',
             description = '',
         )
-        emb.set_thumbnail(url='https://discord.com/api/oauth2/authorize?client_id=729957701240750140&permissions=2147483639&scope=bot')
+        #emb.
         
         await ctx.send(embed= emb)
 
