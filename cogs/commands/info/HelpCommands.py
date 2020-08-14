@@ -47,7 +47,7 @@ class HelpCommands(commands.Cog):
         emb1= discord.Embed(title='Команды информации', description=f'Что бы узнать больше о команде напишите {prefix}help [команда]. \n**Пример**: {prefix}help user')
         emb1.add_field(name='**Команды**', value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}bot_servers`\n`{prefix}tuser`\n')
         
-        emb2=discord.Embed(title='Команды администрации', description=f'`{prefix}change_prefix` или `{prefix}prefix`')
+        emb2=discord.Embed(title='Команды администрации', description=f'`{prefix}prefix`')
 
         embeds=[emb,emb1,emb2]
         message= await ctx.send(embed= emb)
