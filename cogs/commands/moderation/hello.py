@@ -36,7 +36,7 @@ class member_greeting(commands.Cog):
         conn.commit()
         
     @commands.command()
-    async def print(self, ctx, channel: discord.TextChannel):
+    async def print(self, ctx, channel: discord.TextChannel = None):
         guild_channel_id = ctx.message.guild.id
         cursor.execute(f'SELECT channel_for_greet FROM public."prefixDB" WHERE guild_id = \'{guild_channel_id}\';')
         channel = cursor.fetchone()
