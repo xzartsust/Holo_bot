@@ -5,7 +5,6 @@ from discord import utils
 from discord.ext import commands
 from discord.ext.commands import Bot
 from discord.utils import get
-import youtube_dl
 import os
 from datetime import datetime
 import logging
