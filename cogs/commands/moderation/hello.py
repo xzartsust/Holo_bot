@@ -35,5 +35,16 @@ class member_greeting(commands.Cog):
         cursor.execute(f'UPDATE public."prefixDB" SET channel_for_greet=\'{channel}\' WHERE guild_id = \'{channel_id_greet}\';')
         conn.commit()
 
+
+    @commands.command()
+    async def print(self,ctx):
+        guildid = ctx.message.guild.id
+        cursor.execute(f'SELECT channel_for_greet FROM public."prefixDB" WHERE guild_id = \'{guildid}\';')
+        channel = cursor.fetchone()
+        conn.commit()
+
+        await channel.send('ok')
+
+
 def setup(bot):
     bot.add_cog(member_greeting(bot))
