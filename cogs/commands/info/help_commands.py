@@ -43,7 +43,7 @@ class HelpCommands(commands.Cog):
         
         emb= discord.Embed(
             title=f'Команды бота {self.bot.user.name}', 
-            description='Здесь вы узнаете информацию про все команды бота\n'
+            description=f'Здесь вы узнаете информацию про все команды бота\nНапишите {prefi}invite чтобы получить ссылки бота'
         )
         emb.add_field(
             name='**Другая информация**',
