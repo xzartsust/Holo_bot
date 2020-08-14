@@ -85,6 +85,8 @@ bot.load_extension('cogs.commands.moderation.prefix')
 bot.load_extension('cogs.commands.moderation.clear')
 bot.load_extension('cogs.commands.info.ping')
 bot.load_extension('cogs.commands.info.invite')
+bot.load_extension('cogs.commands.moderation.hello')
+
 
 ################################################## Cogs owner commands #################################################################
 
