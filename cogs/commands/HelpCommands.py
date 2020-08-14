@@ -61,7 +61,7 @@ class HelpCommands(commands.Cog):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
 
-        user_emb=discord.Embed(title=f'Информация про команду: {prefix}user', colour = discord.Color.teal(), description=f'**Команда**: `[user]` или `[userinfo]` или `[infouser]` или `[iu]` или `[ui]`\n**Описание**: показивает информацию про пользователя\n**Использования**: `{prefix}user` или `{prefix}userinfo` или `{prefix}infouser` или `{prefix}iu` или `{prefix}ui`, или если вы хотите узнать информацию о другом пользователя, то после команды пропишите тег пользователя о котором хотите узнать информацию\n**Пример**: `{prefix}user @имя_пользователя`')
+        user_emb=discord.Embed(timestamp= ctx.message.created_at, title=f'Информация про команду: {prefix}user', colour = discord.Color.teal(), description=f'**Команда**: `[user]` или `[userinfo]` или `[infouser]` или `[iu]` или `[ui]`\n**Описание**: показивает информацию про пользователя\n**Использования**: `{prefix}user` или `{prefix}userinfo` или `{prefix}infouser` или `{prefix}iu` или `{prefix}ui`, или если вы хотите узнать информацию о другом пользователя, то после команды пропишите тег пользователя о котором хотите узнать информацию\n**Пример**: `{prefix}user @имя_пользователя`')
         await ctx.send(embed=user_emb)
 
     @help_for_commands.command(name='ping')
@@ -70,7 +70,7 @@ class HelpCommands(commands.Cog):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
 
-        ping_emb=discord.Embed(title=f'Информация про команду: {prefix}ping',colour = discord.Color.teal(), description=f'**Команда**: `[ping]`\n**Описание**: показивает пинг бота\n**Использования**: `{prefix}ping`')
+        ping_emb=discord.Embed(timestamp= ctx.message.created_at, title=f'Информация про команду: {prefix}ping',colour = discord.Color.teal(), description=f'**Команда**: `[ping]`\n**Описание**: показивает пинг бота\n**Использования**: `{prefix}ping`')
         await ctx.send(embed=ping_emb)
 
     @help_for_commands.command(name='bot_servers')
@@ -79,7 +79,7 @@ class HelpCommands(commands.Cog):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
 
-        botservers_emb=discord.Embed(title=f'Информация про команду: {prefix}bot_servers', colour = discord.Color.teal(), description=f'**Команда**: `[bot_servers]`\n**Описание**: показивает на сколько серверах присутствует этот бот\n**Использования**: `{prefix}bot_servers`')
+        botservers_emb=discord.Embed(timestamp= ctx.message.created_at,title=f'Информация про команду: {prefix}bot_servers', colour = discord.Color.teal(), description=f'**Команда**: `[bot_servers]`\n**Описание**: показивает на сколько серверах присутствует этот бот\n**Использования**: `{prefix}bot_servers`')
         await ctx.send(embed=botservers_emb)   
 
     @help_for_commands.command(name='tuser')
@@ -97,7 +97,7 @@ class HelpCommands(commands.Cog):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
 
-        prefix_emb=discord.Embed(title=f'Информация про команду: {prefix}prefix\n**Предостережение:**Эту команду может использовать только создатель сервера!', colour = discord.Color.teal(), description=f'**Команда**: `[prefix]`\n**Описание**: смена префикса бота на сервере\n**Использования**: `{prefix}prefix *новый префик сервера*`')
+        prefix_emb=discord.Embed(timestamp= ctx.message.created_at, title=f'Информация про команду: {prefix}prefi', colour = discord.Color.teal(), description=f'**Предостережение:** Эту команду может использовать только создатель сервера!\n**Команда**: `[prefix]`\n**Описание**: смена префикса бота на сервере\n**Использования**: `{prefix}prefix *новый префик сервера*`')
         await ctx.send(embed=prefix_emb) 
 
 def setup(bot):
