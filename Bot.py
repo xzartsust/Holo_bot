@@ -79,7 +79,7 @@ async def tuser(ctx):
 
 
 bot.load_extension('cogs.commands.info.user')
-bot.load_extension('cogs.commands.info.HelpCommands')
+bot.load_extension('cogs.commands.info.help_commands')
 bot.load_extension('cogs.commands.moderation.news')
 bot.load_extension('cogs.commands.moderation.prefix')
 bot.load_extension('cogs.commands.moderation.clear')
