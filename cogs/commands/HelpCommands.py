@@ -37,8 +37,8 @@ class HelpCommands(commands.Cog):
     async def help_for_commands(self, ctx):
         await ctx.channel.purge(limit=1)
 
-        prefix = prefix_in_guild(self.bot, ctx.message)
-
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
         emb= discord.Embed(title=f'Команды бота {self.bot.user.name}', description='Здесь вы узнаете информацию про все команды бота\n')
         emb.add_field(name='**Другая информация**',value=f'Чтобы получить больше информации о какой либо команде, вы можете написать: {prefix}help `команда` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n')
         
