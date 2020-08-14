@@ -12,14 +12,18 @@ class invite(commands.Cog):
         
         emb = discord.Embed(
             timestamp = ctx.message.created_at,
-            title = f'Мои силки',
-            description = 'Так же, вы можете нажать на реакцию под сообщением, чтобы получить больше силок',
+            title = f'Мои силки | My links',
+            description = 'Пролистайте страницу чтобы получить силки | Scroll the page to get links',
         )
         emb1 = discord.Embed(
-            title='Мой инвайт',
+            title='Пригласи меня | Invite me',
             url='https://discord.com/api/oauth2/authorize?client_id=729957701240750140&permissions=2147483639&scope=bot'
         )
-        embeds = [emb,emb1]
+        emb2 = discord.Embed(
+            title='Мой сервер поддержки | My support server',
+            url = 'https://discord.gg/4FpZepm'
+        )
+        embeds = [emb,emb1,emb2]
         message = await ctx.send(embed= emb)
         page = pag(self.bot, message, only=ctx.author, use_more=False, embeds=embeds, color=0xFFFF00, time_stamp=True)
     
