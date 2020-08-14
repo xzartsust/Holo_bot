@@ -63,11 +63,6 @@ status=['Модернизирует свой код','.help']
 
 
 @bot.command()
-@commands.is_owner()
-async def logout(ctx):
-    await bot.logout()
-
-@bot.command()
 async def bot_servers(ctx):
     emb=discord.Embed(description=f'Присутствует на {str(len(bot.guilds))} серверах', colour=discord.Color.blurple())
     await ctx.send(embed= emb)
