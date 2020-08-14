@@ -36,12 +36,10 @@ class member_greeting(commands.Cog):
         conn.commit()
         
     @commands.command()
-    async def print(self, ctx):
+    async def print(self, ctx, channel: discord.TextChannel):
         guild_channel_id = ctx.message.guild.id
         cursor.execute(f'SELECT channel_for_greet FROM public."prefixDB" WHERE guild_id = \'{guild_channel_id}\';')
-        channel_gret = cursor.fetchone()
-        channel = channel_gret[0].discord.TextChannel
-        conn.commit()
+        channel = cursor.fetchone()
         
         await channel.send('ok')
 
