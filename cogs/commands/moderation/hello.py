@@ -31,20 +31,20 @@ class member_greeting(commands.Cog):
 
     @commands.command()
     async def greet(self, ctx, channel: discord.TextChannel):
-        channel_id_greet = ctx.message.guild.id
-        cursor.execute(f'UPDATE public."prefixDB" SET channel_for_greet=\'{channel}\' WHERE guild_id = \'{channel_id_greet}\';')
+        guild_channel_id = ctx.message.guild.id
+        cursor.execute(f'UPDATE public."prefixDB" SET channel_for_greet=\'{channel}\' WHERE guild_id = \'{guild_channel_id}\';')
         conn.commit()
-
-
+        
     @commands.command()
-    async def print(self,ctx):
-        guildid = ctx.message.guild.id
-        cursor.execute(f'SELECT channel_for_greet FROM public."prefixDB" WHERE guild_id = \'{guildid}\';')
+    async def print(self,ctx, channel: discord.TextChannel):
+        guild_channel_id = ctx.message.guild.id
+        cursor.execute(f'SELECT channel_for_greet FROM public."prefixDB" WHERE guild_id = \'{guild_channel_id}\';')
         channel = cursor.fetchone()
         conn.commit()
         
-
-        await channel[0].send('ok')
+        return channel
+        
+        await channel.send('ok')
 
 
 def setup(bot):
