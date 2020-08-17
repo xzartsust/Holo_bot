@@ -85,7 +85,7 @@ bot.load_extension('cogs.commands.moderation.prefix')
 bot.load_extension('cogs.commands.moderation.clear')
 bot.load_extension('cogs.commands.info.ping')
 bot.load_extension('cogs.commands.info.invite')
-bot.load_extension('cogs.commands.moderation.hello')
+bot.load_extension('cogs.commands.moderation.welcome')
 bot.load_extension('cogs.test')
 
 
@@ -100,8 +100,8 @@ bot.load_extension('cogs.cogs_owner._eval')
 
 
 bot.load_extension('cogs.bot_event.ready')
-bot.load_extension('cogs.bot_event.bot_join_guild')
-
+bot.load_extension('cogs.bot_event.on_guild_join')
+bot.load_extension('cogs.bot_event.on_guild_remove')
 
 
 TOKEN = os.environ.get('TOKEN')

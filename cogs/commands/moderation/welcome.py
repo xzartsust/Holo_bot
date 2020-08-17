@@ -34,7 +34,7 @@ class member_greeting(commands.Cog):
         conn.commit()
         channel = self.bot.get_channel(chan[0])
         
-        await channel.send('hi')
+        await channel.send(f'Welcome {ctx.member.name}')
     
     @commands.command()
     async def g(self, ctx, channel):    
