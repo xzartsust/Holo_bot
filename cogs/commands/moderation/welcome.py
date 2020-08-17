@@ -36,8 +36,8 @@ class member_greeting(commands.Cog):
         await asyncio.sleep(3)
 
         emb = discord.Embed(
-            title = f'Поприветствуем нового члена нашего сервера {member.name}',
-            description = ''
+            title = 'Поприветствуем нового члена нашего сервера',
+            description = f'Привет {member.author}'
         )
 
         await channel.send(embed = emb)
