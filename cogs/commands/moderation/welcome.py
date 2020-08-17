@@ -34,7 +34,12 @@ class member_greeting(commands.Cog):
         conn.commit()
         channel = self.bot.get_channel(chan[0])
         
-        await channel.send('Welcome')
+        emb = discord.Embed(
+            title = f'Поприветствуем нового члена нашего сервера {ctx.author}',
+            description = ''
+        )
+
+        await channel.send(embed = emb)
     
     @commands.command(aliases=['wlc'])
     async def welcome(self, ctx, channel):    
