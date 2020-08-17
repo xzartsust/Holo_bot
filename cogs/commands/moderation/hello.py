@@ -27,7 +27,7 @@ class member_greeting(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_guild_join(self, ctx):
+    async def on_guild_join(self):
         for guild in self.bot.guilds:
             await guild.system_channel.send("I'm ready to go!")
 
