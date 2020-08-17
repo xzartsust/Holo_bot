@@ -12,7 +12,7 @@ class user(commands.Cog):
     @commands.command(aliases=['userinfo','ui','infouser','iu'])
     async def user(self, ctx, member: discord.Member = None):
         member = ctx.author if not member else member
-        roles =  [role for role in member.roles[:1]]
+        roles =  [role for role in member.roles[1:]]
 
 
         time_to_join_in_discord = member.created_at
