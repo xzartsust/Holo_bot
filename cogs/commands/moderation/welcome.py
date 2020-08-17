@@ -33,7 +33,7 @@ class member_greeting(commands.Cog):
         chan = cursor.fetchone()
         conn.commit()
         channel = self.bot.get_channel(chan[0])
-        
+        member = ctx.author if not member else member
         emb = discord.Embed(
             title = f'Поприветствуем нового члена нашего сервера {member.name}',
             description = ''
