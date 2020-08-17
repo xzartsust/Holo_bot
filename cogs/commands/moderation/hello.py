@@ -34,8 +34,7 @@ class member_greeting(commands.Cog):
 
     @commands.command()
     async def greet(self, ctx):
-        await ctx.send(str(ctx.guild.system_channel))
-
+        await ctx.guild.system_channel.send('hi')
 
 
 def setup(bot):
