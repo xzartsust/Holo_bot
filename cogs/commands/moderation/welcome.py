@@ -27,7 +27,7 @@ class member_greeting(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_member_join(self, ctx):
+    async def on_member_join(self, member):
         join_guild_id = ctx.guild.id
         cursor.execute(f'SELECT channel_for_greeting FROM public."prefixDB" WHERE guild_id = \'{join_guild_id}\';')
         chan = cursor.fetchone()
@@ -36,7 +36,7 @@ class member_greeting(commands.Cog):
         await asyncio.sleep(3)
 
         emb = discord.Embed(
-            title = f'Поприветствуем нового члена нашего сервера {ctx.message.author}',
+            title = f'Поприветствуем нового члена нашего сервера {member.name}',
             description = ''
         )
 
