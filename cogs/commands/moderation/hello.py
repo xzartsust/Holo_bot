@@ -34,7 +34,7 @@ class member_greeting(commands.Cog):
         chan = cursor.fetchone()
         conn.commit()
         channel = self.bot.get_channel(f'{chan}')
-        print(chan)
+        print(chan[0])
         print(channel)
         await channel.send('hi')
     
