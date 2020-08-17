@@ -30,8 +30,9 @@ class member_greeting(commands.Cog):
     async def on_member_join(self, ctx):
         join_guild_id = ctx.guild.id
         print(join_guild_id)
-        chan = cursor.execute(f'SELECT channel_for_greeting FROM public."prefixDB" WHERE guild_id = \'{join_guild_id}\';')
-        conn.fetchone()
+        cursor.execute(f'SELECT channel_for_greeting FROM public."prefixDB" WHERE guild_id = \'{join_guild_id}\';')
+        chan = cursor.fetchone()
+        conn.commit()
         channel = self.bot.get_channel(f'{chan}')
         print(chan)
         print(channel)
