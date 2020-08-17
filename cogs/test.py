@@ -5,7 +5,7 @@ class Test(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
 
-    @commands.command
+    @commands.command()
     @commands.is_owner()
     async def test(self, bot):
         channel = 743808275077922927
