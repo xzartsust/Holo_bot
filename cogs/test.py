@@ -7,9 +7,9 @@ class Test(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def test(self, bot):
-        channel = 743808275077922927
-        await bot.send_message(channel, 'ok')
+    async def test(self, ctx):
+        e = discord.Embed(title='foo')
+        await ctx.send('Hello', embed=e)
         
 def setup(bot):
     bot.add_cog(Test(bot))

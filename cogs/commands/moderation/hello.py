@@ -29,17 +29,16 @@ class member_greeting(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, ctx):
         join_guild_id = ctx.guild.id
-        print(join_guild_id)
+
         cursor.execute(f'SELECT channel_for_greeting FROM public."prefixDB" WHERE guild_id = \'{join_guild_id}\';')
         chan = cursor.fetchone()
         conn.commit()
         channel = self.bot.get_channel(chan[0])
-        print(chan[0])#
-        print(channel)
+        
         await channel.send('hi')
     
     @commands.command()
-    async def greet(self, ctx, channel):
+    async def g(self, ctx, channel):
         guildid = ctx.guild.id
         cursor.execute(f'UPDATE public."prefixDB" SET channel_for_greeting = \'{channel}\' WHERE guild_id = \'{guildid}\';')
         conn.commit()
