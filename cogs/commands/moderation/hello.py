@@ -33,7 +33,7 @@ class member_greeting(commands.Cog):
         cursor.execute(f'SELECT channel_for_greeting FROM public."prefixDB" WHERE guild_id = \'{join_guild_id}\';')
         chan = cursor.fetchone()
         conn.commit()
-        channel = self.bot.get_channel(f'{chan}')
+        channel = self.bot.get_channel(f'{chan[0]}')
         print(chan[0])
         print(channel)
         await channel.send('hi')
