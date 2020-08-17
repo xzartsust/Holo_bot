@@ -26,8 +26,7 @@ class bot_join_guild(commands.Cog):
         
     @commands.Cog.listener()
     async def on_guild_remove(self,guild):
-        remove_guild_id = guild.id
-        cursor.execute(f'DELETE FROM public."prefixDB" WHERE guild_id = {remove_guild_id};')
+        cursor.execute(f'DELETE FROM public."prefixDB" WHERE guild_id = {guild.id};')
         conn.commit()
 
 def setup(bot):
