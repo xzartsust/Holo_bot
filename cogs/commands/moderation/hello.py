@@ -28,8 +28,12 @@ class member_greeting(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, ctx):
-        pass
-
+        join_guild_id = ctx.guild.id
+        chan = cursor.execute(f'SELECT channel_for_greeting FROM public."prefixDB" WHERE guild_id = \'{join_guild_id}\';')
+        conn.commit()
+        channel = self.bot.get_cahnnel(chan)
+        await channel.send('hi')
+    
     @commands.command()
     async def greet(self, ctx, channel):
         guildid = ctx.guild.id
