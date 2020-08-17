@@ -30,11 +30,9 @@ class member_greeting(commands.Cog):
     async def on_member_join(self, ctx):
         await ctx.guild.system_channel.send('hi')
 
-
     @commands.command()
     async def greet(self, ctx):
         await ctx.guild.system_channel.send('hi')
-
 
 def setup(bot):
     bot.add_cog(member_greeting(bot))
