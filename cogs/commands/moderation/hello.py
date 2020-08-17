@@ -28,7 +28,7 @@ class member_greeting(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, ctx):
-        await ctx.guild.system_channel.send(f'hi {ctx.user}')
+        await ctx.guild.system_channel.send('hi')
 
 
     @commands.command()
