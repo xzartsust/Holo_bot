@@ -28,7 +28,7 @@ class member_greeting(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, ctx):
-        pass
+        await ctx.send('hello')
 
 
     @commands.command()
