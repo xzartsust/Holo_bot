@@ -6,7 +6,7 @@ class Test(commands.Cog):
         self.bot = bot
 
     @commands.command
-    @commands.is_owner
+    @commands.is_owner()
     async def test(self, bot):
         channel = 743808275077922927
         await bot.send_message(channel, 'ok')
