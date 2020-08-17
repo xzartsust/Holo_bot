@@ -31,7 +31,7 @@ class member_greeting(commands.Cog):
         join_guild_id = ctx.guild.id
         print(join_guild_id)
         chan = cursor.execute(f'SELECT channel_for_greeting FROM public."prefixDB" WHERE guild_id = \'{join_guild_id}\';')
-        conn.commit()
+        conn.fetchone()
         channel = self.bot.get_channel(f'{chan}')
         print(chan)
         print(channel)
