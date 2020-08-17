@@ -33,7 +33,6 @@ class member_greeting(commands.Cog):
         chan = cursor.fetchone()
         conn.commit()
         channel = self.bot.get_channel(chan[0])
-        await asyncio.sleep(3)
 
         emb = discord.Embed(
             title = 'Поприветствуем нового члена нашего сервера',
