@@ -33,8 +33,14 @@ class member_greeting(commands.Cog):
         cursor.execute(f'SELECT channel_for_greeting FROM public."prefixDB" WHERE guild_id = \'{join_guild_id}\';')
         chan = cursor.fetchone()
         conn.commit()
+        
+        cursor.execute(f'SELECT true_or_false FROM public."prefixDB" WHERE guild_id = \'{join_guild_id}\';')
+        yes_or_not = cursor.fetchone()
+        conn.commit()
+        
         channel = self.bot.get_channel(chan[0])
-
+        print(yes_or_not[0]) 
+        
         emb = discord.Embed(
             title = f'Приветствуем Вас на сервере {member.guild.name}!',
             description = f'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.',
