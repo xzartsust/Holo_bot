@@ -35,7 +35,7 @@ class member_greeting(commands.Cog):
         channel = self.bot.get_channel(chan[0])
 
         emb = discord.Embed(
-            title = f'Приветствуем Вас на официальном сервере поддержки бота {self.bot.name}!',
+            title = f'Приветствуем Вас на официальном сервере поддержки бота {self.bot.user.name}!',
             description = f'1'
         )
         emb.add_field(
