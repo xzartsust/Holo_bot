@@ -70,7 +70,9 @@ class member_greeting(commands.Cog):
 
         emb = discord.Embed(
             title = 'Успешно!!!',
-            description = f'Канал уведомлений "Welcome" был установлен на `{channel}` с функцией `{types}`'
+            description = f'Канал уведомлений "Welcome" был установлен на `{channel}` с функцией `{types}`',
+            colour = discord.Color.green(),
+            timestamp = ctx.message.created_at
         )
 
         if ctx.guild.system_channel is not None:
