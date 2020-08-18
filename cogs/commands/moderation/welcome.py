@@ -41,10 +41,15 @@ class member_greeting(commands.Cog):
         )
         emb.add_field(
             name = 'ss',
-            value='!'
+            value = '!'
         )
-        emb.set_thumbnail(url=member.avatar_url)
-
+        emb.set_thumbnail(
+            url = member.avatar_url
+        )
+        emb.set_footer(
+            text=member.id
+        )
+        
         await channel.send(f'{member.mention}', embed = emb)
     
     @commands.command(aliases=['wlc'])
