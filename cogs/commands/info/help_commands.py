@@ -104,7 +104,7 @@ class HelpCommands(commands.Cog):
         ping_emb.set_footer(text=ctx.message.author)
         await ctx.send(embed=ping_emb)
 
-    @help_for_commands.command(name='bot_servers')
+    @help_for_commands.command(name='botservers')
     async def botservers_subcommands(self,ctx):
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
@@ -114,7 +114,7 @@ class HelpCommands(commands.Cog):
             timestamp= ctx.message.created_at,
             title=f'Информация про команду: {prefix}bot_servers', 
             colour = discord.Color.teal(), 
-            description=f'**Команда**: `[bot_servers]`\n**Описание**: показивает на сколько серверах присутствует этот бот\n**Использования**: `{prefix}bot_servers`'
+            description=f'**Команда**: `[botservers]`\n**Описание**: показивает на сколько серверах присутствует этот бот\n**Использования**: `{prefix}botservers`'
         )
         botservers_emb.set_footer(
             text=ctx.message.author

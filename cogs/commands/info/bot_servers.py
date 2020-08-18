@@ -6,7 +6,7 @@ class BotServers(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def bot_servers(self, ctx):
+    async def botservers(self, ctx):
         await ctx.channel.purge(limit = 1)
         emb=discord.Embed(
             description = f'Присутствует на {str(len(self.bot.guilds))} серверах',
