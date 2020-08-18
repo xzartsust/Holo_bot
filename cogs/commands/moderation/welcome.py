@@ -22,6 +22,8 @@ conn = psycopg2.connect(
 
 cursor = conn.cursor()
 
+def is_owner_guild(ctx):
+    return ctx.author.id == ctx.guild.owner.id
 
 class member_greeting(commands.Cog):
     def __init__(self, bot):
@@ -59,6 +61,7 @@ class member_greeting(commands.Cog):
             
     
     @commands.command(aliases=['wlc'])
+    @commands.check(is_owner_guild)
     async def welcome(self, ctx, channel, types):
         guildid = ctx.guild.id
         
