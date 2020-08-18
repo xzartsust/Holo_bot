@@ -67,5 +67,16 @@ class member_greeting(commands.Cog):
 
         cursor.execute(f'UPDATE public."prefixDB" SET true_or_false = \'{types}\' WHERE guild_id = \'{guildid}\';')
         conn.commit()
+
+        emb = discord.Embed(
+            title = 'Успешно!!!',
+            description = f'Канал уведомлений "Welcome" был установлен на {channel: discord.TextChannel}'
+        )
+        
+        if ctx.guild.system_channel is not None:
+            await ctx.guild.system_channel.send(embed = emb)
+        elif ctx.guild.system_channel is None:
+            await ctx.send(embed = emb)
+
 def setup(bot):
     bot.add_cog(member_greeting(bot))
