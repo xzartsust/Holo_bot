@@ -54,8 +54,8 @@ class member_greeting(commands.Cog):
                 icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png?raw=true'
             )
             await channel.send(f'{member.mention}', embed = emb)
-        else:
-            pass
+        elif f'{yes_or_not[0]}':
+            print('0')
             
     
     @commands.command(aliases=['wlc'])
