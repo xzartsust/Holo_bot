@@ -22,17 +22,12 @@ conn = psycopg2.connect(
 
 cursor = conn.cursor()
 
-def is_in_guild(guild_id):
-    async def predicate(ctx):
-        return ctx.guild and ctx.guild.id == guild_id
-    return commands.check(predicate)
 
 class member_greeting(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.Cog.listener()
-    @is_in_guild(743761540758503444)
     async def on_member_join(self, member):
         join_guild_id = member.guild.id
         cursor.execute(f'SELECT channel_for_greeting FROM public."prefixDB" WHERE guild_id = \'{join_guild_id}\';')
@@ -41,8 +36,8 @@ class member_greeting(commands.Cog):
         channel = self.bot.get_channel(chan[0])
 
         emb = discord.Embed(
-            title = f'Приветствуем Вас на официальном сервере\nподдержки бота {self.bot.user.name}!',
-            description = f'Каждый участник этого сервере равен перед другими и любимый и уважаемый, но все же гость. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.'
+            title = f'Приветствуем Вас на сервере {member.guild.name}!',
+            description = f'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.'
         )
         emb.add_field(
             name = 'ss',
