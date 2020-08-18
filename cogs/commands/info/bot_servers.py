@@ -17,4 +17,4 @@ class BotServers(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cod(BotServers(bot))
+    bot.add_cog(BotServers(bot))
