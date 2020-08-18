@@ -38,6 +38,10 @@ class member_greeting(commands.Cog):
             title = 'Поприветствуем нового члена нашего сервера',
             description = f'Привет {member}'
         )
+        emb.add_field(
+            name = f'{member}, ознакомься с правилами сервера',
+            value=''
+        )
 
         await channel.send(embed = emb)
     
