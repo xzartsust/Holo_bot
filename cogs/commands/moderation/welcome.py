@@ -27,6 +27,7 @@ class member_greeting(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
+    @guild_only(743761540758503444)
     async def on_member_join(self, member):
         join_guild_id = member.guild.id
         cursor.execute(f'SELECT channel_for_greeting FROM public."prefixDB" WHERE guild_id = \'{join_guild_id}\';')
