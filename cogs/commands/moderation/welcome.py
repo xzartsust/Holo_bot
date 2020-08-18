@@ -43,7 +43,7 @@ class member_greeting(commands.Cog):
             value='!'
         )
 
-        await channel.send(f'{member.mention}<HoloWelcome>', embed = emb)
+        await channel.send(f'{member.mention}', embed = emb)
     
     @commands.command(aliases=['wlc'])
     async def welcome(self, ctx, channel):
