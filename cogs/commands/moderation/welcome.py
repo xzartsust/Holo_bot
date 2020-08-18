@@ -43,6 +43,7 @@ class member_greeting(commands.Cog):
             name = 'ss',
             value='!'
         )
+        emb.set_thumbnail(url=member.avatar_url)
 
         await channel.send(f'{member.mention}', embed = emb)
     
