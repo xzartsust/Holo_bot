@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import time
+import datetime as DT
 
 start = time.monotonic()
 
@@ -14,7 +15,7 @@ class Test(commands.Cog):
     @commands.is_owner()
     async def test(self, ctx):
         result = time.monotonic() - start
-        await ctx.send("Program time: {}".format(result.strftime("%dд, %Hг, %Mм, %Sс.")) + " seconds.")
+        await ctx.send(DT.timedelta(seconds=result))
         
 def setup(bot):
     bot.add_cog(Test(bot))
