@@ -22,12 +22,17 @@ conn = psycopg2.connect(
 
 cursor = conn.cursor()
 
+def is_in_guild(guild_id):
+    async def predicate(ctx):
+        return ctx.guild and ctx.guild.id == guild_id
+    return commands.check(predicate)
+
 class member_greeting(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.Cog.listener()
-    @guild_only(743761540758503444)
+    @is_in_guild(743761540758503444)
     async def on_member_join(self, member):
         join_guild_id = member.guild.id
         cursor.execute(f'SELECT channel_for_greeting FROM public."prefixDB" WHERE guild_id = \'{join_guild_id}\';')
