@@ -55,7 +55,7 @@ class HelpCommands(commands.Cog):
         )
         emb1.add_field(
             name='**Команды**', 
-            value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}botservers`\n`{prefix}tuser`\n{prefix}infobot'
+            value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}botservers`\n`{prefix}tuser`\n`{prefix}infobot`'
         )
         emb2=discord.Embed(
             title='Команды администрации', 
@@ -189,7 +189,7 @@ class HelpCommands(commands.Cog):
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: {prefix}infobot', 
             colour = discord.Color.teal(), 
-            description=f'**Команда**: `[infobot]`\n**Описание**: показывает информация о боте {self.bot.user.name}\n**Использования**: `{prefix}infobot'
+            description=f'**Команда**: `[infobot]`\n**Описание**: показывает информация о боте {self.bot.user.name}\n**Использования**: `{prefix}infobot`'
         )
         infobot_emb.set_footer(
             text = ctx.message.author,
