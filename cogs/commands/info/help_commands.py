@@ -65,7 +65,7 @@ class HelpCommands(commands.Cog):
         )
         emb2.add_field(
             name = '**Команды**',
-            value = f'`{prefix}prefix`'
+            value = f'`{prefix}prefix`\n`{prefix}wlc` или `{prefix}welcome`'
         )
 
         embeds=[emb,emb1,emb2]
@@ -147,9 +147,25 @@ class HelpCommands(commands.Cog):
 
         prefix_emb=discord.Embed(
             timestamp= ctx.message.created_at, 
-            title=f'Информация про команду: {prefix}prefi', 
+            title=f'Информация про команду: {prefix}prefix', 
             colour = discord.Color.teal(), 
             description=f'**Предостережение:** Эту команду может использовать только создатель сервера!\n**Команда**: `[prefix]`\n**Описание**: смена префикса бота на сервере\n**Использования**: `{prefix}prefix *новый префик сервера*`'
+        )
+        prefix_emb.set_footer(
+            text=ctx.message.author
+        )
+        await ctx.send(embed=prefix_emb) 
+
+    @help_for_commands.command(name='welcome', aliases = 'wlc')
+    async def wlc_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        prefix_emb=discord.Embed(
+            timestamp= ctx.message.created_at, 
+            title=f'Информация про команду: {prefix}wlc или {prefix}welcome', 
+            colour = discord.Color.teal(), 
+            description=f'**Предостережение:** Эту команду может использовать только создатель сервера!\n**Команда**: `[wlc]` или `[welcome]`\n**Описание**: установить канал для отправки сообщений о новом юзера сервера\n**Использования**: `{prefix}wlc или {prefix}welcome *ади канала* *true или false*`\ntrue - включить уведомления\nfalse - отключить уведомления'
         )
         prefix_emb.set_footer(
             text=ctx.message.author
