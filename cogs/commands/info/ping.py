@@ -8,6 +8,7 @@ class ping_serv(commands.Cog):
 
     @commands.command()
     async def ping(self, ctx):
+        await ctx.channel.purge(limit = 1)
         time_1 = time.perf_counter()
         await ctx.trigger_typing()
         time_2 = time.perf_counter()

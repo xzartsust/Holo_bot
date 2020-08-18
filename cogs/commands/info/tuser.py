@@ -7,6 +7,7 @@ class TotalUser(commands.Cog):
 
     @commands.command()
     async def tuser(self, ctx):
+        await ctx.channel.purge(limit = 1)
         all_users = set([])
         for user in self.bot.get_all_members():
             all_users.add(user)

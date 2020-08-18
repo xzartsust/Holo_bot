@@ -14,7 +14,7 @@ class Test(commands.Cog):
     @commands.is_owner()
     async def test(self, ctx):
         result = time.monotonic() - start
-        await ctx.send("Program time: {:>.3f}".format(result) + " seconds.")
+        await ctx.send("Program time: {}".format(result.strftime("%dд, %Hг, %Mм, %Sс.")) + " seconds.")
         
 def setup(bot):
     bot.add_cog(Test(bot))

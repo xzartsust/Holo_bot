@@ -9,6 +9,7 @@ class invite(commands.Cog):
 
     @commands.command()
     async def invite(self, ctx):
+        await ctx.channel.purge(limit = 1)
         
         emb = discord.Embed(
             timestamp = ctx.message.created_at,
