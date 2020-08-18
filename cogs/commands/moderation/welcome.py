@@ -37,13 +37,14 @@ class member_greeting(commands.Cog):
 
         emb = discord.Embed(
             title = f'Приветствуем Вас на сервере {member.guild.name}!',
-            description = f'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.'
+            description = f'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.',
+            colour = discord.Color.green()
         )
         emb.set_thumbnail(
             url = member.avatar_url
         )
         emb.set_footer(
-            text=member.id,
+            text = member.id + 'Приятного времяпрепровождения!',
             icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png?raw=true'
         )
         
