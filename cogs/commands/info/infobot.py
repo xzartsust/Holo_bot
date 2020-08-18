@@ -45,8 +45,8 @@ class InfoBot(commands.Cog):
             inline=False
         )
         embed.add_field(
-            name='Время с последнего запуска'
-            value= DT.timedelta(seconds=result
+            name='Время с последнего запуска',
+            value= DT.timedelta(seconds=result)
         )
         await ctx.send(embed=embed)
 
