@@ -53,7 +53,8 @@ class member_greeting(commands.Cog):
                 text = f'{member.id}' + ' Приятного времяпрепровождения!',
                 icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png?raw=true'
             )
-            
+        else:
+            print('no')
             await channel.send(f'{member.mention}', embed = emb)
     
     @commands.command(aliases=['wlc'])
