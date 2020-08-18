@@ -38,9 +38,9 @@ class member_greeting(commands.Cog):
         conn.commit()
         
         channel = self.bot.get_channel(chan[0])
-        print(yes_or_not) 
+        print(yes_or_not[0]) 
         
-        if f'{yes_or_not}' == str('True'):
+        if f'{yes_or_not[0]}' == str('True'):
             emb = discord.Embed(
                 title = f'Приветствуем Вас на сервере {member.guild.name}!',
                 description = f'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.',
