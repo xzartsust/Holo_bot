@@ -40,27 +40,30 @@ class member_greeting(commands.Cog):
         
         channel = self.bot.get_channel(chan[0])
         print(yes_or_not[0]) 
-        
-        emb = discord.Embed(
-            title = f'Приветствуем Вас на сервере {member.guild.name}!',
-            description = f'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.',
-            colour = discord.Color.green()
-        )
-        emb.set_thumbnail(
-            url = member.avatar_url
-        )
-        emb.set_footer(
-            text = f'{member.id}' + ' Приятного времяпрепровождения!',
-            icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png?raw=true'
-        )
-        
-        await channel.send(f'{member.mention}', embed = emb)
+        if yes_or_not == 'True':
+            emb = discord.Embed(
+                title = f'Приветствуем Вас на сервере {member.guild.name}!',
+                description = f'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.',
+                colour = discord.Color.green()
+            )
+            emb.set_thumbnail(
+                url = member.avatar_url
+            )
+            emb.set_footer(
+                text = f'{member.id}' + ' Приятного времяпрепровождения!',
+                icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png?raw=true'
+            )
+            
+            await channel.send(f'{member.mention}', embed = emb)
     
     @commands.command(aliases=['wlc'])
-    async def welcome(self, ctx, channel):
+    async def welcome(self, ctx, channel, types):
         guildid = ctx.guild.id
+        
         cursor.execute(f'UPDATE public."prefixDB" SET channel_for_greeting = \'{channel}\' WHERE guild_id = \'{guildid}\';')
         conn.commit()
 
+        cursor.execute(f'UPDATE public."prefixDB" SET true_or_false = \'{types}\' WHERE guild_id = \'{guildid}\';')
+        conn.commit()
 def setup(bot):
     bot.add_cog(member_greeting(bot))
