@@ -156,7 +156,7 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed=prefix_emb) 
 
-    @help_for_commands.command(name='welcome', aliases = 'wlc')
+    @help_for_commands.command(name='welcome', aliases = ['wlc'])
     async def wlc_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
