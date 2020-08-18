@@ -23,7 +23,7 @@ class comp_code(commands.Cog):
     @commands.command(aliases=['eval'])
     @commands.is_owner()
     async def run_code(self, ctx, *, code):
-        await ctx.send(f'`{eval(code)}`')
+        await ctx.send(f'```{eval(code)}```')
 
     @run_code.error
     async def _eval_error(self, ctx, error):

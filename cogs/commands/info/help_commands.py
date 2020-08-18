@@ -55,7 +55,7 @@ class HelpCommands(commands.Cog):
         )
         emb1.add_field(
             name='**Команды**', 
-            value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}botservers`\n`{prefix}tuser`\n'
+            value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}botservers`\n`{prefix}tuser`\n{prefix}infobot'
         )
         emb2=discord.Embed(
             title='Команды администрации', 
@@ -168,17 +168,34 @@ class HelpCommands(commands.Cog):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
 
-        prefix_emb=discord.Embed(
+        wlc_emb=discord.Embed(
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: {prefix}wlc или {prefix}welcome', 
             colour = discord.Color.teal(), 
             description=f'**Предостережение:** Эту команду может использовать только создатель сервера!\n**Команда**: `[wlc]` или `[welcome]`\n**Описание**: установить канал для отправки сообщений о новом юзера сервера\n**Использования**: `{prefix}wlc или {prefix}welcome *ади канала* *true или false*`\n**true** - включить уведомления\n**false** - отключить уведомления\n\n**Пример:** `{prefix}wlc 112215155842828482 true`'
         )
-        prefix_emb.set_footer(
+        wlc_emb.set_footer(
             text = ctx.message.author,
             icon_url = ctx.message.author.avatar_url
         )
-        await ctx.send(embed=prefix_emb) 
+        await ctx.send(embed=wlc_emb) 
+
+    @help_for_commands.command(name='infobot')
+    async def infobot_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        infobot_emb=discord.Embed(
+            timestamp= ctx.message.created_at, 
+            title=f'Информация про команду: {prefix}infobot', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[infobot]`\n**Описание**: показывает информация о боте {self.bot.user.name}\n**Использования**: `{prefix}infobot'
+        )
+        infobot_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(embed=infobot_emb) 
 
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
