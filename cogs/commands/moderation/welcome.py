@@ -55,7 +55,7 @@ class member_greeting(commands.Cog):
             )
             await channel.send(f'{member.mention}', embed = emb)
         else:
-            print('no')
+            pass
             
     
     @commands.command(aliases=['wlc'])
