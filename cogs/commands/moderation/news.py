@@ -9,8 +9,15 @@ class news(commands.Cog):
     async def news(self, ctx, channel: discord.TextChannel, *, text):
         await ctx.channel.purge(limit=1)
         
-        emb= discord.Embed(title='Новость!!!', description=f'{text}', colour= discord.Color.gold(), timestamp=ctx.message.created_at)
-        emb.set_footer(text=f'{ctx.message.author}' + ' создал эту новость!')
+        emb= discord.Embed(
+            title='Новость!!!', 
+            description=f'{text}', 
+            colour= discord.Color.gold(), 
+            timestamp=ctx.message.created_at)
+        emb.set_footer(
+            text=f'{ctx.message.author}' + ' создал эту новость!',
+            icon_url = ctx.message.author.avatar_url
+        )
         
         await channel.send(embed=emb)    
 

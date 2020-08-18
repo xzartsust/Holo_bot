@@ -47,7 +47,7 @@ class HelpCommands(commands.Cog):
         )
         emb.add_field(
             name='**Другая информация**',
-            value=f'Чтобы получить больше информации о какой либо команде, вы можете написать: `{prefix}help **команда**` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n'
+            value=f'Чтобы получить больше информации о какой либо команде, вы можете написать: `{prefix}help *команда*` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n'
         )
         emb1= discord.Embed(
             title='Команды информации', 
@@ -55,7 +55,7 @@ class HelpCommands(commands.Cog):
         )
         emb1.add_field(
             name='**Команды**', 
-            value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}bot_servers`\n`{prefix}tuser`\n'
+            value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}botservers`\n`{prefix}tuser`\n'
         )
         emb2=discord.Embed(
             title='Команды администрации', 
@@ -172,7 +172,7 @@ class HelpCommands(commands.Cog):
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: {prefix}wlc или {prefix}welcome', 
             colour = discord.Color.teal(), 
-            description=f'**Предостережение:** Эту команду может использовать только создатель сервера!\n**Команда**: `[wlc]` или `[welcome]`\n**Описание**: установить канал для отправки сообщений о новом юзера сервера\n**Использования**: `{prefix}wlc или {prefix}welcome *ади канала* *true или false*`\n**true** - включить уведомления\n**false** - отключить уведомления'
+            description=f'**Предостережение:** Эту команду может использовать только создатель сервера!\n**Команда**: `[wlc]` или `[welcome]`\n**Описание**: установить канал для отправки сообщений о новом юзера сервера\n**Использования**: `{prefix}wlc или {prefix}welcome *ади канала* *true или false*`\n**true** - включить уведомления\n**false** - отключить уведомления\n\n**Пример:** {prefix}wlc 112215155842828482 true'
         )
         prefix_emb.set_footer(
             text = ctx.message.author,
