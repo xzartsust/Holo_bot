@@ -35,7 +35,7 @@ class member_greeting(commands.Cog):
         channel = self.bot.get_channel(chan[0])
 
         emb = discord.Embed(
-            title = f'Приветствуем Вас на официальном сервере поддержки бота {self.bot.user.name}!',
+            title = f'Приветствуем Вас на официальном сервере\nподдержки бота {self.bot.user.name}!',
             description = f'1'
         )
         emb.add_field(
@@ -43,7 +43,7 @@ class member_greeting(commands.Cog):
             value='!'
         )
 
-        await channel.send(f'{member.mention} :HoloWelcome:', embed = emb)
+        await channel.send(f'{member.mention}:HoloWelcome:', embed = emb)
     
     @commands.command(aliases=['wlc'])
     async def welcome(self, ctx, channel):
