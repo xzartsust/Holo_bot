@@ -50,7 +50,7 @@ class member_greeting(commands.Cog):
             url = member.avatar_url
         )
         emb.set_footer(
-            text = f'{member.id}' + 'Приятного времяпрепровождения!',
+            text = f'{member.id}' + ' Приятного времяпрепровождения!',
             icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png?raw=true'
         )
         
