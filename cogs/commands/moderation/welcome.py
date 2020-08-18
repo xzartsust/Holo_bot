@@ -36,10 +36,10 @@ class member_greeting(commands.Cog):
 
         emb = discord.Embed(
             title = f'Приветствуем Вас на официальном сервере\nподдержки бота {self.bot.user.name}!',
-            description = f'1'
+            description = f'Каждый участник на этом сервере любимый и уважаемый, но все же гость. Поэтому настоятельно просим ознакомиться с каналом #rules\nЗаранее благодарим Вас за вежливость и адекватность.'
         )
         emb.add_field(
-            name = f'{member}, ознакомься с правилами сервера',
+            name = 'У нас есть две категории **Сhats for English speakers** и **Сhats for Russian speakers**',
             value='!'
         )
 
