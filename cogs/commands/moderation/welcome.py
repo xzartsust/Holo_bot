@@ -43,6 +43,8 @@ class member_greeting(commands.Cog):
     
     @commands.command(aliases=['wlc'])
     async def welcome(self, ctx, channel):    
+        a = input()
+        print(a)
         guildid = ctx.guild.id
         cursor.execute(f'UPDATE public."prefixDB" SET channel_for_greeting = \'{channel}\' WHERE guild_id = \'{guildid}\';')
         conn.commit()
