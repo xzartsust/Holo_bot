@@ -39,10 +39,6 @@ class member_greeting(commands.Cog):
             title = f'Приветствуем Вас на сервере {member.guild.name}!',
             description = f'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.'
         )
-        emb.add_field(
-            name = 'ss',
-            value = '!'
-        )
         emb.set_thumbnail(
             url = member.avatar_url
         )
