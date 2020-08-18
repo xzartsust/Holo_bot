@@ -47,9 +47,8 @@ class HelpCommands(commands.Cog):
         )
         emb.add_field(
             name='**Другая информация**',
-            value=f'Чтобы получить больше информации о какой либо команде, вы можете написать: {prefix}help `команда` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n'
+            value=f'Чтобы получить больше информации о какой либо команде, вы можете написать: `{prefix}help **команда**` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n'
         )
-        
         emb1= discord.Embed(
             title='Команды информации', 
             description=f'Что бы узнать больше о команде напишите {prefix}help [команда]. \n**Пример**: {prefix}help user'
@@ -58,7 +57,6 @@ class HelpCommands(commands.Cog):
             name='**Команды**', 
             value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}bot_servers`\n`{prefix}tuser`\n'
         )
-        
         emb2=discord.Embed(
             title='Команды администрации', 
             description=f'Команды для модерации сервера'
@@ -86,7 +84,10 @@ class HelpCommands(commands.Cog):
             colour = discord.Color.teal(), 
             description=f'**Команда**: `[user]` или `[userinfo]` или `[infouser]` или `[iu]` или `[ui]`\n**Описание**: показивает информацию про пользователя\n**Использования**: `{prefix}user` или `{prefix}userinfo` или `{prefix}infouser` или `{prefix}iu` или `{prefix}ui`, или если вы хотите узнать информацию о другом пользователя, то после команды пропишите тег пользователя о котором хотите узнать информацию\n**Пример**: `{prefix}user @имя_пользователя`'
         )
-        user_emb.set_footer(text=ctx.message.author)
+        user_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+        )
         await ctx.send(embed=user_emb)
 
     @help_for_commands.command(name='ping')
@@ -101,7 +102,10 @@ class HelpCommands(commands.Cog):
             colour = discord.Color.teal(), 
             description=f'**Команда**: `[ping]`\n**Описание**: показивает пинг бота\n**Использования**: `{prefix}ping`'
         )
-        ping_emb.set_footer(text=ctx.message.author)
+        ping_emb.set_footer(
+            text=ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+        )
         await ctx.send(embed=ping_emb)
 
     @help_for_commands.command(name='botservers')
@@ -117,7 +121,8 @@ class HelpCommands(commands.Cog):
             description=f'**Команда**: `[botservers]`\n**Описание**: показивает на сколько серверах присутствует этот бот\n**Использования**: `{prefix}botservers`'
         )
         botservers_emb.set_footer(
-            text=ctx.message.author
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
         )
         await ctx.send(embed=botservers_emb)   
 
@@ -133,7 +138,8 @@ class HelpCommands(commands.Cog):
             description=f'**Команда**: `[tuser]`\n**Описание**: показивает сколько людей используют этого бота\n**Использования**: `{prefix}tuser`'
         )
         tuser_emb.set_footer(
-            text=ctx.message.author
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
         )
         await ctx.send(
             embed=tuser_emb
@@ -152,7 +158,8 @@ class HelpCommands(commands.Cog):
             description=f'**Предостережение:** Эту команду может использовать только создатель сервера!\n**Команда**: `[prefix]`\n**Описание**: смена префикса бота на сервере\n**Использования**: `{prefix}prefix *новый префик сервера*`'
         )
         prefix_emb.set_footer(
-            text=ctx.message.author
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
         )
         await ctx.send(embed=prefix_emb) 
 
@@ -165,10 +172,11 @@ class HelpCommands(commands.Cog):
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: {prefix}wlc или {prefix}welcome', 
             colour = discord.Color.teal(), 
-            description=f'**Предостережение:** Эту команду может использовать только создатель сервера!\n**Команда**: `[wlc]` или `[welcome]`\n**Описание**: установить канал для отправки сообщений о новом юзера сервера\n**Использования**: `{prefix}wlc или {prefix}welcome *ади канала* *true или false*`\ntrue - включить уведомления\nfalse - отключить уведомления'
+            description=f'**Предостережение:** Эту команду может использовать только создатель сервера!\n**Команда**: `[wlc]` или `[welcome]`\n**Описание**: установить канал для отправки сообщений о новом юзера сервера\n**Использования**: `{prefix}wlc или {prefix}welcome *ади канала* *true или false*`\n**true** - включить уведомления\n**false** - отключить уведомления'
         )
         prefix_emb.set_footer(
-            text=ctx.message.author
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
         )
         await ctx.send(embed=prefix_emb) 
 
