@@ -36,7 +36,7 @@ class member_greeting(commands.Cog):
 
         emb = discord.Embed(
             title = 'Поприветствуем нового члена нашего сервера',
-            description = f'Привет {member}'
+            description = f'Привет {member}',
             timestamp = member.message.created_at
         )
 
