@@ -40,7 +40,7 @@ class member_greeting(commands.Cog):
         )
         emb.add_field(
             name = f'{member}, ознакомься с правилами сервера',
-            value=''
+            value='!'
         )
 
         await channel.send(embed = emb)
