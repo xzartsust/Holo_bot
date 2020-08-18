@@ -1,0 +1,20 @@
+import discord
+from discord.ext import commands
+
+class BotServers(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+
+    @commands.command()
+    async def bot_servers(self, ctx):
+        await ctx.channel.purge(limit = 1)
+        emb=discord.Embed(
+            description = f'Присутствует на {str(len(self.bot.guilds))} серверах',
+            colour = discord.Color.blurple(),
+            timestamp = ctx.message.created_at
+        )
+        await ctx.send(embed= emb)
+
+
+def setup(bot):
+    bot.add_cod(BotServers(bot))

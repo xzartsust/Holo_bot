@@ -17,6 +17,7 @@ import asyncpg, asyncio
 
 ########################################################## Connect to SQL ###################################################
 
+
 database = os.environ.get('DATABASE')
 user = os.environ.get('USER')
 password = os.environ.get('PASSWORD')
@@ -32,6 +33,7 @@ conn = psycopg2.connect(
 )
 
 cursor = conn.cursor()
+
 
 ########################################################################################################################
 
@@ -49,6 +51,7 @@ bot =commands.Bot(command_prefix = get_prefix, help_command=None)
 
 ############################################################# Events bot #################################################
 
+
 async def change_status():
     await bot.wait_until_ready()
     msg= cycle(status)
@@ -58,21 +61,6 @@ async def change_status():
         await bot.change_presence(activity= discord.Game(name=next_status))
         await asyncio.sleep(13)
 status=['Модернизирует свой код','.help']
-######################################################### Commands bot ###################################################
-
-
-@bot.command()
-async def bot_servers(ctx):
-    emb=discord.Embed(description=f'Присутствует на {str(len(bot.guilds))} серверах', colour=discord.Color.blurple())
-    await ctx.send(embed= emb)
-
-@bot.command()
-async def tuser(ctx):
-    all_users = set([])
-    for user in bot.get_all_members():
-        all_users.add(user)
-    await ctx.channel.purge(limit=1)
-    await ctx.send('Total users in all my servers combined: ' + str(len(all_users)))
 
 
 ################################################## Cogs commands #################################################################
@@ -87,6 +75,8 @@ bot.load_extension('cogs.commands.info.ping')
 bot.load_extension('cogs.commands.info.invite')
 bot.load_extension('cogs.commands.moderation.welcome')
 bot.load_extension('cogs.test')
+bot.load_extension('cogs.commands.info.bot_servers')
+bot.load_extension('cogs.commands.info.tuser')
 
 
 ################################################## Cogs owner commands #################################################################
