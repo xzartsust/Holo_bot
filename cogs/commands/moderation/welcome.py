@@ -55,7 +55,7 @@ class member_greeting(commands.Cog):
             )
             await channel.send(f'{member.mention}', embed = emb)
         if f'{yes_or_not[0]}' == str('False'):
-            print('0')
+            pass
             
     
     @commands.command(aliases=['wlc'])
