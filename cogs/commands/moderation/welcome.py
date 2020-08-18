@@ -47,7 +47,8 @@ class member_greeting(commands.Cog):
             url = member.avatar_url
         )
         emb.set_footer(
-            text=member.id
+            text=member.id,
+            icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png'
         )
         
         await channel.send(f'{member.mention}', embed = emb)
