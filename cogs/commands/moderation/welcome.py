@@ -85,7 +85,7 @@ class member_greeting(commands.Cog):
     @welcome.error
     async def welcome_error(self, ctx, error):
         if isinstance(error, commands.CommandInvokeError):
-            await ctx.send('no')
+            await ctx.send('Третий аргумент может быть только true или false')
 
 def setup(bot):
     bot.add_cog(member_greeting(bot))
