@@ -47,3 +47,4 @@ whitenoise==5.1.0
 wrapt==1.12.1
 yarl==1.4.2
 youtube-dl==2020.6.16.1
+requests==2.24.0
