@@ -17,7 +17,8 @@ class InfoBot(commands.Cog):
 
         embed=discord.Embed(
             title="Инфорация про бота\n ",
-            timestamp = ctx.message.created_at
+            timestamp = ctx.message.created_at,
+            colour = discord.Color.purple()
         )
         embed.add_field(
             name="Библиотека",
