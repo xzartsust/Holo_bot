@@ -62,7 +62,7 @@ async def change_status():
         next_status= next(msg)
         await bot.change_presence(activity= discord.Game(name=next_status))
         await asyncio.sleep(13)
-status=['Модернизирует свой код','.help']
+status=['Модернизирует свой код','t!help']
 
 
 ################################################## Cogs commands #################################################################
