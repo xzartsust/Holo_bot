@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+import requests
 
 
 class Test(commands.Cog):
@@ -9,11 +10,13 @@ class Test(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def test(self, ctx):
-        async for entry in ctx.message.guild.audit_logs(limit=1):
-            print('{0.user} did {0.action} to {0.target}'.format(entry))
-
-        async for entry in ctx.message.guild.audit_logs(action=discord.AuditLogAction.ban):
-            print('{0.user} banned {0.target}'.format(entry))
-        
+        request = requests.get('https://some-random-api.ml/img/fox')
+        embed = discord.Embed(
+            title = 'Fox'
+        )
+        embed.set_image(
+            url= request['link']
+        )        
+        await ctx.send(embed = embed)
 def setup(bot):
     bot.add_cog(Test(bot))
