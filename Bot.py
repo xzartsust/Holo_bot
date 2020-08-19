@@ -80,6 +80,7 @@ bot.load_extension('cogs.test')
 bot.load_extension('cogs.commands.info.botservers')
 bot.load_extension('cogs.commands.info.tuser')
 bot.load_extension('cogs.commands.info.infobot')
+bot.load_extension('cogs.commands.info.serverinfo')
 
 
 ################################################## Cogs owner commands #################################################################
