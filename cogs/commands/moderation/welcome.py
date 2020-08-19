@@ -40,7 +40,6 @@ class member_greeting(commands.Cog):
         conn.commit()
         
         channel = self.bot.get_channel(chan[0])
-        print(yes_or_not[0]) 
         
         if f'{yes_or_not[0]}' == str('True'):
             emb = discord.Embed(
@@ -82,6 +81,11 @@ class member_greeting(commands.Cog):
             await ctx.guild.system_channel.send(embed = emb)
         elif ctx.guild.system_channel is None:
             await ctx.send(embed = emb)
+
+    @welcome.error
+    async def welcome_error(self, ctx, error):
+        if isinstance(error, commands.CommandInvokeError):
+            await ctx.send('no')
 
 def setup(bot):
     bot.add_cog(member_greeting(bot))
