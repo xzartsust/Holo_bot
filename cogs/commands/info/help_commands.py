@@ -71,7 +71,7 @@ class HelpCommands(commands.Cog):
         )
         emb3.add_field(
             name = '**Команды**',
-            value = f'`{prefix}fox`\n`{prefix}dog`\n`{prefix}cat`\n`{prefix}panda`\n`{prefix}redpanda`\n`{prefix}koala`\n`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`'
+            value = f'`{prefix}fox`\n`{prefix}dog`\n`{prefix}cat`\n`{prefix}panda`\n`{prefix}redpanda`\n`{prefix}koala`\n`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`\n`{prefix}memes`'
         )
 
         embeds=[emb,emb1,emb2,emb3]
@@ -206,7 +206,7 @@ class HelpCommands(commands.Cog):
         await ctx.send(embed=infobot_emb) 
 
     @help_for_commands.command(name='serverinfo', aliases = ['si','is'])
-    async def infobot_subcommands(self, ctx):
+    async def serverinfo_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
 

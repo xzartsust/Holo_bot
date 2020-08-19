@@ -82,6 +82,7 @@ bot.load_extension('cogs.commands.info.tuser')
 bot.load_extension('cogs.commands.info.infobot')
 bot.load_extension('cogs.commands.info.serverinfo')
 bot.load_extension('cogs.commands.fun.fox')
+bot.load_extension('cogs.commands.fun.memes')
 
 
 ################################################## Cogs owner commands #################################################################
