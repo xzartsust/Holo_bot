@@ -9,7 +9,7 @@ class Test(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def test(self, ctx):
-        for i in range(len(ctx.message.guild.features)):
+        for i in range(len(ctx.message.guild.features, i+1)):
             while i < len(ctx.message.guild.features):
                 print('1')
         
