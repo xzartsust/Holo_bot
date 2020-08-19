@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import requests
+import json
 
 
 class Test(commands.Cog):
@@ -11,11 +12,14 @@ class Test(commands.Cog):
     @commands.is_owner()
     async def test(self, ctx):
         request = requests.get('https://some-random-api.ml/img/fox')
+        json_data = json.loads(request.text)
+
+        print(json_data['link'])
         embed = discord.Embed(
             title = 'Fox'
         )
         embed.set_image(
-            url= request['link']
+            url= json_data['link']
         )        
         await ctx.send(embed = embed)
 def setup(bot):
