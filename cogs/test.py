@@ -12,7 +12,7 @@ class Test(commands.Cog):
         async for entry in ctx.message.guild.audit_logs(limit=100):
             print('{0.user} did {0.action} to {0.target}'.format(entry))
 
-        async for entry in guild.audit_logs(action=discord.AuditLogAction.ban):
+        async for entry in ctx.message.guild.audit_logs(action=discord.AuditLogAction.ban):
             print('{0.user} banned {0.target}'.format(entry))
         
 def setup(bot):
