@@ -12,6 +12,7 @@ from itertools import cycle
 from Cybernator import Paginator as pag
 import psycopg2
 import asyncpg, asyncio
+import random
 
 def is_owner(ctx):
     return ctx.author.id == bot_owner

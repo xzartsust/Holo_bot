@@ -1,10 +1,5 @@
 import discord
 from discord.ext import commands
-import time
-import datetime as DT
-
-start = time.monotonic()
-
 
 
 class Test(commands.Cog):
@@ -14,8 +9,9 @@ class Test(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def test(self, ctx):
-        result = time.monotonic() - start
-        await ctx.send(DT.timedelta(seconds=result))
+        for i in range(len(ctx.message.guild.features)):
+            while i < len(ctx.message.guild.features):
+                print('1')
         
 def setup(bot):
     bot.add_cog(Test(bot))
