@@ -55,7 +55,7 @@ class HelpCommands(commands.Cog):
         )
         emb1.add_field(
             name='**Команды**', 
-            value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}botservers`\n`{prefix}tuser`\n`{prefix}infobot`\n`{prefix}serverinfo`'
+            value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}botservers`\n`{prefix}tuser`\n`{prefix}infobot`\n`{prefix}serverinfo` или `{prefix}si` или `{prefix}is`'
         )
         emb2=discord.Embed(
             title='Команды для администрации и модерации сервера', 
@@ -198,6 +198,23 @@ class HelpCommands(commands.Cog):
             title=f'Информация про команду: {prefix}infobot', 
             colour = discord.Color.teal(), 
             description=f'**Команда**: `[infobot]`\n**Описание**: показывает информация о боте {self.bot.user.name}\n**Использования**: `{prefix}infobot`'
+        )
+        infobot_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(embed=infobot_emb) 
+
+    @help_for_commands.command(name='serverinfo', aliases = ['si','is'])
+    async def infobot_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        infobot_emb=discord.Embed(
+            timestamp= ctx.message.created_at, 
+            title=f'Информация про команду: `{prefix}serverinfo` или `{prefix}si` или `{prefix}is`', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[serverinfo]` или `[si]` или `[is]`\n**Описание**: показывает информацию о сервере {ctx.message.guild.name}\n**Использования**: `{prefix}serverinfo` или `{prefix}si` или `{prefix}is`'
         )
         infobot_emb.set_footer(
             text = ctx.message.author,

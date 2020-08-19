@@ -17,7 +17,7 @@ class ServerInfo(commands.Cog):
         guild = ctx.message.guild
 
         embed = discord.Embed(
-            title = '',
+            title = f'Информация о сервере {guild.name}',
             colour = discord.Color.orange(),
             timestamp = ctx.message.created_at
         )
