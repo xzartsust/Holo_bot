@@ -51,7 +51,7 @@ class HelpCommands(commands.Cog):
         )
         emb1= discord.Embed(
             title='Команды информации', 
-            description=f'Что бы узнать больше о команде напишите {prefix}help [команда]. \n**Пример**: `{prefix}help user`'
+            description=f'Что бы узнать больше о команде напишите `{prefix}help [команда]`. \n**Пример**: `{prefix}help user`'
         )
         emb1.add_field(
             name='**Команды**', 
