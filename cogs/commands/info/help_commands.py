@@ -55,18 +55,26 @@ class HelpCommands(commands.Cog):
         )
         emb1.add_field(
             name='**Команды**', 
-            value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}botservers`\n`{prefix}tuser`\n`{prefix}infobot`'
+            value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}botservers`\n`{prefix}tuser`\n`{prefix}infobot`\n`{prefix}serverinfo`'
         )
         emb2=discord.Embed(
-            title='Команды администрации', 
+            title='Команды для администрации и модерации сервера', 
             description=f'Команды для модерации сервера'
         )
         emb2.add_field(
             name = '**Команды**',
             value = f'`{prefix}prefix`\n`{prefix}wlc` или `{prefix}welcome`'
         )
+        emb3=discord.Embed(
+            title='Команды для развлечения', 
+            description=f'Команды для развлечения на сервере'
+        )
+        emb3.add_field(
+            name = '**Команды**',
+            value = f'`{prefix}fox`\n`{prefix}dog`\n`{prefix}cat`\n`{prefix}panda`\n`{prefix}redpanda`\n`{prefix}koala`\n`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`'
+        )
 
-        embeds=[emb,emb1,emb2]
+        embeds=[emb,emb1,emb2,emb3]
         message= await ctx.send(embed= emb)
         page= pag(self.bot, message, only=ctx.author, use_more=False, embeds=embeds, color=0x008000, time_stamp=True)
     

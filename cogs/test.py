@@ -14,7 +14,6 @@ class Test(commands.Cog):
         request = requests.get('https://some-random-api.ml/img/fox')
         json_data = json.loads(request.text)
 
-        print(json_data['link'])
         embed = discord.Embed(
             title = 'Fox'
         )
