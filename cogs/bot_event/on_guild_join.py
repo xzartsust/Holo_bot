@@ -27,7 +27,7 @@ class bot_join_guild(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild): 
-        cursor.execute(f'INSERT INTO public."prefixDB" (guild_id, prefix) VALUES ({guild.id}, \'.\');')
+        cursor.execute(f'INSERT INTO public."prefixDB" (guild_id, prefix) VALUES ({guild.id}, \'t!\');')
         conn.commit()
         
 def setup(bot):
