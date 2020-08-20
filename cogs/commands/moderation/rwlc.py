@@ -43,7 +43,7 @@ class AuthoAddRole(commands.Cog):
         role = cursor.fetchone()
         conn.commit()
 
-        role_1 = ctx.message.guild.get_role(role[0])
+        role_1 = member.guild.get_role(role[0])
 
         if f'{on_or_off[0]}' == str('True'):
             await member.add_roles(role_1)
