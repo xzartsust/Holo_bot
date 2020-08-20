@@ -34,6 +34,61 @@ class ServerInfo(commands.Cog):
             value = guild.name,
             inline = False
         )
+        embed.add_field(
+            name = 'Айди сервера',
+            value = guild.id
+        )
+        if guild.region == str('brazil'):
+            embed.add_field(
+                name = 'Регион',
+                value = 'Бразилия'
+            )
+        elif guild.region == str('russia'):
+            embed.add_field(
+                name = 'Регион',
+                value = 'Россия'
+            )
+        elif guild.region == str('hongkong'):
+            embed.add_field(
+                name = 'Регион',
+                value = 'Гонконг'
+            )
+        elif guild.region == str('india'):
+            embed.add_field(
+                name = 'Регион',
+                value = 'Индия'
+            )
+        elif guild.region == str('japan'):
+            embed.add_field(
+                name = 'Регион',
+                value = 'Япония'
+            )
+        elif guild.region == str('singapore'):
+            embed.add_field(
+                name = 'Регион',
+                value = 'Сингапур'
+            )
+        elif guild.region == str('southafrica'):
+            embed.add_field(
+                name = 'Регион',
+                value = 'Южная Африка'
+            )
+        elif guild.region == str('sydney'):
+            embed.add_field(
+                name = 'Регион',
+                value = 'Сидней'
+            )
+        elif guild.region == str('us-central'):
+            embed.add_field(
+                name = 'Регион',
+                value = 'Центральное США'
+            )
+        elif guild.region == str('us-east'):
+            embed.add_field(
+                name = 'Регион',
+                value = 'Восточне США'
+            )
+        
 
 
 
