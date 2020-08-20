@@ -55,7 +55,7 @@ class AuthoAddRole(commands.Cog):
         cursor.execute(f'UPDATE public."giveroles" SET role_id = \'{role}\' WHERE guild_id = \'{guild.id}\';')
         conn.commit()
 
-        cursor.execute(f'UPDATE public."giveroles" SET true_or_false = \'{types}\' WHERE guild_id = \'{guild.id}\';')
+        cursor.execute(f'UPDATE public."giveroles" SET on_or_off = \'{types}\' WHERE guild_id = \'{guild.id}\';')
         conn.commit()
 
         await ctx.send('ok')
