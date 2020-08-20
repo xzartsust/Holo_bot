@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import time
 import datetime as DT
+import os
 
 start = time.monotonic()
 
@@ -57,3 +58,5 @@ class InfoBot(commands.Cog):
 
 def setup(bot):
     bot.add_cog(InfoBot(bot))
+
+bot_owner = os.environ.get('bot_owner')
