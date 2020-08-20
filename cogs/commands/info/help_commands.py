@@ -63,7 +63,7 @@ class HelpCommands(commands.Cog):
         )
         emb2.add_field(
             name = '**Команды**',
-            value = f'`{prefix}prefix`\n`{prefix}wlc` или `{prefix}welcome`'
+            value = f'`{prefix}prefix`\n`{prefix}wlc` или `{prefix}welcome`\n`{prefix}news`'
         )
         emb3=discord.Embed(
             title='Команды для развлечения', 
@@ -238,6 +238,23 @@ class HelpCommands(commands.Cog):
             icon_url = ctx.message.author.avatar_url
         )
         await ctx.send(embed=ps_emb) 
+
+    @help_for_commands.command(name='news')
+    async def news_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        news_emb=discord.Embed(
+            timestamp= ctx.message.created_at, 
+            title=f'Информация про команду: `{prefix}news`', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[news]`\n**Описание**: создает на сервере новостей\n**Использования**: `{prefix}news *айди канала или тег канала* *заголовок* *текст новости*`'
+        )
+        news_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(embed=news_emb) 
 
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
