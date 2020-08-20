@@ -83,11 +83,12 @@ class ServerInfo(commands.Cog):
                 name = 'Регион',
                 value = 'Центральное США'
             )
-        elif guild.region == str('us-east'):
+        elif str(guild.region) == str('us-east'):
             embed.add_field(
                 name = 'Регион',
                 value = 'Восточне США'
             )
+        print(guild.region)
         
 
 
