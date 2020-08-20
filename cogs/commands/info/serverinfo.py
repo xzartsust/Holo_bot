@@ -110,6 +110,12 @@ class ServerInfo(commands.Cog):
                 value = 'Западное США',
                 inline = False
             )
+        elif str(guild.region) == str('europe'):
+            embed.add_field(
+                name = 'Регион',
+                value = 'Европа',
+                inline = False
+            )
         
 
 
