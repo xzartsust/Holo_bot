@@ -12,7 +12,7 @@ class Test(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def test(self, ctx):
-        async for guild in self.bot.fetch_guilds(limit=150):
+        async for guild in self.bot.fetch_guilds():
             print(guild.name)
 
 def setup(bot):
