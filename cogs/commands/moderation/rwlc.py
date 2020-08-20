@@ -62,7 +62,6 @@ class AuthoAddRole(commands.Cog):
         conn.commit()
         
         role1 = ctx.message.guild.get_role(role)
-        print(role1)
 
         emb = discord.Embed(
             title = 'Успешно!!!',
