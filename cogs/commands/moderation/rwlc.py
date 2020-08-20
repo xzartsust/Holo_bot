@@ -66,7 +66,7 @@ class AuthoAddRole(commands.Cog):
 
         emb = discord.Embed(
             title = 'Успешно!!!',
-            description = f'Роль {role1} была установлена как автоматическая роль с функцией `{types}`',
+            description = f'Роль {role1.mention} была установлена как автоматическая роль с функцией `{types}`',
             colour = discord.Color.green(),
             timestamp = ctx.message.created_at
         )

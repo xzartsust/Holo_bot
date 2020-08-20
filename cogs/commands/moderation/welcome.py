@@ -70,9 +70,11 @@ class member_greeting(commands.Cog):
         cursor.execute(f'UPDATE public."prefixDB" SET true_or_false = \'{types}\' WHERE guild_id = \'{guild.id}\';')
         conn.commit()
 
+        channel1 = ctx.message.guild.get_channel(channel)
+
         emb = discord.Embed(
             title = 'Успешно!!!',
-            description = f'Канал уведомлений "Welcome" был установлен на `{channel}` с функцией `{types}`',
+            description = f'Канал уведомлений "Welcome" был установлен на `{channel1}` с функцией `{types}`',
             colour = discord.Color.green(),
             timestamp = ctx.message.created_at
         )
