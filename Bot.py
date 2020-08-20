@@ -84,6 +84,12 @@ bot.load_extension('cogs.commands.info.serverinfo')
 bot.load_extension('cogs.commands.fun.fox')
 bot.load_extension('cogs.commands.fun.memes')
 bot.load_extension('cogs.commands.fun.dog')
+bot.load_extension('cogs.commands.fun.cat')
+bot.load_extension('cogs.commands.fun.hug')
+bot.load_extension('cogs.commands.fun.panda')
+bot.load_extension('cogs.commands.fun.pat')
+bot.load_extension('cogs.commands.fun.redpanda')
+bot.load_extension('cogs.commands.fun.wink')
 
 
 ################################################## Cogs owner commands #################################################################
