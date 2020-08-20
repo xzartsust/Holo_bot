@@ -9,12 +9,12 @@ class FunPat(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def pat(self, ctx):
+    async def pat(self, ctx , member = None):
         request = requests.get('https://some-random-api.ml/animu/pat')
         json_data = json.loads(request.text)
 
         embed = discord.Embed(
-            title = ctx.message.author.mention + 'погладил!',
+            title = member.mention + 'погладил!',
             timestamp = ctx.message.created_at,
             colour = discord.Color.blue()
         )
