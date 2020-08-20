@@ -13,7 +13,7 @@ class Test(commands.Cog):
     @commands.is_owner()
     async def test(self, ctx):
         role = ctx.message.guild.get_role(745261928208924762)
-        await ctx.send(role)
+        await ctx.send(role.mention)
 
 def setup(bot):
     bot.add_cog(Test(bot))
