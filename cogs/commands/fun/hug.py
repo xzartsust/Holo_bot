@@ -14,7 +14,7 @@ class FunHug(commands.Cog):
         json_data = json.loads(request.text)
 
         embed = discord.Embed(
-            title = f'{ctx.message.author.mention} обнял!',
+            title = ctx.message.author.mention + 'обнял!',
             timestamp = ctx.message.created_at,
             colour = discord.Color.blue()
         )

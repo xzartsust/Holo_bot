@@ -14,7 +14,7 @@ class FunWink(commands.Cog):
         json_data = json.loads(request.text)
 
         embed = discord.Embed(
-            title = f'{ctx.message.author.mention} подмигнул!',
+            title = ctx.message.author.mention + 'подмигнул!',
             timestamp = ctx.message.created_at,
             colour = discord.Color.blue()
         )

@@ -14,7 +14,7 @@ class FunPat(commands.Cog):
         json_data = json.loads(request.text)
 
         embed = discord.Embed(
-            title = f'{ctx.message.author.mention} погладил!',
+            title = ctx.message.author.mention + 'погладил!',
             timestamp = ctx.message.created_at,
             colour = discord.Color.blue()
         )
