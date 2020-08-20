@@ -91,6 +91,7 @@ bot.load_extension('cogs.commands.fun.pat')
 bot.load_extension('cogs.commands.fun.redpanda')
 bot.load_extension('cogs.commands.fun.wink')
 bot.load_extension('cogs.commands.fun.koala')
+bot.load_extension('cogs.commands.info.prefixserver')
 
 
 ################################################## Cogs owner commands #################################################################
