@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import time
 import datetime as DT
+import os
 
 start = time.monotonic()
 
@@ -12,32 +13,37 @@ class InfoBot(commands.Cog):
     @commands.command()
     async def infobot(self, ctx):
         await ctx.channel.purge(limit = 1)
-
+        
+        owner_bot = self.bot.get_user(bot_owner)
         result = time.monotonic() - start
 
         embed=discord.Embed(
-            title="Инфорация про бота\n ",
+            title=":information_source:BOT INFORMATION:information_source:",
             timestamp = ctx.message.created_at,
             colour = discord.Color.purple()
         )
         embed.add_field(
+            name = 'Developer',
+            value = f'```{owner_bot}```'
+        )
+        embed.add_field(
             name="Библиотека",
-            value="discord.py",
+            value="```discord.py```",
             inline=False
         )
         embed.add_field(
             name="Состояние",
-            value="Beta", 
+            value="```Beta```", 
             inline=False
         )
         embed.add_field(
             name="Версия",
-            value="0.0.3 Beta",
+            value="```0.0.3 Beta```",
             inline=True
         )
         embed.add_field(
             name="Сайт",
-            value="Скоро...",
+            value="```Скоро...```",
             inline=True
         )
         embed.add_field(
@@ -47,9 +53,11 @@ class InfoBot(commands.Cog):
         )
         embed.add_field(
             name='Время с последнего запуска',
-            value= DT.timedelta(seconds=result)
+            value= f'```{DT.timedelta(seconds=result)}```'
         )
         await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(InfoBot(bot))
+
+bot_owner = os.environ.get('bot_owner')
