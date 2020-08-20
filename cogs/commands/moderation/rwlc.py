@@ -61,11 +61,12 @@ class AuthoAddRole(commands.Cog):
         cursor.execute(f'UPDATE public."giveroles" SET on_or_off = \'{types}\' WHERE guild_id = \'{guild.id}\';')
         conn.commit()
         
-        role_1 = ctx.message.guild.get_role(role)
+        role1 = ctx.message.guild.get_role(role)
+        print(role)
 
         emb = discord.Embed(
             title = 'Успешно!!!',
-            description = f'Роль {role_1.mention} была установлена как автоматическая роль с функцией `{types}`',
+            description = f'Роль {role1} была установлена как автоматическая роль с функцией `{types}`',
             colour = discord.Color.green(),
             timestamp = ctx.message.created_at
         )
