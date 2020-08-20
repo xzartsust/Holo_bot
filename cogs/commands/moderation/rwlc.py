@@ -42,7 +42,12 @@ class AuthoAddRole(commands.Cog):
         cursor.execute(f'SELECT role_id FROM public."giveroles" WHERE guild_id = {member.guild.id};')
         role = cursor.fetchone()
         conn.commit()
-        
+
+        if f'{on_or_off[0]}' == str('True'):
+            member.add_role(role)
+        elif f'{on_or_off[0]}' == str('False'):
+            pass
+
         print(on_or_off[0])
         print(role[0])
 
