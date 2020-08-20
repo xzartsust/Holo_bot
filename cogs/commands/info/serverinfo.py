@@ -38,57 +38,78 @@ class ServerInfo(commands.Cog):
             name = 'Айди сервера',
             value = guild.id
         )
-        if guild.region == str('brazil'):
+        if str(guild.region) == str('brazil'):
             embed.add_field(
                 name = 'Регион',
-                value = 'Бразилия'
+                value = 'Бразилия',
+                inline = False
             )
-        elif guild.region == str('russia'):
+        elif str(guild.region) == str('russia'):
             embed.add_field(
                 name = 'Регион',
-                value = 'Россия'
+                value = 'Россия',
+                inline = False
             )
-        elif guild.region == str('hongkong'):
+        elif str(guild.region) == str('hongkong'):
             embed.add_field(
                 name = 'Регион',
-                value = 'Гонконг'
+                value = 'Гонконг',
+                inline = False
             )
-        elif guild.region == str('india'):
+        elif str(guild.region) == str('india'):
             embed.add_field(
                 name = 'Регион',
-                value = 'Индия'
+                value = 'Индия',
+                inline = False
             )
-        elif guild.region == str('japan'):
+        elif str(guild.region) == str('japan'):
             embed.add_field(
                 name = 'Регион',
-                value = 'Япония'
+                value = 'Япония',
+                inline = False
             )
-        elif guild.region == str('singapore'):
+        elif str(guild.region) == str('singapore'):
             embed.add_field(
                 name = 'Регион',
-                value = 'Сингапур'
+                value = 'Сингапур',
+                inline = False
             )
-        elif guild.region == str('southafrica'):
+        elif str(guild.region) == str('southafrica'):
             embed.add_field(
                 name = 'Регион',
-                value = 'Южная Африка'
+                value = 'Южная Африка',
+                inline = False
             )
-        elif guild.region == str('sydney'):
+        elif str(guild.region) == str('sydney'):
             embed.add_field(
                 name = 'Регион',
-                value = 'Сидней'
+                value = 'Сидней',
+                inline = False
             )
-        elif guild.region == str('us-central'):
+        elif str(guild.region) == str('us-central'):
             embed.add_field(
                 name = 'Регион',
-                value = 'Центральное США'
+                value = 'Центральное США',
+                inline = False
             )
         elif str(guild.region) == str('us-east'):
             embed.add_field(
                 name = 'Регион',
-                value = 'Восточне США'
+                value = 'Восточне США',
+                inline = False
             )
-        print(guild.region)
+        elif str(guild.region) == str('us-south'):
+            embed.add_field(
+                name = 'Регион',
+                value = 'Северное США',
+                inline = False
+            )
+        elif str(guild.region) == str('us-west'):
+            embed.add_field(
+                name = 'Регион',
+                value = 'Западное США',
+                inline = False
+            )
         
 
 
