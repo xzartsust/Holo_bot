@@ -10,7 +10,7 @@ class FunDog(commands.Cog):
 
     @commands.command()
     async def dog(self, ctx):
-        request = requests.get('https://some-random-api.ml/img/dog')
+        request = requests.get('https://random.dog/woof.json')
         json_data = json.loads(request.text)
 
         embed = discord.Embed(
