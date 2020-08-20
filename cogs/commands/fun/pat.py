@@ -10,6 +10,8 @@ class FunPat(commands.Cog):
 
     @commands.command()
     async def pat(self, ctx , member = None):
+        member = ctx.author if not member else member
+        
         request = requests.get('https://some-random-api.ml/animu/pat')
         json_data = json.loads(request.text)
 
