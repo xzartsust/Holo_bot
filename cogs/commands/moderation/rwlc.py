@@ -50,10 +50,6 @@ class AuthoAddRole(commands.Cog):
         elif f'{on_or_off[0]}' == str('False'):
             pass
 
-        print(on_or_off[0])
-        print(role[0])
-
-
     @commands.command()
     @commands.check(is_owner_guild)
     async def rwlc(self, ctx, role, types):
@@ -64,8 +60,25 @@ class AuthoAddRole(commands.Cog):
 
         cursor.execute(f'UPDATE public."giveroles" SET on_or_off = \'{types}\' WHERE guild_id = \'{guild.id}\';')
         conn.commit()
+        
+        role_1 = member.guild.get_role(role)
 
-        await ctx.send('ok')
+        emb = discord.Embed(
+            title = 'Успешно!!!',
+            description = f'Роль {role_1.mention} была установлена как автоматическая роль с функцией `{types}`',
+            colour = discord.Color.green(),
+            timestamp = ctx.message.created_at
+        )
+
+        if ctx.guild.system_channel is not None:
+            await ctx.guild.system_channel.send(embed = emb)
+        elif ctx.guild.system_channel is None:
+            await ctx.send(embed = emb)
+
+    @wrwlc.error
+    async def welcome_error(self, ctx, error):
+        if isinstance(error, commands.CommandInvokeError):
+            await ctx.send('Третий аргумент может быть только true или false')
 
 
 
