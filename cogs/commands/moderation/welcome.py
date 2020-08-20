@@ -61,7 +61,7 @@ class member_greeting(commands.Cog):
     
     @commands.command(aliases=['wlc'])
     @commands.check(is_owner_guild)
-    async def welcome(self, ctx, channel, types):
+    async def welcome(self, ctx, channel: int, types: bool):
         guild = ctx.message.guild
         
         cursor.execute(f'UPDATE public."prefixDB" SET channel_for_greeting = \'{channel}\' WHERE guild_id = \'{guild.id}\';')

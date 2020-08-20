@@ -52,7 +52,7 @@ class AuthoAddRole(commands.Cog):
 
     @commands.command()
     @commands.check(is_owner_guild)
-    async def rwlc(self, ctx, role, types):
+    async def rwlc(self, ctx, role: int, types: bool):
         guild = ctx.message.guild
 
         cursor.execute(f'UPDATE public."giveroles" SET role_id = \'{role}\' WHERE guild_id = \'{guild.id}\';')
@@ -62,7 +62,7 @@ class AuthoAddRole(commands.Cog):
         conn.commit()
         
         role1 = ctx.message.guild.get_role(role)
-        print(role)
+        print(role1)
 
         emb = discord.Embed(
             title = 'Успешно!!!',
