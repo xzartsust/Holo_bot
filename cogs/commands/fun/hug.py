@@ -14,14 +14,13 @@ class FunHug(commands.Cog):
         json_data = json.loads(request.text)
 
         embed = discord.Embed(
-            title = ctx.message.author.mention + 'обнял!',
             timestamp = ctx.message.created_at,
             colour = discord.Color.blue()
         )
         embed.set_image(
             url = json_data['link']
         )
-        await ctx.send(embed = embed)
+        await ctx.send(f'{ctx.message.author.mention}' + ' обнял!' ,embed = embed)
         
 def setup(bot):
     bot.add_cog(FunHug(bot))
