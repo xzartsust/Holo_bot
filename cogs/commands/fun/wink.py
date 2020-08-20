@@ -4,17 +4,17 @@ import requests
 import json
 
 
-class FunDog(commands.Cog):
+class FunWink(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.command()
-    async def dog(self, ctx):
-        request = requests.get('https://some-random-api.ml/img/dog')
+    async def wink(self, ctx):
+        request = requests.get('https://some-random-api.ml/animu/wink')
         json_data = json.loads(request.text)
 
         embed = discord.Embed(
-            title = 'Собачка..., ня!',
+            title = f'{ctx.message.author.mention} подмигнул!',
             timestamp = ctx.message.created_at,
             colour = discord.Color.blue()
         )
@@ -24,4 +24,4 @@ class FunDog(commands.Cog):
         await ctx.send(embed = embed)
         
 def setup(bot):
-    bot.add_cog(FunDog(bot))
+    bot.add_cog(FunWink(bot))
