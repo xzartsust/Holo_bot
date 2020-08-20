@@ -21,6 +21,9 @@ class ServerInfo(commands.Cog):
             colour = discord.Color.orange(),
             timestamp = ctx.message.created_at
         )
+        embed.set_thumbnail(
+            url= guild.icon_url
+        )
         embed.add_field(
             name = 'Owner сервера',
             value = guild.owner.mention,
