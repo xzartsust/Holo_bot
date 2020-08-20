@@ -11,14 +11,18 @@ class FunPat(commands.Cog):
     @commands.command()
     async def pat(self, ctx , member = None):
         member = ctx.author if not member else member
-        
+
         request = requests.get('https://some-random-api.ml/animu/pat')
         json_data = json.loads(request.text)
 
         embed = discord.Embed(
-            title = member.mention + 'погладил!',
+            title = '',
             timestamp = ctx.message.created_at,
             colour = discord.Color.blue()
+        )
+        embed.add_field(
+             name = '',
+             value = member.mention + ' погладил!'
         )
         embed.set_image(
             url = json_data['link']
