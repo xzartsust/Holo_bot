@@ -20,7 +20,7 @@ class FunPat(commands.Cog):
             colour = discord.Color.blue()
         )
         embed.add_field(
-             name = member.mention,
+             name = ctx.message.author.mention,
              value = 'погладил!'
         )
         embed.set_image(
