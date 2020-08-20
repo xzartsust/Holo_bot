@@ -62,12 +62,12 @@ class member_greeting(commands.Cog):
     @commands.command(aliases=['wlc'])
     @commands.check(is_owner_guild)
     async def welcome(self, ctx, channel, types):
-        guildid = ctx.guild.id
+        guild = ctx.message.guild
         
-        cursor.execute(f'UPDATE public."prefixDB" SET channel_for_greeting = \'{channel}\' WHERE guild_id = \'{guildid}\';')
+        cursor.execute(f'UPDATE public."prefixDB" SET channel_for_greeting = \'{channel}\' WHERE guild_id = \'{guild.id}\';')
         conn.commit()
 
-        cursor.execute(f'UPDATE public."prefixDB" SET true_or_false = \'{types}\' WHERE guild_id = \'{guildid}\';')
+        cursor.execute(f'UPDATE public."prefixDB" SET true_or_false = \'{types}\' WHERE guild_id = \'{guild.id}\';')
         conn.commit()
 
         emb = discord.Embed(
