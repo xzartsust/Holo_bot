@@ -248,7 +248,7 @@ class HelpCommands(commands.Cog):
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: `{prefix}news`', 
             colour = discord.Color.teal(), 
-            description=f'**Команда**: `[news]`\n**Описание**: создает на сервере новостей\n**Использования**: `{prefix}news *айди канала или тег канала* *заголовок* *текст новости*`'
+            description=f'**Команда**: `[news]`\n**Описание**: создает на сервере новостей\n**Использования**: `{prefix}news *айди канала или тег канала* *заголовок* *текст новости*`\n\n**Пример:** `{prefix}news 124555785215 Новость сервера! Просто пример`'
         )
         news_emb.set_footer(
             text = ctx.message.author,
