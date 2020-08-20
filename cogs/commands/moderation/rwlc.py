@@ -61,7 +61,7 @@ class AuthoAddRole(commands.Cog):
         cursor.execute(f'UPDATE public."giveroles" SET on_or_off = \'{types}\' WHERE guild_id = \'{guild.id}\';')
         conn.commit()
         
-        role_1 = member.guild.get_role(role)
+        role_1 = ctx.message.guild.get_role(role)
 
         emb = discord.Embed(
             title = 'Успешно!!!',
@@ -75,7 +75,7 @@ class AuthoAddRole(commands.Cog):
         elif ctx.guild.system_channel is None:
             await ctx.send(embed = emb)
 
-    @wrwlc.error
+    @rwlc.error
     async def welcome_error(self, ctx, error):
         if isinstance(error, commands.CommandInvokeError):
             await ctx.send('Третий аргумент может быть только true или false')
