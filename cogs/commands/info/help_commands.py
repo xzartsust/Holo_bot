@@ -55,7 +55,7 @@ class HelpCommands(commands.Cog):
         )
         emb1.add_field(
             name='**Команды**', 
-            value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}botservers`\n`{prefix}tuser`\n`{prefix}infobot`\n`{prefix}serverinfo` или `{prefix}si` или `{prefix}is`'
+            value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}botservers`\n`{prefix}tuser`\n`{prefix}infobot`\n`{prefix}serverinfo` или `{prefix}si` или `{prefix}is`\n`{prefix}serverprefix` или `{prefix}sp` или `{prefix}ps`'
         )
         emb2=discord.Embed(
             title='Команды для администрации и модерации сервера', 
@@ -220,7 +220,24 @@ class HelpCommands(commands.Cog):
             text = ctx.message.author,
             icon_url = ctx.message.author.avatar_url
         )
-        await ctx.send(embed=infobot_emb) 
+        await ctx.send(embed=infobot_emb)
+    
+    @help_for_commands.command(name='prefixserver', aliases = ['sp','ps'])
+    async def prefixserver_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        ps_emb=discord.Embed(
+            timestamp= ctx.message.created_at, 
+            title=f'Информация про команду: `{prefix}serverprefix` или `{prefix}sp` или `{prefix}ps`', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[serverprefix]` или `[sp]` или `[ps]`\n**Описание**: показывает текущий префикс сервера {ctx.message.guild.name}\n**Использования**: `{prefix}serverprefix` или `{prefix}sp` или `{prefix}ps`'
+        )
+        ps_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(embed=ps_emb) 
 
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
