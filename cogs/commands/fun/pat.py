@@ -16,13 +16,12 @@ class FunPat(commands.Cog):
         json_data = json.loads(request.text)
 
         embed = discord.Embed(
-            title = '',
             timestamp = ctx.message.created_at,
             colour = discord.Color.blue()
         )
         embed.add_field(
-             name = '',
-             value = member.mention + ' погладил!'
+             name = member.mention,
+             value = 'погладил!'
         )
         embed.set_image(
             url = json_data['link']
