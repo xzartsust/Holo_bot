@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 import time
 import datetime as DT
-import os
 
 start = time.monotonic()
 
@@ -14,7 +13,6 @@ class InfoBot(commands.Cog):
     async def infobot(self, ctx):
         await ctx.channel.purge(limit = 1)
         
-        owner_bot = self.bot.get_user(bot_owner)
         result = time.monotonic() - start
 
         embed=discord.Embed(
@@ -24,7 +22,7 @@ class InfoBot(commands.Cog):
         )
         embed.add_field(
             name = 'Developer',
-            value = f'```{owner_bot}```'
+            value = f'```{self.bot.get_user(bot_owner)}```'
         )
         embed.add_field(
             name="Библиотека",
@@ -59,5 +57,3 @@ class InfoBot(commands.Cog):
 
 def setup(bot):
     bot.add_cog(InfoBot(bot))
-
-bot_owner = os.environ.get('bot_owner')
