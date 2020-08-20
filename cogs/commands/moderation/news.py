@@ -6,11 +6,11 @@ class news(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def news(self, ctx, channel: discord.TextChannel, *, text):
+    async def news(self, ctx, channel: discord.TextChannel, title, *, text):
         await ctx.channel.purge(limit=1)
         
         emb= discord.Embed(
-            title='Новость!!!', 
+            title = f'{title}', 
             description=f'{text}', 
             colour= discord.Color.gold(), 
             timestamp=ctx.message.created_at)
