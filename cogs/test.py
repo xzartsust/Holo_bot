@@ -12,8 +12,8 @@ class Test(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def test(self, ctx):
-        role = ctx.message.guild.get_role(745261928208924762)
-        await ctx.send(role.mention)
+        async for guild in client.fetch_guilds(limit=150):
+            print(guild.name)
 
 def setup(bot):
     bot.add_cog(Test(bot))
