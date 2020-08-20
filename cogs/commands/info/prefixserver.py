@@ -26,7 +26,14 @@ class PrefixServer(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.command()
+    async def prefixserver(self, ctx):
+        guild = ctx.message.guild
 
+        cursor.execute(f'SELECT prefix FROM public."prefixDB" WHERE guild_id = \'{guild.id}\';')
+        prefix = cursor.fetchone()
+
+        await ctx.send(f'Server Prefix: {prefix[0]}')
 
 def setup(bot):
     bot.add_cog(PrefixServer(bot))
