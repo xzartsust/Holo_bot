@@ -261,17 +261,17 @@ class HelpCommands(commands.Cog):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
 
-        wlc_emb=discord.Embed(
+        rwlc_emb=discord.Embed(
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: `{prefix}rwlc`', 
             colour = discord.Color.teal(), 
             description=f'**Предостережение:** Эту команду может использовать только создатель сервера!\n**Команда**: `[rwlc]`\n**Описание**: установить роль которая будет выдаваться новим пользователям сервера\n**Использования**: `{prefix}rwlc *ади роли* *true или false*`\n**true** - включить автовидачу роли\n**false** - отключить автовидачу роли\n\n**Пример:** `{prefix}rwlc 112215155842828482 true`'
         )
-        wlc_emb.set_footer(
+        rwlc_emb.set_footer(
             text = ctx.message.author,
             icon_url = ctx.message.author.avatar_url
         )
-        await ctx.send(embed=wlc_emb)     
+        await ctx.send(embed=rwlc_emb)     
 
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
