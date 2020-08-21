@@ -20,7 +20,7 @@ class MuteCommand(commands.Cog):
         await who.move_to(None)
         await asyncio.sleep(time * 60)
         await who.remove_roles(role)
-        await ctx('Мут забраний')
+        await ctx.send('Мут забраний')
 
 def setup(bot):
     bot.add_cog(MuteCommand(bot))
