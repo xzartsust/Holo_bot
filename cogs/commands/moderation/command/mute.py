@@ -11,7 +11,7 @@ class MuteCommand(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator = True)
-    async def mute(self, ctx, who: discord.Member, time: int, reason):
+    async def mute(self, ctx, who: discord.Member, time: float, reason):
         role = ctx.message.guild.get_role(746275532039258122)
         print(role)
         print(f'[command.mute] От {ctx.author}, кого {who}')
