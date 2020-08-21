@@ -15,7 +15,12 @@ class MuteCommand(commands.Cog):
         role = ctx.message.guild.get_role(746275532039258122)
         print(role)
         print(f'[command.mute] От {ctx.author}, кого {who}')
-        await ctx.send(f'--> {who} получил мут на {time} минут по причине: {reason}')
+        if time < 1:
+            s = time * 60
+            await ctx.send(f'--> {who} получил мут на {s} cекунд по причине: {reason}')
+        elif time > 1 or time >= 1:
+            await ctx.send(f'--> {who} получил мут на {time} cекунд по причине: {reason}')
+        
         await who.add_roles(role)
         await who.move_to(None)
         await asyncio.sleep(time * 60)
