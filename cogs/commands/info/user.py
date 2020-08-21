@@ -20,7 +20,7 @@ class user(commands.Cog):
         now = datetime.now()
         delta_s = now - time_to_join_in_server
         delta_d= now - time_to_join_in_discord
-        b= delta_d.days
+        b = delta_d.days
         a = delta_s.days
 
 

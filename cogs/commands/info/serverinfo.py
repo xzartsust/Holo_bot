@@ -5,6 +5,8 @@ import asyncpg, asyncio
 import psycopg2
 from discord import utils
 from discord.utils import get
+from datetime import datetime
+import time
 
 
 class ServerInfo(commands.Cog):
@@ -15,6 +17,10 @@ class ServerInfo(commands.Cog):
     @commands.command(aliases = ['si','is'])
     async def serverinfo(self, ctx):
         guild = ctx.message.guild
+
+        now = datetime.now()
+        delta_d= now - guild.created_at
+        b = delta_d.days
 
         embed = discord.Embed(
             title = f'Информация о сервере {guild.name}',
@@ -114,6 +120,11 @@ class ServerInfo(commands.Cog):
             embed.add_field(
                 name = 'Регион',
                 value = 'Европа',
+                inline = False
+            )
+        embed.add_field(
+                name = 'Дата создания сервера',
+                value = f'{guild.created_at.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)',
                 inline = False
             )
         
