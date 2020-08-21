@@ -102,7 +102,7 @@ class MuteCommand(commands.Cog):
             timestamp = ctx.message.created_at
             )
         emb.set_footer(
-            text = 'Запросил: ' + ctx.author,
+            text = 'Запросил: ' + f'{ctx.author}',
             icon_url = ctx.author.avatar_url
             )
         
