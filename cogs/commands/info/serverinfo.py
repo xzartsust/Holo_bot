@@ -27,6 +27,9 @@ class ServerInfo(commands.Cog):
             colour = discord.Color.orange(),
             timestamp = ctx.message.created_at
         )
+        embed.set_footer(
+            text = f'Запросил: {ctx.message.author}'
+        )
         embed.set_thumbnail(
             url= guild.icon_url
         )
