@@ -26,27 +26,28 @@ class ServerInfo(commands.Cog):
             title = f'Информация о сервере {guild.name}',
             colour = discord.Color.orange(),
             timestamp = ctx.message.created_at
-        )
+            )
         embed.set_footer(
             text = f'Запросил: {ctx.message.author}'
-        )
+            )
         embed.set_thumbnail(
             url= guild.icon_url
-        )
+            )
         embed.add_field(
             name = 'Owner сервера',
             value = guild.owner.mention,
             inline = False
-        )
+            )
         embed.add_field(
             name = 'Названия сервера',
             value = guild.name,
             inline = False
-        )
+            )
         embed.add_field(
             name = 'Айди сервера',
             value = guild.id
-        )
+            )
+        ''' determines which region '''
         if str(guild.region) == str('brazil'):
             embed.add_field(
                 name = 'Регион',
@@ -125,12 +126,19 @@ class ServerInfo(commands.Cog):
                 value = 'Европа',
                 inline = False
             )
+        '''                        '''
         embed.add_field(
-                name = 'Дата создания сервера',
-                value = f'{guild.created_at.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)',
-                inline = False
+            name = 'Дата создания сервера',
+            value = f'{guild.created_at.strftime("%d.%m.%Y %H:%M")}\n ({b} дней)',
+            inline = False
             )
-        
+        embed.add_field(
+            name = 'Информация про канали',
+            value = f'**Всего:** {len(guild.channels)}\n**Текстовые:** {len(guild.text_channels)}\n**Голосовые:** {len(guild.voice_channels)}\n**Категории:** {len(ctx.message.guild.categories)}',
+            inline = False
+            )
+
+
         await ctx.send(embed = embed)
 
 def setup(bot):

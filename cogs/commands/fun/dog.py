@@ -17,10 +17,11 @@ class FunDog(commands.Cog):
             title = 'Собачка..., ня!',
             timestamp = ctx.message.created_at,
             colour = discord.Color.blue()
-        )
+            )
         embed.set_image(
             url = json_data['url']
-        )
+            )
+        
         await ctx.send(embed = embed)
         
 def setup(bot):
