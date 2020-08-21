@@ -299,7 +299,7 @@ class HelpCommands(commands.Cog):
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: `{prefix}muterole`', 
             colour = discord.Color.teal(), 
-            description=f'**Предостережение:** Эту команду может использовать только создатель сервера!\n**Команда**: `[muterole]`\n**Описание**: установить роль которая будет выдаваться по команде `mute`\n**Использования**: `{prefix}muterole *ади роли*\n\n**Пример:** `{prefix}muterole [id role]`'
+            description=f'**Предостережение:** Эту команду может использовать только создатель сервера!\n**Команда**: `[muterole]`\n**Описание**: установить роль которая будет выдаваться по команде `mute`\n**Использования**: `{prefix}muterole *ади роли*`\n\n**Пример:** `{prefix}muterole [id role]`'
             )
         muterole_emb.set_footer(
             text = ctx.message.author,
