@@ -89,7 +89,7 @@ class MuteCommand(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator = True)
-    async def muterole(self, ctx, role_id: discord.Role):
+    async def muterole(self, ctx, role_id):
         guild = ctx.message.guild
         role = ctx.message.guild.get_role(role_id)
 
