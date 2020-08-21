@@ -13,13 +13,13 @@ class MuteCommand(commands.Cog):
     @commands.has_permissions(administrator = True)
     async def mute(self, ctx, who: discord.Member, time: float, reason):
         role = ctx.message.guild.get_role(746275532039258122)
-        print(role)
+        
         print(f'[command.mute] От {ctx.author}, кого {who}')
         if time < 1:
             s = time * 60
             await ctx.send(f'--> {who} получил мут на {s} cекунд по причине: {reason}')
         elif time > 1 or time >= 1:
-            await ctx.send(f'--> {who} получил мут на {time} cекунд по причине: {reason}')
+            await ctx.send(f'--> {who} получил мут на {time} минут по причине: {reason}')
         
         await who.add_roles(role)
         await who.move_to(None)
