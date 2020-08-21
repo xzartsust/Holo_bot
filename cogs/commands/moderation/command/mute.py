@@ -38,7 +38,7 @@ class MuteCommand(commands.Cog):
         cursor.execute(f'SELECT role_id FROM public.mute_role WHERE guild_id = \'{guild.id}\';')
         role_mute = cursor.fetchone()
         conn.commit()
-        
+        print(role_mute[0])
         role = ctx.message.guild.get_role(role_mute[0])
         
         await ctx.channel.purge(limit = 1)
@@ -89,7 +89,7 @@ class MuteCommand(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator = True)
-    async def muterole(self, ctx, role_id: int):
+    async def muterole(self, ctx, role_id: discord.Role):
         guild = ctx.message.guild
         role = ctx.message.guild.get_role(role_id)
 
