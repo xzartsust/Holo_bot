@@ -11,21 +11,10 @@ class MuteCommand(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator = True)
-    async def mute(self, ctx, who: discord.Member, time: float, what: str, reason):
+    async def mute(self, ctx, who: discord.Member, time: int, what: str, reason):
         role = ctx.message.guild.get_role(746275532039258122)
         
         print(f'[command.mute] От {ctx.author}, кого {who}')
-        
-        if what == str('s'):
-            if time <= 1 :
-                s = time * 60
-                await ctx.send(f'--> {who} получил мут на {s} секунд по причине: {reason}')
-
-                await who.add_roles(role)
-                await who.move_to(None)
-                await asyncio.sleep(s * 60)
-                await who.remove_roles(role)
-                await ctx.send('Мут забраний')
         
         if what == str('m'):
             if time >=1 and time <= 59:
