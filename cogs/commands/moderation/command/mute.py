@@ -83,29 +83,6 @@ class MuteCommand(commands.Cog):
                 await who.remove_roles(role)
                 await ctx.send('Мут забраний') 
 
-    @commands.command()
-    @commands.has_permissions(administrator = True)
-    async def muterole(self, ctx, role_id: int):
-        guild = ctx.message.guild
-        role = ctx.message.guild.get_role(role_id)
-
-        cursor.execute(f'UPDATE public.mute_role SET role_id = \'{role_id}\' WHERE guild_id = \'{guild.id}\';')
-        conn.commit()
-
-        emb = discord.Embed(
-            title= 'Успешно!',
-            description = f'Роль {role.mention} была установленна для команды `mute`',
-            timestamp = ctx.message.created_at
-            )
-        emb.set_footer(
-            text = 'Запросил: ' + f'{ctx.author}',
-            icon_url = ctx.author.avatar_url
-            )
-        
-        if ctx.guild.system_channel is not None:
-            await ctx.guild.system_channel.send(embed = emb)
-        elif ctx.guild.system_channel is None:
-            await ctx.send(embed = emb)
 
 def setup(bot):
     bot.add_cog(MuteCommand(bot))
