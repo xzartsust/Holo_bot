@@ -19,7 +19,7 @@ class MuteCommand(commands.Cog):
         if what == str('s'):
             if time <= 1 :
                 s = time * 60
-                await ctx.send(f'--> {who} получил мут на {s}секунд по причине: {reason}')
+                await ctx.send(f'--> {who} получил мут на {s} секунд по причине: {reason}')
 
                 await who.add_roles(role)
                 await who.move_to(None)
@@ -30,7 +30,7 @@ class MuteCommand(commands.Cog):
         if what == str('m'):
             if time >=1 and time <= 59:
                 
-                await ctx.send(f'--> {who} получил мут на {time}минут по причине: {reason}')
+                await ctx.send(f'--> {who} получил мут на {time} минут по причине: {reason}')
 
                 await who.add_roles(role)
                 await who.move_to(None)
@@ -40,7 +40,7 @@ class MuteCommand(commands.Cog):
         
         if what == str('h'):
             if time >= 1 and time <= 24:
-                await ctx.send(f'--> {who} получил мут на {time}часов по причине: {reason}')
+                await ctx.send(f'--> {who} получил мут на {time} часов по причине: {reason}')
 
                 await who.add_roles(role)
                 await who.move_to(None)
@@ -50,7 +50,7 @@ class MuteCommand(commands.Cog):
         
         if what == str('d'):
             if time >= 1 and time <= 365:
-                await ctx.send(f'--> {who} получил мут на {time}дней по причине: {reason}')
+                await ctx.send(f'--> {who} получил мут на {time} дней по причине: {reason}')
 
                 await who.add_roles(role)
                 await who.move_to(None)
@@ -60,7 +60,7 @@ class MuteCommand(commands.Cog):
         
         if what == str('y'):
             if time >= 1:
-                await ctx.send(f'--> {who} получил мут на {time}лет по причине: {reason}')
+                await ctx.send(f'--> {who} получил мут на {time} лет по причине: {reason}')
 
                 await who.add_roles(role)
                 await who.move_to(None)
