@@ -38,12 +38,9 @@ class MuteCommand(commands.Cog):
         cursor.execute(f'SELECT role_id FROM public.mute_role WHERE guild_id = \'{guild.id}\';')
         role_mute = cursor.fetchone()
         conn.commit()
-        print(role_mute[0])
+        
         role = ctx.message.guild.get_role(role_mute[0])
-        
         await ctx.channel.purge(limit = 1)
-        
-        print(f'[command.mute] От {ctx.author}, кого {who} роль {role}')
         
         if what == str('m'):
             if time >=1 and time <= 59:
@@ -85,7 +82,6 @@ class MuteCommand(commands.Cog):
                 await asyncio.sleep(time * 31557600)
                 await who.remove_roles(role)
                 await ctx.send('Мут забраний') 
-
 
     @commands.command()
     @commands.has_permissions(administrator = True)

@@ -63,7 +63,7 @@ class HelpCommands(commands.Cog):
         )
         emb2.add_field(
             name = '**Команды**',
-            value = f'`{prefix}prefix`\n`{prefix}wlc` или `{prefix}welcome`\n`{prefix}news`\n`{prefix}rwlc`'
+            value = f'`{prefix}prefix`\n`{prefix}wlc` или `{prefix}welcome`\n`{prefix}news`\n`{prefix}rwlc`\n`{prefix}mute`'
         )
         emb3=discord.Embed(
             title='Команды для развлечения', 
@@ -271,7 +271,24 @@ class HelpCommands(commands.Cog):
             text = ctx.message.author,
             icon_url = ctx.message.author.avatar_url
         )
-        await ctx.send(embed=rwlc_emb)     
+        await ctx.send(embed=rwlc_emb)
+    
+    @help_for_commands.command(name='mute')
+    async def mute_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        mute_emb=discord.Embed(
+            timestamp= ctx.message.created_at, 
+            title=f'Информация про команду: `{prefix}mute`', 
+            colour = discord.Color.teal(), 
+            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права администратора!\n**Команда**: `[mute]`\n**Описание**: выдает безмолвия участнику сервера\n**Использования**: `{prefix}mute *кому* *на сколько* *type* *причина*`\n\n**Type может быть:**\n**m** - Минуты\n**h** - Години\n**d** - Дни\n**y** - Лет\n\n\n**Пример:** `{prefix}mute [@тег_или_имя_пользователя] [time] [type] [reason]`'
+        )
+        mute_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(embed=mute_emb)
 
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
