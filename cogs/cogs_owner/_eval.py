@@ -25,7 +25,7 @@ class comp_code(commands.Cog):
     @commands.is_owner()
     async def run_code(self, ctx, *, code: str):
         c = eval(code)
-        await ctx.send(c)
+        await ctx.send(f'```{c}```')
 '''
     @run_code.error
     async def _eval_error(self, ctx, error):
