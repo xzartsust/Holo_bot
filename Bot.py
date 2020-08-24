@@ -42,7 +42,7 @@ cursor = conn.cursor()
 
 def get_prefix(bot, message):
     guildid = message.guild.id
-    cursor.execute(f'SELECT prefix FROM public."prefixDB" WHERE guild_id = \'{guildid}\';')
+    cursor.execute(f'SELECT prefix_guild FROM public."myBD" WHERE guild_id = \'{guildid}\';')
     prefix = cursor.fetchone()
     conn.commit()
     
