@@ -3,6 +3,7 @@ from discord.ext import commands
 import requests
 import json
 from discord.utils import get
+import asyncio
 
 
 class Test(commands.Cog):
@@ -12,8 +13,7 @@ class Test(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def test(self, ctx):
-        async for guild in self.bot.fetch_guilds():
-            print(guild.name)
+        await cxt.send(await asyncio(30))
 
 def setup(bot):
     bot.add_cog(Test(bot))
