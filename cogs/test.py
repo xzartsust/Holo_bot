@@ -13,7 +13,7 @@ class Test(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def test(self, ctx):
-        await cxt.send(await asyncio(30))
+        await ctx.send(await asyncio(30))
 
 def setup(bot):
     bot.add_cog(Test(bot))
