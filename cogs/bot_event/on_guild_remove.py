@@ -27,13 +27,7 @@ class bot_join_guild(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
         
-        cursor.execute(f'DELETE FROM public."prefixDB" WHERE guild_id = \'{guild.id}\';')
-        conn.commit()
-        
-        cursor.execute(f'DELETE FROM public."giveroles" WHERE guild_id = \'{guild.id}\';')
-        conn.commit()
-
-        cursor.execute(f'DELETE FROM public.mute_role WHERE guild_id = \'{guild.id}\';')
+        cursor.execute(f'DELETE FROM public."myBD" WHERE guild_id = \'{guild.id}\';')
         conn.commit()
 
 def setup(bot):

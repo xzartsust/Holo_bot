@@ -27,14 +27,9 @@ class bot_join_guild(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild): 
-        cursor.execute(f'INSERT INTO public."prefixDB" (guild_id, prefix) VALUES ({guild.id}, \'t!\');')
+        cursor.execute(f'INSERT INTO public."myBD" (guild_id, prefix_guild) VALUES ({guild.id}, \'t!\');')
         conn.commit()
         
-        cursor.execute(f'INSERT INTO public.giveroles(guild_id) VALUES ({guild.id});')
-        conn.commit()
-        
-        cursor.execute(f'INSERT INTO public.mute_role(guild_id) VALUES ({guild.id});')
-        conn.commit()
         
 def setup(bot):
     bot.add_cog(bot_join_guild(bot))

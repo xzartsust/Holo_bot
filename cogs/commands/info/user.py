@@ -4,7 +4,6 @@ from datetime import datetime
 import time
 
 
-
 class user(commands.Cog):
     def __init__(self,bot):
         self.bot=bot

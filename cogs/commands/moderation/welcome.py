@@ -64,10 +64,7 @@ class member_greeting(commands.Cog):
     async def welcome(self, ctx, channel: int, types: bool):
         guild = ctx.message.guild
         
-        cursor.execute(f'UPDATE public."prefixDB" SET channel_for_greeting = \'{channel}\' WHERE guild_id = \'{guild.id}\';')
-        conn.commit()
-
-        cursor.execute(f'UPDATE public."prefixDB" SET true_or_false = \'{types}\' WHERE guild_id = \'{guild.id}\';')
+        cursor.execute(f'UPDATE public."myBD" SET welcome_channel = \'{channel}\', wlc_chan_t_or_f = \'{types}\' WHERE guild_id = \'{guild.id}\';')
         conn.commit()
 
         channel1 = ctx.message.guild.get_channel(channel)

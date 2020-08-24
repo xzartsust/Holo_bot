@@ -30,7 +30,7 @@ class PrefixServer(commands.Cog):
     async def prefixserver(self, ctx):
         guild = ctx.message.guild
 
-        cursor.execute(f'SELECT prefix FROM public."prefixDB" WHERE guild_id = \'{guild.id}\';')
+        cursor.execute(f'SELECT prefix_guild FROM public."myBD" WHERE guild_id = \'{guild.id}\';')
         prefix = cursor.fetchone()
 
         await ctx.send(f'Server Prefix: \"**{prefix[0]}**\"')

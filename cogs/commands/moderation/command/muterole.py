@@ -37,7 +37,7 @@ class MuteRole(commands.Cog):
         guild = ctx.message.guild
         role = ctx.message.guild.get_role(role_id)
 
-        cursor.execute(f'UPDATE public.mute_role SET role_id = \'{role_id}\' WHERE guild_id = \'{guild.id}\';')
+        cursor.execute(f'UPDATE public."myBD" SET role_for_mute = \'{role_id}\' WHERE guild_id = \'{guild.id}\';')
         conn.commit()
 
         emb = discord.Embed(

@@ -31,7 +31,7 @@ class prefix(commands.Cog):
     @commands.check(is_owner_guild)
     async def prefix(self, ctx, prefix):
         guildid = ctx.guild.id
-        cursor.execute(f'UPDATE public."prefixDB" SET prefix=\'{prefix}\' WHERE guild_id = \'{guildid}\';')
+        cursor.execute(f'UPDATE public."myBD" SET prefix_guild=\'{prefix}\' WHERE guild_id = \'{guildid}\';')
         conn.commit()
         emb = discord.Embed(title='Выполнено успешно!', description=f'Префикс сервера изменений на "** {prefix} **"', colour= discord.Color.green(), timestamp= ctx.message.created_at)
         emb.set_footer(text=ctx.message.author)

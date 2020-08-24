@@ -35,7 +35,7 @@ class MuteCommand(commands.Cog):
     async def mute(self, ctx, who: discord.Member, time: int, what: str, reason = None):
         
         guild = ctx.message.guild
-        cursor.execute(f'SELECT role_id FROM public.mute_role WHERE guild_id = \'{guild.id}\';')
+        cursor.execute(f'SELECT role_for_mute FROM public."myBD" WHERE guild_id = \'{guild.id}\';')
         role_mute = cursor.fetchone()
         conn.commit()
         
