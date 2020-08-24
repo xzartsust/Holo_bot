@@ -114,5 +114,6 @@ bot.load_extension('cogs.bot_event.on_guild_remove')
 
 TOKEN = os.environ.get('TOKEN')
 
+
 bot.loop.create_task(change_status())
 bot.run(TOKEN)
