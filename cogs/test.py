@@ -14,8 +14,8 @@ class Test(commands.Cog):
     @commands.is_owner()
     async def test(self, сtx, role: discord.Role = None):
         guildid = сtx.message.guild
-        allvoice = guildid.voice_channels
-        alltext = guildid.text_channels
+        allvoice = guildid.voice_channels[0]
+        alltext = guildid.text_channels[0]
         print(allvoice)
         print(alltext)
         await alltext.set_permissions(role, read_messages = True, send_messages = True, manage_channels = True, manage_roles = True)
