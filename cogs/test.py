@@ -12,7 +12,7 @@ class Test(commands.Cog):
         
     @commands.command()
     @commands.is_owner()
-    async def sp(self, сtx, role: discord.Role = None):
+    async def set_perms(self, сtx, role: discord.Role = None):
         guildid = ctx.message.guild
         allvoice = guildid.voice_channels
         alltext = guildid.text_channels
