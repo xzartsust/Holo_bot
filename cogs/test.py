@@ -12,8 +12,13 @@ class Test(commands.Cog):
         
     @commands.command()
     @commands.is_owner()
-    async def test(self, ctx):
-        await ctx.send()
+    async def sp(self, сtx, role: discord.Role = None):
+        guildid = ctx.message.guild
+        allvoice = guildid.voice_channels
+        alltext = guildid.text_channels
+        await alltext.set_permissions(role, read_messages = True, send_messages = True, manage_channels = True, manage_roles = True)
+        await allvoice.set_permissions(role, connect = True, manage_channels = True, manage_roles = True)
+        await сtx.send(f'{сtx.author.mention}, вы успешно установили {role.mention} права доступа во всех текстовых/голосовых каналах')
 
 def setup(bot):
     bot.add_cog(Test(bot))
