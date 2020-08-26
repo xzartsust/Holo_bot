@@ -17,7 +17,8 @@ class FunNeko(commands.Cog):
 
         embed = discord.Embed(
             title = 'Кошечка... :relaxed:',
-            timestamp = ctx.message.created_at
+            timestamp = ctx.message.created_at,
+            colour = discord.Color.blue()
         )
         embed.set_image(
             url=img
