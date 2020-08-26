@@ -23,6 +23,18 @@ class FunHoloLewd(commands.Cog):
             url=img
         )
         await ctx.send(embed = embed)
+    
+    @hololewd.error
+    async def hololewd_error(self, error, ctx):
+        if isinstance(error, commands.NSFWChannelRequired):
+            emb = discord.Embed(
+                timestamp= ctx.message.created_at, 
+                title='Ошибка!!!', colour=discord.Color.red(), 
+                description='В канале выключен режим NSFW'
+                )
+            emb.set_footer(text= ctx.message.author)
+            await ctx.channel.purge(limit=1)
+            await ctx.send(embed=emb)
 
 def setup(bot):
     bot.add_cog(FunHoloLewd(bot))
