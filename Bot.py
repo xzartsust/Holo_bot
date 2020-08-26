@@ -98,6 +98,7 @@ bot.load_extension('cogs.commands.moderation.command.muterole')
 bot.load_extension('cogs.commands.fun.neko')
 bot.load_extension('cogs.commands.fun.nsfw.nekolewd')
 bot.load_extension('cogs.commands.fun.textcat')
+bot.load_extension('cogs.commands.fun.nsfw.hololewd')
 
 
 ################################################## Cogs owner commands #################################################################
