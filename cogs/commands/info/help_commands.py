@@ -73,8 +73,16 @@ class HelpCommands(commands.Cog):
             name = '**Команды**',
             value = f'`{prefix}fox`\n`{prefix}dog`\n`{prefix}cat`\n`{prefix}panda`\n`{prefix}redpanda`\n`{prefix}koala`\n\n**Anime:**\n`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`\n`{prefix}memes`\n`{prefix}neko`\n`{prefix}holo`'
         )
+        emb4=discord.Embed(
+            title = 'NSFW команды',
+            description = 'Эти команды можно использовать только в чате где включен режим **NSFW**'
+        )
+        emb4.add_field(
+            name = '**Команды**',
+            value = f'`{prefix}hololewd`\n`{prefix}nekolewd`'
+        )
 
-        embeds=[emb,emb1,emb2,emb3]
+        embeds=[emb,emb1,emb2,emb3,emb4]
         message= await ctx.send(embed= emb)
         page= pag(self.bot, message, only=ctx.author, use_more=False, embeds=embeds, color=0x008000, time_stamp=True)
     
