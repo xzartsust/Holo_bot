@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import requests
 import json
+from bs4 import BeautifulSoup
 
 class FunNSFWNekoLewd(commands.Cog):
     def __init__(self, bot):
@@ -11,8 +12,9 @@ class FunNSFWNekoLewd(commands.Cog):
     @commands.is_nsfw()
     async def nekolewd(self, ctx):
         response = requests.get('https://nekos.life/lewd')
-        json_data = json.loads(response.text)
-        img = json_data['url']
+        html = response.text
+        soup = BeautifulSoup(html,'html.parser')
+        img = soup.find('img')['src']
 
         embed = discord.Embed(
             title = 'Кошечка... Как еротишненько :relaxed:',
