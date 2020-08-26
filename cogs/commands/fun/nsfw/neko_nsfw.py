@@ -51,7 +51,7 @@ class FunNSFWNekoLewd(commands.Cog):
         img = json_data['url']
 
         embed = discord.Embed(
-            title = 'Как еротишненько :relaxed:',
+            title = 'Кошечка... Как еротишненько :relaxed:',
             timestamp = ctx.message.created_at,
             colour = discord.Color.blue()
         )
@@ -68,7 +68,7 @@ class FunNSFWNekoLewd(commands.Cog):
         img = json_data['url']
 
         embed = discord.Embed(
-            title = 'Как еротишненько :relaxed:',
+            title = 'Кошечка... Как еротишненько :relaxed:',
             timestamp = ctx.message.created_at,
             colour = discord.Color.blue()
         )
