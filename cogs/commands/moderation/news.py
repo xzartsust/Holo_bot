@@ -6,7 +6,7 @@ class news(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.has_permissions(administrator = True)
+    @commands.has_permissions(manage_messages = True)
     async def news(self, ctx, channel: discord.TextChannel, title, *, text):
         await ctx.channel.purge(limit=1)
         
