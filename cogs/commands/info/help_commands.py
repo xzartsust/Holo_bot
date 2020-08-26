@@ -50,14 +50,14 @@ class HelpCommands(commands.Cog):
             value=f'Чтобы получить больше информации о какой либо команде, вы можете написать: `{prefix}help *команда*` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n'
         )
         emb.set_thumbnail(
-            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png'
+            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
         emb1= discord.Embed(
             title='Команды информации', 
             description=f'Что бы узнать больше о команде напишите `{prefix}help [команда]`. \n**Пример**: `{prefix}help user`'
         )
         emb1.set_thumbnail(
-            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png'
+            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
         emb1.add_field(
             name='**Команды**', 
@@ -68,7 +68,7 @@ class HelpCommands(commands.Cog):
             description=f'Команды для модерации сервера'
         )
         emb2.set_thumbnail(
-            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png'
+            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
         emb2.add_field(
             name = '**Команды**',
@@ -79,11 +79,24 @@ class HelpCommands(commands.Cog):
             description=f'Команды для развлечения на сервере'
         )
         emb3.set_thumbnail(
-            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png'
+            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
         emb3.add_field(
             name = '**Команды**',
-            value = f'**Animal**\n`{prefix}fox`\n`{prefix}dog`\n`{prefix}cat`\n`{prefix}panda`\n`{prefix}redpanda`\n`{prefix}koala`\n\n**Anime:**\n`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`\n`{prefix}memes`\n`{prefix}neko`\n`{prefix}holo`'
+            value = 'Список'
+        )
+        emb3.add_field(
+            name = f'**Категория Anime**',
+            value = f'`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`\n`{prefix}memes`\n`{prefix}neko`\n`{prefix}holo`'
+        )
+        emb3.add_field(
+            name = '**Категория Animal**',
+            value = f'`{prefix}fox`\n`{prefix}dog`\n`{prefix}cat`\n`{prefix}panda`\n`{prefix}redpanda`\n`{prefix}koala`',
+            inline = True
+        )
+        emb3.add_field(
+            name = '**Категория Text**',
+            value = f'{prefix}tcat'
         )
         emb4=discord.Embed(
             title = 'NSFW команды',
@@ -100,7 +113,7 @@ class HelpCommands(commands.Cog):
             inline = True
         )
         emb4.set_thumbnail(
-            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png'
+            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
         emb4.add_field(
             name = '**Neko**',
