@@ -71,7 +71,7 @@ class HelpCommands(commands.Cog):
         )
         emb3.add_field(
             name = '**Команды**',
-            value = f'`{prefix}fox`\n`{prefix}dog`\n`{prefix}cat`\n`{prefix}panda`\n`{prefix}redpanda`\n`{prefix}koala`\n`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`\n`{prefix}memes`\n`{prefix}neko`'
+            value = f'`{prefix}fox`\n`{prefix}dog`\n`{prefix}cat`\n`{prefix}panda`\n`{prefix}redpanda`\n`{prefix}koala`\n\n**Anime:**\n`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`\n`{prefix}memes`\n`{prefix}neko`\n`{prefix}holo`'
         )
 
         embeds=[emb,emb1,emb2,emb3]
