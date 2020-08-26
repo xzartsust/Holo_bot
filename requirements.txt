@@ -48,3 +48,5 @@ wrapt==1.12.1
 yarl==1.4.2
 youtube-dl==2020.6.16.1
 requests==2.24.0
+beautifulsoup4==4.9.1      
+bs4==0.0.1
