@@ -91,7 +91,7 @@ class HelpCommands(commands.Cog):
         )
         emb4.add_field(
             name = '**Команды**',
-            value = 's',
+            value = 'Категории',
             inline = False
         )
         emb4.add_field(
