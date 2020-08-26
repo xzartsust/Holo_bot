@@ -89,7 +89,7 @@ class HelpCommands(commands.Cog):
         )
         emb4.add_field(
             name = '**Neko**',
-            value = f'`{prefix}nekolewd`\n`{prefix}nekogif`',
+            value = f'`{prefix}nekolewd`\n`{prefix}nekogif`\n`{prefix}lewdkemo`\n`{prefix}erokemo`',
             inline = False
         )
 
