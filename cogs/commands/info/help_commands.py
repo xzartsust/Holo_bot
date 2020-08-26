@@ -49,9 +49,15 @@ class HelpCommands(commands.Cog):
             name='**Другая информация**',
             value=f'Чтобы получить больше информации о какой либо команде, вы можете написать: `{prefix}help *команда*` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n'
         )
+        emb.set_thumbnail(
+            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png'
+        )
         emb1= discord.Embed(
             title='Команды информации', 
             description=f'Что бы узнать больше о команде напишите `{prefix}help [команда]`. \n**Пример**: `{prefix}help user`'
+        )
+        emb1.set_thumbnail(
+            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png'
         )
         emb1.add_field(
             name='**Команды**', 
@@ -61,6 +67,9 @@ class HelpCommands(commands.Cog):
             title='Команды для администрации и модерации сервера', 
             description=f'Команды для модерации сервера'
         )
+        emb2.set_thumbnail(
+            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png'
+        )
         emb2.add_field(
             name = '**Команды**',
             value = f'`{prefix}prefix`\n`{prefix}wlc` или `{prefix}welcome`\n`{prefix}news`\n`{prefix}rwlc`\n`{prefix}mute`\n`{prefix}muterole`'
@@ -68,6 +77,9 @@ class HelpCommands(commands.Cog):
         emb3=discord.Embed(
             title='Команды для развлечения', 
             description=f'Команды для развлечения на сервере'
+        )
+        emb3.set_thumbnail(
+            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png'
         )
         emb3.add_field(
             name = '**Команды**',
@@ -86,6 +98,9 @@ class HelpCommands(commands.Cog):
             name = '**Holo**',
             value = f'`{prefix}hololewd`\n`{prefix}holoero`',
             inline = True
+        )
+        emb4.set_thumbnail(
+            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png'
         )
         emb4.add_field(
             name = '**Neko**',
