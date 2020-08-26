@@ -79,7 +79,7 @@ class HelpCommands(commands.Cog):
         )
         emb4.add_field(
             name = '**Команды**',
-            value = f'`{prefix}hololewd`\n`{prefix}nekolewd`'
+            value = f'`{prefix}hololewd`\n`{prefix}holoero`\n`{prefix}nekolewd`'
         )
 
         embeds=[emb,emb1,emb2,emb3,emb4]
