@@ -3,19 +3,19 @@ from discord.ext import commands
 import requests
 import json
 
-class FunHoloLewd(commands.Cog):
+class FunHolo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.command()
     @commands.is_nsfw()
-    async def hololewd(self, ctx):
+    async def holo(self, ctx):
         response = requests.get('https://nekos.life/api/v2/img/hololewd')
         json_data = json.loads(response.text)
         img = json_data['url']
 
         embed = discord.Embed(
-            title = 'Холочка... Как еротишненько :relaxed:',
+            title = 'Холочка... :relaxed:',
             timestamp = ctx.message.created_at,
             colour = discord.Color.blue()
         )
@@ -25,4 +25,4 @@ class FunHoloLewd(commands.Cog):
         await ctx.send(embed = embed)
 
 def setup(bot):
-    bot.add_cog(FunHoloLewd(bot))
+    bot.add_cog(FunHolo(bot))
