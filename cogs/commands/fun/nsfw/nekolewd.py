@@ -26,7 +26,7 @@ class FunNSFWNekoLewd(commands.Cog):
         await ctx.send(embed = embed)
     
     @nekolewd.error
-    async def hololewd_error(self, error, ctx):
+    async def hololewd_error(self, ctx, error):
         if isinstance(error, commands.NSFWChannelRequired):
             emb = discord.Embed(
                 timestamp= ctx.message.created_at, 
