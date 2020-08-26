@@ -88,7 +88,7 @@ class HelpCommands(commands.Cog):
         )
         emb3.add_field(
             name = f'**Категория Anime**',
-            value = f'`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`\n`{prefix}memes`\n`{prefix}neko`\n`{prefix}holo`',
+            value = f'`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`\n`{prefix}neko`\n`{prefix}holo`',
             inline = True
         )
         emb3.add_field(
@@ -99,6 +99,11 @@ class HelpCommands(commands.Cog):
         emb3.add_field(
             name = '**Категория Text**',
             value = f'`{prefix}tcat`'
+        )
+        emb3.add_field(
+            name = f'**Категория Memes**',
+            value = f'`{prefix}memes`',
+            inline = False
         )
         emb4=discord.Embed(
             title = 'NSFW команды',
