@@ -96,6 +96,8 @@ bot.load_extension('cogs.commands.moderation.rwlc')
 #bot.load_extension('cogs.commands.moderation.command.mute')
 bot.load_extension('cogs.commands.moderation.command.muterole')
 bot.load_extension('cogs.commands.fun.neko')
+bot.load_extension('cogs.commands.fun.nsfw.nekolewd')
+bot.load_extension('cogs.commands.fun.textcat')
 
 
 ################################################## Cogs owner commands #################################################################
