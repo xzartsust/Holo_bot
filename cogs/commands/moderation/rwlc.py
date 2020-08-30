@@ -35,11 +35,11 @@ class AuthoAddRole(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member):
 
-        cursor.execute(f'SELECT on_or_off FROM public."giveroles" WHERE guild_id = {member.guild.id};')
+        cursor.execute(f'SELECT wlc_role_t_or_f FROM public."myBD" WHERE guild_id = {member.guild.id};')
         on_or_off = cursor.fetchone()
         conn.commit()
 
-        cursor.execute(f'SELECT role_id FROM public."giveroles" WHERE guild_id = {member.guild.id};')
+        cursor.execute(f'SELECT wlc_role FROM public."myBD" WHERE guild_id = {member.guild.id};')
         role = cursor.fetchone()
         conn.commit()
 
