@@ -8,7 +8,6 @@ class FunHolo(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.is_nsfw()
     async def holo(self, ctx):
         response = requests.get('https://nekos.life/api/v2/img/holo')
         json_data = json.loads(response.text)
