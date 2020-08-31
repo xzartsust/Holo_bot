@@ -31,11 +31,11 @@ class member_greeting(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        cursor.execute(f'SELECT channel_for_greeting FROM public."prefixDB" WHERE guild_id = \'{member.guild.id}\';')
+        cursor.execute(f'SELECT welcome_channel FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
         chan = cursor.fetchone()
         conn.commit()
         
-        cursor.execute(f'SELECT true_or_false FROM public."prefixDB" WHERE guild_id = \'{member.guild.id}\';')
+        cursor.execute(f'SELECT wlc_chan_t_or_f FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
         yes_or_not = cursor.fetchone()
         conn.commit()
         
