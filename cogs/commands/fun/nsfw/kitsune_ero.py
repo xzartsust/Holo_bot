@@ -20,7 +20,7 @@ class FunKitsuneEro(commands.Cog):
             colour = discord.Color.blue()
         )
         embed.set_image(
-            url = json_data['link']
+            url = json_data['url']
         )
         await ctx.send(embed = embed)
 

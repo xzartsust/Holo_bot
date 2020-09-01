@@ -88,7 +88,7 @@ class HelpCommands(commands.Cog):
         )
         emb3.add_field(
             name = f'**Категория Anime**',
-            value = f'`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`\n`{prefix}neko`\n`{prefix}holo`\n`{prefix}tickle`\n`{prefix}poke`\n`{prefix}nekogif`',
+            value = f'`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`\n`{prefix}neko`\n`{prefix}holo`\n`{prefix}tickle`\n`{prefix}poke`',
             inline = True
         )
         emb3.add_field(

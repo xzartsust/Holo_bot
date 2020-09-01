@@ -3,3 +3,4 @@ __pycache__/config_for_bot.cpython-38.pyc
 discord.log
 simple.py
 SQL.sql
+cogs/commands/fun/neko_gif.py

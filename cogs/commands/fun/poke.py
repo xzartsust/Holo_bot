@@ -19,7 +19,7 @@ class FunPoke(commands.Cog):
             colour = discord.Color.blue()
         )
         embed.set_image(
-            url = json_data['link']
+            url = json_data['url']
         )
         await ctx.send(f'{ctx.message.author.mention}' + ' тыкнул!' ,embed = embed)
         
