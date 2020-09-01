@@ -88,7 +88,7 @@ class HelpCommands(commands.Cog):
         )
         emb3.add_field(
             name = f'**Категория Anime**',
-            value = f'`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`\n`{prefix}neko`\n`{prefix}holo`',
+            value = f'`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`\n`{prefix}neko`\n`{prefix}holo`\n`{prefix}tickle`\n`{prefix}poke`\n`{prefix}nekogif`',
             inline = True
         )
         emb3.add_field(
@@ -124,8 +124,12 @@ class HelpCommands(commands.Cog):
         )
         emb4.add_field(
             name = '**Neko**',
-            value = f'`{prefix}nekolewd`\n`{prefix}nekogif`\n`{prefix}lewdkemo`\n`{prefix}erokemo`',
+            value = f'`{prefix}nekolewd`\n`{prefix}nekogif`\n`{prefix}lewdkemo`\n`{prefix}erokemo`\n`{prefix}kitsunero`\n`{prefix}lewdkitsune`',
             inline = True
+        )
+        emb4.add_field(
+            name = '**Anime**',
+            value = f'`{prefix}aniero`\n`{prefix}classic`\n`{prefix}keta`,\n`{prefix}les`'
         )
 
         embeds=[emb,emb1,emb2,emb3,emb4]
