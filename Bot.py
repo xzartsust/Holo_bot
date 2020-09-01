@@ -103,7 +103,7 @@ bot.load_extension('cogs.commands.fun.holo')
 
 bot.load_extension('cogs.commands.fun.tickle')
 bot.load_extension('cogs.commands.fun.nsfw.classic')
-bot.load_extension('cogs.commands.fun.neko_gif')
+#bot.load_extension('cogs.commands.fun.neko_gif')
 bot.load_extension('cogs.commands.fun.nsfw.aniero')
 bot.load_extension('cogs.commands.fun.nsfw.kitsune_ero')
 bot.load_extension('cogs.commands.fun.poke')
