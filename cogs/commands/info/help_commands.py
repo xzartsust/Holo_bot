@@ -72,7 +72,7 @@ class HelpCommands(commands.Cog):
         )
         emb2.add_field(
             name = '**Команды**',
-            value = f'`{prefix}prefix`\n`{prefix}wlc` или `{prefix}welcome`\n`{prefix}news`\n`{prefix}rwlc`\n`{prefix}mute`\n`{prefix}muterole`'
+            value = f'`{prefix}prefix`\n`{prefix}wlc` или `{prefix}welcome`\n`{prefix}news`\n`{prefix}rwlc`\n`{prefix}mute`\n`{prefix}muterole`\n{prefix}ban'
         )
         emb3=discord.Embed(
             title='Команды для развлечения', 
@@ -365,6 +365,22 @@ class HelpCommands(commands.Cog):
             )
         await ctx.send(embed=muterole_emb)
     
+    @help_for_commands.command(name='ban')
+    async def ban_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        muterole_emb=discord.Embed(
+            timestamp= ctx.message.created_at, 
+            title=f'Информация про команду: `{prefix}ban`', 
+            colour = discord.Color.teal(), 
+            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Ban Members**!\n**Команда**: `[ban]`\n**Описание**: Заблокировать пользователя на сервере\n**Использования**: `{prefix}ban *кому* *reason*`\n reason - может быть пустым\n\n**Пример:** `{prefix}ban @Member spam bot`\n**Внимание:** Можно сразу несколько пользователей\n**Пример:** `{prefix}ban` @Member @Member2 *reson*'
+            )
+        muterole_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+            )
+        await ctx.send(embed=muterole_emb)
 
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
