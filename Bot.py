@@ -100,7 +100,6 @@ bot.load_extension('cogs.commands.fun.nsfw.neko_nsfw')
 bot.load_extension('cogs.commands.fun.textcat')
 bot.load_extension('cogs.commands.fun.nsfw.holo_nsfw')
 bot.load_extension('cogs.commands.fun.holo')
-
 bot.load_extension('cogs.commands.fun.tickle')
 bot.load_extension('cogs.commands.fun.nsfw.classic')
 #bot.load_extension('cogs.commands.fun.neko_gif')
@@ -110,6 +109,7 @@ bot.load_extension('cogs.commands.fun.poke')
 bot.load_extension('cogs.commands.fun.nsfw.les')
 bot.load_extension('cogs.commands.fun.nsfw.lewd_kitsune')
 bot.load_extension('cogs.commands.fun.nsfw.keta')
+bot.load_extension('cogs.commands.moderation.command.ban')
 
 
 ################################################## Cogs owner commands #################################################################
