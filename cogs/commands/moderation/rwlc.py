@@ -55,6 +55,8 @@ class AuthoAddRole(commands.Cog):
     async def rwlc(self, ctx, role: int, types: bool):
         guild = ctx.message.guild
 
+        await ctx.channel.purge(limit=1)
+
         cursor.execute(f'UPDATE public."myBD" SET wlc_role=\'{role}\', wlc_role_t_or_f=\'{types}\' WHERE guild_id = \'{guild.id}\';')
         conn.commit()
         
