@@ -374,7 +374,7 @@ class HelpCommands(commands.Cog):
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: `{prefix}ban`', 
             colour = discord.Color.teal(), 
-            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Ban Members**!\n**Команда**: `[ban]`\n**Описание**: Заблокировать пользователя на сервере\n**Использования**: `{prefix}ban *кому* *reason*`\n reason - может быть пустым\n\n**Пример:** `{prefix}ban @Member spam bot`\n**Внимание:** Можно сразу несколько пользователей\n**Пример:** `{prefix}ban` @Member @Member2 *reson*'
+            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Ban Members**!\n**Команда**: `[ban]`\n**Описание**: Заблокировать пользователя на сервере\n**Использования**: `{prefix}ban *кому* *reason*`\n reason - может быть пустым\n\n**Пример:** `{prefix}ban @Member spam bot`\n\n**Внимание:** Можно сразу несколько пользователей\n**Пример:** `{prefix}ban @Member @Member2 *reson*`'
             )
         muterole_emb.set_footer(
             text = ctx.message.author,
