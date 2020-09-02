@@ -82,12 +82,12 @@ class member_greeting(commands.Cog):
             await ctx.guild.system_channel.send(embed = emb)
         elif ctx.guild.system_channel is None:
             await ctx.send(embed = emb)
-
+    '''
     @welcome.error
     async def welcome_error(self, ctx, error):
         if isinstance(error, commands.BadArgument):
             await ctx.send('Второй аргумент может быть только тип: Число, третий аргумент может быть только true или false')
-
+'''
 
 def setup(bot):
     bot.add_cog(member_greeting(bot))
