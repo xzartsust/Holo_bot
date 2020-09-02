@@ -88,5 +88,6 @@ class member_greeting(commands.Cog):
         if isinstance(error, commands.BadArgument):
             await ctx.send('Второй аргумент может быть только тип: Число, третий аргумент может быть только true или false')
 
+
 def setup(bot):
     bot.add_cog(member_greeting(bot))
