@@ -64,7 +64,7 @@ class member_greeting(commands.Cog):
     async def welcome(self, ctx, channel: int, types: bool):
         guild = ctx.message.guild
 
-        await ctx.message.purge(limit = 1)
+        await ctx.channel.purge(limit=1)
         
         cursor.execute(f'UPDATE public."myBD" SET welcome_channel = \'{channel}\', wlc_chan_t_or_f = \'{types}\' WHERE guild_id = \'{guild.id}\';')
         conn.commit()
@@ -87,7 +87,7 @@ class member_greeting(commands.Cog):
     async def welcome_error(self, ctx, error):
         if isinstance(error, commands.BadArgument):
             await ctx.send('Второй аргумент может быть только тип: Число, третий аргумент может быть только true или false')
-'''
 
+'''
 def setup(bot):
     bot.add_cog(member_greeting(bot))
