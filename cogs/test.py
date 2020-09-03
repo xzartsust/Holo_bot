@@ -22,7 +22,7 @@ class Test(commands.Cog):
         
     @commands.command()
     @commands.is_owner()
-    async def test(self, ctx):
+    async def test(self, ctx, url: str):
         
         def endSong(self, guild, path):
             os.remove(path)
