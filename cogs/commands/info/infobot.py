@@ -17,7 +17,7 @@ class InfoBot(commands.Cog):
         result = time.monotonic() - start
 
         embed=discord.Embed(
-            title=":information_source:BOT INFORMATION:information_source:",
+            title=":information_source: BOT INFORMATION :information_source:",
             timestamp = ctx.message.created_at,
             colour = discord.Color.purple()
         )
@@ -42,12 +42,12 @@ class InfoBot(commands.Cog):
         )
         embed.add_field(
             name="Сайт",
-            value="```Скоро...```",
+            value="```https://github.com/xzartsust/Tobi-Bot```",
             inline=True
         )
         embed.add_field(
             name="Support server",
-            value="https://discord.gg/8f4KUp",
+            value="```https://discord.gg/8f4KUp```",
             inline=False
         )
         embed.add_field(
