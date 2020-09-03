@@ -32,8 +32,7 @@ class Test(commands.Cog):
             guild = "743761540758503444" #id of your server which you can get by right clicking on server name and clicking "Copy ID" (developer mode must be on)
             path = str(file['title']) + "-" + str(file['id'] + ".mp3")
         
-        channel1 = self.bot.get_channel(743818773655715840) #id of your channel (you get it like server id, but by right clicking on channel)                         
-        voice_client = await channel1.connect()                                         
+        await ctx.message.author.voice.channel.connect(reconnect=True)                                     
         
         voice_client.play(discord.FFmpegPCMAudio(path), after=lambda x: endSong(guild, path))
         voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
