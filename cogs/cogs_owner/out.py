@@ -14,7 +14,6 @@ class logout(commands.Cog):
     async def logout(self, ctx):
         await self.bot.logout()
 
-
 def setup(bot):
     bot.add_cog(logout(bot))
 
