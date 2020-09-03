@@ -43,7 +43,7 @@ class InfoBot(commands.Cog):
         embed.add_field(
             name="Сайт",
             value="https://github.com/xzartsust/Tobi-Bot",
-            inline=True
+            inline=False
         )
         embed.add_field(
             name="Support server",
