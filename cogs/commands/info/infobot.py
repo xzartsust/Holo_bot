@@ -14,11 +14,6 @@ class InfoBot(commands.Cog):
         
         await ctx.channel.purge(limit = 1)
 
-        d = self.bot.get_user(int(bot_owner))
-        
-        print('Bot_owner: ', bot_owner)
-        print(d)
-
         embed=discord.Embed(
             title=":information_source: BOT INFORMATION :information_source:",
             timestamp = ctx.message.created_at,
