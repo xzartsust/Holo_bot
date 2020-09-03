@@ -35,7 +35,8 @@ class Test(commands.Cog):
             path = str(file['title']) + "-" + str(file['id'] + ".mp3")
         
         print(file, '\n')
-        print(ydl, '\n')
+
+        print(file['title'],'\n')
         
         channel_id = ctx.message.author.voice.channel
 

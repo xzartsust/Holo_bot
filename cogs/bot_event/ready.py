@@ -8,7 +8,7 @@ class bot_ready(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print(f'Connect is {self.bot.user.name}')
+        print(f'Connect is {self.bot.user.name}\n')
     
 
 def setup(bot):
