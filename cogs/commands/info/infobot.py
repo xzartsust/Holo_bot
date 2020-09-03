@@ -14,7 +14,7 @@ class InfoBot(commands.Cog):
         
         await ctx.channel.purge(limit = 1)
 
-        d = self.bot.get_user(399851432221868033)
+        d = self.bot.get_user(int(bot_owner))
         
         print('Bot_owner: ', bot_owner)
         print(d)
@@ -26,7 +26,7 @@ class InfoBot(commands.Cog):
         )
         embed.add_field(
             name = 'Developer',
-            value = f'```{self.bot.get_user(bot_owner)}```'
+            value = f'```{self.bot.get_user(int(bot_owner))}```'
         )
         embed.add_field(
             name="Library",
