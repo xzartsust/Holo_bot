@@ -37,9 +37,7 @@ class Test(commands.Cog):
         channel = ctx.message.author.voice.channel.id
 
         channel1 = self.bot.get_channel(channel)                       
-        voice_client = await channel1.connect()
-        
-        await ctx.message.author.voice.channel.connect(reconnect=True)                                     
+        voice_client = await channel1.connect()                                     
         
         voice_client.play(discord.FFmpegPCMAudio(path), after=lambda x: endSong(guild, path))
         voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
