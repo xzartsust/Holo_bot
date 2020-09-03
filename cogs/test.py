@@ -34,12 +34,12 @@ class Test(commands.Cog):
             guild = guild_id 
             path = str(file['title']) + "-" + str(file['id'] + ".mp3")
         
+        print(file, '\n')
+        print(ydl, '\n')
+        
         channel_id = ctx.message.author.voice.channel
 
-        print('channel_id:', channel_id)
-
-        channel1 = self.bot.get_channel(channel_id.id)
-        print('channe1: ', channel1)                    
+        channel1 = self.bot.get_channel(channel_id.id)                   
         voice_client = await channel1.connect()                                     
         
         voice_client.play(discord.FFmpegPCMAudio(path), after=lambda x: endSong(guild, path))
