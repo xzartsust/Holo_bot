@@ -26,8 +26,7 @@ class Test(commands.Cog):
         
         def endSong(self, guild, path):
             os.remove(path)
-        
-        url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ" #link to your song on YouTube
+         #link to your song on YouTube
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             file = ydl.extract_info(url, download=True)
             guild = "743761540758503444" #id of your server which you can get by right clicking on server name and clicking "Copy ID" (developer mode must be on)
