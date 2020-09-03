@@ -4,3 +4,4 @@ discord.log
 simple.py
 SQL.sql
 cogs/commands/fun/neko_gif.py
+tbl.json
