@@ -82,7 +82,7 @@ class member_greeting(commands.Cog):
             await ctx.guild.system_channel.send(embed = emb)
         elif ctx.guild.system_channel is None:
             await ctx.send(embed = emb)
-    '''
+'''
     @welcome.error
     async def welcome_error(self, ctx, error):
         if isinstance(error, commands.BadArgument):
