@@ -42,12 +42,12 @@ class InfoBot(commands.Cog):
         )
         embed.add_field(
             name="Сайт",
-            value="```https://github.com/xzartsust/Tobi-Bot```",
+            value="https://github.com/xzartsust/Tobi-Bot",
             inline=True
         )
         embed.add_field(
             name="Support server",
-            value="```https://discord.gg/8f4KUp```",
+            value="https://discord.gg/8f4KUp",
             inline=False
         )
         embed.add_field(
