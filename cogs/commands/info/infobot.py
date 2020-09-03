@@ -1,10 +1,7 @@
 import discord
 from discord.ext import commands
-import time
-import datetime as DT
 import os
 
-start = time.monotonic()
 
 class InfoBot(commands.Cog):
     def __init__(self, bot):
@@ -12,9 +9,8 @@ class InfoBot(commands.Cog):
 
     @commands.command()
     async def infobot(self, ctx):
-        await ctx.channel.purge(limit = 1)
         
-        result = time.monotonic() - start
+        await ctx.channel.purge(limit = 1)
 
         embed=discord.Embed(
             title=":information_source: BOT INFORMATION :information_source:",
@@ -49,10 +45,6 @@ class InfoBot(commands.Cog):
             name="Support server",
             value="https://discord.gg/8f4KUp",
             inline=False
-        )
-        embed.add_field(
-            name='Время с последнего запуска',
-            value= f'```{DT.timedelta(seconds=result)}```'
         )
         await ctx.send(embed=embed)
 
