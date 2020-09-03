@@ -26,21 +26,28 @@ class Test(commands.Cog):
         
         def endSong(self, guild, path):
             os.remove(path)
-         #link to your song on YouTube
+
+        guild_id = ctx.message.guild.id 
+        
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             file = ydl.extract_info(url, download=True)
-            guild = "743761540758503444" #id of your server which you can get by right clicking on server name and clicking "Copy ID" (developer mode must be on)
+            guild = guild_id 
             path = str(file['title']) + "-" + str(file['id'] + ".mp3")
+        
+        channel = ctx.message.author.voice.channel.id
+
+        channel1 = self.bot.get_channel(channel)                       
+        voice_client = await channel1.connect()
         
         await ctx.message.author.voice.channel.connect(reconnect=True)                                     
         
         voice_client.play(discord.FFmpegPCMAudio(path), after=lambda x: endSong(guild, path))
         voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
         
-        while voice_client.is_playing(): #waits until song ends
+        while voice_client.is_playing(): 
             await asyncio.sleep(1)
         else:
-            await voice_client.disconnect() #and disconnects
+            await voice_client.disconnect()
             print("Disconnected")
     
 def setup(bot):
