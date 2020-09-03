@@ -36,7 +36,10 @@ class Test(commands.Cog):
         
         channel_id = ctx.message.author.voice.channel
 
-        channel1 = self.bot.get_channel(channel_id)                       
+        print('channel_id', channel_id)
+
+        channel1 = self.bot.get_channel(channel_id)
+        print('channel: ', channel1)                    
         voice_client = await channel1.connect()                                     
         
         voice_client.play(discord.FFmpegPCMAudio(path), after=lambda x: endSong(guild, path))
