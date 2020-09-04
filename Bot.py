@@ -100,6 +100,7 @@ bot.load_extension('cogs.commands.music.join')
 bot.load_extension('cogs.commands.music.leave')
 bot.load_extension('cogs.commands.music.pause')
 bot.load_extension('cogs.commands.music.resume')
+bot.load_extension('cogs.commands.music.stop')
 
 
 ################################################## Cogs Owner commands ############################################################
