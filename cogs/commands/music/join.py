@@ -25,7 +25,7 @@ class MusicJion(commands.Cog):
         if voice and voice.is_connected():
             await voice.move_to(channel)
         else:
-            voice = await channel.connect()s
+            voice = await channel.connect()
         
 
 def setup(bot):
