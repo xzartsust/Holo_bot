@@ -18,8 +18,8 @@ class MusicPause(commands.Cog):
             voice.pause()
             await ctx.send('Music pause')
         else:
-            print('Music not plaing failed pause')
-            await ctx.send('Music not plaing failed pause')
+            print('Music not playing failed pause')
+            await ctx.send('Music not playing failed pause')
 
 def setup(bot):
     bot.add_cog(MusicPause(bot))
