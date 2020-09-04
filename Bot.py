@@ -112,6 +112,12 @@ bot.load_extension('cogs.commands.fun.nsfw.keta')
 bot.load_extension('cogs.commands.moderation.command.ban')
 
 
+################################################## Music commands #################################################################
+
+
+bot.load_extension('cogs.commands.music.play')
+
+
 ################################################## Cogs owner commands #################################################################
 
 

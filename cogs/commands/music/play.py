@@ -6,6 +6,7 @@ import ctypes.util
 import os
 import asyncio
 
+
 ydl_opts = {
     'format': 'bestaudio/best',
     'postprocessors': [{
@@ -13,16 +14,15 @@ ydl_opts = {
         'preferredcodec': 'mp3',
         'preferredquality': '192',
     }],
-}   
+}  
 
 
-class Test(commands.Cog):
-    def __init__(self,bot):
+class MusicPlay(commands.Cog):
+    def __init__(self, bot):
         self.bot = bot
-        
+
     @commands.command()
-    @commands.is_owner()
-    async def test(self, ctx, url: str):
+    async def play(self, ctx, url: str = None):
         
         def endSong(self, guild, path):
             os.remove(path)
@@ -33,10 +33,6 @@ class Test(commands.Cog):
             file = ydl.extract_info(url, download=True)
             guild = guild_id 
             path = str(file['title']) + "-" + str(file['id'] + ".mp3")
-        
-        print(file, '\n')
-
-        print(file['title'],'\n')
         
         channel_id = ctx.message.author.voice.channel
 
@@ -51,6 +47,6 @@ class Test(commands.Cog):
         else:
             await voice_client.disconnect()
             print("Disconnected")
-    
+
 def setup(bot):
-    bot.add_cog(Test(bot))
+    bot.add_cog(MusicPlay(bot))
