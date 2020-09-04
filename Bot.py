@@ -116,6 +116,8 @@ bot.load_extension('cogs.commands.moderation.command.ban')
 
 
 bot.load_extension('cogs.commands.music.play')
+bot.load_extension('cogs.commands.music.join')
+bot.load_extension('cogs.commands.music.leave')
 
 
 ################################################## Cogs owner commands #################################################################
