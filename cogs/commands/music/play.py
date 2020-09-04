@@ -45,7 +45,7 @@ class MusicPlay(commands.Cog):
             await ctx.send(file['title'])
             await asyncio.sleep(1)
         else:
-            await ctx.send(f'End {file['title']}')
+            await ctx.send(f"End {file['title']}")
             print("Disconnected")
 
 def setup(bot):
