@@ -47,10 +47,5 @@ class MusicPlay(commands.Cog):
             await ctx.send(file['title'])
             print("Disconnected")
 
-
-    @commands.command()
-    async def queue(self, ctx, url: str):
-        pass
-
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
