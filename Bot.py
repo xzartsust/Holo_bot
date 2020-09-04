@@ -65,54 +65,35 @@ async def change_status():
 status=['Модернизирует свой код','t!help']
 
 
-################################################## Cogs commands #################################################################
+################################################## Cogs Info commands ############################################################
 
 
 bot.load_extension('cogs.commands.info.user')
 bot.load_extension('cogs.commands.info.help_commands')
-bot.load_extension('cogs.commands.moderation.news')
-bot.load_extension('cogs.commands.moderation.prefix')
-bot.load_extension('cogs.commands.moderation.clear')
 bot.load_extension('cogs.commands.info.ping')
 bot.load_extension('cogs.commands.info.invite')
-bot.load_extension('cogs.commands.moderation.welcome')
-bot.load_extension('cogs.test')
 bot.load_extension('cogs.commands.info.botservers')
 bot.load_extension('cogs.commands.info.tuser')
 bot.load_extension('cogs.commands.info.infobot')
 bot.load_extension('cogs.commands.info.serverinfo')
-bot.load_extension('cogs.commands.fun.fox')
-bot.load_extension('cogs.commands.fun.memes')
-bot.load_extension('cogs.commands.fun.dog')
-bot.load_extension('cogs.commands.fun.cat')
-bot.load_extension('cogs.commands.fun.hug')
-bot.load_extension('cogs.commands.fun.panda')
-bot.load_extension('cogs.commands.fun.pat')
-bot.load_extension('cogs.commands.fun.redpanda')
-bot.load_extension('cogs.commands.fun.wink')
-bot.load_extension('cogs.commands.fun.koala')
 bot.load_extension('cogs.commands.info.prefixserver')
+
+
+################################################## Cogs Moderation commands ######################################################
+
+
 bot.load_extension('cogs.commands.moderation.rwlc')
-#bot.load_extension('cogs.commands.moderation.command.mute')
-bot.load_extension('cogs.commands.moderation.command.muterole')
-bot.load_extension('cogs.commands.fun.neko')
-bot.load_extension('cogs.commands.fun.nsfw.neko_nsfw')
-bot.load_extension('cogs.commands.fun.textcat')
-bot.load_extension('cogs.commands.fun.nsfw.holo_nsfw')
-bot.load_extension('cogs.commands.fun.holo')
-bot.load_extension('cogs.commands.fun.tickle')
-bot.load_extension('cogs.commands.fun.nsfw.classic')
-#bot.load_extension('cogs.commands.fun.neko_gif')
-bot.load_extension('cogs.commands.fun.nsfw.aniero')
-bot.load_extension('cogs.commands.fun.nsfw.kitsune_ero')
-bot.load_extension('cogs.commands.fun.poke')
-bot.load_extension('cogs.commands.fun.nsfw.les')
-bot.load_extension('cogs.commands.fun.nsfw.lewd_kitsune')
-bot.load_extension('cogs.commands.fun.nsfw.keta')
+bot.load_extension('cogs.commands.moderation.welcome')
 bot.load_extension('cogs.commands.moderation.command.ban')
+bot.load_extension('cogs.commands.moderation.command.muterole')
+bot.load_extension('cogs.commands.moderation.welcome')
+bot.load_extension('cogs.commands.moderation.news')
+bot.load_extension('cogs.commands.moderation.prefix')
+bot.load_extension('cogs.commands.moderation.clear')
+#bot.load_extension('cogs.commands.moderation.command.mute')
 
 
-################################################## Music commands #################################################################
+################################################## Cogs Music commands ###########################################################
 
 
 bot.load_extension('cogs.commands.music.play')
@@ -120,11 +101,12 @@ bot.load_extension('cogs.commands.music.join')
 bot.load_extension('cogs.commands.music.leave')
 
 
-################################################## Cogs owner commands #################################################################
+################################################## Cogs Owner commands ############################################################
 
 
 bot.load_extension('cogs.cogs_owner.out')
 bot.load_extension('cogs.cogs_owner._eval')
+bot.load_extension('cogs.test')
 
 
 ################################################# Cogs Event ######################################################################
@@ -135,8 +117,39 @@ bot.load_extension('cogs.bot_event.on_guild_join')
 bot.load_extension('cogs.bot_event.on_guild_remove')
 
 
-TOKEN = os.environ.get('TOKEN')
+################################################# Cogs Fun commands ##############################################################
 
+
+bot.load_extension('cogs.commands.fun.fox')
+bot.load_extension('cogs.commands.fun.memes')
+bot.load_extension('cogs.commands.fun.dog')
+bot.load_extension('cogs.commands.fun.cat')
+bot.load_extension('cogs.commands.fun.hug')
+bot.load_extension('cogs.commands.fun.panda')
+bot.load_extension('cogs.commands.fun.pat')
+bot.load_extension('cogs.commands.fun.redpanda')
+bot.load_extension('cogs.commands.fun.wink')
+bot.load_extension('cogs.commands.fun.koala')
+bot.load_extension('cogs.commands.fun.neko')
+bot.load_extension('cogs.commands.fun.nsfw.neko_nsfw')
+bot.load_extension('cogs.commands.fun.textcat')
+bot.load_extension('cogs.commands.fun.nsfw.holo_nsfw')
+bot.load_extension('cogs.commands.fun.holo')
+bot.load_extension('cogs.commands.fun.tickle')
+bot.load_extension('cogs.commands.fun.nsfw.classic')
+bot.load_extension('cogs.commands.fun.nsfw.aniero')
+bot.load_extension('cogs.commands.fun.nsfw.kitsune_ero')
+bot.load_extension('cogs.commands.fun.poke')
+bot.load_extension('cogs.commands.fun.nsfw.les')
+bot.load_extension('cogs.commands.fun.nsfw.lewd_kitsune')
+bot.load_extension('cogs.commands.fun.nsfw.keta')
+#bot.load_extension('cogs.commands.fun.neko_gif')
+
+
+#####################################################################################################################################
+
+
+TOKEN = os.environ.get('TOKEN')
 
 bot.loop.create_task(change_status())
 bot.run(TOKEN)
