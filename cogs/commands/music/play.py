@@ -6,7 +6,6 @@ import ctypes.util
 import os
 import asyncio
 
-
 ydl_opts = {
     'format': 'bestaudio/best',
     'quiet': True,
@@ -17,13 +16,12 @@ ydl_opts = {
     }],
 }  
 
-
 class MusicPlay(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.command()
-    async def play(self, ctx, url: str = None):
+    async def play(self, ctx, url: str):
         
         def endSong(self, guild, path):
             os.remove(path)
@@ -48,6 +46,11 @@ class MusicPlay(commands.Cog):
         else:
             await ctx.send(file['title'])
             print("Disconnected")
+
+
+    @commands.command()
+    async def queue(self, ctx, url: str):
+        pass
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
