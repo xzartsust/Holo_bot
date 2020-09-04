@@ -98,6 +98,7 @@ bot.load_extension('cogs.commands.moderation.clear')
 bot.load_extension('cogs.commands.music.play')
 bot.load_extension('cogs.commands.music.join')
 bot.load_extension('cogs.commands.music.leave')
+bot.load_extension('cogs.commands.music.pause')
 
 
 ################################################## Cogs Owner commands ############################################################

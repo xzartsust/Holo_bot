@@ -9,6 +9,7 @@ import asyncio
 
 ydl_opts = {
     'format': 'bestaudio/best',
+    'quiet': True,
     'postprocessors': [{
         'key': 'FFmpegExtractAudio',
         'preferredcodec': 'mp3',
