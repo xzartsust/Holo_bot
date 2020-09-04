@@ -45,7 +45,7 @@ class MusicPlay(commands.Cog):
         while voice_client.is_playing(): 
             await asyncio.sleep(1)
         else:
-            await voice_client.disconnect()
+            await ctx.send(file['title'])
             print("Disconnected")
 
 def setup(bot):
