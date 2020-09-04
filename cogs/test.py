@@ -34,10 +34,6 @@ class Test(commands.Cog):
             guild = guild_id 
             path = str(file['title']) + "-" + str(file['id'] + ".mp3")
         
-        print(file, '\n')
-
-        print(file['title'],'\n')
-        
         channel_id = ctx.message.author.voice.channel
 
         channel1 = self.bot.get_channel(channel_id.id)                   
