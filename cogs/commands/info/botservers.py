@@ -7,7 +7,6 @@ class BotServers(commands.Cog):
 
     @commands.command()
     async def botservers(self, ctx):
-        await ctx.channel.purge(limit = 1)
         emb=discord.Embed(
             description = f'Присутствует на {str(len(self.bot.guilds))} серверах',
             colour = discord.Color.blurple(),

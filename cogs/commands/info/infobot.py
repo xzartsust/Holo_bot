@@ -11,8 +11,6 @@ class InfoBot(commands.Cog):
 
     @commands.command()
     async def infobot(self, ctx):
-        
-        await ctx.channel.purge(limit = 1)
 
         embed=discord.Embed(
             title=":information_source: BOT INFORMATION :information_source:",

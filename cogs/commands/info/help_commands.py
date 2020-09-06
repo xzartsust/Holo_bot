@@ -36,7 +36,6 @@ class HelpCommands(commands.Cog):
     @commands.group(name='help',aliases=['helpcmd','i','helpcommands'], invoke_without_command=True)
     async def help_for_commands(self, ctx):
         global prefix 
-        await ctx.channel.purge(limit=1)
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]

@@ -62,9 +62,8 @@ class member_greeting(commands.Cog):
     @commands.command(aliases=['wlc'])
     @commands.check(is_owner_guild)
     async def welcome(self, ctx, channel: int, types: bool):
-        guild = ctx.message.guild
 
-        await ctx.channel.purge(limit=1)
+        guild = ctx.message.guild
         
         cursor.execute(f'UPDATE public."myBD" SET welcome_channel = \'{channel}\', wlc_chan_t_or_f = \'{types}\' WHERE guild_id = \'{guild.id}\';')
         conn.commit()
