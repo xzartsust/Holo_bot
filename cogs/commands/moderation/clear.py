@@ -6,7 +6,7 @@ class clear(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.has_permissions(administrator=True)
+    @commands.has_permissions(manage_messages = True)
     async def clear(self, ctx, arg: int):
         await ctx.channel.purge(limit= arg + 1)
 

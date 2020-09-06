@@ -32,6 +32,8 @@ class MusicPlay(commands.Cog):
 
         channel1 = self.bot.get_channel(channel_id.id)                   
         voice_client = await channel1.connect() 
+
+        await ctx.send(file['title'])
         
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             file = ydl.extract_info(url, download=True)
@@ -42,11 +44,9 @@ class MusicPlay(commands.Cog):
         voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
         
         while voice_client.is_playing(): 
-            await ctx.send(file['title'])
             await asyncio.sleep(1)
         else:
             await ctx.send(f"End {file['title']}")
-            print("Disconnected")
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
