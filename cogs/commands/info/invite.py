@@ -18,7 +18,7 @@ class invite(commands.Cog):
         )
         emb1 = discord.Embed(
             title='Пригласи меня | Invite me',
-            url='https://discord.com/api/oauth2/authorize?client_id=729957701240750140&permissions=2081422583&scope=bot'
+            url='https://discord.com/api/oauth2/authorize?client_id=729957701240750140&permissions=2147483639&scope=bot'
         )
         emb2 = discord.Embed(
             title='Мой сервер поддержки | My support server',
