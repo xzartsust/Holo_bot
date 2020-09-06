@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord.utils import get
 
 
 class MusicLeave(commands.Cog):
@@ -16,6 +17,7 @@ class MusicLeave(commands.Cog):
 
         if voice and voice.is_connected():
             await voice.disconnect()
+            await ctx.send(f'Bot disconnected with {channel}')
         else:
             await ctx.send('Bot is not in voice channel')
 
