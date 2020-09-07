@@ -28,10 +28,8 @@ class MusicPlay(commands.Cog):
             os.remove(path)
 
         guild_id = ctx.message.guild.id
-        channel_id = ctx.message.author.voice.channel
-        voice = get(self.bot.voice_clients, guild = ctx.guild)
 
-        channel1 = self.bot.get_channel(channel_id.id)
+        voice = get(self.bot.voice_clients, guild=ctx.guild)
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             file = ydl.extract_info(url, download=True)
@@ -40,10 +38,10 @@ class MusicPlay(commands.Cog):
 
         await ctx.send(f"Сейчас играет песня: **{file['title']}**")
                            
-        voice_client.play(discord.FFmpegPCMAudio(path), after = lambda x: endSong(self, guild, path))
-        voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
+        voice.play(discord.FFmpegPCMAudio(path), after = lambda x: endSong(self, guild, path))
+        voice.source = discord.PCMVolumeTransformer(voice.source, 1)
         
-        while voice_client.is_playing(): 
+        while voice.is_playing(): 
             await asyncio.sleep(1)
         else:
             await ctx.send(f"Песня **{file['title']}** закончилась")
