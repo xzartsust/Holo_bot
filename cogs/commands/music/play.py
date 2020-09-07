@@ -28,13 +28,18 @@ class MusicPlay(commands.Cog):
             os.remove(path)
         
         global voice
+        global voice_client
 
         guild_id = ctx.message.guild.id
         channel_id = ctx.message.author.voice.channel
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
-        channel1 = self.bot.get_channel(channel_id.id)                   
-        voice_client = await voice.move_to(channel_id.id)
+        channel1 = self.bot.get_channel(channel_id.id)
+
+        if voice and voice.is_connected():
+            await voice.move_to(channel_id)
+        else:
+            voice_client = await channel1.connect()
         
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             file = ydl.extract_info(url, download=True)
