@@ -39,7 +39,7 @@ class MusicPlay(commands.Cog):
             global file
             file = ydl.extract_info(url, download=True)
             guild = guild_id 
-            path = str(file['title']) + "-" + str(file['id'] + "-" + a + ".mp3")
+            path = str(file['title']) + "-" + str(file['id'] + "-" + str(a) + ".mp3")
 
         await ctx.send(file['title'])
                            
