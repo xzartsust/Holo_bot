@@ -146,7 +146,7 @@ class HelpCommands(commands.Cog):
     
         await page.start()
     
-    @help_for_commands.command(name='user', aliases=['userinfo','ui','infouser','iu'])
+    @help_for_commands.command(name = 'user', aliases=['userinfo','ui','infouser','iu'])
     async def user_subcommands(self, ctx):
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
@@ -164,8 +164,8 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed=user_emb)
 
-    @help_for_commands.command(name='ping')
-    async def pind_subcommands(self,ctx):
+    @help_for_commands.command(name = 'ping')
+    async def pind_subcommands(self, ctx):
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
@@ -182,8 +182,8 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed=ping_emb)
 
-    @help_for_commands.command(name='botservers')
-    async def botservers_subcommands(self,ctx):
+    @help_for_commands.command(name = 'botservers')
+    async def botservers_subcommands(self, ctx):
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
@@ -200,8 +200,8 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed=botservers_emb)   
 
-    @help_for_commands.command(name='tuser')
-    async def tuser_subcommands(self,ctx):
+    @help_for_commands.command(name = 'tuser')
+    async def tuser_subcommands(self, ctx):
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
@@ -219,7 +219,7 @@ class HelpCommands(commands.Cog):
             embed=tuser_emb
         )   
 
-    @help_for_commands.command(name='prefix')
+    @help_for_commands.command(name = 'prefix')
     async def prefix_subcommands(self, ctx):
         
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
@@ -237,7 +237,7 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed=prefix_emb) 
 
-    @help_for_commands.command(name='welcome', aliases = ['wlc'])
+    @help_for_commands.command(name = 'welcome', aliases = ['wlc'])
     async def wlc_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
@@ -254,7 +254,7 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed=wlc_emb) 
 
-    @help_for_commands.command(name='infobot')
+    @help_for_commands.command(name = 'infobot')
     async def infobot_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
@@ -271,7 +271,7 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed=infobot_emb) 
 
-    @help_for_commands.command(name='serverinfo', aliases = ['si','is'])
+    @help_for_commands.command(name = 'serverinfo', aliases = ['si','is'])
     async def serverinfo_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
@@ -288,7 +288,7 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed=infobot_emb)
     
-    @help_for_commands.command(name='prefixserver', aliases = ['sp','ps'])
+    @help_for_commands.command(name = 'prefixserver', aliases = ['sp','ps'])
     async def prefixserver_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
@@ -305,7 +305,7 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed=ps_emb) 
 
-    @help_for_commands.command(name='news')
+    @help_for_commands.command(name = 'news')
     async def news_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
@@ -322,7 +322,7 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed=news_emb) 
 
-    @help_for_commands.command(name='rwlc')
+    @help_for_commands.command(name = 'rwlc')
     async def rwlc_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
@@ -339,7 +339,7 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed=rwlc_emb)
     
-    @help_for_commands.command(name='mute')
+    @help_for_commands.command(name = 'mute')
     async def mute_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
@@ -356,7 +356,7 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed=mute_emb)
 
-    @help_for_commands.command(name='muterole')
+    @help_for_commands.command(name = 'muterole')
     async def muterole_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
@@ -373,7 +373,7 @@ class HelpCommands(commands.Cog):
             )
         await ctx.send(embed=muterole_emb)
     
-    @help_for_commands.command(name='ban')
+    @help_for_commands.command(name = 'ban')
     async def ban_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
@@ -390,7 +390,7 @@ class HelpCommands(commands.Cog):
             )
         await ctx.send(embed=ban_emb)
 
-    @help_for_commands.command(name='play')
+    @help_for_commands.command(name = 'play')
     async def play_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
@@ -399,13 +399,117 @@ class HelpCommands(commands.Cog):
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: `{prefix}play`', 
             colour = discord.Color.teal(), 
-            description=f'**Команда**: `[play]`\n**Описание**: Проиграть музику\n**Использования**: `{prefix}play *силка на музыку*`\n\n**Пример:** `{prefix}play https://www.youtube.com/watch?v=9sjWU5dGcGI`'
+            description=f'**Предостережение:**Пока что нельзя добавлять музыку в очередь сначала нужно зачикаты пока доиграет одна музыка после этого добавлять новую ссылку на новую музыку, более подробно в команде `{prefix}help music`\n\n**Команда**: `[play]`\n**Описание**: Проиграть музику\n**Использования**: `{prefix}play *силка на музыку*`\n\n**Пример:** `{prefix}play https://www.youtube.com/watch?v=9sjWU5dGcGI`'
             )
         play_emb.set_footer(
             text = ctx.message.author,
             icon_url = ctx.message.author.avatar_url
             )
         await ctx.send(embed=play_emb)
+
+    @help_for_commands.command(name = 'join')
+    async def join_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        join_emb=discord.Embed(
+            title=f'Информация про команду: {prefix}join', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[join]`\n**Описание**: добавить бота в голосовой канал\n**Использования**: `{prefix}join`'
+        )
+        join_emb.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(embed=join_emb)
+
+    @help_for_commands.command(name = 'leave')
+    async def leave_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        leave_emb=discord.Embed(
+            title=f'Информация про команду: {prefix}leave', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[leave]`\n**Описание**: выгнать бота с голосового канала\n**Использования**: `{prefix}leave`'
+        )
+        leave_emb.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(
+            embed = leave_emb
+        )      
+
+    @help_for_commands.command(name = 'pause')
+    async def pause_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        pause_emb=discord.Embed(
+            title=f'Информация про команду: {prefix}pause', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[pause]`\n**Описание**: поставить текущую песню на паузу\n**Использования**: `{prefix}pause`'
+        )
+        pause_emb.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(
+            embed = pause_emb
+        )   
+
+    @help_for_commands.command(name = 'resume')
+    async def resume_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        resume_emb=discord.Embed(
+            title = f'Информация про команду: {prefix}resume', 
+            colour = discord.Color.teal(), 
+            description = f'**Команда**: `[resume]`\n**Описание**: возобновить воспроизведение музыки\n**Использования**: `{prefix}resume`'
+        )
+        resume_emb.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(
+            embed = resume_emb
+        )
+     
+    @help_for_commands.command(name = 'stop')
+    async def stop_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        stop_emb = discord.Embed(
+            title=f'Информация про команду: {prefix}stop', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[stop]`\n**Описание**: закончить воспроизведения музыки\n**Использования**: `{prefix}stop`'
+        )
+        stop_emb.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(
+            embed = stop_emb
+        )   
+
+    @help_for_commands.command(name='music')
+    async def music_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        await ctx.send(f'```Как использовать музыкальные команды?```\n\
+            Сначала вы присоединяете командой `{prefix}join` бота к себе в войс, после этого командой `{prefix}play [Сылка на музыку]` запуске воспроизведения музыки.\n\
+            **Внимание** пока что нельзя добавлять несколько песен сразу (эта функция в доработке), вы сможете задать следующие песню только после того как закончится и играющая на данный момент или после команды `{prefix}stop`.\n\n\
+            Пожалуйста будьте внимательны с этим.')
 
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
