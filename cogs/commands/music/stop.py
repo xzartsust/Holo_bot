@@ -14,7 +14,7 @@ class MusicStop(commands.Cog):
         
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
-        if voice and voice.is_playing():
+        if voice and voice.is_playing() and voice.is_connected():
             print('Music stopped')
             await voice.stop()
             await voice.disconnect()
