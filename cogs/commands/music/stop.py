@@ -16,7 +16,7 @@ class MusicStop(commands.Cog):
 
         if voice and voice.is_playing() and voice.is_connected():
             print('Music stopped')
-            await voice.stop()
+            voice.stop()
             await voice.disconnect()
             await voice.connect()
             await ctx.send('Music stopped')

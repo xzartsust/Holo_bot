@@ -33,7 +33,7 @@ class MusicPlay(commands.Cog):
 
         channel1 = self.bot.get_channel(channel_id.id)
         
-        if voice and voice.is_connected():
+        if voice.is_connected():
             await voice.disconnect()
             voice_client = await channel1.connect()
         else:
@@ -44,16 +44,16 @@ class MusicPlay(commands.Cog):
             guild = guild_id 
             path = str(file['title']) + "-" + str(file['id'] + ".mp3")
 
-        await ctx.send(file['title'])
+        await ctx.send(f"Сейчас играет песня: **{file['title']}**")
                            
-        voice_client.play(discord.FFmpegPCMAudio(path), after=lambda x: endSong(self, guild, path))
+        voice_client.play(discord.FFmpegPCMAudio(path), after = lambda x: endSong(self, guild, path))
         voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
         
         while voice_client.is_playing(): 
             await asyncio.sleep(1)
         else:
             await voice_client.disconnect()
-            await ctx.send(f"End {file['title']}")
+            await ctx.send(f"Песня **{file['title']}** закончилась")
             await channel1.connect()
 
 def setup(bot):

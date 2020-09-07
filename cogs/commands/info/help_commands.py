@@ -137,7 +137,7 @@ class HelpCommands(commands.Cog):
         )
         emb_music.add_field(
             name = '**Команды**',
-            value = f'`{prefix}play`,{prefix}'
+            value = f'`{prefix}play`\n`{prefix}join`\n`{prefix}leave`\n`{prefix}pause`\n`{prefix}resume`\n`{prefix}stop`'
         )
 
         embeds=[emb,emb1,emb2,emb3,emb4, emb_music]
@@ -378,19 +378,34 @@ class HelpCommands(commands.Cog):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
 
-        muterole_emb=discord.Embed(
+        ban_emb=discord.Embed(
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: `{prefix}ban`', 
             colour = discord.Color.teal(), 
             description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Ban Members**!\n**Команда**: `[ban]`\n**Описание**: Заблокировать пользователя на сервере\n**Использования**: `{prefix}ban *кому* *reason*`\n reason - может быть пустым\n\n**Пример:** `{prefix}ban @Member spam bot`\n\n**Внимание:** Можно сразу несколько пользователей\n**Пример:** `{prefix}ban @Member @Member2 *reson*`'
             )
-        muterole_emb.set_footer(
+        ban_emb.set_footer(
             text = ctx.message.author,
             icon_url = ctx.message.author.avatar_url
             )
-        await ctx.send(embed=muterole_emb)
+        await ctx.send(embed=ban_emb)
 
+    @help_for_commands.command(name='play')
+    async def play_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
 
+        play_emb=discord.Embed(
+            timestamp= ctx.message.created_at, 
+            title=f'Информация про команду: `{prefix}play`', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[play]`\n**Описание**: Проиграть музику\n**Использования**: `{prefix}play *силка на музыку*`\n\n**Пример:** `{prefix}play https://www.youtube.com/watch?v=9sjWU5dGcGI`'
+            )
+        play_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+            )
+        await ctx.send(embed=play_emb)
 
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
