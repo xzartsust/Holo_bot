@@ -32,12 +32,6 @@ class MusicPlay(commands.Cog):
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
         channel1 = self.bot.get_channel(channel_id.id)
-        
-        if voice.is_connected():
-            await voice.disconnect()
-            voice_client = await channel1.connect()
-        else:
-            voice_client = await channel1.connect()
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             file = ydl.extract_info(url, download=True)
@@ -52,9 +46,7 @@ class MusicPlay(commands.Cog):
         while voice_client.is_playing(): 
             await asyncio.sleep(1)
         else:
-            await voice_client.disconnect()
             await ctx.send(f"Песня **{file['title']}** закончилась")
-            await channel1.connect()
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
