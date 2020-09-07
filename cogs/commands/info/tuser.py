@@ -11,7 +11,6 @@ class TotalUser(commands.Cog):
         all_users = set([])
         for user in self.bot.get_all_members():
             all_users.add(user)
-        await ctx.channel.purge(limit=1)
         await ctx.send('Total users in all my servers combined: ' + str(len(all_users)))
 
 def setup(bot):
