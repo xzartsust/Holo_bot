@@ -40,7 +40,7 @@ class HelpCommands(commands.Cog):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
         
-        emb= discord.Embed(
+        emb = discord.Embed(
             title=f'Команды бота {self.bot.user.name}', 
             description=f'Здесь вы узнаете информацию про все команды бота\nНапишите `{prefix}invite` чтобы получить ссылки бота'
         )
@@ -131,7 +131,12 @@ class HelpCommands(commands.Cog):
             value = f'`{prefix}aniero`\n`{prefix}classic`\n`{prefix}keta`\n`{prefix}les`'
         )
 
-        embeds=[emb,emb1,emb2,emb3,emb4]
+        emb_music = discord.Embed(
+            title = 'Музыкальные команды :musical_note: :musical_note: :musical_note:',
+            description = '**Внимание:** **Музыкальные команды находятся в доработке, и иногда можут некоректно работать!\nЕсли у вас возникли какие-то вопросы по поводу этого то вы можете написать в личку моему создателю или оставить этот вопрос на Support server Tobi Bot**'
+        )
+
+        embeds=[emb,emb1,emb2,emb3,emb4, emb_music]
         message= await ctx.send(embed= emb)
         page= pag(self.bot, message, only=ctx.author, use_more=False, embeds=embeds, color=0x008000, time_stamp=True)
     

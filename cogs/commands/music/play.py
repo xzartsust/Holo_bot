@@ -34,6 +34,7 @@ class MusicPlay(commands.Cog):
         voice_client = await channel1.connect()
         
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            global file
             file = ydl.extract_info(url, download=True)
             guild = guild_id 
             path = str(file['title']) + "-" + str(file['id'] + ".mp3")
@@ -43,10 +44,13 @@ class MusicPlay(commands.Cog):
         voice_client.play(discord.FFmpegPCMAudio(path), after=lambda x: endSong(self, guild, path))
         voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
         
-        while voice_client.is_playing(): 
-            await asyncio.sleep(1)
+        while voice_client.is_playing():
+            pass 
+            #await asyncio.sleep(1)
         else:
+            await channel1.disconnect()
             await ctx.send(f"End {file['title']}")
+            await channel1.connect()
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
