@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord.utils import get
 import youtube_dl
 import ctypes
 import ctypes.util
@@ -27,9 +28,8 @@ class MusicPlay(commands.Cog):
             os.remove(path)
 
         guild_id = ctx.message.guild.id
-        channel_id = ctx.message.author.voice.channel
 
-        channel1 = self.bot.get_channel(channel_id.id)                   
+        channel1 = get(self.bot.voice_clients, guild = ctx.guild)                  
         voice_client = await channel1.connect()
         
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
@@ -43,9 +43,8 @@ class MusicPlay(commands.Cog):
         voice_client.play(discord.FFmpegPCMAudio(path), after=lambda x: endSong(self, guild, path))
         voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
         
-        while voice_client.is_playing():
-            pass 
-            #await asyncio.sleep(1)
+        while voice_client.is_playing(): 
+            await asyncio.sleep(1)
         else:
             await channel1.disconnect()
             await ctx.send(f"End {file['title']}")
