@@ -5,7 +5,7 @@ import ctypes
 import ctypes.util
 import os
 import asyncio
-
+import random
 
 ydl_opts = {
     'format': 'bestaudio/best',
@@ -27,6 +27,8 @@ class MusicPlay(commands.Cog):
         def endSong(self, guild, path):
             os.remove(path)
 
+        a = random.randint(1, 10000000)
+
         guild_id = ctx.message.guild.id
         channel_id = ctx.message.author.voice.channel
 
@@ -37,7 +39,7 @@ class MusicPlay(commands.Cog):
             global file
             file = ydl.extract_info(url, download=True)
             guild = guild_id 
-            path = str(file['title']) + "-" + str(file['id'] + ".mp3")
+            path = str(file['title']) + "-" + str(file['id']) + "-" + str(a) + ".mp3"
 
         await ctx.send(file['title'])
                            

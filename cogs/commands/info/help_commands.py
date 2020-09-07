@@ -133,7 +133,7 @@ class HelpCommands(commands.Cog):
 
         emb_music = discord.Embed(
             title = 'Музыкальные команды :musical_note: :musical_note: :musical_note:',
-            description = '**Внимание:** **Музыкальные команды находятся в доработке, и иногда можут некоректно работать!\nЕсли у вас возникли какие-то вопросы по поводу этого то вы можете написать в личку моему создателю или оставить этот вопрос на Support server Tobi Bot**'
+            description = '**Внимание:** **Музыкальные команды находятся в доработке, и иногда можут некоректно работать!**\nЕсли у вас возникли какие-то вопросы по поводу этого то вы можете написать в личку моему создателю или оставить этот вопрос на Support server Tobi Bot'
         )
 
         embeds=[emb,emb1,emb2,emb3,emb4, emb_music]
@@ -385,6 +385,8 @@ class HelpCommands(commands.Cog):
             icon_url = ctx.message.author.avatar_url
             )
         await ctx.send(embed=muterole_emb)
+
+
 
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
