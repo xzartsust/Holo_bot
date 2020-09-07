@@ -135,6 +135,10 @@ class HelpCommands(commands.Cog):
             title = 'Музыкальные команды :musical_note: :musical_note: :musical_note:',
             description = '**Внимание:** **Музыкальные команды находятся в доработке, и иногда можут некоректно работать!**\nЕсли у вас возникли какие-то вопросы по поводу этого то вы можете написать в личку моему создателю или оставить этот вопрос на Support server Tobi Bot'
         )
+        emb_music.add_field(
+            name = '**Команды**',
+            value = f'`{prefix}play`,{prefix}'
+        )
 
         embeds=[emb,emb1,emb2,emb3,emb4, emb_music]
         message= await ctx.send(embed= emb)

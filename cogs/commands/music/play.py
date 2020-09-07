@@ -26,6 +26,8 @@ class MusicPlay(commands.Cog):
         
         def endSong(self, guild, path):
             os.remove(path)
+        
+        global voice
 
         guild_id = ctx.message.guild.id
         channel_id = ctx.message.author.voice.channel
