@@ -34,7 +34,13 @@ class MusicPlay(commands.Cog):
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
         channel1 = self.bot.get_channel(channel_id.id)                   
-        voice_client = await channel1.connect()
+        
+
+        if voice and voice.is_connected():
+            voice_client = await channel1.connect()
+        else:
+            pass
+
         
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             file = ydl.extract_info(url, download=True)
