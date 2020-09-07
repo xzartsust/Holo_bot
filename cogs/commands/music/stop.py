@@ -10,6 +10,7 @@ class MusicStop(commands.Cog):
 
     @commands.command()
     async def stop(self, ctx):
+        global voice
         
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
