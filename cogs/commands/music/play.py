@@ -25,16 +25,6 @@ class MusicPlay(commands.Cog):
     async def play(self, ctx, url: str = None):
 
         voice = get(self.bot.voice_clients, guild=ctx.guild)
-        
-        def remove(self, path):
-            song_there = os.path.isfile(path)
-            try:
-                if song_there:
-                    os.remove(path)
-                    print("Removed old song file")
-            except PermissionError:
-                print("Trying to delete song file, but it's being played")
-                return
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             global path

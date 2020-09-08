@@ -508,5 +508,22 @@ class HelpCommands(commands.Cog):
 
         await ctx.send(f'```Как использовать музыкальные команды?```\nСначала вы присоединяете командой `{prefix}join` бота к себе в войс, после этого командой `{prefix}play [Сылка на музыку]` запуске воспроизведения музыки.\n\n**Внимание** пока что нельзя добавлять несколько песен сразу (эта функция в доработке), вы сможете задать следующие песню только после того как закончится и играющая на данный момент или после команды `{prefix}stop`.\n\nПожалуйста будьте внимательны с этим.')
 
+    @help_for_commands.command(name = 'kick')
+    async def kick_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        ban_emb=discord.Embed(
+            timestamp= ctx.message.created_at, 
+            title=f'Информация про команду: `{prefix}kick`', 
+            colour = discord.Color.teal(), 
+            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Kick Members**!\n**Команда**: `[kick]`\n**Описание**: Выгнать пользователя из сервере\n**Использования**: `{prefix}kick *кому* *reason*`\n reason - может быть пустым\n\n**Пример:** `{prefix}kick @Member spam bot`'
+            )
+        ban_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+            )
+        await ctx.send(embed=ban_emb)
+
 def setup(bot):
     bot.add_cog(HelpCommands(bot))

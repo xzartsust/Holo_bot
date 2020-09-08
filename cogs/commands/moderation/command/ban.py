@@ -13,5 +13,10 @@ class BanUsers(commands.Cog):
         for member in members:
             await member.ban(delete_message_days=delete_days, reason=reason)
 
+        if reason is None:
+            await ctx.send(f'Пользователь {member} был забанен на этом сервера')
+        elif reason is not None:
+            await ctx.send(f'Пользователь {member} был забанен на этом сервера по причине {reason}')
+
 def setup(bot):
     bot.add_cog(BanUsers(bot))
