@@ -26,7 +26,7 @@ class MusicPlay(commands.Cog):
 
         voice = get(self.bot.voice_clients, guild=ctx.guild)
         
-        def remove(self, path):
+        def remove(self, ctx, path):
             song_there = os.path.isfile(path)
             try:
                 if song_there:
