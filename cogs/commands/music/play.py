@@ -25,16 +25,7 @@ class MusicPlay(commands.Cog):
     async def play(self, ctx, url: str = None):
 
         voice = get(self.bot.voice_clients, guild=ctx.guild)
-
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            file = ydl.extract_info(url, download=True)
-            path = str(file['title']) + "-" + str(file['id'] + ".mp3")
-
-        await ctx.send(f"Сейчас играет песня: **{file['title']}**")
-                           
-        voice.play(discord.FFmpegPCMAudio(path), after = lambda x: print('Song End'))
-        voice.source = discord.PCMVolumeTransformer(voice.source, 1)
-
+        
         song_there = os.path.isfile(path)
         try:
             if song_there:
@@ -44,6 +35,16 @@ class MusicPlay(commands.Cog):
             print("Trying to delete song file, but it's being played")
             await ctx.send("ERROR: Music playing")
             return
+
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            global path
+            file = ydl.extract_info(url, download=True)
+            path = str(file['title']) + "-" + str(file['id'] + ".mp3")
+
+        await ctx.send(f"Сейчас играет песня: **{file['title']}**")
+                           
+        voice.play(discord.FFmpegPCMAudio(path), after = lambda x: print('Song End'))
+        voice.source = discord.PCMVolumeTransformer(voice.source, 1)
         
         while voice.is_playing(): 
             await asyncio.sleep(1)
