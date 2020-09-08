@@ -26,15 +26,16 @@ class MusicPlay(commands.Cog):
 
         voice = get(self.bot.voice_clients, guild=ctx.guild)
         
-        song_there = os.path.isfile(path)
-        try:
-            if song_there:
-                os.remove(path)
-                print("Removed old song file")
-        except PermissionError:
-            print("Trying to delete song file, but it's being played")
-            await ctx.send("ERROR: Music playing")
-            return
+        def remove(self, path):
+            song_there = os.path.isfile(path)
+            try:
+                if song_there:
+                    os.remove(path)
+                    print("Removed old song file")
+            except PermissionError:
+                print("Trying to delete song file, but it's being played")
+                await ctx.send("ERROR: Music playing")
+                return
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             global path
