@@ -16,8 +16,8 @@ class Test(commands.Cog):
     async def test(self, ctx):
         guild = ctx.message.guild
          
-        async for entry in guild.audit_logs(action = discord.AuditLogAction.invite_create):
-            print('{0.user} {0.target}'.format(entry))
+        async for entry in guild.audit_logs(action = discord.AuditLogAction.invite_create, limit = 2):
+            print(entry)
     
 
 def setup(bot):
