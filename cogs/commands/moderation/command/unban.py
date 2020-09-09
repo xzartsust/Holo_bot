@@ -25,7 +25,7 @@ class UnBanUser(commands.Cog):
             await ctx.send("У меня нет разрешения на разблокировку.")
             return
         except discord.HTTPException:
-            await ctx.send("Разбан не удалось.")
+            await ctx.send("Разблокировать этого пользователя не удалось.")
             return
 
 def setup(bot):

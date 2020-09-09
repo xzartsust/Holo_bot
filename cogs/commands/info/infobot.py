@@ -22,29 +22,29 @@ class InfoBot(commands.Cog):
             value = f'```{self.bot.get_user(int(bot_owner))}```'
         )
         embed.add_field(
-            name="Library",
-            value="```discord.py```",
-            inline=False
+            name = "Library",
+            value = "```discord.py```",
+            inline = False
         )
         embed.add_field(
-            name="Status",
-            value="```Beta```", 
-            inline=False
+            name = "Status",
+            value = "```Beta```", 
+            inline = False
         )
         embed.add_field(
-            name="Version",
-            value="```0.0.3 Beta```",
-            inline=True
+            name = "Version",
+            value = "```0.0.3 Beta```",
+            inline = True
         )
         embed.add_field(
-            name="Website",
-            value="https://github.com/xzartsust/Tobi-Bot",
-            inline=False
+            name = "Website",
+            value = "https://github.com/xzartsust/Tobi-Bot#tobi-bot",
+            inline = False
         )
         embed.add_field(
-            name="Official Bot Support Server",
-            value="https://discord.gg/8f4KUp",
-            inline=False
+            name = "Official Bot Support Server",
+            value = "https://discord.gg/8f4KUp",
+            inline = False
         )
         await ctx.send(embed=embed)
 
