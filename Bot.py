@@ -93,6 +93,7 @@ bot.load_extension('cogs.commands.moderation.prefix')
 bot.load_extension('cogs.commands.moderation.clear')
 #bot.load_extension('cogs.commands.moderation.command.mute')
 bot.load_extension('cogs.commands.moderation.command.kick')
+bot.load_extension('cogs.commands.moderation.command.unban')
 
 
 ################################################## Cogs Music commands ###########################################################
