@@ -13,7 +13,9 @@ class Test(commands.Cog):
     
     @commands.command()
     @commands.is_owner()
-    async def test(self, ctx, guild):
+    async def test(self, ctx):
+        guild = ctx.message.guild
+         
         async for entry in guild.audit_logs(action = discord.AuditLogAction.invite_create):
             print('{0.user} {0.target}'.format(entry))
     
