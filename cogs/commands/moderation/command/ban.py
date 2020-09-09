@@ -8,7 +8,7 @@ class BanUsers(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.has_permissions(ban_members = True, kick_members = True)
+    @commands.has_permissions(ban_members = True)
     async def ban(self, ctx, members: commands.Greedy[discord.Member], delete_days: typing.Optional[int] = 0, *, reason: str = None):
         for member in members:
             await member.ban(delete_message_days=delete_days, reason=reason)
