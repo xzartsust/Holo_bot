@@ -142,7 +142,7 @@ class HelpCommands(commands.Cog):
 
         embeds=[emb,emb1,emb2,emb3,emb4, emb_music]
         message= await ctx.send(embed = emb)
-        page= pag(self.bot, message, only=ctx.author, use_more=False, embeds=embeds, color=0x008000, time_stamp=True)
+        page= pag(self.bot, message, only = ctx.author, use_more = False, embeds = embeds, color = 0x008000, time_stamp = True)
     
         await page.start()
     
@@ -524,6 +524,23 @@ class HelpCommands(commands.Cog):
             icon_url = ctx.message.author.avatar_url
             )
         await ctx.send(embed=ban_emb)
+
+    @help_for_commands.command(name = 'unban')
+    async def unban_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        unban_emb=discord.Embed(
+            timestamp= ctx.message.created_at, 
+            title=f'Информация про команду: `{prefix}unban`', 
+            colour = discord.Color.teal(), 
+            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Ban Members**!\n**Команда**: `[ban]`\n**Описание**: Разблокировать пользователя на сервере\n**Использования**: `{prefix}ban *кого*`\n\n**Пример:** `{prefix}ban Test Account#2125`'
+            )
+        unban_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+            )
+        await ctx.send(embed = unban_emb)
 
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
