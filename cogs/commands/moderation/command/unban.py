@@ -10,13 +10,13 @@ class UnBanUser(commands.Cog):
     @commands.has_permissions(kick_members = True, ban_members = True)
     async def unban(self, ctx, *, member):
         banned_users = await ctx.guild.bans()
-        member_name, member_descriminator = member.split('#')
+        member_name, member_discriminator = member.split('#')
         
         try:
             for ban_entry in banned_users:
                 user = ban_entry.user
 
-            if (user.name, user.descriminator) == (member_name, member_descriminator):
+            if (user.name, user.discriminator) == (member_name, member_discriminator):
                 await ctx.guild.unban(user)
                 await ctx.send(f'Пользователь {user.mention} был разбанен')
                 return
