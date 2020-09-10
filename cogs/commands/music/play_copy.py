@@ -1,21 +1,5 @@
 # -*- coding: utf-8 -*-
 
-"""
-Copyright (c) 2019 Valentin B.
-
-A simple music bot written in discord.py using youtube-dl.
-
-Though it's a simple example, music bots are complex and require much time and knowledge until they work perfectly.
-Use this as an example or a base for your own bot and extend it as you want. If there are any bugs, please let me know.
-
-Requirements:
-
-Python 3.5+
-pip install -U discord.py pynacl youtube-dl
-
-You also need FFmpeg in your PATH environment variable or the FFmpeg.exe binary in your bot's directory on Windows.
-"""
-
 import asyncio
 import functools
 import itertools
@@ -27,7 +11,7 @@ import youtube_dl
 from async_timeout import timeout
 from discord.ext import commands
 
-# Silence useless bug reports messages
+# Молчание бесполезных сообщений об ошибках
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 
@@ -232,12 +216,12 @@ class VoiceState:
             self.next.clear()
 
             if not self.loop:
-                # Try to get the next song within 3 minutes.
-                # If no song will be added to the queue in time,
-                # the player will disconnect due to performance
-                # reasons.
+                # Попытайтесь получить следующую песню в течение 3 минут.
+                # Если ни одна песня не будет вовремя добавлена в очередь,
+                # плеер отключится из-за производительности
+                # причини.
                 try:
-                    async with timeout(180):  # 3 minutes
+                    async with timeout(180):  # 3 минути
                         self.current = await self.songs.get()
                 except asyncio.TimeoutError:
                     self.bot.loop.create_task(self.stop())
@@ -312,9 +296,9 @@ class Music(commands.Cog):
     @commands.command(name='summon')
     @commands.has_permissions(manage_guild=True)
     async def _summon(self, ctx: commands.Context, *, channel: discord.VoiceChannel = None):
-        """Summons the bot to a voice channel.
+        """Вызывает бота в голосовой канал.
 
-        If no channel was specified, it joins your channel.
+        Если канал не был указан, он присоединяется к вашему каналу.
         """
 
         if not channel and not ctx.author.voice:
@@ -330,7 +314,7 @@ class Music(commands.Cog):
     @commands.command(name='leave', aliases=['disconnect'])
     @commands.has_permissions(manage_guild=True)
     async def _leave(self, ctx: commands.Context):
-        """Clears the queue and leaves the voice channel."""
+        """Очищает очередь и покидает голосовой канал."""
 
         if not ctx.voice_state.voice:
             return await ctx.send('Not connected to any voice channel.')
