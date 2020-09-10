@@ -32,6 +32,8 @@ def prefix_in_guild(bot, message):
 class HelpCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.server = 'Support server Tobi Bot'
+        self.server_link = 'https://server-discord.com/743761540758503444'
 
     @commands.group(name='help',aliases=['helpcmd','i','helpcommands'], invoke_without_command=True)
     async def help_for_commands(self, ctx):
@@ -47,6 +49,10 @@ class HelpCommands(commands.Cog):
         emb.add_field(
             name='**Другая информация**',
             value=f'Чтобы получить больше информации о какой либо команде, вы можете написать: `{prefix}help *команда*` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n'
+        )
+        emb.add_field(
+            name = 'Поддержите бота на мониторингах:',
+            value = '[{0.server}]{0.server_link}'.format(self)
         )
         emb.set_thumbnail(
             url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
