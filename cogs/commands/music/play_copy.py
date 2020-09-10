@@ -13,8 +13,14 @@ class MusicPlay(commands.Cog):
 
     @commands.command()
     async def join(self, ctx):
-        channel = ctx.message.author.voice.voice_channel
-        await channel.connect()
+        channel = ctx.message.author.voice.channel
+
+        voice = get(self.bot.voice_clients, guild = ctx.guild)
+
+        if voice and voice.is_connected():
+            await voice.move_to(channel)
+        else:
+            voice = await channel.connect()
 
     @commands.command()
     async def leave(self, ctx):
