@@ -142,3 +142,6 @@ class MusicPlay(commands.Cog):
             
         await ctx.send("Adding song " + str(q_num) + " to the queue")
         print("Song added to queue\n")
+    
+def setup(bot):
+    bot.add_cog(MusicPlay(bot))
