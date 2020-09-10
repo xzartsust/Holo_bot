@@ -5,14 +5,17 @@ import youtube_dl
 import os
 import shutil
 
-queues = {}
+
 
 class MusicPlay(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
+    
+    
+    
     @commands.command()
     async def play(self, ctx, url: str):
+        
         voice = get(self.bot.voice_clients, guild=ctx.guild)   
 
         def check_queue():
@@ -106,7 +109,11 @@ class MusicPlay(commands.Cog):
 
     @commands.command(aliases=['q', 'que'])
     async def queue(self, ctx, url: str):
-        Queue_infile = os.path.isdir("./Queue")
+
+        global queues
+        queues = {}
+
+        Queue_infile = os.path.isdir(".\\Queue")
             
         if Queue_infile is False:
             os.mkdir("Queue")
@@ -123,7 +130,7 @@ class MusicPlay(commands.Cog):
                 add_queue = False
                 queues[q_num] = q_num
             
-        queue_path = os.path.abspath(os.path.realpath("Queue") + f"/song{q_num}.%(ext)s")
+        queue_path = os.path.abspath(os.path.realpath("Queue") + f"\\song{q_num}.%(ext)s")
 
         ydl_opts = {
             'format': 'bestaudio/best',
