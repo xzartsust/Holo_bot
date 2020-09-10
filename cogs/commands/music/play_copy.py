@@ -123,7 +123,7 @@ class MusicPlay(commands.Cog):
                 add_queue = False
                 queues[q_num] = q_num
             
-        queue_path = os.path.abspath(os.path.realpath("Queue") + f"\song{q_num}.%(ext)s")
+        queue_path = os.path.abspath(os.path.realpath("Queue") + f"/song{q_num}.%(ext)s")
 
         ydl_opts = {
             'format': 'bestaudio/best',
@@ -143,5 +143,16 @@ class MusicPlay(commands.Cog):
         await ctx.send("Adding song " + str(q_num) + " to the queue")
         print("Song added to queue\n")
     
+    async def next(ctx):
+        voice = get(bot.voice_clients, guild=ctx.guild)
+        
+        if voice and voice.is_playing():
+            print("Playing Next Song")
+            voice.stop()
+            await ctx.send("Next Song")
+        else:
+            print("No music playing")
+            await ctx.send("No music playing failed")
+
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
