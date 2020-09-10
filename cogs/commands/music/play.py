@@ -6,9 +6,11 @@ import ctypes
 import ctypes.util
 import os
 import asyncio
+from discord.ext.commands import Bot
 
 ydl_opts = {
     'format': 'bestaudio/best',
+    'quiet': True,
     'postprocessors': [{
         'key': 'FFmpegExtractAudio',
         'preferredcodec': 'mp3',
@@ -16,15 +18,28 @@ ydl_opts = {
     }],
 }  
 
+songs = asyncio.Queue()
+play_next_song = asyncio.Event()
+queues = {}
+
+async def audio_player_task():
+    while True:
+        play_next_song.clear()
+        current = await queues[id].get()
+        current.start()
+        await play_next_song.wait()
 
 class MusicPlay(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    def toggle_next(self):
+        self.bot.loop.call_soon_threadsafe(play_next_song.set)
+
     @commands.command()
     async def play(self, ctx, url: str = None):
 
-        voice = get(self.bot.voice_clients, guild=ctx.guild)
+        voice = get(self.bot.voice_clients, guild = ctx.guild)
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             global path
@@ -40,7 +55,6 @@ class MusicPlay(commands.Cog):
             await asyncio.sleep(1)
         else:
             pass
-            
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
