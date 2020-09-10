@@ -19,7 +19,7 @@ class MusicPlay(commands.Cog):
         voice = get(self.bot.voice_clients, guild=ctx.guild)   
 
         def check_queue():
-            Queue_infile = os.path.isdir("./Queue")
+            Queue_infile = os.path.isdir(".\\Queue")
             if Queue_infile is True:
                 DIR = os.path.abspath(os.path.realpath("Queue"))
                 length = len(os.listdir(DIR))
