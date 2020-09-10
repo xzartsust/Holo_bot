@@ -18,23 +18,11 @@ ydl_opts = {
     }],
 }  
 
-songs = asyncio.Queue()
-play_next_song = asyncio.Event()
-queues = {}
-
-async def audio_player_task():
-    while True:
-        play_next_song.clear()
-        current = await queues[id].get()
-        current.start()
-        await play_next_song.wait()
 
 class MusicPlay(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    def toggle_next(self):
-        self.bot.loop.call_soon_threadsafe(play_next_song.set)
 
     @commands.command()
     async def play(self, ctx, url: str = None):
