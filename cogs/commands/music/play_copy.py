@@ -143,8 +143,8 @@ class MusicPlay(commands.Cog):
         await ctx.send("Adding song " + str(q_num) + " to the queue")
         print("Song added to queue\n")
     
-    async def next(ctx):
-        voice = get(bot.voice_clients, guild=ctx.guild)
+    async def next(self, ctx):
+        voice = get(self.bot.voice_clients, guild=ctx.guild)
         
         if voice and voice.is_playing():
             print("Playing Next Song")
