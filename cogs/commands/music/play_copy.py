@@ -30,7 +30,7 @@ class MusicPlay(commands.Cog):
     @commands.command()
     async def play(self, ctx, url):
         guild = ctx.message.guild
-        voice = get(self.bot.voice_client, guild = ctx.guild)
+        voice = get(self.bot.voice_clients, guild = ctx.guild)
         player = await voice.create_ytdl_player(url)
         players[guild.id] = player
         player.start()
