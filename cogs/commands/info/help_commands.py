@@ -52,7 +52,8 @@ class HelpCommands(commands.Cog):
         )
         emb.add_field(
             name = 'Поддержите бота на мониторингах:',
-            value = '[{0.server}]({0.server_link})'.format(self)
+            value = '[{0.server}]({0.server_link})'.format(self),
+            inline = False
         )
         emb.set_thumbnail(
             url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'

@@ -8,6 +8,8 @@ import os
 class InfoBot(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.website = 'https://github.com/xzartsust/Tobi-Bot#tobi-bot'
+        self.server = 'https://discord.gg/8f4KUp'
 
     @commands.command()
     async def infobot(self, ctx):
@@ -38,12 +40,12 @@ class InfoBot(commands.Cog):
         )
         embed.add_field(
             name = "Website",
-            value = "https://github.com/xzartsust/Tobi-Bot#tobi-bot",
+            value = "[Click]({0.website})".format(self),
             inline = False
         )
         embed.add_field(
             name = "Official Bot Support Server",
-            value = "https://discord.gg/8f4KUp",
+            value = "[Click]({0.server})".format(self),
             inline = False
         )
         await ctx.send(embed=embed)

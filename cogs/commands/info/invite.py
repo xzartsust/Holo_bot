@@ -6,6 +6,8 @@ from Cybernator import Paginator as pag
 class invite(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.url_bot = 'https://discord.com/api/oauth2/authorize?client_id=729957701240750140&permissions=2147483639&scope=bot'
+        self.url_suppotr_server = 'https://discord.gg/4FpZepm'
 
     @commands.command()
     async def invite(self, ctx):
@@ -17,12 +19,10 @@ class invite(commands.Cog):
             description = 'Пролистайте страницу чтобы получить силки | Scroll the page to get links',
         )
         emb1 = discord.Embed(
-            title='Пригласи меня | Invite me',
-            url='https://discord.com/api/oauth2/authorize?client_id=729957701240750140&permissions=2147483639&scope=bot'
+            title = '[Пригласи меня | Invite me]({0.url_bot})'.format(self),
         )
         emb2 = discord.Embed(
-            title='Мой сервер поддержки | My support server',
-            url = 'https://discord.gg/4FpZepm'
+            title = '[Мой сервер поддержки | My support server]({0.url_suppotr_server})'.format(self),
         )
         embeds = [emb,emb1,emb2]
         message = await ctx.send(embed= emb)
