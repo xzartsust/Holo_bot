@@ -11,7 +11,6 @@ class invite(commands.Cog):
 
     @commands.command()
     async def invite(self, ctx):
-        await ctx.channel.purge(limit = 1)
         
         emb = discord.Embed(
             timestamp = ctx.message.created_at,
@@ -19,10 +18,12 @@ class invite(commands.Cog):
             description = 'Пролистайте страницу чтобы получить силки | Scroll the page to get links',
         )
         emb1 = discord.Embed(
-            title = '[Пригласи меня | Invite me]({0.url_bot})'.format(self),
+            title = 'Пригласи меня | Invite me',
+            url = '{0.url_bot}'.format(self)
         )
         emb2 = discord.Embed(
-            title = '[Мой сервер поддержки | My support server]({0.url_suppotr_server})'.format(self),
+            title = 'Мой сервер поддержки | My support server',
+            url = '{0.url_suppotr_server}'.format(self)
         )
         embeds = [emb,emb1,emb2]
         message = await ctx.send(embed= emb)
