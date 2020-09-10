@@ -40,7 +40,7 @@ class MusicPlay(commands.Cog):
                     if song_there:
                         os.remove("song.mp3")
                     shutil.move(song_path, main_location)
-                    for file in os.listdir("./"):
+                    for file in os.listdir(".\\"):
                         if file.endswith(".mp3"):
                             os.rename(file, 'song.mp3')
                             
@@ -67,10 +67,10 @@ class MusicPlay(commands.Cog):
             await ctx.send("ERROR: Music playing")
             return
             
-        Queue_infile = os.path.isdir("./Queue")
+        Queue_infile = os.path.isdir(".\\Queue")
         
         try:
-            Queue_folder = "./Queue"
+            Queue_folder = ".\\Queue"
             if Queue_infile is True:
                 print("Removed old Queue Folder")
                 shutil.rmtree(Queue_folder)
