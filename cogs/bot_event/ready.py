@@ -8,7 +8,7 @@ class bot_ready(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print(f'Connect is {self.bot.user.name}\n')
+        print('Logged in as:\n{0.user.name}\n{0.user.id}\n'.format(self.bot))
     
 
 def setup(bot):

@@ -175,9 +175,6 @@ class SongQueue(asyncio.Queue):
         else:
             return self._queue[item]
 
-    def __iter__(self):
-        return self._queue.__iter__()
-
     def __len__(self):
         return self.qsize()
 
@@ -509,13 +506,7 @@ class Music(commands.Cog):
             if ctx.voice_client.channel != ctx.author.voice.channel:
                 raise commands.CommandError('Bot is already in a voice channel.')
 
+def setup(bot):
+    bot.add_cog(Music(bot))
 
-bot = commands.Bot('music.', description='Yet another music bot.')
-bot.add_cog(Music(bot))
 
-
-@bot.event
-async def on_ready():
-    print('Logged in as:\n{0.user.name}\n{0.user.id}'.format(bot))
-
-bot.run('Token')
