@@ -7,7 +7,7 @@ class Vote(commands.Cog):
 
     @commands.command()
     @commands.has_permissions()
-    async def vote(self, ctx, *, caption: str, text: str):
+    async def vote(self, ctx, caption: str, *, text: str):
         
         emb = discord.Embed(
             title = f'{caption}',
