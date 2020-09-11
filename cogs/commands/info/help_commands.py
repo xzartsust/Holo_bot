@@ -321,7 +321,7 @@ class HelpCommands(commands.Cog):
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: `{prefix}news`', 
             colour = discord.Color.teal(), 
-            description=f'**Команда**: `[news]`\n**Описание**: создает на сервере новость\n**Использования**: `{prefix}news *айди канала или тег канала* *\"заголовок\"* *текст новости*`\n\n**Пример:** `{prefix}news 124555785215 \"Новость сервера!\" Просто пример`'
+            description=f'**Команда**: `[news]`\n**Описание**: создает на сервере новость\n**Использования**: `{prefix}news *айди канала или тег канала* *\"заголовок\"* *текст новости*`\n\n**Пример:** `{prefix}news 124555785215 \"Новость сервера!\" Просто пример`\n\n**Внимание!**\nЗаголовок должнен быть обязательно в двойных кавычках'
         )
         news_emb.set_footer(
             text = ctx.message.author,
@@ -548,6 +548,23 @@ class HelpCommands(commands.Cog):
             icon_url = ctx.message.author.avatar_url
             )
         await ctx.send(embed = unban_emb)
+
+    @help_for_commands.command(name = 'vote')
+    async def vote_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        vote_emb=discord.Embed(
+            timestamp = ctx.message.created_at, 
+            title = f'Информация про команду: `{prefix}vote`', 
+            colour = discord.Color.teal(), 
+            description = f'**Команда**: `[vote]`\n**Описание**: создает голосование на сервере\n**Использования**: `{prefix}vote *\"тема голосования\"* *текст*`\n\n**Пример:** `{prefix}vote \"Голосования!\" О чем голосуем`\n\n**Внимание!**\nТема голосование должно быть обязательно в двойных кавычках'
+        )
+        vote_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(embed = vote_emb) 
 
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
