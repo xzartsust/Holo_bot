@@ -15,8 +15,8 @@ class Vote(commands.Cog):
             timestamp = ctx.message.created_at
         )
         await ctx.send(embed = emb)
-        await ctx.message.add_reaction('<:no:673405009853153300>')
-        await self.bot.add_reaction(673405073392664585)
+        await ctx.message.add_reaction('<a:yes:754079238151340053>')
+        await self.bot.add_reaction('<a:no:754079450827718716> ')
 
 def setup(bot):
     bot.add_cog(Vote(bot))
