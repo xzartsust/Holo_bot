@@ -78,7 +78,7 @@ class HelpCommands(commands.Cog):
         )
         emb2.add_field(
             name = '**Команды**',
-            value = f'`{prefix}prefix`\n`{prefix}wlc` или `{prefix}welcome`\n`{prefix}news`\n`{prefix}rwlc`\n`{prefix}mute`\n`{prefix}muterole`\n`{prefix}ban`\n`{prefix}kick`\n`{prefix}unban`'
+            value = f'`{prefix}prefix`\n`{prefix}wlc` или `{prefix}welcome`\n`{prefix}news`\n`{prefix}rwlc`\n`{prefix}mute`\n`{prefix}muterole`\n`{prefix}ban`\n`{prefix}kick`\n`{prefix}unban`\n`{prefix}vote`'
         )
         emb3=discord.Embed(
             title='Команды для развлечения', 
