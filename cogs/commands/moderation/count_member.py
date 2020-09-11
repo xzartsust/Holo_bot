@@ -17,10 +17,10 @@ class MemberCount(commands.Cog):
         update_required = True
         
     @tasks.loop(minutes = 5)
-    async def stats_update(self, ctx):
+    async def stats_update(self):
         if update_required:
             count_channel = self.bot.get_channel(754072936541061213) # CamelCase обычно обозначают Classы: https://www.python.org/dev/peps/pep-0008/#prescriptive-naming-conventions
-            await count_channel.edit(name = f"Участников: {len(ctx.guild.members)}")
+            #await count_channel.edit(name = f"Участников: {len(ctx.guild.members)}")
             update_required = False
             
     stats_update.start()
