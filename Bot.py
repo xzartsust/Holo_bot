@@ -79,6 +79,7 @@ bot.load_extension('cogs.commands.info.tuser')
 bot.load_extension('cogs.commands.info.infobot')
 bot.load_extension('cogs.commands.info.serverinfo')
 bot.load_extension('cogs.commands.info.prefixserver')
+bot.load_extension('cogs.commands.info.avatar')
 
 
 ################################################## Cogs Moderation commands ######################################################
