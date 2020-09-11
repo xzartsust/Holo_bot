@@ -7,7 +7,7 @@ class Vote(commands.Cog):
 
     @commands.command()
     @commands.has_permissions()
-    async def vote(self, ctx, caption: str, text: str):
+    async def vote(self, ctx, *, caption: str, text: str):
         
         emb = discord.Embed(
             title = f'{caption}',
@@ -15,7 +15,7 @@ class Vote(commands.Cog):
             timestamp = ctx.message.created_at
         )
         await ctx.send(embed = emb)
-        await self.bot.add_reaction(673405009853153300)
+        await ctx.messahe.add_reaction(673405009853153300)
         await self.bot.add_reaction(673405073392664585)
 
 def setup(bot):
