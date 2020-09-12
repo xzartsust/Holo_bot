@@ -10,12 +10,18 @@ from discord.ext.commands import Bot
 
 
 class MusicPlay(commands.Cog):
-    def __init__(self, bot):
+    def __init__(self, bot, source: discord.FFmpegPCMAudio, *, data: dict):
+        super().__init__(source)
+        
         self.bot = bot
+        self.data = data
+        self.title = data.get('title')
+        
 
 
     @commands.command()
     async def play(self, ctx, *, url: str):
+        
 
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
@@ -62,7 +68,7 @@ class MusicPlay(commands.Cog):
         #await ctx.send(f"Playing: {a}")
         print("playing\n")
 
-        print(f'{a}')
+        print('{0.title}'.format(self))
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
