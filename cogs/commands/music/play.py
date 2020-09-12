@@ -62,7 +62,7 @@ class MusicPlay(commands.Cog):
         #await ctx.send(f"Playing: {a}")
         print("playing\n")
 
-        print(f"{file[0]['title']}")
+        print(f"{file['title']}")
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
