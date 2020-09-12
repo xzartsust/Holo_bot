@@ -57,7 +57,7 @@ class MusicPlay(commands.Cog):
         voice.source = discord.PCMVolumeTransformer(voice.source)
         voice.source.volume = 1
         
-        #await ctx.send(f"Playing: {a}")
+        await ctx.send(f"Сейчас играет: **{file}**")
         print("playing\n")
 
 def setup(bot):
