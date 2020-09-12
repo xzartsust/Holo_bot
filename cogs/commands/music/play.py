@@ -26,7 +26,7 @@ class MusicPlay(commands.Cog):
 
 
     @commands.command()
-    async def play(self, ctx, url: str = None):
+    async def play(self, ctx, *, url):
 
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
