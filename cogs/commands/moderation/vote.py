@@ -6,7 +6,7 @@ class Vote(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.has_permissions()
+    @commands.has_permissions(manage_messages = True)
     async def vote(self, ctx, caption: str, *, text: str):
         
         emb = discord.Embed(
