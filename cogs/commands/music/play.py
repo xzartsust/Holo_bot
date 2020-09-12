@@ -45,7 +45,7 @@ class MusicPlay(commands.Cog):
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             print("Downloading audio now\n")
-            a = ydl.extract_info(url)
+            file = ydl.extract_info(url)
             ydl.download([url])
             
 
@@ -62,7 +62,7 @@ class MusicPlay(commands.Cog):
         #await ctx.send(f"Playing: {a}")
         print("playing\n")
 
-        print('{0.title}'.format(self))
+        print(f"{file[0]['title']}")
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
