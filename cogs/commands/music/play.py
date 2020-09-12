@@ -64,7 +64,7 @@ class MusicPlay(commands.Cog):
         if songname is not None:
             await ctx.send(f"Сейчас играет: **{songname}**")
         else:
-            await ctx.send(f"Сейчас играет: **{nname}**")
+            await ctx.send(f"Сейчас играет: **{nname[0]}**")
 
         
         if songname is not None:
