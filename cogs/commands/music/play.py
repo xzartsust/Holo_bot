@@ -46,7 +46,7 @@ class MusicPlay(commands.Cog):
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             print("Downloading audio now\n")
             ydl.download([url])
-            a = ydl.extract_info(url, download = False)
+            file = ydl.extract_info(url, download = False)
 
             
         for file in os.listdir("./"):
@@ -58,7 +58,7 @@ class MusicPlay(commands.Cog):
         voice.source = discord.PCMVolumeTransformer(voice.source)
         voice.source.volume = 1
         
-        await ctx.send(f"Playing: {a['title']}")
+        await ctx.send(f"Playing: {file['title']}")
         print("playing\n")
 
 def setup(bot):
