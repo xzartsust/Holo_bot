@@ -51,6 +51,7 @@ class MusicPlay(commands.Cog):
             
         for file in os.listdir("./"):
             if file.endswith(".mp3"):
+                name = file
                 print(f"Renamed File: {file}\n")
                 os.rename(file, "song.mp3")
                 
@@ -58,11 +59,13 @@ class MusicPlay(commands.Cog):
         voice.source = discord.PCMVolumeTransformer(voice.source)
         voice.source.volume = 1
 
+        nname = name.rsplit("-")
+
         if songname is not None:
             await ctx.send(f"Сейчас играет: **{songname}**")
         else:
-            pass
-        
+            await ctx.send(f"Сейчас играет: **{nname}**")
+
         print("playing\n")
         print(f'{songname}')
 
