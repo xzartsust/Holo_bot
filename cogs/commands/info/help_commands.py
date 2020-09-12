@@ -397,7 +397,7 @@ class HelpCommands(commands.Cog):
             )
         await ctx.send(embed=ban_emb)
 
-    @help_for_commands.command(name = 'play', aliases = ['p','pl'])
+    @help_for_commands.command(name = 'play')
     async def play_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
@@ -414,7 +414,7 @@ class HelpCommands(commands.Cog):
             )
         await ctx.send(embed=play_emb)
 
-    @help_for_commands.command(name = 'join', aliases = ['j'])
+    @help_for_commands.command(name = 'join')
     async def join_subcommands(self, ctx):
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
@@ -431,7 +431,7 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed=join_emb)
 
-    @help_for_commands.command(name = 'leave', aliases = ['l', 'lea'])
+    @help_for_commands.command(name = 'leave')
     async def leave_subcommands(self, ctx):
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
@@ -450,7 +450,7 @@ class HelpCommands(commands.Cog):
             embed = leave_emb
         )      
 
-    @help_for_commands.command(name = 'pause', aliases = ['pau', 'p'])
+    @help_for_commands.command(name = 'pause')
     async def pause_subcommands(self, ctx):
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
