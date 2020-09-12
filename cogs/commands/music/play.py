@@ -45,8 +45,9 @@ class MusicPlay(commands.Cog):
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             print("Downloading audio now\n")
+            a = ydl.extract_info(url)
             ydl.download([url])
-            a = ydl.extract_info(url, download = False)
+            
 
             
         for file in os.listdir("./"):
