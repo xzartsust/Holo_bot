@@ -21,7 +21,6 @@ class MusicPlay(commands.Cog):
 
         ydl_opts = {
             'format': 'bestaudio/best',
-            'quiet': True,
             'default_search': 'auto',
             'source_address': '0.0.0.0',
             'extractaudio': True,
