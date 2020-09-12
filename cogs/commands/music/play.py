@@ -22,7 +22,7 @@ class MusicPlay(commands.Cog):
         ydl_opts = {
             'format': 'bestaudio/best',
             'quiet': True,
-            'default_search': 'ytdlsearch',
+            'default_search': f'{url}',
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'mp3',
