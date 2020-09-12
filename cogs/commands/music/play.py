@@ -11,6 +11,7 @@ from discord.ext.commands import Bot
 ydl_opts = {
     'format': 'bestaudio/best',
     'quiet': True,
+    'default-search': "ytdlsearch",
     'postprocessors': [{
         'key': 'FFmpegExtractAudio',
         'preferredcodec': 'mp3',
@@ -31,7 +32,7 @@ class MusicPlay(commands.Cog):
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             global path
-            file = ydl.extract_info(url, download=True)
+            file = ydl.extract_info([url], download=True)
             path = str(file['title']) + "-" + str(file['id'] + ".mp3")
 
         await ctx.send(f"Сейчас играет песня: **{file['title']}**")
