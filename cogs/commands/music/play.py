@@ -13,9 +13,9 @@ class MusicPlay(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+
     @commands.command()
     async def play(self, ctx, *, url: str):
-        
 
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
@@ -45,9 +45,8 @@ class MusicPlay(commands.Cog):
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             print("Downloading audio now\n")
-            file = ydl.extract_info(url, download = False)
+            a = ydl.extract_info(url)
             ydl.download([url])
-
             
         for file in os.listdir("./"):
             if file.endswith(".mp3"):
@@ -60,8 +59,6 @@ class MusicPlay(commands.Cog):
         
         #await ctx.send(f"Playing: {a}")
         print("playing\n")
-
-        print(f"{file[0]}")
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
