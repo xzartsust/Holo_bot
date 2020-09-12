@@ -8,7 +8,7 @@ class MusicPause(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(aliases = ['p','pau'])
     async def pause(self, ctx):
         
         voice = get(self.bot.voice_clients, guild = ctx.guild)

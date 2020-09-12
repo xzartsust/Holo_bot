@@ -14,7 +14,7 @@ class MusicPlay(commands.Cog):
         self.bot = bot
 
 
-    @commands.command()
+    @commands.command(aliases = ['p', 'pl'])
     async def play(self, ctx, *, url: str):
 
         voice = get(self.bot.voice_clients, guild = ctx.guild)
@@ -59,15 +59,18 @@ class MusicPlay(commands.Cog):
         voice.source = discord.PCMVolumeTransformer(voice.source)
         voice.source.volume = 1
 
-        nname = name.rsplit("-")
+        nname = name.rsplit("-", 2)
 
         if songname is not None:
             await ctx.send(f"Сейчас играет: **{songname}**")
         else:
             await ctx.send(f"Сейчас играет: **{nname}**")
 
-        print("playing\n")
-        print(f'{songname}')
+        
+        if songname is not None:
+            print(f"Играет {songname}\n")
+        else:
+            print(f"Играет {nname}\n")
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))

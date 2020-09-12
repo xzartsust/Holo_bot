@@ -7,7 +7,7 @@ class MusicLeave(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(aliases = ['l', 'lea'])
     async def leave(self, ctx):
         global voice
 

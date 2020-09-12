@@ -144,7 +144,7 @@ class HelpCommands(commands.Cog):
         )
         emb_music.add_field(
             name = '**Команды**',
-            value = f'`{prefix}play`\n`{prefix}join`\n`{prefix}leave`\n`{prefix}pause`\n`{prefix}resume`\n`{prefix}stop`'
+            value = f'`{prefix}play` или `{prefix}pla` или `{prefix}p` \n`{prefix}join` или `{prefix}j`\n`{prefix}leave` или `{prefix}lea` или `{prefix}l`\n`{prefix}pause` или `{prefix}pau` или `{prefix}p`\n`{prefix}resume` или `{prefix}res` или `{prefix}r`\n`{prefix}stop` или `{prefix}st` или `{prefix}s`'
         )
 
         embeds=[emb,emb1,emb2,emb3,emb4, emb_music]
@@ -397,14 +397,14 @@ class HelpCommands(commands.Cog):
             )
         await ctx.send(embed=ban_emb)
 
-    @help_for_commands.command(name = 'play')
+    @help_for_commands.command(name = 'play', aliases = ['p','pl'])
     async def play_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
 
         play_emb=discord.Embed(
             timestamp= ctx.message.created_at, 
-            title=f'Информация про команду: `{prefix}play`', 
+            title=f'Информация про команду: {prefix}play или {prefix}pl или {prefix}p', 
             colour = discord.Color.teal(), 
             description=f'**Предостережение:** Пока что нельзя добавлять музыку в очередь сначала нужно зачикаты пока доиграет одна музыка после этого добавлять новую ссылку на новую музыку, более подробно в команде `{prefix}help music`\n\n**Команда**: `[play]`\n**Описание**: проиграть музику\n**Использования**: `{prefix}play *силка на музыку*`\n\n**Пример:** `{prefix}play https://www.youtube.com/watch?v=9sjWU5dGcGI`'
             )
@@ -414,14 +414,14 @@ class HelpCommands(commands.Cog):
             )
         await ctx.send(embed=play_emb)
 
-    @help_for_commands.command(name = 'join')
+    @help_for_commands.command(name = 'join', aliases = ['j'])
     async def join_subcommands(self, ctx):
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
 
         join_emb=discord.Embed(
-            title=f'Информация про команду: {prefix}join', 
+            title=f'Информация про команду: {prefix}join или {prefix}j', 
             colour = discord.Color.teal(), 
             description=f'**Команда**: `[join]`\n**Описание**: добавить бота в голосовой канал\n**Использования**: `{prefix}join`'
         )
@@ -431,14 +431,14 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed=join_emb)
 
-    @help_for_commands.command(name = 'leave')
+    @help_for_commands.command(name = 'leave', aliases = ['l', 'lea'])
     async def leave_subcommands(self, ctx):
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
 
         leave_emb=discord.Embed(
-            title=f'Информация про команду: {prefix}leave', 
+            title=f'Информация про команду: {prefix}leave или {prefix}lea или {prefix}l', 
             colour = discord.Color.teal(), 
             description=f'**Команда**: `[leave]`\n**Описание**: выгнать бота с голосового канала\n**Использования**: `{prefix}leave`'
         )
@@ -450,14 +450,14 @@ class HelpCommands(commands.Cog):
             embed = leave_emb
         )      
 
-    @help_for_commands.command(name = 'pause')
+    @help_for_commands.command(name = 'pause', aliases = ['pau', 'p'])
     async def pause_subcommands(self, ctx):
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
 
         pause_emb=discord.Embed(
-            title=f'Информация про команду: {prefix}pause', 
+            title=f'Информация про команду: {prefix}pause или {prefix}pau или {prefix}p', 
             colour = discord.Color.teal(), 
             description=f'**Команда**: `[pause]`\n**Описание**: поставить текущую песню на паузу\n**Использования**: `{prefix}pause`'
         )
@@ -476,7 +476,7 @@ class HelpCommands(commands.Cog):
         prefix = prefix_1[0]
 
         resume_emb=discord.Embed(
-            title = f'Информация про команду: {prefix}resume', 
+            title = f'Информация про команду: {prefix}resume или {prefix}res или {prefix}r', 
             colour = discord.Color.teal(), 
             description = f'**Команда**: `[resume]`\n**Описание**: возобновить воспроизведение музыки\n**Использования**: `{prefix}resume`'
         )
@@ -495,7 +495,7 @@ class HelpCommands(commands.Cog):
         prefix = prefix_1[0]
 
         stop_emb = discord.Embed(
-            title=f'Информация про команду: {prefix}stop', 
+            title=f'Информация про команду: {prefix}stop или {prefix}st или {prefix}s', 
             colour = discord.Color.teal(), 
             description=f'**Команда**: `[stop]`\n**Описание**: закончить воспроизведения музыки\n**Использования**: `{prefix}stop`'
         )

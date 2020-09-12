@@ -7,7 +7,7 @@ class MusicJion(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(aliases = ['j'])
     async def join(self, ctx):
         global voice
 

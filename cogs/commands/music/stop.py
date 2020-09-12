@@ -8,7 +8,7 @@ class MusicStop(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(aliases = ['s','st'])
     async def stop(self, ctx):
         global voice
         
