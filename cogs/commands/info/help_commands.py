@@ -457,7 +457,7 @@ class HelpCommands(commands.Cog):
         prefix = prefix_1[0]
 
         pause_emb=discord.Embed(
-            title=f'Информация про команду: {prefix}pause или {prefix}pau или {prefix}p', 
+            title=f'Информация про команду: {prefix}pause или {prefix}pau или {prefix}pa', 
             colour = discord.Color.teal(), 
             description=f'**Команда**: `[pause]`\n**Описание**: поставить текущую песню на паузу\n**Использования**: `{prefix}pause`'
         )
