@@ -57,8 +57,12 @@ class MusicPlay(commands.Cog):
         voice.play(discord.FFmpegPCMAudio("song.mp3"), after=lambda e: print("Song done!"))
         voice.source = discord.PCMVolumeTransformer(voice.source)
         voice.source.volume = 1
+
+        if songname is not None:
+            await ctx.send(f"Сейчас играет: **{songname}**")
+        else:
+            pass
         
-        await ctx.send(f"Сейчас играет: **{songname}**")
         print("playing\n")
         print(f'{songname}')
 
