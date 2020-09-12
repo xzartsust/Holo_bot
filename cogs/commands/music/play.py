@@ -13,7 +13,6 @@ class MusicPlay(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-
     @commands.command(aliases = ['p', 'pl'])
     async def play(self, ctx, *, url: str):
 
