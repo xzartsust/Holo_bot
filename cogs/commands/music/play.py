@@ -11,8 +11,7 @@ from discord.ext.commands import Bot
 
 class MusicPlay(commands.Cog):
     def __init__(self, bot, source: discord.FFmpegPCMAudio, *, data: dict):
-        super().__init__(source)
-        
+
         self.bot = bot
         self.data = data
         self.title = data.get('title')
