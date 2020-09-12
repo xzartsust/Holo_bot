@@ -10,13 +10,8 @@ from discord.ext.commands import Bot
 
 
 class MusicPlay(commands.Cog):
-    def __init__(self, bot, source: discord.FFmpegPCMAudio, *, data: dict):
-
+    def __init__(self, bot):
         self.bot = bot
-        self.data = data
-        self.title = data.get('title')
-        
-
 
     @commands.command()
     async def play(self, ctx, *, url: str):
