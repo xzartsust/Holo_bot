@@ -15,35 +15,48 @@ class MusicPlay(commands.Cog):
 
 
     @commands.command()
-    async def play(self, ctx, *, url):
+    async def play(self, ctx, *, url: str):
 
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
+        song_there = os.path.isfile("song.mp3")
+        try:
+            if song_there:
+                os.remove("song.mp3")
+                print("Removed old song file")
+        except PermissionError:
+            print("Trying to delete song file, but it's being played")
+            await ctx.send("ERROR: Music playing")
+            return
+        
+        await ctx.send("Getting everything ready now")
+        
         ydl_opts = {
             'format': 'bestaudio/best',
-            'default_search': 'auto',
-            'quiet': True,
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'mp3',
                 'preferredquality': '192',
-            }],
-        }  
+                }],
+        }
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            global path
-            file = ydl.extract_info(url, download = True)
-            path = str(file['title']) + "-" + str(file['id'] + ".mp3")
-
-        await ctx.send(f"Сейчас играет песня: **{file['title']}**")
-                           
-        voice.play(discord.FFmpegPCMAudio(path), after = lambda x: print('Song End'))
-        voice.source = discord.PCMVolumeTransformer(voice.source, 1)
+            print("Downloading audio now\n")
+            ydl.download([url])
+            
+        for file in os.listdir("./"):
+            if file.endswith(".mp3"):
+                name = file
+                print(f"Renamed File: {file}\n")
+                os.rename(file, "song.mp3")
+                
+        voice.play(discord.FFmpegPCMAudio("song.mp3"), after=lambda e: print("Song done!"))
+        voice.source = discord.PCMVolumeTransformer(voice.source)
+        voice.source.volume = 0.07
         
-        while voice.is_playing(): 
-            await asyncio.sleep(1)
-        else:
-            pass
+        nname = name.rsplit("-", 2)
+        await ctx.send(f"Playing: {nname[0]}")
+        print("playing\n")
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
