@@ -45,7 +45,7 @@ class MusicPlay(commands.Cog):
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             print("Downloading audio now\n")
-            info = ydl.extract_info(url)
+            info = ydl.extract_info(url, download = False)
             ydl.download([url])
             songname = info.get('title')
             
@@ -58,7 +58,7 @@ class MusicPlay(commands.Cog):
         voice.source = discord.PCMVolumeTransformer(voice.source)
         voice.source.volume = 1
         
-        await ctx.send(f"Сейчас играет: **{file}**")
+        await ctx.send(f"Сейчас играет: **{songname}**")
         print("playing\n")
         print(f'{songname}')
 
