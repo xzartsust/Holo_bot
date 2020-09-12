@@ -29,7 +29,7 @@ class MusicPlay(commands.Cog):
             await ctx.send("ERROR: Music playing")
             return
         
-        await ctx.send("Getting everything ready now")
+        await ctx.send("Пожалуйста подождите загружается музыка")
         
         ydl_opts = {
             'format': 'bestaudio/best',
@@ -46,10 +46,11 @@ class MusicPlay(commands.Cog):
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             print("Downloading audio now\n")
             ydl.download([url])
+            a = ydl.extract_info(url, download = False)
+
             
         for file in os.listdir("./"):
             if file.endswith(".mp3"):
-                name = file
                 print(f"Renamed File: {file}\n")
                 os.rename(file, "song.mp3")
                 
@@ -57,8 +58,7 @@ class MusicPlay(commands.Cog):
         voice.source = discord.PCMVolumeTransformer(voice.source)
         voice.source.volume = 1
         
-        nname = name.rsplit("-", 2)
-        await ctx.send(f"Playing: {nname[0]}")
+        await ctx.send(f"Playing: {a['title']}")
         print("playing\n")
 
 def setup(bot):
