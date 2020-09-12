@@ -22,14 +22,7 @@ class MusicPlay(commands.Cog):
         ydl_opts = {
             'format': 'bestaudio/best',
             'default_search': 'auto',
-            'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
-            'restrictfilenames': True,
-            'noplaylist': True,
-            'nocheckcertificate': True,
-            'ignoreerrors': False,
-            'logtostderr': False,
             'quiet': True,
-            'no_warnings': True,
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'mp3',
