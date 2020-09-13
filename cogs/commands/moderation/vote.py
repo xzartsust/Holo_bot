@@ -7,21 +7,39 @@ class Vote(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_messages = True)
-    async def vote(self, ctx, caption: str, *, text: str):
+    async def vote(self, ctx, caption: str, image: str = None, *, text: str):
         
-        emb = discord.Embed(
-            title = f'{caption}',
-            description = f'{text}',
-            timestamp = ctx.message.created_at,
-            colour = discord.Color.orange()
-        )
-        emb.set_footer(
-            text = ctx.message.author,
-            icon_url = ctx.message.author.avatar_url
-        )
-        message = await ctx.send(embed = emb)
-        await message.add_reaction('<a:yes:754079238151340053>')
-        await message.add_reaction('<a:no:754079450827718716>')
+        if image is not None:
+            emb = discord.Embed(
+                title = f'{caption}',
+                description = f'{text}',
+                timestamp = ctx.message.created_at,
+                colour = discord.Color.orange()
+            )
+            emb.set_footer(
+                text = ctx.message.author,
+                icon_url = ctx.message.author.avatar_url
+            )
+            emb.set_image(
+                url = '{0}'.format(image)
+            )
+            message = await ctx.send(embed = emb)
+            await message.add_reaction('<a:yes:754079238151340053>')
+            await message.add_reaction('<a:no:754079450827718716>')
+        elif image is None:
+            emb = discord.Embed(
+                title = f'{caption}',
+                description = f'{text}',
+                timestamp = ctx.message.created_at,
+                colour = discord.Color.orange()
+            )
+            emb.set_footer(
+                text = ctx.message.author,
+                icon_url = ctx.message.author.avatar_url
+            )
+            message = await ctx.send(embed = emb)
+            await message.add_reaction('<a:yes:754079238151340053>')
+            await message.add_reaction('<a:no:754079450827718716>')
 
 def setup(bot):
     bot.add_cog(Vote(bot))

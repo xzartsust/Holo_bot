@@ -16,6 +16,12 @@ class MusicPlay(commands.Cog):
     @commands.command(aliases = ['p', 'pl'])
     async def play(self, ctx, *, url: str):
 
+        def end(self, ctx):
+            if songname is not None:
+                await ctx.send(f"Музыка: **{songname}** закончилась")
+            else:
+                await ctx.send(f"Музыка: **{nname[0]}-{nname[1]}** закончилась")
+
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
         song_there = os.path.isfile("song.mp3")
@@ -54,7 +60,7 @@ class MusicPlay(commands.Cog):
                 print(f"Renamed File: {file}\n")
                 os.rename(file, "song.mp3")
                 
-        voice.play(discord.FFmpegPCMAudio("song.mp3"), after=lambda e: print("Song done!"))
+        voice.play(discord.FFmpegPCMAudio("song.mp3"), after=lambda e: end(self, ctx))
         voice.source = discord.PCMVolumeTransformer(voice.source)
         voice.source.volume = 1
 
