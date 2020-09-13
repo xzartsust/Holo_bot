@@ -7,7 +7,7 @@ class Vote(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_messages = True)
-    async def vote(self, ctx, caption: str, image: str = None, *, text: str):
+    async def vote(self, ctx, caption: str, *, text: str, image: str = None):
         
         await ctx.channel.purge(limit=1)
 
