@@ -16,7 +16,7 @@ class MusicPlay(commands.Cog):
     @commands.command(aliases = ['p', 'pl'])
     async def play(self, ctx, *, url: str):
 
-        def end(self, ctx):
+        async def end(self, ctx):
             if songname is not None:
                 await ctx.send(f"Музыка: **{songname}** закончилась")
             else:
