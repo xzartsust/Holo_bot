@@ -28,7 +28,7 @@ class Vote(commands.Cog):
             message = await ctx.send(embed = emb)
             await message.add_reaction('<a:yes:754079238151340053>')
             await message.add_reaction('<a:no:754079450827718716>')
-        elif image is None:
+        if image is None:
             emb = discord.Embed(
                 title = f'{caption}',
                 description = f'{text}',
