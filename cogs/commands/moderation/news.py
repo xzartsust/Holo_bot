@@ -7,8 +7,8 @@ class news(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_messages = True)
-    async def news(self, ctx, channel: discord.TextChannel, title, *, text):
-        await ctx.channel.purge(limit=1)
+    async def news(self, ctx, channel: discord.TextChannel, title: str, *, text: str):
+        await ctx.channel.purge(limit = 1)
         
         emb= discord.Embed(
             title = f'{title}', 

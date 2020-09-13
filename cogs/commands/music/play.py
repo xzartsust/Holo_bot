@@ -22,6 +22,8 @@ class MusicPlay(commands.Cog):
             else:
                 await ctx.send(f"Музыка: **{nname[0]}-{nname[1]}** закончилась")
 
+            return
+
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
         song_there = os.path.isfile("song.mp3")

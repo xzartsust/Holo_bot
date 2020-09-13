@@ -9,6 +9,8 @@ class Vote(commands.Cog):
     @commands.has_permissions(manage_messages = True)
     async def vote(self, ctx, caption: str, image: str = None, *, text: str):
         
+        await ctx.channel.purge(limit=1)
+
         if image is not None:
             emb = discord.Embed(
                 title = f'{caption}',
