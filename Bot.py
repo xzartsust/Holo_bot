@@ -63,7 +63,7 @@ async def change_status():
     while not bot.is_closed():
         next_status= next(msg)
         await bot.change_presence(activity= discord.Game(name=next_status))
-        await asyncio.sleep(13)
+        await asyncio.sleep(9)
 status=['t!help', 'Модернизирует свой код']
 
 
