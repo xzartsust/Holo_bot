@@ -151,7 +151,7 @@ bot.load_extension('cogs.commands.fun.nsfw.aniero')
 bot.load_extension('cogs.commands.fun.nsfw.kitsune_ero')
 bot.load_extension('cogs.commands.fun.simply.poke')
 bot.load_extension('cogs.commands.fun.nsfw.les')
-bot.load_extension('cogs.commands.fun.simply.lewd_kitsune')
+bot.load_extension('cogs.commands.fun.lewd_kitsune')
 bot.load_extension('cogs.commands.fun.nsfw.keta')
 #bot.load_extension('cogs.commands.fun.simply.neko_gif')
 
