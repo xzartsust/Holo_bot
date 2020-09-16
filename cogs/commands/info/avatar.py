@@ -6,7 +6,6 @@ class Avatar(commands.Cog):
         self.bot = bot
 
     @commands.command(aliases = ['av', 'a'])
-    @commands.cooldown(1, 30, commands.BucketType.member)
     async def avatar(self, ctx):
         
         embed = discord.Embed(
