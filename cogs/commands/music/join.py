@@ -18,10 +18,10 @@ class MusicJion(commands.Cog):
 
         if voice and voice.is_connected():
             await voice.move_to(channel)
-            await ctx.send(f'Bot connected with {channel}')
+            await ctx.send(f'Бот подключен к каналу {channel}')
         else:
             voice = await channel.connect()
-            await ctx.send(f'Bot connected with {channel}')
+            await ctx.send(f'Бот перешел к каналу {channel}')
             
 
         

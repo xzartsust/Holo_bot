@@ -17,9 +17,9 @@ class MusicLeave(commands.Cog):
 
         if voice and voice.is_connected():
             await voice.disconnect()
-            await ctx.send(f'Bot disconnected with {channel}')
+            await ctx.send(f'Бот отключен от{channel}')
         else:
-            await ctx.send('Bot is not in voice channel')
+            await ctx.send('Бот не в голосовом канале')
 
 
 def setup(bot):

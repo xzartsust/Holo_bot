@@ -14,12 +14,10 @@ class MusicPause(commands.Cog):
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
         if voice and voice.is_playing():
-            print('Music pause')
             voice.pause()
-            await ctx.send('Music pause')
+            await ctx.send('Музыка на паузе')
         else:
-            print('Music not playing failed pause')
-            await ctx.send('Music not playing failed pause')
+            await ctx.send('Музыка не воспроизводится, не удалось приостановить')
 
 def setup(bot):
     bot.add_cog(MusicPause(bot))

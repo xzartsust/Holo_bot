@@ -15,12 +15,10 @@ class MusicStop(commands.Cog):
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
         if voice and voice.is_playing() and voice.is_connected():
-            print('Music stopped')
             voice.stop()
-            await ctx.send('Music stopped')
+            await ctx.send('Музыка остановлена')
         else:
-            print('No music playing failed stopped')
-            await ctx.send('No music playing failed stopped')
+            await ctx.send('Музыка не воспроизводится, остановить не удалось')
 
 
 def setup(bot):

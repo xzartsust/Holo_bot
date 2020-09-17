@@ -14,12 +14,10 @@ class MusicResume(commands.Cog):
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
         if voice and voice.is_paused():
-            print('Resume music')
             voice.resume()
-            await ctx.send('Music Resume')
+            await ctx.send('Воспроизведения музыки возобновилось')
         else:
-            print('Music is not paused')
-            await ctx.send('Music is not paused')
+            await ctx.send('Музыка не на паузе')
 
 
 def setup(bot):
