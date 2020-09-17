@@ -75,7 +75,15 @@ class MusicPlay(commands.Cog):
         
         except Exception:
             await ctx.send('1')
-            pass
+            try:
+                if song_there:
+                    os.remove("song.mp3")
+                    print("Removed song file")
+            except PermissionError:
+                print("Trying to delete song file, but it's being played")
+                await ctx.send("ERROR: Music playing")
+                return
+            return
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
