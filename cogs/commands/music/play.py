@@ -78,8 +78,7 @@ class MusicPlay(commands.Cog):
                 print("Trying to delete song file, but it's being played")
                 await ctx.send("ERROR: Music playing")
                 return
-            return
-
+        
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
