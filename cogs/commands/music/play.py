@@ -79,7 +79,6 @@ class MusicPlay(commands.Cog):
                 await ctx.send("ERROR: Music playing")
                 return
             return
-        except:
 
 
 def setup(bot):
