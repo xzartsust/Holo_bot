@@ -59,7 +59,7 @@ class MusicPlay(commands.Cog):
             voice.play(discord.FFmpegPCMAudio("song.mp3"), after = lambda e: print("End"))
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 1
-        except discord.ext.commands.errors.MissingRequiredArgument:
+        except Exception:
             await ctx.send('1')
         nname = name.rsplit("-", 2)
 
