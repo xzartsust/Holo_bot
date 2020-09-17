@@ -14,7 +14,7 @@ class MusicPlay(commands.Cog):
         self.bot = bot
 
     @commands.command(aliases = ['p', 'pl'])
-    @commands.cooldown(1, 10, commands.BucketType.member)
+    @commands.cooldown(1, 20, commands.BucketType.member)
     async def play(self, ctx, *, url: str):
 
         voice = get(self.bot.voice_clients, guild = ctx.guild)
@@ -67,14 +67,9 @@ class MusicPlay(commands.Cog):
                 await ctx.send(f"Сейчас играет: **{songname}**")
             else:
                 await ctx.send(f"Сейчас играет: **{nname[0]}-{nname[1]}**")
-            
-            if songname is not None:
-                print(f"Играет {songname}\n")
-            else:
-                print(f"Играет {nname}\n")
         
         except Exception:
-            await ctx.send('1')
+            await ctx.send('Простите я не могу проиграть эту музыку так как сейчас уже играет музыка. Подождите пока она зачиться <з')
             try:
                 if song_there:
                     os.remove("song.mp3")
@@ -84,6 +79,8 @@ class MusicPlay(commands.Cog):
                 await ctx.send("ERROR: Music playing")
                 return
             return
+        except:
+
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
