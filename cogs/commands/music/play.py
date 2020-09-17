@@ -54,11 +54,13 @@ class MusicPlay(commands.Cog):
                 name = file
                 print(f"Renamed File: {file}\n")
                 os.rename(file, "song.mp3")
-                
-        voice.play(discord.FFmpegPCMAudio("song.mp3"), after = lambda e: print("End"))
-        voice.source = discord.PCMVolumeTransformer(voice.source)
-        voice.source.volume = 1
 
+        try:
+            voice.play(discord.FFmpegPCMAudio("song.mp3"), after = lambda e: print("End"))
+            voice.source = discord.PCMVolumeTransformer(voice.source)
+            voice.source.volume = 1
+        except discord.ext.commands.errors.MissingRequiredArgument:
+            await ctx.send('1')
         nname = name.rsplit("-", 2)
 
         if songname is not None:
