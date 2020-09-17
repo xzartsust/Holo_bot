@@ -56,22 +56,26 @@ class MusicPlay(commands.Cog):
                 os.rename(file, "song.mp3")
 
         try:
+            
             voice.play(discord.FFmpegPCMAudio("song.mp3"), after = lambda e: print("End"))
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 1
+
+            nname = name.rsplit("-", 2)
+
+            if songname is not None:
+                await ctx.send(f"Сейчас играет: **{songname}**")
+            else:
+                await ctx.send(f"Сейчас играет: **{nname[0]}-{nname[1]}**")
+            
+            if songname is not None:
+                print(f"Играет {songname}\n")
+            else:
+                print(f"Играет {nname}\n")
+        
         except Exception:
             await ctx.send('1')
-        nname = name.rsplit("-", 2)
-
-        if songname is not None:
-            await ctx.send(f"Сейчас играет: **{songname}**")
-        else:
-            await ctx.send(f"Сейчас играет: **{nname[0]}-{nname[1]}**")
-
-        if songname is not None:
-            print(f"Играет {songname}\n")
-        else:
-            print(f"Играет {nname}\n")
+            pass
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))
