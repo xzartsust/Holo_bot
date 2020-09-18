@@ -16,7 +16,7 @@ class MusicPlay(commands.Cog):
     @commands.command(aliases = ['p', 'pl'])
     @commands.cooldown(1, 20, commands.BucketType.member)
     async def play(self, ctx, *, url: str):
-        def end(ctx):
+        await def end(ctx):
             await ctx.send(1)
 
         voice = get(self.bot.voice_clients, guild = ctx.guild)
