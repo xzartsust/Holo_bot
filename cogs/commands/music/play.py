@@ -16,6 +16,9 @@ class MusicPlay(commands.Cog):
     @commands.command(aliases = ['p', 'pl'])
     @commands.cooldown(1, 20, commands.BucketType.member)
     async def play(self, ctx, *, url: str):
+        
+        def end(ctx):
+            await ctx.send('End')
 
         voice = get(self.bot.voice_clients, guild = ctx.guild)
 
@@ -57,7 +60,7 @@ class MusicPlay(commands.Cog):
 
         try:
             
-            voice.play(discord.FFmpegPCMAudio("song.mp3"), after = lambda e: print("End"))
+            voice.play(discord.FFmpegPCMAudio("song.mp3"), after = lambda e: end(ctx))
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 1
 
