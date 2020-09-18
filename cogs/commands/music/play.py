@@ -57,7 +57,7 @@ class MusicPlay(commands.Cog):
 
         try:
             
-            voice.play(discord.FFmpegPCMAudio("song.mp3"), after = lambda e: print('Music end'))
+            voice.play(discord.FFmpegPCMAudio("song.mp3"), after = await ctx.send('1'))
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 1
 
