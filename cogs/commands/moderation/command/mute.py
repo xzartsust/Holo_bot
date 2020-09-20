@@ -43,15 +43,16 @@ class MuteCommand(commands.Cog):
         await ctx.channel.purge(limit = 1)
         try:
             if reason is None:
-                await ctx.send(f'--> {who} получил мут')
+                await ctx.send(f'{who} получил мут')
                 await who.add_roles(role)
                 await who.move_to(None)
             else:
-                await ctx.send(f'--> {who} получил мут по причине: {reason}')
+                await ctx.send(f'{who} получил мут по причине: {reason}')
                 await who.add_roles(role)
                 await who.move_to(None)
         except AttributeError:
             pass
+        
 
         '''
         if what == str('m'):
