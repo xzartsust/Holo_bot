@@ -58,13 +58,13 @@ bot = commands.Bot(command_prefix = get_prefix, help_command=None)
 
 async def change_status():
     await bot.wait_until_ready()
-    msg= cycle(status)
+    msg = cycle(status)
 
     while not bot.is_closed():
         next_status= next(msg)
         await bot.change_presence(activity= discord.Game(name=next_status))
         await asyncio.sleep(9)
-status=['t!help', 'Модернизирует свой код']
+status=['t!help', 'Модернизирует свой код', 'Сайт: https://github.com/xzartsust/Tobi-Bot#tobi-bot', 'Серевер поддержки: https://discord.gg/8f4KUp']
 
 
 ################################################## Cogs Info commands ############################################################

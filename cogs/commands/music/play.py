@@ -77,7 +77,7 @@ class MusicPlay(commands.Cog):
                     print("Removed song file")
             except PermissionError:
                 print("Trying to delete song file, but it's being played")
-                await ctx.send("ERROR: Music playing")
+                await ctx.send("ERROR: Музика играет")
                 return
         
 
