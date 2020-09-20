@@ -41,7 +41,13 @@ class MuteCommand(commands.Cog):
         
         role = ctx.message.guild.get_role(role_mute[0])
         await ctx.channel.purge(limit = 1)
-        
+
+        await ctx.send(f'--> {who} получил мут по причине: {reason}')
+
+        await who.add_roles(role)
+        await who.move_to(None)
+
+        '''
         if what == str('m'):
             if time >=1 and time <= 59:
                 
@@ -82,7 +88,7 @@ class MuteCommand(commands.Cog):
                 await asyncio.sleep(time * 31557600)
                 await who.remove_roles(role)
                 await ctx.send('Мут забраний') 
-
+        '''
 
 def setup(bot):
     bot.add_cog(MuteCommand(bot))
