@@ -566,5 +566,22 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(embed = vote_emb) 
 
+    @help_for_commands.command(name = 'unmute')
+    async def unmute_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        unmute_emb = discord.Embed(
+            timestamp= ctx.message.created_at, 
+            title=f'Информация про команду: `{prefix}unmute`', 
+            colour = discord.Color.teal(), 
+            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Выгонять участников**!\n**Команда**: `[unmute]`\n**Описание**: снимает безмолвия с участника сервера\n**Использования**: `{prefix}unmute *кого*`\n\n\n**Пример:** `{prefix}mute [@тег_или_имя_пользователя]`'
+        )
+        unmute_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(embed = unmute_emb)
+
 def setup(bot):
     bot.add_cog(HelpCommands(bot))

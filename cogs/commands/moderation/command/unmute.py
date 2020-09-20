@@ -24,7 +24,7 @@ class UnMute(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command
+    @commands.command()
     @commands.has_permissions(kick_members = True)
     async def unmute(self, ctx, who: discord.Member):
         
