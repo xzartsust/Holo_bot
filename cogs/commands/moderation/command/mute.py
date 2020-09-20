@@ -31,8 +31,8 @@ class MuteCommand(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.has_permissions(administrator = True)
-    async def mute(self, ctx, who: discord.Member, time: int, what: str, reason = None):
+    @commands.has_permissions(kick_members = True)
+    async def mute(self, ctx, who: discord.Member, reason = None):
         
         guild = ctx.message.guild
         cursor.execute(f'SELECT role_for_mute FROM public."myBD" WHERE guild_id = \'{guild.id}\';')
@@ -41,11 +41,14 @@ class MuteCommand(commands.Cog):
         
         role = ctx.message.guild.get_role(role_mute[0])
         await ctx.channel.purge(limit = 1)
-
-        await ctx.send(f'--> {who} получил мут по причине: {reason}')
-
-        await who.add_roles(role)
-        await who.move_to(None)
+        if reason is None:
+            await ctx.send(f'--> {who} получил мут')
+            await who.add_roles(role)
+            await who.move_to(None)
+        else:
+            await ctx.send(f'--> {who} получил мут по причине: {reason}')
+            await who.add_roles(role)
+            await who.move_to(None)
 
         '''
         if what == str('m'):
