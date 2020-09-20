@@ -41,14 +41,17 @@ class MuteCommand(commands.Cog):
         
         role = ctx.message.guild.get_role(role_mute[0])
         await ctx.channel.purge(limit = 1)
-        if reason is None:
-            await ctx.send(f'--> {who} получил мут')
-            await who.add_roles(role)
-            await who.move_to(None)
-        else:
-            await ctx.send(f'--> {who} получил мут по причине: {reason}')
-            await who.add_roles(role)
-            await who.move_to(None)
+        try:
+            if reason is None:
+                await ctx.send(f'--> {who} получил мут')
+                await who.add_roles(role)
+                await who.move_to(None)
+            else:
+                await ctx.send(f'--> {who} получил мут по причине: {reason}')
+                await who.add_roles(role)
+                await who.move_to(None)
+        except AttributeError:
+            pass
 
         '''
         if what == str('m'):
