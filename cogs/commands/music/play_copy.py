@@ -282,7 +282,7 @@ class Music(commands.Cog):
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))
 
-    @commands.command(name='join', invoke_without_subcommand = True)
+    @commands.command(name='join', aliases =['j','jo'], invoke_without_subcommand = True)
     async def _join(self, ctx: commands.Context):
         """Присоединяется к голосовому каналу."""
 
@@ -333,7 +333,7 @@ class Music(commands.Cog):
     async def _pause(self, ctx: commands.Context):
         """Приостанавливает воспроизводимую в данный момент песню."""
 
-        if ctx.voice_state.is_playing and ctx.voice_state.voice.is_playing():
+        if not ctx.voice_state.is_playing and ctx.voice_state.voice.is_playing():
             ctx.voice_state.voice.pause()
             await ctx.message.add_reaction('⏯')
 
@@ -342,7 +342,7 @@ class Music(commands.Cog):
     async def _resume(self, ctx: commands.Context):
         """Возобновляет приостановленную в данный момент песню."""
 
-        if ctx.voice_state.is_playing and ctx.voice_state.voice.is_paused():
+        if not ctx.voice_state.is_playing and ctx.voice_state.voice.is_paused():
             ctx.voice_state.voice.resume()
             await ctx.message.add_reaction('⏯')
 
@@ -353,7 +353,7 @@ class Music(commands.Cog):
 
         ctx.voice_state.songs.clear()
 
-        if ctx.voice_state.is_playing:
+        if not ctx.voice_state.is_playing:
             ctx.voice_state.voice.stop()
             await ctx.message.add_reaction('⏹')
 
