@@ -1,87 +1,447 @@
-import discord
-from discord.ext import commands
-from discord.utils import get
-import youtube_dl
-import ctypes
-import ctypes.util
-import os
+# -*- coding: utf-8 -*-
+
 import asyncio
-from discord.ext.commands import Bot
-'''
+import functools
+import itertools
+import math
+import random
 
-class MusicPlay(commands.Cog):
-    def __init__(self, bot):
+import discord
+import youtube_dl
+from async_timeout import timeout
+from discord.ext import commands
+
+# Молчание бесполезных сообщений об ошибках
+youtube_dl.utils.bug_reports_message = lambda: ''
+
+class VoiceError(Exception):
+    pass
+
+class YTDLError(Exception):
+    pass
+
+class YTDLSource(discord.PCMVolumeTransformer):
+    YTDL_OPTIONS = {
+        'format': 'bestaudio/best',
+        'extractaudio': True,
+        'audioformat': 'mp3',
+        'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
+        'restrictfilenames': True,
+        'noplaylist': True,
+        'nocheckcertificate': True,
+        'ignoreerrors': False,
+        'logtostderr': False,
+        'quiet': True,
+        'no_warnings': True,
+        'default_search': 'auto',
+        'source_address': '0.0.0.0',
+    }
+
+    FFMPEG_OPTIONS = {
+        'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
+        'options': '-vn',
+    }
+
+    ytdl = youtube_dl.YoutubeDL(YTDL_OPTIONS)
+
+    def __init__(self, ctx: commands.Context, source: discord.FFmpegPCMAudio, *, data: dict, volume: float = 0.5):
+        super().__init__(source, volume)
+
+        self.requester = ctx.author
+        self.channel = ctx.channel
+        self.data = data
+
+        self.uploader = data.get('uploader')
+        self.uploader_url = data.get('uploader_url')
+        date = data.get('upload_date')
+        self.upload_date = date[6:8] + '.' + date[4:6] + '.' + date[0:4]
+        self.title = data.get('title')
+        self.thumbnail = data.get('thumbnail')
+        self.description = data.get('description')
+        self.duration = self.parse_duration(int(data.get('duration')))
+        self.tags = data.get('tags')
+        self.url = data.get('webpage_url')
+        self.views = data.get('view_count')
+        self.likes = data.get('like_count')
+        self.dislikes = data.get('dislike_count')
+        self.stream_url = data.get('url')
+
+    def __str__(self):
+        return '**{0.title}** by **{0.uploader}**'.format(self)
+
+    @classmethod
+    async def create_source(cls, ctx: commands.Context, search: str, *, loop: asyncio.BaseEventLoop = None):
+        loop = loop or asyncio.get_event_loop()
+
+        partial = functools.partial(cls.ytdl.extract_info, search, download=False, process=False)
+        data = await loop.run_in_executor(None, partial)
+
+        if data is None:
+            raise YTDLError('Не удалось найти ничего, что соответствует `{}`'.format(search))
+
+        if 'entries' not in data:
+            process_info = data
+        else:
+            process_info = None
+            for entry in data['entries']:
+                if entry:
+                    process_info = entry
+                    break
+
+            if process_info is None:
+                raise YTDLError('Не удалось найти ничего, что соответствует `{}`'.format(search))
+
+        webpage_url = process_info['webpage_url']
+        partial = functools.partial(cls.ytdl.extract_info, webpage_url, download=False)
+        processed_info = await loop.run_in_executor(None, partial)
+
+        if processed_info is None:
+            raise YTDLError('Не удалось получить `{}`'.format(webpage_url))
+
+        if 'entries' not in processed_info:
+            info = processed_info
+        else:
+            info = None
+            while info is None:
+                try:
+                    info = processed_info['entries'].pop(0)
+                except IndexError:
+                    raise YTDLError('Не удалось получить совпадения для `{}`'.format(webpage_url))
+
+        return cls(ctx, discord.FFmpegPCMAudio(info['url'], **cls.FFMPEG_OPTIONS), data=info)
+
+    @staticmethod
+    def parse_duration(duration: int):
+        minutes, seconds = divmod(duration, 60)
+        hours, minutes = divmod(minutes, 60)
+        days, hours = divmod(hours, 24)
+
+        duration = []
+        if days > 0:
+            duration.append('{} days'.format(days))
+        if hours > 0:
+            duration.append('{} hours'.format(hours))
+        if minutes > 0:
+            duration.append('{} minutes'.format(minutes))
+        if seconds > 0:
+            duration.append('{} seconds'.format(seconds))
+
+        return ', '.join(duration)
+
+class Song:
+    __slots__ = ('source', 'requester')
+
+    def __init__(self, source: YTDLSource):
+        self.source = source
+        self.requester = source.requester
+
+    def create_embed(self):
+        embed = (discord.Embed(title='Сейчас играет',
+                               description='```css\n{0.source.title}\n```'.format(self),
+                               color=discord.Color.blurple())
+                 .add_field(name='Продолжительность', value=self.source.duration)
+                 .add_field(name='Добавив', value=self.requester.mention)
+                 .add_field(name='Uploader', value='[{0.source.uploader}]({0.source.uploader_url})'.format(self))
+                 .add_field(name='URL', value='[Click]({0.source.url})'.format(self))
+                 .set_thumbnail(url=self.source.thumbnail))
+
+        return embed
+
+class SongQueue(asyncio.Queue):
+    def __getitem__(self, item):
+        if isinstance(item, slice):
+            return list(itertools.islice(self._queue, item.start, item.stop, item.step))
+        else:
+            return self._queue[item]
+
+    def __len__(self):
+        return self.qsize()
+
+    def clear(self):
+        self._queue.clear()
+
+    def shuffle(self):
+        random.shuffle(self._queue)
+
+    def remove(self, index: int):
+        del self._queue[index]
+
+class VoiceState:
+    def __init__(self, bot: commands.Bot, ctx: commands.Context):
         self.bot = bot
+        self._ctx = ctx
 
-    @commands.command(aliases = ['p', 'pl'])
-    @commands.cooldown(1, 20, commands.BucketType.member)
-    async def play(self, ctx, *, url: str):
+        self.current = None
+        self.voice = None
+        self.next = asyncio.Event()
+        self.songs = SongQueue()
 
-        voice = get(self.bot.voice_clients, guild = ctx.guild)
+        self._loop = False
+        self._volume = 0.5
+        self.skip_votes = set()
 
-        song_there = os.path.isfile("song.mp3")
-        try:
-            if song_there:
-                os.remove("song.mp3")
-                print("Removed old song file")
-        except PermissionError:
-            print("Trying to delete song file, but it's being played")
-            await ctx.send("ERROR: Music playing")
+        self.audio_player = bot.loop.create_task(self.audio_player_task())
+
+    def __del__(self):
+        self.audio_player.cancel()
+
+    @property
+    def loop(self):
+        return self._loop
+
+    @loop.setter
+    def loop(self, value: bool):
+        self._loop = value
+
+    @property
+    def volume(self):
+        return self._volume
+
+    @volume.setter
+    def volume(self, value: float):
+        self._volume = value
+
+    @property
+    def is_playing(self):
+        return self.voice and self.current
+
+    async def audio_player_task(self):
+        while True:
+            self.next.clear()
+
+            if not self.loop:
+                # Попытайтесь получить следующую песню в течение 3 минут.
+                # Если ни одна песня не будет вовремя добавлена в очередь,
+                # плеер отключится из-за производительности
+                # причини.
+                try:
+                    async with timeout(180):  # 3 минути
+                        self.current = await self.songs.get()
+                except asyncio.TimeoutError:
+                    self.bot.loop.create_task(self.stop())
+                    return
+
+            self.current.source.volume = self._volume
+            self.voice.play(self.current.source, after=self.play_next_song)
+            await self.current.source.channel.send(embed=self.current.create_embed())
+
+            await self.next.wait()
+
+    def play_next_song(self, error=None):
+        if error:
+            raise VoiceError(str(error))
+
+        self.next.set()
+
+    def skip(self):
+        self.skip_votes.clear()
+
+        if self.is_playing:
+            self.voice.stop()
+
+    async def stop(self):
+        self.songs.clear()
+
+        if self.voice:
+            await self.voice.disconnect()
+            self.voice = None
+
+class Music(commands.Cog):
+    def __init__(self, bot: commands.Bot):
+        self.bot = bot
+        self.voice_states = {}
+
+    def get_voice_state(self, ctx: commands.Context):
+        state = self.voice_states.get(ctx.guild.id)
+        if not state:
+            state = VoiceState(self.bot, ctx)
+            self.voice_states[ctx.guild.id] = state
+
+        return state
+
+    def cog_unload(self):
+        for state in self.voice_states.values():
+            self.bot.loop.create_task(state.stop())
+
+    def cog_check(self, ctx: commands.Context):
+        if not ctx.guild:
+            raise commands.NoPrivateMessage('Эта команда не может использоваться в каналах DM.')
+
+        return True
+
+    async def cog_before_invoke(self, ctx: commands.Context):
+        ctx.voice_state = self.get_voice_state(ctx)
+
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        await ctx.send('Произошла ошибка: {}'.format(str(error)))
+
+    @commands.command(name='join', aliases =['j','jo'], invoke_without_subcommand = True)
+    async def _join(self, ctx: commands.Context):
+        """Присоединяется к голосовому каналу."""
+
+        destination = ctx.author.voice.channel
+        if ctx.voice_state.voice:
+            await ctx.voice_state.voice.move_to(destination)
             return
-        
-        await ctx.send("Пожалуйста подождите загружается музыка")
-        
-        ydl_opts = {
-            'format': 'bestaudio/best',
-            'default_search': 'auto',
-            'extractaudio': True,
-            'audioformat': 'mp3',
-            'postprocessors': [{
-                'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
-                'preferredquality': '192',
-                }],
-        }
 
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            print("Downloading audio now\n")
-            info = ydl.extract_info(url, download = False)
-            ydl.download([url])
-            songname = info.get('title')
-            
-        for file in os.listdir("./"):
-            if file.endswith(".mp3"):
-                name = file
-                print(f"Renamed File: {file}\n")
-                os.rename(file, "song.mp3")
+        ctx.voice_state.voice = await destination.connect()
 
-        try:
-            
-            voice.play(discord.FFmpegPCMAudio("song.mp3"), after = lambda e: print('Music end'))
-            voice.source = discord.PCMVolumeTransformer(voice.source)
-            voice.source.volume = 1
+    @commands.command(name='summon', aliases = ['sum','summ'])
+    @commands.has_permissions(administrator = True, manage_guild = True)
+    async def _summon(self, ctx: commands.Context, *, channel: discord.VoiceChannel = None):
+        """Вызывает бота в голосовой канал.
 
-            nname = name.rsplit("-", 2)
+        Если канал не был указан, он присоединяется к вашему каналу.
+        """
 
-            if songname is not None:
-                await ctx.send(f"Сейчас играет: **{songname}**")
+        if not channel and not ctx.author.voice:
+            raise VoiceError('Вы не подключены к голосовому каналу и не указали канал для присоединения.')
+
+        destination = channel or ctx.author.voice.channel
+        if ctx.voice_state.voice:
+            await ctx.voice_state.voice.move_to(destination)
+            return
+
+        ctx.voice_state.voice = await destination.connect()
+
+    @commands.command(name='leave', aliases=['disconnect', 'l', 'lea'])
+    @commands.has_permissions()
+    async def _leave(self, ctx: commands.Context):
+        """Очищает очередь и покидает голосовой канал."""
+
+        if not ctx.voice_state.voice:
+            return await ctx.send('Не подключен ни к одному голосовому каналу.')
+
+        await ctx.voice_state.stop()
+        del self.voice_states[ctx.guild.id]
+
+    @commands.command(name='now', aliases=['current', 'playing'])
+    async def _now(self, ctx: commands.Context):
+        """Отображает проигрываемую в данный момент песню."""
+
+        await ctx.send(embed = ctx.voice_state.current.create_embed())
+
+    @commands.command(name='skip',aliases = ['sk'])
+    async def _skip(self, ctx: commands.Context):
+        """Проголосуйте, чтобы пропустить песню. Запрашивающая сторона может автоматически пропустить.
+        Чтобы песня была пропущена, необходимо 3 пропустить голоса.
+        """
+
+        if not ctx.voice_state.is_playing:
+            return await ctx.send('Сейчас не воспроизводится ни одна музыка...')
+
+        voter = ctx.message.author
+        if voter == ctx.voice_state.current.requester:
+            await ctx.message.add_reaction('⏭')
+            ctx.voice_state.skip()
+
+        elif voter.id not in ctx.voice_state.skip_votes:
+            ctx.voice_state.skip_votes.add(voter.id)
+            total_votes = len(ctx.voice_state.skip_votes)
+
+            if total_votes >= 3:
+                await ctx.message.add_reaction('⏭')
+                ctx.voice_state.skip()
             else:
-                await ctx.send(f"Сейчас играет: **{nname[0]}-{nname[1]}**")
-        
-        except Exception as e:
-            if str(e) == str('Already playing audio.'):
-                print(e)
-                await ctx.send('1')
-                await ctx.send('Простите я не могу проиграть эту музыку так как сейчас уже играет музыка. Подождите пока она зачиться <з или используйте команду `stop`')
+                await ctx.send('Пропустить голос добавлен **{} из 3**'.format(total_votes))
+
+        else:
+            await ctx.send('Вы уже проголосовали за то, чтобы пропустить эту песню.')
+
+    @commands.command(name='queue', aliases = ['q', 'qu'])
+    async def _queue(self, ctx: commands.Context, *, page: int = 1):
+        """Показывает очередь игрока.
+
+        При желании вы можете указать страницу для отображения. Каждая страница содержит 10 элементов.
+        """
+
+        if len(ctx.voice_state.songs) == 0:
+            return await ctx.send('Очередь пустая.')
+
+        items_per_page = 10
+        pages = math.ceil(len(ctx.voice_state.songs) / items_per_page)
+
+        start = (page - 1) * items_per_page
+        end = start + items_per_page
+
+        queue = ''
+        for i, song in enumerate(ctx.voice_state.songs[start:end], start=start):
+            queue += '`{0}.` [**{1.source.title}**]({1.source.url})\n'.format(i + 1, song)
+
+        embed = (discord.Embed(description='**{} треки:**\n\n{}'.format(len(ctx.voice_state.songs), queue))
+                 .set_footer(text='Страница просмотра {}/{}'.format(page, pages)))
+        await ctx.send(embed=embed)
+
+    @commands.command(name='shuffle', aliases = ['shu', 'sh', 'shake'])
+    async def _shuffle(self, ctx: commands.Context):
+        """Перемешивает очередь."""
+
+        if len(ctx.voice_state.songs) == 0:
+            return await ctx.send('Очередь пустая.')
+
+        ctx.voice_state.songs.shuffle()
+        await ctx.message.add_reaction('✅')
+
+    @commands.command(name='remove', aliases = ['re', 'rem'])
+    async def _remove(self, ctx: commands.Context, index: int):
+        """Удаляет песню из очереди по заданному индексу."""
+
+        if len(ctx.voice_state.songs) == 0:
+            return await ctx.send('Очередь пустая.')
+
+        ctx.voice_state.songs.remove(index - 1)
+        await ctx.message.add_reaction('✅')
+
+    @commands.command(name='loop', aliases = ['lo'])
+    async def _loop(self, ctx: commands.Context):
+        """Зацикливает текущую воспроизводимую песню.
+
+        Вызовите эту команду еще раз, чтобы разблокировать песню.
+        """
+
+        if not ctx.voice_state.is_playing:
+            return await ctx.send('В данный момент ничего не играет.')
+
+        # Обратное логическое значение для цикла и отмены цикла.
+        ctx.voice_state.loop = not ctx.voice_state.loop
+        await ctx.message.add_reaction('✅')
+
+    @commands.command(name='play', aliases = ['p', 'pl'])
+    async def _play(self, ctx: commands.Context, *, search: str):
+        """Plays a song.
+
+        Если в очереди есть песни, они будут помещены в очередь до
+         другие песни закончили играть.
+
+        Эта команда автоматически выполняет поиск с разных сайтов, если URL-адрес не указан..
+        Список этих сайтов можно найти здесь: https://rg3.github.io/youtube-dl/supportedsites.html
+        """
+
+        if not ctx.voice_state.voice:
+            await ctx.invoke(self._join)
+
+        async with ctx.typing():
             try:
-                if song_there:
-                    os.remove("song.mp3")
-                    print("Removed song file")
-            except PermissionError:
-                print("Trying to delete song file, but it's being played")
-                await ctx.send("ERROR: Музика играет")
-                return
-'''
+                source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop)
+            except YTDLError as e:
+                await ctx.send('Произошла ошибка при обработке этого запроса: {}'.format(str(e)))
+            else:
+                song = Song(source)
+
+                await ctx.voice_state.songs.put(song)
+                await ctx.send('Поставлен в очередь {}'.format(str(source)))
+
+    @_join.before_invoke
+    @_play.before_invoke
+    async def ensure_voice_state(self, ctx: commands.Context):
+        if not ctx.author.voice or not ctx.author.voice.channel:
+            raise commands.CommandError('Вы не подключены ни к одному голосу.')
+
+        if ctx.voice_client:
+            if ctx.voice_client.channel != ctx.author.voice.channel:
+                raise commands.CommandError('Бот уже находится в голосовом канале.')
 
 def setup(bot):
-    bot.add_cog(MusicPlay(bot))
+    bot.add_cog(Music(bot))
+
+
