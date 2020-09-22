@@ -69,8 +69,9 @@ class MusicPlay(commands.Cog):
                 await ctx.send(f"Сейчас играет: **{nname[0]}-{nname[1]}**")
         
         except Exception as e:
-            if e is 'Already playing audio.':
+            if str(e) == str('Already playing audio.'):
                 print(e)
+                await ctx.send('1')
                 await ctx.send('Простите я не могу проиграть эту музыку так как сейчас уже играет музыка. Подождите пока она зачиться <з или используйте команду `stop`')
             try:
                 if song_there:
