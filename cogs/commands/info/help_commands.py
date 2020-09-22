@@ -67,7 +67,7 @@ class HelpCommands(commands.Cog):
         )
         emb1.add_field(
             name='**Команды**', 
-            value=f'`{prefix}user`\n`{prefix}ping`\n`{prefix}botservers`\n`{prefix}tuser`\n`{prefix}infobot`\n`{prefix}serverinfo` или `{prefix}si` или `{prefix}is`\n`{prefix}serverprefix` или `{prefix}sp` или `{prefix}ps`\n`{prefix}avatar` или `{prefix}av` или `{prefix}a`'
+            value=f'`{prefix}user`\n`{prefix}infobot`\n`{prefix}serverinfo` или `{prefix}si` или `{prefix}is`\n`{prefix}serverprefix` или `{prefix}sp` или `{prefix}ps`\n`{prefix}avatar` или `{prefix}av` или `{prefix}a`'
         )
         emb2=discord.Embed(
             title='Команды для администрации и модерации сервера', 
@@ -169,61 +169,6 @@ class HelpCommands(commands.Cog):
             icon_url = ctx.message.author.avatar_url
         )
         await ctx.send(embed=user_emb)
-
-    @help_for_commands.command(name = 'ping')
-    async def pind_subcommands(self, ctx):
-
-        prefix_1 = prefix_in_guild(self.bot, ctx.message)
-        prefix = prefix_1[0]
-
-        ping_emb=discord.Embed(
-            timestamp= ctx.message.created_at, 
-            title=f'Информация про команду: {prefix}ping',
-            colour = discord.Color.teal(), 
-            description=f'**Команда**: `[ping]`\n**Описание**: показивает пинг бота\n**Использования**: `{prefix}ping`'
-        )
-        ping_emb.set_footer(
-            text=ctx.message.author,
-            icon_url = ctx.message.author.avatar_url
-        )
-        await ctx.send(embed=ping_emb)
-
-    @help_for_commands.command(name = 'botservers')
-    async def botservers_subcommands(self, ctx):
-
-        prefix_1 = prefix_in_guild(self.bot, ctx.message)
-        prefix = prefix_1[0]
-
-        botservers_emb=discord.Embed(
-            timestamp= ctx.message.created_at,
-            title=f'Информация про команду: {prefix}bot_servers', 
-            colour = discord.Color.teal(), 
-            description=f'**Команда**: `[botservers]`\n**Описание**: показивает на сколько серверах присутствует этот бот\n**Использования**: `{prefix}botservers`'
-        )
-        botservers_emb.set_footer(
-            text = ctx.message.author,
-            icon_url = ctx.message.author.avatar_url
-        )
-        await ctx.send(embed=botservers_emb)   
-
-    @help_for_commands.command(name = 'tuser')
-    async def tuser_subcommands(self, ctx):
-
-        prefix_1 = prefix_in_guild(self.bot, ctx.message)
-        prefix = prefix_1[0]
-
-        tuser_emb=discord.Embed(
-            title=f'Информация про команду: {prefix}tuser', 
-            colour = discord.Color.teal(), 
-            description=f'**Команда**: `[tuser]`\n**Описание**: показивает сколько людей используют этого бота\n**Использования**: `{prefix}tuser`'
-        )
-        tuser_emb.set_footer(
-            text = ctx.message.author, 
-            icon_url = ctx.message.author.avatar_url
-        )
-        await ctx.send(
-            embed=tuser_emb
-        )   
 
     @help_for_commands.command(name = 'prefix')
     async def prefix_subcommands(self, ctx):
