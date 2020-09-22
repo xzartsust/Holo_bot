@@ -110,7 +110,7 @@ bot.load_extension('cogs.commands.music.resume')
 bot.load_extension('cogs.commands.music.stop')
 bot.load_extension('cogs.commands.music.next')
 #bot.load_extension('cogs.commands.music.play')
-bot.load_extension('cogs.commands.music.play_copys')
+bot.load_extension('cogs.commands.music.play_copy')
 
 
 ################################################## Cogs Owner commands ############################################################
