@@ -418,7 +418,7 @@ class Music(commands.Cog):
         ctx.voice_state.songs.shuffle()
         await ctx.message.add_reaction('✅')
 
-    @commands.command(name='remove', aliases = ['r', 're'])
+    @commands.command(name='remove', aliases = ['re', 'rem'])
     async def _remove(self, ctx: commands.Context, index: int):
         """Удаляет песню из очереди по заданному индексу."""
 
