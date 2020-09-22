@@ -144,7 +144,7 @@ class HelpCommands(commands.Cog):
         )
         emb_music.add_field(
             name = '**Команды**',
-            value = f'`{prefix}play` или `{prefix}p` или `{prefix}pl` \n`{prefix}join` или `{prefix}jo` или `{prefix}j` \n`{prefix}leave` или `{prefix}disconnect` или `{prefix}lea` или `{prefix}l` \n`{prefix}summon` или `{prefix}sum` или `{prefix}summ` \n`{prefix}now` или `{prefix}current` или `{prefix}playing` \n`{prefix}skip` или `{prefix}sk` \n`{prefix}queue` или `{prefix}qu` или `{prefix}q` \n`{prefix}shuffle` или `{prefix}shu` или `{prefix}sh` или `{prefix}shake` \n`{prefix}remove` или `{prefix}re` или `{prefix}rem`'
+            value = f'`{prefix}play` или `{prefix}pl` или `{prefix}p` \n`{prefix}pause` или `{prefix}pa` или `{prefix}pau` \n`{prefix}resume` или `{prefix}res` или `{prefix}r` \n`{prefix}stop` или `{prefix}st` или `{prefix}s` \n`{prefix}join` или `{prefix}jo` или `{prefix}j` \n`{prefix}leave` или `{prefix}disconnect` или `{prefix}lea` или `{prefix}l` \n`{prefix}summon` или `{prefix}sum` или `{prefix}summ` \n`{prefix}now` или `{prefix}current` или `{prefix}playing` \n`{prefix}skip` или `{prefix}sk` \n`{prefix}queue` или `{prefix}qu` или `{prefix}q` \n`{prefix}shuffle` или `{prefix}shu` или `{prefix}sh` или `{prefix}shake` \n`{prefix}remove` или `{prefix}re` или `{prefix}rem`'
         )
         embeds=[emb,emb1,emb2,emb3,emb4, emb_music]
         message= await ctx.send(embed = emb)
@@ -405,7 +405,7 @@ class HelpCommands(commands.Cog):
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: {prefix}play или {prefix}pl или {prefix}p', 
             colour = discord.Color.teal(), 
-            description=f'**Предостережение:** Пока что нельзя добавлять музыку в очередь сначала нужно зачикаты пока доиграет одна музыка после этого добавлять новую ссылку на новую музыку, более подробно в команде `{prefix}help music`\n\n**Команда**: `[play]`\n**Описание**: проиграть музику\n**Использования**: `{prefix}play *силка на музыку*`\n\n**Пример:** `{prefix}play https://www.youtube.com/watch?v=9sjWU5dGcGI`'
+            description=f'**Команда**: `[play]`\n**Описание**: проиграть музику\n**Использования**: `{prefix}play *силка_на_музыку_назва_музыки*`\n\n**Пример:** `{prefix}play https://www.youtube.com/watch?v=9sjWU5dGcGI`'
             )
         play_emb.set_footer(
             text = ctx.message.author,
@@ -420,7 +420,7 @@ class HelpCommands(commands.Cog):
         prefix = prefix_1[0]
 
         join_emb=discord.Embed(
-            title=f'Информация про команду: {prefix}join или {prefix}j', 
+            title=f'Информация про команду: {prefix}join или {prefix}jo или {prefix}j', 
             colour = discord.Color.teal(), 
             description=f'**Команда**: `[join]`\n**Описание**: добавить бота в голосовой канал\n**Использования**: `{prefix}join`'
         )
@@ -437,7 +437,7 @@ class HelpCommands(commands.Cog):
         prefix = prefix_1[0]
 
         leave_emb=discord.Embed(
-            title=f'Информация про команду: {prefix}leave или {prefix}lea или {prefix}l', 
+            title=f'Информация про команду: {prefix}leave или {prefix}lea или {prefix}l или {prefix}disconnect', 
             colour = discord.Color.teal(), 
             description=f'**Команда**: `[leave]`\n**Описание**: выгнать бота с голосового канала\n**Использования**: `{prefix}leave`'
         )
