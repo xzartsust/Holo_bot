@@ -144,7 +144,7 @@ class HelpCommands(commands.Cog):
         )
         emb_music.add_field(
             name = '**Команды**',
-            value = f'`{prefix}play` `{prefix}p` `{prefix}pl` \n`{prefix}join` `{prefix}jo` `{prefix}j` \n`{prefix}leave` `{prefix}disconnect` `{prefix}lea` `{prefix}l` \n`{prefix}summon` `{prefix}sum` `{prefix}summ` \n`{prefix}now` `{prefix}current` `{prefix}playing` \n`{prefix}skip` `{prefix}sk` \n`{prefix}queue` `{prefix}qu` `{prefix}q` \n`{prefix}shuffle` `{prefix}shu` `{prefix}sh` `{prefix}shake` \n`{prefix}remove` `{prefix}re` `{prefix}rem`'
+            value = f'`{prefix}play` или `{prefix}p` или `{prefix}pl` \n`{prefix}join` или `{prefix}jo` или `{prefix}j` \n`{prefix}leave` или `{prefix}disconnect` или `{prefix}lea` или `{prefix}l` \n`{prefix}summon` или `{prefix}sum` или `{prefix}summ` \n`{prefix}now` или `{prefix}current` или `{prefix}playing` \n`{prefix}skip` или `{prefix}sk` \n`{prefix}queue` или `{prefix}qu` или `{prefix}q` \n`{prefix}shuffle` или `{prefix}shu` или `{prefix}sh` или `{prefix}shake` \n`{prefix}remove` или `{prefix}re` или `{prefix}rem`'
         )
         embeds=[emb,emb1,emb2,emb3,emb4, emb_music]
         message= await ctx.send(embed = emb)
