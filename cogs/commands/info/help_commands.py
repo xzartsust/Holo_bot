@@ -144,7 +144,7 @@ class HelpCommands(commands.Cog):
         )
         emb_music.add_field(
             name = '**Команды**',
-            value = f'`{prefix}play` или `{prefix}pl` или `{prefix}p` \n`{prefix}pause` или `{prefix}pa` или `{prefix}pau` \n`{prefix}resume` или `{prefix}res` или `{prefix}r` \n`{prefix}stop` или `{prefix}st` или `{prefix}s` \n`{prefix}join` или `{prefix}jo` или `{prefix}j` \n`{prefix}leave` или `{prefix}lea` или `{prefix}l` или s`{prefix}disconnect`  \n`{prefix}summon` или `{prefix}sum` или `{prefix}summ` \n`{prefix}now` или `{prefix}current` или `{prefix}playing` \n`{prefix}skip` или `{prefix}sk` \n`{prefix}queue` или `{prefix}qu` или `{prefix}q` \n`{prefix}shuffle` или `{prefix}shu` или `{prefix}sh` или `{prefix}shake` \n`{prefix}remove` или `{prefix}re` или `{prefix}rem`'
+            value = f'`{prefix}play` или `{prefix}pl` или `{prefix}p` \n`{prefix}pause` или `{prefix}pa` или `{prefix}pau` \n`{prefix}resume` или `{prefix}res` или `{prefix}r` \n`{prefix}stop` или `{prefix}st` или `{prefix}s` \n`{prefix}join` или `{prefix}jo` или `{prefix}j` \n`{prefix}leave` или `{prefix}lea` или `{prefix}l` или `{prefix}disconnect`  \n`{prefix}summon` или `{prefix}sum` или `{prefix}summ` \n`{prefix}now` или `{prefix}current` или `{prefix}playing` \n`{prefix}skip` или `{prefix}sk` \n`{prefix}queue` или `{prefix}qu` или `{prefix}q` \n`{prefix}shuffle` или `{prefix}shu` или `{prefix}sh` или `{prefix}shake` \n`{prefix}remove` или `{prefix}re` или `{prefix}rem`'
         )
         embeds=[emb,emb1,emb2,emb3,emb4, emb_music]
         message= await ctx.send(embed = emb)
@@ -388,7 +388,7 @@ class HelpCommands(commands.Cog):
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: `{prefix}ban`', 
             colour = discord.Color.teal(), 
-            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Ban Members**!\n**Команда**: `[ban]`\n**Описание**: Заблокировать пользователя на сервере\n**Использования**: `{prefix}ban *кому* *reason*`\n reason - может быть пустым\n\n**Пример:** `{prefix}ban @Member spam bot`\n\n**Внимание:** Можно сразу несколько пользователей\n**Пример:** `{prefix}ban @Member @Member2 *reson*`'
+            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Банить участников**!\n**Команда**: `[ban]`\n**Описание**: Заблокировать пользователя на сервере\n**Использования**: `{prefix}ban *кому* *reason*`\n reason - может быть пустым\n\n**Пример:** `{prefix}ban @Member spam bot`\n\n**Внимание:** Можно сразу несколько пользователей\n**Пример:** `{prefix}ban @Member @Member2 *reson*`'
             )
         ban_emb.set_footer(
             text = ctx.message.author,
@@ -515,7 +515,7 @@ class HelpCommands(commands.Cog):
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: `{prefix}kick`', 
             colour = discord.Color.teal(), 
-            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Kick Members**!\n**Команда**: `[kick]`\n**Описание**: Выгнать пользователя из сервере\n**Использования**: `{prefix}kick *кому* *reason*`\n reason - может быть пустым\n\n**Пример:** `{prefix}kick @Member spam bot`'
+            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Выгонять участников**!\n**Команда**: `[kick]`\n**Описание**: Выгнать пользователя из сервере\n**Использования**: `{prefix}kick *кому* *reason*`\n reason - может быть пустым\n\n**Пример:** `{prefix}kick @Member spam bot`'
             )
         ban_emb.set_footer(
             text = ctx.message.author,
@@ -532,7 +532,7 @@ class HelpCommands(commands.Cog):
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: `{prefix}unban`', 
             colour = discord.Color.teal(), 
-            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Ban Members**!\n**Команда**: `[ban]`\n**Описание**: Разблокировать пользователя на сервере\n**Использования**: `{prefix}ban *кого*`\n\n**Пример:** `{prefix}ban Test Account#2125`'
+            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Банить участников**!\n**Команда**: `[ban]`\n**Описание**: Разблокировать пользователя на сервере\n**Использования**: `{prefix}ban *кого*`\n\n**Пример:** `{prefix}ban Test Account#2125`'
             )
         unban_emb.set_footer(
             text = ctx.message.author,
@@ -549,7 +549,7 @@ class HelpCommands(commands.Cog):
             timestamp = ctx.message.created_at, 
             title = f'Информация про команду: `{prefix}vote`', 
             colour = discord.Color.teal(), 
-            description = f'**Команда**: `[vote]`\n**Описание**: создает голосование на сервере\n**Использования**: `{prefix}vote *\"тема голосования\"* \"*текст*\" [cылка на картинку]`\n\n**Пример:** `{prefix}vote \"Голосования!\" \"О чем голосуем?\" https://raw.githubusercontent.com/xzartsust/Tobi-Bot/master/files/image/c8c4113dda8117f63cc993c981f2732d.png`\nМожно использовать без картинки\n\n**Внимание!**\n**Тема голосование** и **Текст** должны быть обязательно в двойных кавычках, также у юзера который использует эту команду, в его роли должна быть включена функция управления сообщениями (manage messages)'
+            description = f'**Команда**: `[vote]`\n**Предостережение:** Эту команду можут использовать роли в которых есть права **Управлять сообщениями**!\n\n**Описание**: создает голосование на сервере\n**Использования**: `{prefix}vote *\"тема голосования\"* \"*текст*\" [cылка на картинку]`\n\n**Пример:** `{prefix}vote \"Голосования!\" \"О чем голосуем?\" https://raw.githubusercontent.com/xzartsust/Tobi-Bot/master/files/image/c8c4113dda8117f63cc993c981f2732d.png`\nМожно использовать без картинки\n\n**Внимание!**\n**Тема голосование** и **Текст** должны быть обязательно в двойных кавычках, также у юзера который использует эту команду, в его роли должна быть включена функция управления сообщениями (manage messages)'
         )
         vote_emb.set_footer(
             text = ctx.message.author,
@@ -573,6 +573,101 @@ class HelpCommands(commands.Cog):
             icon_url = ctx.message.author.avatar_url
         )
         await ctx.send(embed = unmute_emb)
+
+    @help_for_commands.command(name = 'summon')
+    async def summon_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        summon_emb = discord.Embed(
+            title=f'Информация про команду: {prefix}summon или {prefix}sum или {prefix}summ', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[summon]`\n**Предостережение:** Эту команду можут использовать роли в которых есть права **Администратор и Управлять сервером**!\n\n**Описание**: Перетянуть бота в другой голосвой канал\n**Использования**: `{prefix}summon`'
+        )
+        summon_emb.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(
+            embed = summon_emb
+        ) 
+
+    @help_for_commands.command(name = 'now')
+    async def now_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        now_emb = discord.Embed(
+            title=f'Информация про команду: {prefix}now или {prefix}current или {prefix}playing', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[now]`\n**Описание**: посмотреть какая музыка сейчас играет\n**Использования**: `{prefix}now`'
+        )
+        now_emb.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(
+            embed = now_emb
+        ) 
+
+    @help_for_commands.command(name = 'skip')
+    async def skip_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        skip_emb = discord.Embed(
+            title=f'Информация про команду: {prefix}skip или {prefix}sk', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[skip]`\n**Описание**: пропустить текущую музыку\n**Использования**: `{prefix}skip`'
+        )
+        skip_emb.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(
+            embed = skip_emb
+        ) 
+
+    @help_for_commands.command(name = 'queue')
+    async def queue_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        queue_emb = discord.Embed(
+            title=f'Информация про команду: {prefix}queue или {prefix}qu или {prefix}q', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[queue]`\n**Описание**: посмотреть очередь\n**Использования**: `{prefix}queue`'
+        )
+        queue_emb.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(
+            embed = queue_emb
+        ) 
+
+    @help_for_commands.command(name = 'shuffle')
+    async def shuffle_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        shuffle_emb = discord.Embed(
+            title=f'Информация про команду: {prefix}shuffle или {prefix}shu или {prefix}sh или {prefix}shake', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[shuffle]`\n**Описание**: перемешать музыку в очереди\n**Использования**: `{prefix}shuffle`'
+        )
+        shuffle_emb.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(
+            embed = shuffle_emb
+        ) 
 
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
