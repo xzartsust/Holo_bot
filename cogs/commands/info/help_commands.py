@@ -684,6 +684,9 @@ class HelpCommands(commands.Cog):
             text = ctx.message.author, 
             icon_url = ctx.message.author.avatar_url
         )
+        remove_emb.set_image(
+            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/Screenshot_2.png?raw=true'
+        )
         await ctx.send(
             embed = remove_emb
         ) 
