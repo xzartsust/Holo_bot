@@ -139,14 +139,13 @@ class HelpCommands(commands.Cog):
         )
 
         emb_music = discord.Embed(
-            title = 'Музыкальные команды :musical_note: :musical_note: :musical_note:',
-            description = f'**Внимание:** Музыкальные команды находятся в доработке, и иногда можут некоректно работать!\nЕсли у вас возникли какие-то вопросы по поводу этого то вы можете использовать команду `{prefix}help music`, написать в личку моему создателю или оставить этот вопрос на **Support server Tobi Bot**'
+            title = ':musical_note: :musical_note: Музыкальные команды :musical_note: :musical_note:',
+            description = f'**Внимание:** Музыкальные команды находятся в доработке, и иногда можут некоректно работать!\nЕсли у вас возникли какие-то вопросы по поводу этого то вы можете написать в личку моему создателю или оставить этот вопрос на **Support server Tobi Bot**'
         )
         emb_music.add_field(
             name = '**Команды**',
-            value = f'`{prefix}play` или `{prefix}pla` или `{prefix}p` \n`{prefix}join` или `{prefix}j`\n`{prefix}leave` или `{prefix}lea` или `{prefix}l`\n`{prefix}pause` или `{prefix}pau` или `{prefix}p`\n`{prefix}resume` или `{prefix}res` или `{prefix}r`\n`{prefix}stop` или `{prefix}st` или `{prefix}s`'
+            value = f'`{prefix}play` `{prefix}p` `{prefix}pl` \n`{prefix}join` `{prefix}jo` `{prefix}j` \n`{prefix}leave` `{prefix}disconnect` `{prefix}lea` `{prefix}l` \n`{prefix}summon` `{prefix}sum` `{prefix}summ` \n`{prefix}now` `{prefix}current` `{prefix}playing` \n`{prefix}skip` `{prefix}sk` \n`{prefix}queue` `{prefix}qu` `{prefix}q` \n`{prefix}shuffle` `{prefix}shu` `{prefix}sh` `{prefix}shake` \n`{prefix}remove` `{prefix}re` `{prefix}rem`'
         )
-
         embeds=[emb,emb1,emb2,emb3,emb4, emb_music]
         message= await ctx.send(embed = emb)
         page= pag(self.bot, message, only = ctx.author, use_more = False, embeds = embeds, color = 0x008000, time_stamp = True)
@@ -506,14 +505,6 @@ class HelpCommands(commands.Cog):
         await ctx.send(
             embed = stop_emb
         )   
-
-    @help_for_commands.command(name='music')
-    async def music_subcommands(self, ctx):
-
-        prefix_1 = prefix_in_guild(self.bot, ctx.message)
-        prefix = prefix_1[0]
-
-        await ctx.send(f'```Как использовать музыкальные команды?```\nСначала вы присоединяете командой `{prefix}join` бота к себе в войс, после этого командой `{prefix}play [Сылка на музыку] или [назва музыки]` запускаете воспроизведения музыки.\n\n**Внимание** пока что нельзя добавлять несколько песен сразу (эта функция в доработке), вы сможете задать следующие песню только после того как закончится и играющая на данный момент или после команды `{prefix}stop`.\n\nПожалуйста будьте внимательны с этим.')
 
     @help_for_commands.command(name = 'kick')
     async def kick_subcommands(self, ctx):
