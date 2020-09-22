@@ -7,7 +7,7 @@ import ctypes.util
 import os
 import asyncio
 from discord.ext.commands import Bot
-
+'''
 
 class MusicPlay(commands.Cog):
     def __init__(self, bot):
@@ -81,7 +81,7 @@ class MusicPlay(commands.Cog):
                 print("Trying to delete song file, but it's being played")
                 await ctx.send("ERROR: Музика играет")
                 return
-        
+'''
 
 def setup(bot):
     bot.add_cog(MusicPlay(bot))

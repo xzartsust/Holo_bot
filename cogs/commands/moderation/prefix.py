@@ -30,19 +30,23 @@ class prefix(commands.Cog):
     @commands.command()
     @commands.check(is_owner_guild)
     async def prefix(self, ctx, prefix):
-        guildid = ctx.guild.id
-        cursor.execute(f'UPDATE public."myBD" SET prefix_guild=\'{prefix}\' WHERE guild_id = \'{guildid}\';')
-        conn.commit()
-        emb = discord.Embed(title='Выполнено успешно!', description=f'Префикс сервера изменений на "** {prefix} **"', colour= discord.Color.green(), timestamp= ctx.message.created_at)
-        emb.set_footer(text=ctx.message.author)
-        await ctx.send(embed= emb)
 
-    @prefix.error
-    async def prefix_error(self, ctx, error):
-        if isinstance(error, commands.CheckFailure):
-            emb = discord.Embed(timestamp= ctx.message.created_at, title='Ошибка!!!', colour=discord.Color.red(), description='Эту команду может использовать только владелец сервера')
-            emb.set_footer(text= ctx.message.author)
+        guildid = ctx.guild.id
+        try:
+            cursor.execute(f'UPDATE public."myBD" SET prefix_guild=\'{prefix}\' WHERE guild_id = \'{guildid}\';')
+            conn.commit()
+            emb = discord.Embed(title = 'Выполнено успешно!', description = f'Префикс сервера изменений на "** {prefix} **"', colour = discord.Color.green(), timestamp = ctx.message.created_at)
+            emb.set_footer(text = ctx.message.author)
+            await ctx.send(embed = emb)
+        
+        except commands.CheckFailure:
+            emb = discord.Embed(timestamp = ctx.message.created_at, title = 'Ошибка!!!', colour = discord.Color.red(), description = 'Эту команду может использовать только владелец сервера')
+            emb.set_footer(text = ctx.message.author)
             await ctx.channel.purge(limit=1)
-            await ctx.send(embed=emb)
+            await ctx.send(embed = emb)
+
+        except Exception as e:
+            print(e)
+
 def setup(bot):
     bot.add_cog(prefix(bot))

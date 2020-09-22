@@ -55,28 +55,30 @@ class AuthoAddRole(commands.Cog):
     async def rwlc(self, ctx, role: int, types: bool):
         guild = ctx.message.guild
 
-        cursor.execute(f'UPDATE public."myBD" SET wlc_role=\'{role}\', wlc_role_t_or_f=\'{types}\' WHERE guild_id = \'{guild.id}\';')
-        conn.commit()
+        try:
+            
+            cursor.execute(f'UPDATE public."myBD" SET wlc_role=\'{role}\', wlc_role_t_or_f=\'{types}\' WHERE guild_id = \'{guild.id}\';')
+            conn.commit()
+            
+            role1 = ctx.message.guild.get_role(role)
+            
+            emb = discord.Embed(
+                title = 'Успешно!!!',
+                description = f'Роль {role1.mention} была установлена как автоматическая роль с функцией `{types}`',
+                colour = discord.Color.green(),
+                timestamp = ctx.message.created_at
+            )
+            
+            if ctx.guild.system_channel is not None:
+                await ctx.guild.system_channel.send(embed = emb)
+            elif ctx.guild.system_channel is None:
+                await ctx.send(embed = emb)
         
-        role1 = ctx.message.guild.get_role(role)
-
-        emb = discord.Embed(
-            title = 'Успешно!!!',
-            description = f'Роль {role1.mention} была установлена как автоматическая роль с функцией `{types}`',
-            colour = discord.Color.green(),
-            timestamp = ctx.message.created_at
-        )
-
-        if ctx.guild.system_channel is not None:
-            await ctx.guild.system_channel.send(embed = emb)
-        elif ctx.guild.system_channel is None:
-            await ctx.send(embed = emb)
-'''
-    @rwlc.error
-    async def welcome_error(self, ctx, error):
-        if isinstance(error, commands.BadArgument):
+        except commands.BadArgument:
             await ctx.send('Второй аргумент может быть только тип: Число, третий аргумент может быть только true или false')
-'''
+
+        except Exception as e:
+            print(e)
 
 
 def setup(bot):

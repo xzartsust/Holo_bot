@@ -11,15 +11,18 @@ class MusicLeave(commands.Cog):
     async def leave(self, ctx):
         global voice
 
-        channel = ctx.message.author.voice.channel
-
-        voice = get(self.bot.voice_clients, guild = ctx.guild)
-
-        if voice and voice.is_connected():
-            await voice.disconnect()
-            await ctx.send(f'Бот отключен от{channel}')
-        else:
-            await ctx.send('Бот не в голосовом канале')
+        try:
+            channel = ctx.message.author.voice.channel
+            
+            voice = get(self.bot.voice_clients, guild = ctx.guild)
+            
+            if voice and voice.is_connected():
+                await voice.disconnect()
+                await ctx.send(f'Бот отключен от{channel}')
+            else:
+                await ctx.send('Бот не в голосовом канале')
+        except Exception as e:
+            print(e)
 
 
 def setup(bot):

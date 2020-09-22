@@ -11,14 +11,16 @@ class MusicResume(commands.Cog):
     @commands.command(aliases = ['r','res'])
     async def resume(self, ctx):
 
-        voice = get(self.bot.voice_clients, guild = ctx.guild)
-
-        if voice and voice.is_paused():
-            voice.resume()
-            await ctx.send('Воспроизведения музыки возобновилось')
-        else:
-            await ctx.send('Музыка не на паузе')
-
+        try:
+            voice = get(self.bot.voice_clients, guild = ctx.guild)
+            
+            if voice and voice.is_paused():
+                voice.resume()
+                await ctx.send('Воспроизведения музыки возобновилось')
+            else:
+                await ctx.send('Музыка не на паузе')
+        except Exception as e:
+            print(e)
 
 def setup(bot):
     bot.add_cog(MusicResume(bot))

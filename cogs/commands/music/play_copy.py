@@ -14,14 +14,11 @@ from discord.ext import commands
 # Молчание бесполезных сообщений об ошибках
 youtube_dl.utils.bug_reports_message = lambda: ''
 
-
 class VoiceError(Exception):
     pass
 
-
 class YTDLError(Exception):
     pass
-
 
 class YTDLSource(discord.PCMVolumeTransformer):
     YTDL_OPTIONS = {
@@ -131,7 +128,6 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
         return ', '.join(duration)
 
-
 class Song:
     __slots__ = ('source', 'requester')
 
@@ -151,7 +147,6 @@ class Song:
 
         return embed
 
-
 class SongQueue(asyncio.Queue):
     def __getitem__(self, item):
         if isinstance(item, slice):
@@ -170,7 +165,6 @@ class SongQueue(asyncio.Queue):
 
     def remove(self, index: int):
         del self._queue[index]
-
 
 class VoiceState:
     def __init__(self, bot: commands.Bot, ctx: commands.Context):
@@ -251,7 +245,6 @@ class VoiceState:
         if self.voice:
             await self.voice.disconnect()
             self.voice = None
-
 
 class Music(commands.Cog):
     def __init__(self, bot: commands.Bot):

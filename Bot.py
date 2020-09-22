@@ -72,10 +72,7 @@ status=['t!help', 'Модернизирует свой код', 'Сайт: https
 
 bot.load_extension('cogs.commands.info.user')
 bot.load_extension('cogs.commands.info.help_commands')
-bot.load_extension('cogs.commands.info.ping')
 bot.load_extension('cogs.commands.info.invite')
-bot.load_extension('cogs.commands.info.botservers')
-bot.load_extension('cogs.commands.info.tuser')
 bot.load_extension('cogs.commands.info.infobot')
 bot.load_extension('cogs.commands.info.serverinfo')
 bot.load_extension('cogs.commands.info.prefixserver')
@@ -118,6 +115,7 @@ bot.load_extension('cogs.commands.music.play_copy')
 bot.load_extension('cogs.cogs_owner.out')
 bot.load_extension('cogs.cogs_owner._eval')
 #bot.load_extension('cogs.test')
+bot.load_extension('cogs.cogs_owner.tuser')
 
 
 ################################################# Cogs Event ######################################################################

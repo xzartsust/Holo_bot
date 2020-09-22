@@ -64,29 +64,30 @@ class member_greeting(commands.Cog):
     async def welcome(self, ctx, channel: int, types: bool):
 
         guild = ctx.message.guild
-        
-        cursor.execute(f'UPDATE public."myBD" SET welcome_channel = \'{channel}\', wlc_chan_t_or_f = \'{types}\' WHERE guild_id = \'{guild.id}\';')
-        conn.commit()
+        try:
+            
+            cursor.execute(f'UPDATE public."myBD" SET welcome_channel = \'{channel}\', wlc_chan_t_or_f = \'{types}\' WHERE guild_id = \'{guild.id}\';')
+            conn.commit()
+            
+            channel1 = ctx.message.guild.get_channel(channel)
+            
+            emb = discord.Embed(
+                title = 'Успешно!!!',
+                description = f'Канал уведомлений "Welcome" был установлен на `{channel1}` с функцией `{types}`',
+                colour = discord.Color.green(),
+                timestamp = ctx.message.created_at
+            )
+            
+            if ctx.guild.system_channel is not None:
+                await ctx.guild.system_channel.send(embed = emb)
+            elif ctx.guild.system_channel is None:
+                await ctx.send(embed = emb)
 
-        channel1 = ctx.message.guild.get_channel(channel)
-
-        emb = discord.Embed(
-            title = 'Успешно!!!',
-            description = f'Канал уведомлений "Welcome" был установлен на `{channel1}` с функцией `{types}`',
-            colour = discord.Color.green(),
-            timestamp = ctx.message.created_at
-        )
-
-        if ctx.guild.system_channel is not None:
-            await ctx.guild.system_channel.send(embed = emb)
-        elif ctx.guild.system_channel is None:
-            await ctx.send(embed = emb)
-'''
-    @welcome.error
-    async def welcome_error(self, ctx, error):
-        if isinstance(error, commands.BadArgument):
+        except commands.BadArgument:
             await ctx.send('Второй аргумент может быть только тип: Число, третий аргумент может быть только true или false')
 
-'''
+        except Exception as e:
+            print(e)
+
 def setup(bot):
     bot.add_cog(member_greeting(bot))

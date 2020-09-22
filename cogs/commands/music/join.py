@@ -12,19 +12,19 @@ class MusicJion(commands.Cog):
     async def join(self, ctx):
         global voice
 
-        channel = ctx.message.author.voice.channel
-
-        voice = get(self.bot.voice_clients, guild = ctx.guild)
-
-        if voice and voice.is_connected():
-            await voice.move_to(channel)
-            await ctx.send(f'Бот подключен к каналу {channel}')
-        else:
-            voice = await channel.connect()
-            await ctx.send(f'Бот перешел к каналу {channel}')
+        try:
+            channel = ctx.message.author.voice.channel
             
-
-        
+            voice = get(self.bot.voice_clients, guild = ctx.guild)
+            
+            if voice and voice.is_connected():
+                await voice.move_to(channel)
+                await ctx.send(f'Бот подключен к каналу {channel}')
+            else:
+                voice = await channel.connect()
+                await ctx.send(f'Бот перешел к каналу {channel}')
+        except Exception as e:
+            print(e)  
 
 def setup(bot):
     bot.add_cog(MusicJion(bot))

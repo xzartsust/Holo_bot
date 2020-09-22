@@ -35,13 +35,14 @@ class MuteCommand(commands.Cog):
     async def mute(self, ctx, who: discord.Member, reason = None):
         
         guild = ctx.message.guild
-        cursor.execute(f'SELECT role_for_mute FROM public."myBD" WHERE guild_id = \'{guild.id}\';')
-        role_mute = cursor.fetchone()
-        conn.commit()
-        
-        role = ctx.message.guild.get_role(role_mute[0])
-        await ctx.channel.purge(limit = 1)
         try:
+            cursor.execute(f'SELECT role_for_mute FROM public."myBD" WHERE guild_id = \'{guild.id}\';')
+            role_mute = cursor.fetchone()
+            conn.commit()
+            
+            role = ctx.message.guild.get_role(role_mute[0])
+            await ctx.channel.purge(limit = 1)
+        
             if reason is None:
                 await ctx.send(f'{who} получил мут')
                 await who.add_roles(role)
@@ -50,8 +51,12 @@ class MuteCommand(commands.Cog):
                 await ctx.send(f'{who} получил мут по причине: {reason}')
                 await who.add_roles(role)
                 await who.move_to(None)
+        
         except AttributeError:
             pass
+        
+        except Exception as e:
+            print(e)
         
 
         '''

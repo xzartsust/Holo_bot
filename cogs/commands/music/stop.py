@@ -12,14 +12,16 @@ class MusicStop(commands.Cog):
     async def stop(self, ctx):
         global voice
         
-        voice = get(self.bot.voice_clients, guild = ctx.guild)
-
-        if voice and voice.is_playing() and voice.is_connected():
-            voice.stop()
-            await ctx.send('Музыка остановлена')
-        else:
-            await ctx.send('Музыка не воспроизводится, остановить не удалось')
-
+        try:
+            voice = get(self.bot.voice_clients, guild = ctx.guild)
+            
+            if voice and voice.is_playing() and voice.is_connected():
+                voice.stop()
+                await ctx.send('Музыка остановлена')
+            else:
+                await ctx.send('Музыка не воспроизводится, остановить не удалось')
+        except Exception as e:
+            print(e)
 
 def setup(bot):
     bot.add_cog(MusicStop(bot))
