@@ -1,24 +1,28 @@
-import discord
-from discord.ext import commands
-import youtube_dl
-import ctypes
-import ctypes.util
-import os
-import asyncio
+   @commands.command(name='pause', aliases = ['pa', 'pau'])
+    @commands.has_permissions()
+    async def _pause(self, ctx: commands.Context):
+        """Приостанавливает воспроизводимую в данный момент песню."""
 
+        if not ctx.voice_state.is_playing and ctx.voice_state.voice.is_playing():
+            ctx.voice_state.voice.pause()
+            await ctx.message.add_reaction("⏯")
 
-class Test(commands.Cog):
-    def __init__(self, bot):
-        self.bot = bot
-    
-    @commands.command()
-    @commands.is_owner()
-    async def test(self, ctx):
-        guild = ctx.message.guild
-         
-        async for entry in guild.audit_logs(action = discord.AuditLogAction.invite_create, limit = 2):
-            print(entry)
-    
+    @commands.command(name='resume', aliases=['r', 'res'])
+    @commands.has_permissions()
+    async def _resume(self, ctx: commands.Context):
+        """Возобновляет приостановленную в данный момент песню."""
 
-def setup(bot):
-    bot.add_cog(Test(bot))
+        if not ctx.voice_state.is_playing and ctx.voice_state.voice.is_paused():
+            ctx.voice_state.voice.resume()
+            await ctx.message.add_reaction("⏯")
+
+    @commands.command(name='stop", aliases = ["s", "st"])
+    @commands.has_permissions()
+    async def _stop(self, ctx: commands.Context):
+        """Останавливает воспроизведение песни и очищает очередь."""
+
+        ctx.voice_state.songs.clear()
+
+        if not ctx.voice_state.is_playing:
+            ctx.voice_state.voice.stop()
+            await ctx.message.add_reaction("⏹")
