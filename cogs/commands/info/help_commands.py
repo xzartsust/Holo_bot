@@ -669,5 +669,24 @@ class HelpCommands(commands.Cog):
             embed = shuffle_emb
         ) 
 
+    @help_for_commands.command(name = 'remove')
+    async def remove_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        remove_emb = discord.Embed(
+            title=f'Информация про команду: {prefix}remove или {prefix}rem или {prefix}re', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[remove]`\n**Описание**: удалить музыку с очереди\n**Использования**: `{prefix}remove [номер музыки]`'
+        )
+        remove_emb.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(
+            embed = remove_emb
+        ) 
+
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
