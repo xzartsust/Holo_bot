@@ -140,7 +140,7 @@ class Song:
         self.requester = source.requester
 
     def create_embed(self):
-        embed = (discord.Embed(title='Зараз играет',
+        embed = (discord.Embed(title='Сейчас играет',
                                description='```css\n{0.source.title}\n```'.format(self),
                                color=discord.Color.blurple())
                  .add_field(name='Продолжительность', value=self.source.duration)
@@ -326,14 +326,14 @@ class Music(commands.Cog):
     async def _now(self, ctx: commands.Context):
         """Отображает проигрываемую в данный момент песню."""
 
-        await ctx.send(embed=ctx.voice_state.current.create_embed())
+        await ctx.send(embed = ctx.voice_state.current.create_embed())
 
     @commands.command(name='pause', aliases = ['pa', 'pau'])
     @commands.has_permissions()
     async def _pause(self, ctx: commands.Context):
         """Приостанавливает воспроизводимую в данный момент песню."""
 
-        if not ctx.voice_state.is_playing and ctx.voice_state.voice.is_playing():
+        if ctx.voice_state.is_playing and ctx.voice_state.voice.is_playing():
             ctx.voice_state.voice.pause()
             await ctx.message.add_reaction('⏯')
 
@@ -342,22 +342,22 @@ class Music(commands.Cog):
     async def _resume(self, ctx: commands.Context):
         """Возобновляет приостановленную в данный момент песню."""
 
-        if not ctx.voice_state.is_playing and ctx.voice_state.voice.is_paused():
+        if ctx.voice_state.is_playing and ctx.voice_state.voice.is_paused():
             ctx.voice_state.voice.resume()
             await ctx.message.add_reaction('⏯')
 
-    @commands.command(name='stop')
+    @commands.command(name='stop', aliases = ['s', 'st'])
     @commands.has_permissions()
     async def _stop(self, ctx: commands.Context):
         """Останавливает воспроизведение песни и очищает очередь."""
 
         ctx.voice_state.songs.clear()
 
-        if not ctx.voice_state.is_playing:
+        if ctx.voice_state.is_playing:
             ctx.voice_state.voice.stop()
             await ctx.message.add_reaction('⏹')
 
-    @commands.command(name='skip')
+    @commands.command(name='skip',aliases = ['sk'])
     async def _skip(self, ctx: commands.Context):
         """Проголосуйте, чтобы пропустить песню. Запрашивающая сторона может автоматически пропустить.
         Чтобы песня была пропущена, необходимо 3 пропустить голоса.
@@ -384,7 +384,7 @@ class Music(commands.Cog):
         else:
             await ctx.send('Вы уже проголосовали за то, чтобы пропустить эту песню.')
 
-    @commands.command(name='queue')
+    @commands.command(name='queue', aliases = ['q', 'qu'])
     async def _queue(self, ctx: commands.Context, *, page: int = 1):
         """Показывает очередь игрока.
 
@@ -408,7 +408,7 @@ class Music(commands.Cog):
                  .set_footer(text='Страница просмотра {}/{}'.format(page, pages)))
         await ctx.send(embed=embed)
 
-    @commands.command(name='shuffle')
+    @commands.command(name='shuffle', aliases = ['shu', 'sh', 'shake'])
     async def _shuffle(self, ctx: commands.Context):
         """Перемешивает очередь."""
 
@@ -418,7 +418,7 @@ class Music(commands.Cog):
         ctx.voice_state.songs.shuffle()
         await ctx.message.add_reaction('✅')
 
-    @commands.command(name='remove')
+    @commands.command(name='remove', aliases = ['r', 're'])
     async def _remove(self, ctx: commands.Context, index: int):
         """Удаляет песню из очереди по заданному индексу."""
 
@@ -428,7 +428,7 @@ class Music(commands.Cog):
         ctx.voice_state.songs.remove(index - 1)
         await ctx.message.add_reaction('✅')
 
-    @commands.command(name='loop')
+    @commands.command(name='loop', aliases = ['lo'])
     async def _loop(self, ctx: commands.Context):
         """Зацикливает текущую воспроизводимую песню.
 
@@ -442,7 +442,7 @@ class Music(commands.Cog):
         ctx.voice_state.loop = not ctx.voice_state.loop
         await ctx.message.add_reaction('✅')
 
-    @commands.command(name='play')
+    @commands.command(name='play', aliases = ['p', 'pl'])
     async def _play(self, ctx: commands.Context, *, search: str):
         """Plays a song.
 
