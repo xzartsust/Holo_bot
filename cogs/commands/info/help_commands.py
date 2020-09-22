@@ -140,11 +140,11 @@ class HelpCommands(commands.Cog):
 
         emb_music = discord.Embed(
             title = ':musical_note: :musical_note: Музыкальные команды :musical_note: :musical_note:',
-            description = f'**Внимание:** Музыкальные команды находятся в доработке, и иногда можут некоректно работать!\nЕсли у вас возникли какие-то вопросы по поводу этого то вы можете написать в личку моему создателю или оставить этот вопрос на **Support server Tobi Bot**'
+            description = f'Если у вас возникли какие-то вопросы по поводу этого то вы можете написать в личку моему создателю или оставить этот вопрос на **Support server Tobi Bot**'
         )
         emb_music.add_field(
             name = '**Команды**',
-            value = f'`{prefix}play` или `{prefix}pl` или `{prefix}p` \n`{prefix}pause` или `{prefix}pa` или `{prefix}pau` \n`{prefix}resume` или `{prefix}res` или `{prefix}r` \n`{prefix}stop` или `{prefix}st` или `{prefix}s` \n`{prefix}join` или `{prefix}jo` или `{prefix}j` \n`{prefix}leave` или `{prefix}disconnect` или `{prefix}lea` или `{prefix}l` \n`{prefix}summon` или `{prefix}sum` или `{prefix}summ` \n`{prefix}now` или `{prefix}current` или `{prefix}playing` \n`{prefix}skip` или `{prefix}sk` \n`{prefix}queue` или `{prefix}qu` или `{prefix}q` \n`{prefix}shuffle` или `{prefix}shu` или `{prefix}sh` или `{prefix}shake` \n`{prefix}remove` или `{prefix}re` или `{prefix}rem`'
+            value = f'`{prefix}play` или `{prefix}pl` или `{prefix}p` \n`{prefix}pause` или `{prefix}pa` или `{prefix}pau` \n`{prefix}resume` или `{prefix}res` или `{prefix}r` \n`{prefix}stop` или `{prefix}st` или `{prefix}s` \n`{prefix}join` или `{prefix}jo` или `{prefix}j` \n`{prefix}leave` или `{prefix}lea` или `{prefix}l` или s`{prefix}disconnect`  \n`{prefix}summon` или `{prefix}sum` или `{prefix}summ` \n`{prefix}now` или `{prefix}current` или `{prefix}playing` \n`{prefix}skip` или `{prefix}sk` \n`{prefix}queue` или `{prefix}qu` или `{prefix}q` \n`{prefix}shuffle` или `{prefix}shu` или `{prefix}sh` или `{prefix}shake` \n`{prefix}remove` или `{prefix}re` или `{prefix}rem`'
         )
         embeds=[emb,emb1,emb2,emb3,emb4, emb_music]
         message= await ctx.send(embed = emb)
