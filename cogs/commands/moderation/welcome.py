@@ -56,19 +56,36 @@ class member_greeting(commands.Cog):
             channel = self.bot.get_channel(chan[0])
             
             if f'{yes_or_not[0]}' == str('True'):
-                emb = discord.Embed(
-                    title = f'{title[0]} {member.guild.name}!',
-                    description = f'{description[0]}',
-                    colour = discord.Color.green()
-                )
-                emb.set_thumbnail(
-                    url = member.avatar_url
-                )
-                emb.set_footer(
-                    text = f'{member.id}' + ' | Приятного времяпрепровождения!',
-                    icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png?raw=true'
-                )
-                await channel.send(f'{member.mention}', embed = emb)
+                if description is None or title is None:#написати в описі до команди що обовязково має бути вказані title і description  якщо цього не буде вказано
+                    #, або буде вказано тільки щось одне з них то буде спрацьовувати дефолтне привітння9вказати яке)
+                    emb = discord.Embed(
+                        title = f'Приветствуем Вас на {member.guild.name}!',
+                        description = f'{description_defolt}',
+                        colour = discord.Color.green()
+                    )
+                    emb.set_thumbnail(
+                        url = member.avatar_url
+                    )
+                    emb.set_footer(
+                        text = f'{member.id}' + ' | Приятного времяпрепровождения!',
+                        icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png?raw=true'
+                    )
+                    await channel.send(f'{member.mention}', embed = emb)
+                else:
+                    emb = discord.Embed(
+                        title = f'{title[0]} {member.guild.name}!',
+                        description = f'{description[0]}',
+                        colour = discord.Color.green()
+                    )
+                    emb.set_thumbnail(
+                        url = member.avatar_url
+                    )
+                    emb.set_footer(
+                        text = f'{member.id}' + ' | Приятного времяпрепровождения!',
+                        icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png?raw=true'
+                    )
+                    await channel.send(f'{member.mention}', embed = emb)
+            
             if f'{yes_or_not[0]}' == str('False'):
                 pass
         except Exception as e:
