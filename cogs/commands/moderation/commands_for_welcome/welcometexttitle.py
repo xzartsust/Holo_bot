@@ -26,9 +26,11 @@ class WelcomeTextTitle(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def wtext(self, ctx, title: str):
+    async def wtext(self, ctx, *, title: str):
+
+        guild = ctx.message.guild
         
-        cursor.execute(f'INSERT INTO public."Texts_For_Welcome" (title) VALUES (\'{title}\');')
+        cursor.execute(f'UPDATE public."Texts_For_Welcome" SET title = \'{title}\' WHERE guild_id = \'{guild.id}\';')
         conn.commit()
 
 
