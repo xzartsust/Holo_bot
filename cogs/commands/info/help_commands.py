@@ -166,10 +166,10 @@ class HelpCommands(commands.Cog):
             inline = True
         )
         welcome_emb.set_thumbnail(
-            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/help_welcome.jpg?raw=true'
+            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
         welcome_emb.set_image(
-            url = ''
+            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/help_welcome.jpg?raw=true'
         )
         embeds = [emb, emb1, Moder, welcome_emb, emb_music, emb3, NSFW_emb]
         message = await ctx.send(embed = emb)
