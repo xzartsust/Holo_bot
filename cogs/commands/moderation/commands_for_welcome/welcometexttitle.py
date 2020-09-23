@@ -26,7 +26,7 @@ class WelcomeTextTitle(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def wtext(self, ctx, *, title: str = None):
+    async def wtitle(self, ctx, *, title: str = None):
 
         guild = ctx.message.guild
         if title is not None:
