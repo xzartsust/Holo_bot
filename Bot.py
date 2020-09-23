@@ -62,7 +62,7 @@ async def change_status():
 
     while not bot.is_closed():
         next_status= next(msg)
-        await bot.change_presence(activity= discord.Game(name=next_status))
+        await bot.change_presence(activity = discord.Game(name=next_status))
         await asyncio.sleep(9)
 status=['t!help', 'Модернизирует свой код', 'Сайт: https://github.com/xzartsust/Tobi-Bot#tobi-bot', 'Серевер поддержки: https://discord.gg/8f4KUp']
 

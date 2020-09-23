@@ -78,7 +78,7 @@ class HelpCommands(commands.Cog):
         )
         emb2.add_field(
             name = '**Команды**',
-            value = f'`{prefix}prefix`\n`{prefix}wlc` или `{prefix}welcome`\n`{prefix}news`\n`{prefix}rwlc`\n`{prefix}mute`\n`{prefix}unmute`\n`{prefix}muterole`\n`{prefix}ban`\n`{prefix}kick`\n`{prefix}unban`\n`{prefix}vote`'
+            value = f'`{prefix}prefix`\n`{prefix}news`\n`{prefix}rwlc`\n`{prefix}mute`\n`{prefix}unmute`\n`{prefix}muterole`\n`{prefix}ban`\n`{prefix}kick`\n`{prefix}unban`\n`{prefix}vote`'
         )
         emb3=discord.Embed(
             title='Команды для развлечения', 
@@ -146,9 +146,24 @@ class HelpCommands(commands.Cog):
             name = '**Команды**',
             value = f'`{prefix}play` или `{prefix}pl` или `{prefix}p` \n`{prefix}pause` или `{prefix}pa` или `{prefix}pau` \n`{prefix}resume` или `{prefix}res` или `{prefix}r` \n`{prefix}stop` или `{prefix}st` или `{prefix}s` \n`{prefix}join` или `{prefix}jo` или `{prefix}j` \n`{prefix}leave` или `{prefix}lea` или `{prefix}l` или `{prefix}disconnect`  \n`{prefix}summon` или `{prefix}sum` или `{prefix}summ` \n`{prefix}now` или `{prefix}current` или `{prefix}playing` \n`{prefix}skip` или `{prefix}sk` \n`{prefix}queue` или `{prefix}qu` или `{prefix}q` \n`{prefix}shuffle` или `{prefix}shu` или `{prefix}sh` или `{prefix}shake` \n`{prefix}remove` или `{prefix}re` или `{prefix}rem`'
         )
-        embeds=[emb,emb1,emb2,emb3,emb4, emb_music]
-        message= await ctx.send(embed = emb)
-        page= pag(self.bot, message, only = ctx.author, use_more = False, embeds = embeds, color = 0x008000, time_stamp = True)
+
+        welcome_emb = discord.Embed(
+            title = 'Команди для приветствия новых пользователей',
+            description = 'Теперь можно делать свой текст для приветствия',
+        )
+        welcome_emb.add_field(
+            name = 'Команды для установление канала',
+            value = f'`{prefix}wlc` или `{prefix}welcome`',
+            inline = True
+        )
+        welcome_emb.add_field(
+            name = 'Команды для задания текста в приветствие',
+            value = f'{prefix}wtitle\n{prefix}wdescript\n{prefix}wfooter',
+            inline = True
+        )
+        embeds = [emb, emb1, emb2, welcome_emb, emb_music, emb3, emb4]
+        message = await ctx.send(embed = emb)
+        page = pag(self.bot, message, only = ctx.author, use_more = False, embeds = embeds, color = 0x008000, time_stamp = True)
     
         await page.start()
     
