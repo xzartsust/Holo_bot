@@ -52,11 +52,16 @@ class member_greeting(commands.Cog):
             description = cursor.fetchone()
             conn.commit()
             print('description:', description[0])
+
+            cursor.execute(f'SELECT description FROM public."Texts_For_Welcome" WHERE guild_id = \'{member.guild.id}\';')
+            footer = cursor.fetchone()
+            conn.commit()
+            print('footer:', footer[0])
             
             channel = self.bot.get_channel(chan[0])
             
             if f'{yes_or_not[0]}' == str('True'):
-                if description[0] is None or title[0] is None:#написати в описі до команди що обовязково має бути вказані title і description  якщо цього не буде вказано
+                if description[0] is None or title[0] is None or footer[0] is None:#написати в описі до команди що обовязково має бути вказані title і description  якщо цього не буде вказано
                     #, або буде вказано тільки щось одне з них то буде спрацьовувати дефолтне привітння9вказати яке)
                     emb = discord.Embed(
                         title = f'Приветствуем Вас на {member.guild.name}!',
@@ -81,7 +86,7 @@ class member_greeting(commands.Cog):
                         url = member.avatar_url
                     )
                     emb.set_footer(
-                        text = f'{member.id}' + ' | Приятного времяпрепровождения!',
+                        text = f'{member.id}' + f' | {footer[0]}',
                         icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png?raw=true'
                     )
                     await channel.send(f'{member.mention}', embed = emb)
