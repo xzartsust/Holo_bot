@@ -39,12 +39,20 @@ class member_greeting(commands.Cog):
             cursor.execute(f'SELECT wlc_chan_t_or_f FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
             yes_or_not = cursor.fetchone()
             conn.commit()
+
+            cursor.execute(f'SELECT title FROM public."Texts_For_Welcome" WHERE guild_id = \'{member.guild.id}\';')
+            title = cursor.fetchone()
+            conn.commit()
+            print('title:', title)
+
+            #cursor.execute('')
+            #conn.commint()
             
             channel = self.bot.get_channel(chan[0])
             
             if f'{yes_or_not[0]}' == str('True'):
                 emb = discord.Embed(
-                    title = f'Приветствуем Вас на сервере {member.guild.name}!',
+                    title = f'{title} {member.guild.name}!',
                     description = f'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.',
                     colour = discord.Color.green()
                 )
