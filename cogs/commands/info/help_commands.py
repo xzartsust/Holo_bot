@@ -154,7 +154,7 @@ class HelpCommands(commands.Cog):
 
         welcome_emb = discord.Embed(
             title = 'Команди для приветствия новых пользователей',
-            description = 'Теперь можно делать кастомной текст для приветствия',
+            description = 'Теперь можно делать кастомной текст для приветствия\n\nКоманды с раздела *Команды для установки текста поздравления нового пользователя на сервере* можут посмотреть как использовать, роли в которых есть права **Управлть Сервером**!',
         )
         welcome_emb.add_field(
             name = '**Команды для установление канала**',
@@ -664,6 +664,7 @@ class HelpCommands(commands.Cog):
 
 
     @help_for_commands.command(name = 'help_welcome')
+    @commands.has_permissions(manage_guild = True)
     async def help_welcome_subcommands(self, ctx):
 
         description_defolt = 'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.'
@@ -683,6 +684,7 @@ class HelpCommands(commands.Cog):
         await ctx.send(f'Дефолтне приветствие\n{ctx.message.author.mention}', embed = help_welcome)
 
     @help_for_commands.command(name = 'wtitle')
+    @commands.has_permissions(manage_guild = True)
     async def wtitle_emb_subcommands(self, ctx):
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
@@ -705,6 +707,7 @@ class HelpCommands(commands.Cog):
         ) 
 
     @help_for_commands.command(name = 'wdescript')
+    @commands.has_permissions(manage_guild = True)
     async def wdescript_subcommands(self, ctx):
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
@@ -727,6 +730,7 @@ class HelpCommands(commands.Cog):
         ) 
 
     @help_for_commands.command(name = 'wfooter')
+    @commands.has_permissions(manage_guild = True)
     async def wfooter_subcommands(self, ctx):
 
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
