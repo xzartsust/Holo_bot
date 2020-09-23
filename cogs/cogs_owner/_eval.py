@@ -24,17 +24,16 @@ class comp_code(commands.Cog):
     @commands.command(aliases=['eval'])
     @commands.is_owner()
     async def run_code(self, ctx, *, code: str):
-        c = eval(f'{code}')
-        await ctx.send(f'```{c}```')
-'''
-    @run_code.error
-    async def _eval_error(self, ctx, error):
-        if isinstance(error, commands.CheckFailure):
-            emb = discord.Embed(timestamp= ctx.message.created_at, title='Ошибка!!!', colour=discord.Color.red(), description='Эту команду имеет право использовать только создатель бота')
-            emb.set_footer(text=ctx.message.author)
-            await ctx.channel.purge(limit=1)
-            await ctx.send(embed=emb)
-'''
+
+        try:
+            c = eval(f'{code}')
+            await ctx.send(f'```{c}```')
+
+        except commands.NotOwner:
+            await ctx.send('Эту команду имеет право использовать только создатель бота')
+        except Exception as e:
+            print(e)
+
 def setup(bot):
     bot.add_cog(comp_code(bot))
 

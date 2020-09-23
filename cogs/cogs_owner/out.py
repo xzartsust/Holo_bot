@@ -12,7 +12,12 @@ class logout(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def logout(self, ctx):
-        await self.bot.logout()
+        try:
+            await self.bot.logout()
+        except commands.NotOwner:
+            await ctx.send('Эту команду имеет право использовать только создатель бота')
+        except Exception as e:
+            print(e)
 
 def setup(bot):
     bot.add_cog(logout(bot))
