@@ -154,14 +154,14 @@ class HelpCommands(commands.Cog):
 
         welcome_emb = discord.Embed(
             title = 'Команди для приветствия новых пользователей',
-            description = 'Теперь можно делать свой текст для приветствия',
+            description = 'Теперь можно делать кастомной текст для приветствия',
         )
         welcome_emb.add_field(
             name = '**Команды для установление канала**',
             value = f'`{prefix}wlc` или `{prefix}welcome`',
         )
         welcome_emb.add_field(
-            name = '**Команды для задания текста в приветствие**',
+            name = '**Команды для установки текста поздравления нового пользователя на сервере**',
             value = f'`{prefix}wtitle`\n`{prefix}wdescript`\n`{prefix}wfooter`',
             inline = True
         )
