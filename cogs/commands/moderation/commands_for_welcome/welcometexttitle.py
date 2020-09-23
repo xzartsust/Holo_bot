@@ -25,16 +25,36 @@ class WelcomeTextTitle(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.is_owner()
+    @commands.has_permissions(manage_guild = True)
     async def wtitle(self, ctx, *, title: str = None):
 
-        guild = ctx.message.guild
-        if title is not None:
-            cursor.execute(f'UPDATE public."Texts_For_Welcome" SET title = \'{title}\' WHERE guild_id = \'{guild.id}\';')
-            conn.commit()
-        else:
-            cursor.execute(f'UPDATE public."Texts_For_Welcome" SET title = Null WHERE guild_id = \'{guild.id}\';')
-            conn.commit()
+        try:
+            guild = ctx.message.guild
+            
+            if title is not None:
+                cursor.execute(f'UPDATE public."Texts_For_Welcome" SET title = \'{title}\' WHERE guild_id = \'{guild.id}\';')
+                conn.commit()
+            else:
+                cursor.execute(f'UPDATE public."Texts_For_Welcome" SET title = Null WHERE guild_id = \'{guild.id}\';')
+                conn.commit()
+            
+            emb = discord.Embed(
+                title = 'Успешно!!!',
+                description = f'Текст для title был успешно установлен',
+                colour = discord.Color.green(),
+                timestamp = ctx.message.created_at
+            )
+            
+            if ctx.guild.system_channel is not None:
+                await ctx.guild.system_channel.send(embed = emb)
+            elif ctx.guild.system_channel is None:
+                await ctx.send(embed = emb)
+
+        except commands.MissingPermissions:
+            await ctx.send('Эту команду могут использовать только те у кого в роли есть Управлять сервером')
+
+        except Exception as e:
+            print(e)
 
 def setup(bot):
     bot.add_cog(WelcomeTextTitle(bot))
