@@ -20,7 +20,6 @@ conn = psycopg2.connect(
 
 cursor = conn.cursor()
 
-
 class bot_join_guild(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -30,6 +29,9 @@ class bot_join_guild(commands.Cog):
         cursor.execute(f'INSERT INTO public."myBD" (guild_id, prefix_guild) VALUES ({guild.id}, \'t!\');')
         conn.commit()
         
+        cursor.execute(f'INSERT INTO public."Texts_For_Welcome" (guild_id) VALUES ({guild.id});')
+        conn.commit()
         
+
 def setup(bot):
     bot.add_cog(bot_join_guild(bot))

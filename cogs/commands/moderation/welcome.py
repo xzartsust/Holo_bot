@@ -31,39 +31,42 @@ class member_greeting(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        cursor.execute(f'SELECT welcome_channel FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
-        chan = cursor.fetchone()
-        conn.commit()
-        
-        cursor.execute(f'SELECT wlc_chan_t_or_f FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
-        yes_or_not = cursor.fetchone()
-        conn.commit()
-        
-        channel = self.bot.get_channel(chan[0])
-        
-        if f'{yes_or_not[0]}' == str('True'):
-            emb = discord.Embed(
-                title = f'Приветствуем Вас на сервере {member.guild.name}!',
-                description = f'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.',
-                colour = discord.Color.green()
-            )
-            emb.set_thumbnail(
-                url = member.avatar_url
-            )
-            emb.set_footer(
-                text = f'{member.id}' + ' | Приятного времяпрепровождения!',
-                icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png?raw=true'
-            )
-            await channel.send(f'{member.mention}', embed = emb)
-        if f'{yes_or_not[0]}' == str('False'):
-            pass
+        try:
+            cursor.execute(f'SELECT welcome_channel FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
+            chan = cursor.fetchone()
+            conn.commit()
             
-    
+            cursor.execute(f'SELECT wlc_chan_t_or_f FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
+            yes_or_not = cursor.fetchone()
+            conn.commit()
+            
+            channel = self.bot.get_channel(chan[0])
+            
+            if f'{yes_or_not[0]}' == str('True'):
+                emb = discord.Embed(
+                    title = f'Приветствуем Вас на сервере {member.guild.name}!',
+                    description = f'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.',
+                    colour = discord.Color.green()
+                )
+                emb.set_thumbnail(
+                    url = member.avatar_url
+                )
+                emb.set_footer(
+                    text = f'{member.id}' + ' | Приятного времяпрепровождения!',
+                    icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png?raw=true'
+                )
+                await channel.send(f'{member.mention}', embed = emb)
+            if f'{yes_or_not[0]}' == str('False'):
+                pass
+        except Exception as e:
+            print(e)
+
     @commands.command(aliases=['wlc'])
     @commands.check(is_owner_guild)
     async def welcome(self, ctx, channel: int, types: bool):
 
         guild = ctx.message.guild
+        
         try:
             
             cursor.execute(f'UPDATE public."myBD" SET welcome_channel = \'{channel}\', wlc_chan_t_or_f = \'{types}\' WHERE guild_id = \'{guild.id}\';')
