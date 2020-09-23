@@ -28,9 +28,9 @@ class WelcomeTextTitle(commands.Cog):
     @commands.is_owner()
     async def wtext(self, ctx, title: str):
         
-        conn.execute(f'INSERT INTO public."Texts_For_Welcome" (title) VALUES (\'{title}\');')
+        cursor.execute(f'INSERT INTO public."Texts_For_Welcome" (title) VALUES (\'{title}\');')
         conn.commit()
 
-        
+
 def setup(bot):
     bot.add_cog(WelcomeTextTitle(bot))
