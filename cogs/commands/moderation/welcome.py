@@ -53,7 +53,7 @@ class member_greeting(commands.Cog):
             conn.commit()
             print('description:', description[0])
 
-            cursor.execute(f'SELECT description FROM public."Texts_For_Welcome" WHERE guild_id = \'{member.guild.id}\';')
+            cursor.execute(f'SELECT footer FROM public."Texts_For_Welcome" WHERE guild_id = \'{member.guild.id}\';')
             footer = cursor.fetchone()
             conn.commit()
             print('footer:', footer[0])

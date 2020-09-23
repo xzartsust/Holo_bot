@@ -658,5 +658,72 @@ class HelpCommands(commands.Cog):
             embed = remove_emb
         ) 
 
+
+
+    @help_for_commands.command(name = 'help welcome')
+    async def help_welcome_subcommands(self, ctx):
+
+        description_defolt = 'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.'
+
+        help_welcome = discord.Embed(
+            title = f'Приветствуем Вас на {ctx.guild.name}!',
+            description = f'{description_defolt}',
+            colour = discord.Color.green()
+        )
+        help_welcome.set_thumbnail(
+            url = ctx.message.author.avatar_url
+        )
+        help_welcome.set_footer(
+            text = f'{ctx.message.author.id}' + ' | Приятного времяпрепровождения!',
+            icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png?raw=true'
+        )
+        await ctx.send(f'{ctx.message.author.mention}', embed = help_welcome)
+
+    
+    @help_for_commands.command(name = 'wtitle')
+    async def wtitle_emb_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        wtitle_emb = discord.Embed(
+            title=f'Информация про команду: {prefix}wtitle', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[wtitle]`\n**Описание**: установить заголовок приветствия\n**Использования**: `{prefix}wtitle [текст]`\n\nПример: {prefix}wtitle Приветствую тебя на сервере'
+        )
+        wtitle_emb.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        wtitle_emb.set_image(
+            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/Screenshot_2.png?raw=true'
+        )
+        await ctx.send(
+            embed = wtitle_emb
+        ) 
+
+    @help_for_commands.command(name = 'wdescript')
+    async def wdescript_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        wdescript = discord.Embed(
+            title=f'Информация про команду: {prefix}wdescript', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[wdescript]`\n**Описание**: установить главный текст приветствия\n**Использования**: `{prefix}wdescript [текст]`\n\nПример: {prefix}wtitle Прочтите правила сервера пожалуйста и всего вам хорошего'
+        )
+        wdescript.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        wdescript.set_image(
+            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/Screenshot_2.png?raw=true'
+        )
+        await ctx.send(
+            embed = wdescript
+        ) 
+
+
 def setup(bot):
     bot.add_cog(HelpCommands(bot))
