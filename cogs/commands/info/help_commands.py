@@ -69,18 +69,23 @@ class HelpCommands(commands.Cog):
             name='**Команды**', 
             value=f'`{prefix}user`\n`{prefix}infobot`\n`{prefix}serverinfo` или `{prefix}si` или `{prefix}is`\n`{prefix}serverprefix` или `{prefix}sp` или `{prefix}ps`\n`{prefix}avatar` или `{prefix}av` или `{prefix}a`'
         )
-        emb2=discord.Embed(
+        Moder = discord.Embed(
             title='Команды для администрации и модерации сервера', 
             description=f'Команды для модерации сервера'
         )
-        emb2.set_thumbnail(
+        Moder.set_thumbnail(
             url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
-        emb2.add_field(
+        Moder.add_field(
             name = '**Команды**',
-            value = f'`{prefix}prefix`\n`{prefix}news`\n`{prefix}rwlc`\n`{prefix}mute`\n`{prefix}unmute`\n`{prefix}muterole`\n`{prefix}ban`\n`{prefix}kick`\n`{prefix}unban`\n`{prefix}vote`'
+            value = f'`{prefix}prefix`\n`{prefix}news`\n`{prefix}vote`\n`{prefix}rwlc`\n`{prefix}muterole`'
         )
-        emb3=discord.Embed(
+        Moder.add_field(
+            name = '**Команды для действий с пользователями**',
+            value = f'`{prefix}ban`\n`{prefix}unban`\n`{prefix}mute`\n`{prefix}unmute`\n`{prefix}kick`'
+        )
+
+        emb3 = discord.Embed(
             title='Команды для развлечения', 
             description=f'Команды для развлечения на сервере'
         )
@@ -111,29 +116,29 @@ class HelpCommands(commands.Cog):
             value = f'`{prefix}memes`',
             inline = False
         )
-        emb4=discord.Embed(
+        NSFW_emb = discord.Embed(
             title = 'NSFW команды',
             description = 'Эти команды можно использовать только в чате где включен режим **NSFW**'
         )
-        emb4.add_field(
+        NSFW_emb.add_field(
             name = '**Команды**',
             value = 'Категории',
             inline = False
         )
-        emb4.add_field(
+        NSFW_emb.add_field(
             name = '**Holo**',
             value = f'`{prefix}hololewd`\n`{prefix}holoero`',
             inline = True
         )
-        emb4.set_thumbnail(
+        NSFW_emb.set_thumbnail(
             url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
-        emb4.add_field(
+        NSFW_emb.add_field(
             name = '**Neko**',
             value = f'`{prefix}nekolewd`\n`{prefix}nekogif`\n`{prefix}lewdkemo`\n`{prefix}erokemo`\n`{prefix}kitsunero`\n`{prefix}kitsunelewd`',
             inline = True
         )
-        emb4.add_field(
+        NSFW_emb.add_field(
             name = '**Anime**',
             value = f'`{prefix}aniero`\n`{prefix}classic`\n`{prefix}keta`\n`{prefix}les`'
         )
@@ -152,16 +157,18 @@ class HelpCommands(commands.Cog):
             description = 'Теперь можно делать свой текст для приветствия',
         )
         welcome_emb.add_field(
-            name = 'Команды для установление канала',
+            name = '**Команды для установление канала**',
             value = f'`{prefix}wlc` или `{prefix}welcome`',
-            inline = True
         )
         welcome_emb.add_field(
-            name = 'Команды для задания текста в приветствие',
-            value = f'{prefix}wtitle\n{prefix}wdescript\n{prefix}wfooter',
+            name = '**Команды для задания текста в приветствие**',
+            value = f'`{prefix}wtitle`\n`{prefix}wdescript`\n`{prefix}wfooter`',
             inline = True
         )
-        embeds = [emb, emb1, emb2, welcome_emb, emb_music, emb3, emb4]
+        welcome_emb.set_thumbnail(
+            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
+        )
+        embeds = [emb, emb1, Moder, welcome_emb, emb_music, emb3, NSFW_emb]
         message = await ctx.send(embed = emb)
         page = pag(self.bot, message, only = ctx.author, use_more = False, embeds = embeds, color = 0x008000, time_stamp = True)
     
