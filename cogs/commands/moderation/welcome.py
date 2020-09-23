@@ -56,7 +56,7 @@ class member_greeting(commands.Cog):
             channel = self.bot.get_channel(chan[0])
             
             if f'{yes_or_not[0]}' == str('True'):
-                if description is None or title is None:#написати в описі до команди що обовязково має бути вказані title і description  якщо цього не буде вказано
+                if description[0] is None or title[0] is None:#написати в описі до команди що обовязково має бути вказані title і description  якщо цього не буде вказано
                     #, або буде вказано тільки щось одне з них то буде спрацьовувати дефолтне привітння9вказати яке)
                     emb = discord.Embed(
                         title = f'Приветствуем Вас на {member.guild.name}!',
