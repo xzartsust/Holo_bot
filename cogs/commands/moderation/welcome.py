@@ -43,7 +43,7 @@ class member_greeting(commands.Cog):
             cursor.execute(f'SELECT title FROM public."Texts_For_Welcome" WHERE guild_id = \'{member.guild.id}\';')
             title = cursor.fetchone()
             conn.commit()
-            print('title:', title)
+            print('title:', title[0])
 
             #cursor.execute('')
             #conn.commint()
