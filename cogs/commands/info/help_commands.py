@@ -166,7 +166,7 @@ class HelpCommands(commands.Cog):
             inline = True
         )
         welcome_emb.set_thumbnail(
-            url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
+            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/help_welcome.jpg?raw=true'
         )
         welcome_emb.set_image(
             url = ''
