@@ -31,6 +31,9 @@ class member_greeting(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
+
+        description_defolt = 'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.'
+
         try:
             cursor.execute(f'SELECT welcome_channel FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
             chan = cursor.fetchone()
@@ -55,7 +58,7 @@ class member_greeting(commands.Cog):
             if f'{yes_or_not[0]}' == str('True'):
                 emb = discord.Embed(
                     title = f'{title[0]} {member.guild.name}!',
-                    description = f'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.',
+                    description = f'{description}',
                     colour = discord.Color.green()
                 )
                 emb.set_thumbnail(

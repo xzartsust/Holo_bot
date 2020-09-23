@@ -29,9 +29,12 @@ class WelcomeTextDescription(commands.Cog):
     async def wdescript(self, ctx, *, description: str = None):
 
         guild = ctx.message.guild
-        
-        cursor.execute(f'UPDATE public."Texts_For_Welcome" SET description = \'{description}\' WHERE guild_id = \'{guild.id}\';')
-        conn.commit()
+        if description is not None:
+            cursor.execute(f'UPDATE public."Texts_For_Welcome" SET description = \'{description}\' WHERE guild_id = \'{guild.id}\';')
+            conn.commit()
+        else:
+            cursor.execute(f'UPDATE public."Texts_For_Welcome" SET description = Null WHERE guild_id = \'{guild.id}\';')
+            conn.commit()
 
 def setup(bot):
     bot.add_cog(WelcomeTextDescription(bot))
