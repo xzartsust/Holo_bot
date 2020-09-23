@@ -168,6 +168,9 @@ class HelpCommands(commands.Cog):
         welcome_emb.set_thumbnail(
             url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
+        welcome_emb.set_image(
+            url = ''
+        )
         embeds = [emb, emb1, Moder, welcome_emb, emb_music, emb3, NSFW_emb]
         message = await ctx.send(embed = emb)
         page = pag(self.bot, message, only = ctx.author, use_more = False, embeds = embeds, color = 0x008000, time_stamp = True)
@@ -677,9 +680,8 @@ class HelpCommands(commands.Cog):
             text = f'{ctx.message.author.id}' + ' | Приятного времяпрепровождения!',
             icon_url= 'https://github.com/xzartsust/holo_bot/blob/master/files/image/id.png?raw=true'
         )
-        await ctx.send(f'{ctx.message.author.mention}', embed = help_welcome)
+        await ctx.send(f'Дефолтне приветствие\n{ctx.message.author.mention}', embed = help_welcome)
 
-    
     @help_for_commands.command(name = 'wtitle')
     async def wtitle_emb_subcommands(self, ctx):
 
@@ -733,14 +735,14 @@ class HelpCommands(commands.Cog):
         wfooter = discord.Embed(
             title=f'Информация про команду: {prefix}wfooter', 
             colour = discord.Color.teal(), 
-            description=f'**Команда**: `[wfooter]`\n**Описание**: установить главный текст приветствия\n**Использования**: `{prefix}wfooter [текст]`\n\n**Пример**: `{prefix}wfooter Удачки`'
+            description=f'**Команда**: `[wfooter]`\n**Описание**: установить нижний текст приветствия\n**Использования**: `{prefix}wfooter [текст]`\n\n**Пример**: `{prefix}wfooter Удачки`'
         )
         wfooter.set_footer(
             text = ctx.message.author, 
             icon_url = ctx.message.author.avatar_url
         )
         wfooter.set_image(
-            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/description.png?raw=true'
+            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/footer.png?raw=true'
         )
         await ctx.send(
             embed = wfooter
