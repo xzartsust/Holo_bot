@@ -58,7 +58,7 @@ class member_greeting(commands.Cog):
             if f'{yes_or_not[0]}' == str('True'):
                 emb = discord.Embed(
                     title = f'{title[0]} {member.guild.name}!',
-                    description = f'{description}',
+                    description = f'{description[0]}',
                     colour = discord.Color.green()
                 )
                 emb.set_thumbnail(
