@@ -660,7 +660,7 @@ class HelpCommands(commands.Cog):
 
 
 
-    @help_for_commands.command(name = 'help welcome')
+    @help_for_commands.command(name = 'help_welcome')
     async def help_welcome_subcommands(self, ctx):
 
         description_defolt = 'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.'
@@ -722,6 +722,28 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(
             embed = wdescript
+        ) 
+
+    @help_for_commands.command(name = 'wfooter')
+    async def wfooter_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        wfooter = discord.Embed(
+            title=f'Информация про команду: {prefix}wfooter', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[wfooter]`\n**Описание**: установить главный текст приветствия\n**Использования**: `{prefix}wfooter [текст]`\n\n**Пример**: `{prefix}wfooter Удачки`'
+        )
+        wfooter.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        wfooter.set_image(
+            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/description.png?raw=true'
+        )
+        await ctx.send(
+            embed = wfooter
         ) 
 
 

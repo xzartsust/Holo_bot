@@ -26,7 +26,7 @@ class WelcomeTextFooter(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_guild = True)
-    async def wfooter(self, ctx, footer: str = None):
+    async def wfooter(self, ctx, *,footer: str = None):
 
         try:
             
