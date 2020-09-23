@@ -94,6 +94,7 @@ bot.load_extension('cogs.commands.moderation.command.unban')
 bot.load_extension('cogs.commands.moderation.vote')
 bot.load_extension('cogs.commands.moderation.command.mute')
 bot.load_extension('cogs.commands.moderation.command.unmute')
+bot.load_extension('cogs.commands.moderation.commands_for_welcome.welcometexttitle')
 
 
 ################################################## Cogs Music commands ###########################################################
