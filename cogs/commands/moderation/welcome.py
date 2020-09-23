@@ -47,7 +47,7 @@ class member_greeting(commands.Cog):
 
             cursor.execute(f'SELECT description FROM public."Texts_For_Welcome" WHERE guild_id = \'{member.guild.id}\';')
             description = cursor.fetchone()
-            conn.commint()
+            conn.commit()
             print('description:', description[0])
             
             channel = self.bot.get_channel(chan[0])

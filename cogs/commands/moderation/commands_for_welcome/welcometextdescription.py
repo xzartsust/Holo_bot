@@ -26,7 +26,7 @@ class WelcomeTextDescription(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def wdescript(self, ctx, *, description: str):
+    async def wdescript(self, ctx, *, description: str = None):
 
         guild = ctx.message.guild
         
