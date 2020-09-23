@@ -14,7 +14,7 @@ class logout(commands.Cog):
     async def logout(self, ctx):
         try:
             await self.bot.logout()
-        except commands.NotOwner:
+        except commands.errors.NotOwner:
             await ctx.send('Эту команду имеет право использовать только создатель бота')
         except Exception as e:
             print(e)

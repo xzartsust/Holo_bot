@@ -29,7 +29,7 @@ class comp_code(commands.Cog):
             c = eval(f'{code}')
             await ctx.send(f'```{c}```')
 
-        except commands.NotOwner:
+        except commands.errors.NotOwner:
             await ctx.send('Эту команду имеет право использовать только создатель бота')
         except Exception as e:
             print(e)

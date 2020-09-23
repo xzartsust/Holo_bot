@@ -50,7 +50,7 @@ class WelcomeTextTitle(commands.Cog):
             elif ctx.guild.system_channel is None:
                 await ctx.send(embed = emb)
 
-        except commands.MissingPermissions:
+        except commands.errors.MissingPermissions:
             await ctx.send('Эту команду могут использовать только те у кого в роли есть Управлять сервером')
 
         except Exception as e:
