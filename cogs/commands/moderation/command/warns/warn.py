@@ -39,7 +39,7 @@ class Warns(commands.Cog):
         guildDB = cursor.fetchone()
         conn.commit()
         
-        if memberDB[0] is None and guildDB[0] is None:
+        if memberDB is None and guildDB is None:
             cursor.execute(f'INSERT INTO public."Warns" (guild_id, member_id) VALUES (\'{guild.id}\',\'{member_id}\');')
             conn.commit()
             
