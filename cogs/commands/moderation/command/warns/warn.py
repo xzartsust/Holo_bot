@@ -39,6 +39,16 @@ class Warns(commands.Cog):
 
         print('Warns ', count[0])
 
+        count_now = count[0] + 1
+
+        cursor.execute(f'UPDATE public."Warns" SET count = \'{count_now}\' WHERE guild_id= \'{guild.id}\' AND member_id = \'{member_id}\';')
+        conn.commit()
+
+        cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
+        count_end = cursor.fetchone()
+        conn.commit()
+
+        print('Count now ', count_end[0])
 
 def setup(bot):
     bot.add_cog(Warns(bot))
