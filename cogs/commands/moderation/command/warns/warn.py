@@ -31,24 +31,33 @@ class Warns(commands.Cog):
         guild = ctx.message.guild
         member_id = member.id
 
-        print('member id ', member_id)
-
-        cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
-        count = cursor.fetchone()
+        cursor.execute(f'SELECT member_id FROM public."Warns" WHERE guild_id = \'{guild.id}\'')
+        memberDB = cursor.fetchone()
         conn.commit()
-
-        print('Warns ', count[0])
-
-        count_now = count[0] + 1
-
-        cursor.execute(f'UPDATE public."Warns" SET counts = \'{count_now}\' WHERE guild_id= \'{guild.id}\' AND member_id = \'{member_id}\';')
-        conn.commit()
-
-        cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
-        count_end = cursor.fetchone()
-        conn.commit()
-
-        print('Count now ', count_end[0])
+        
+        if memberDB is None:
+            cursor.execute(f'INSERT INTO public."Warns" (guild_id, member_id) VALUES (\'{guild.id}\',\'{member_id});')
+            conn.commit()
+        else:
+            
+            print('member id ', member_id)
+            
+            cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
+            count = cursor.fetchone()
+            conn.commit()
+            
+            print('Warns ', count[0])
+            
+            count_now = count[0] + 1
+            
+            cursor.execute(f'UPDATE public."Warns" SET counts = \'{count_now}\' WHERE guild_id= \'{guild.id}\' AND member_id = \'{member_id}\';')
+            conn.commit()
+            
+            cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
+            count_end = cursor.fetchone()
+            conn.commit()
+            
+            print('Count now ', count_end[0])
 
 def setup(bot):
     bot.add_cog(Warns(bot))
