@@ -33,8 +33,11 @@ class MyWarns(commands.Cog):
         cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{user}\';')
         count = cursor.fetchone()
         conn.commit()
-
-        print(count[0])
+        
+        if count is None:
+            print('0')
+        else:
+            print(count[0])
 
 def setup(bot):
     bot.add_cog(MyWarns(bot))
