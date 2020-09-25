@@ -41,7 +41,7 @@ class Warns(commands.Cog):
 
         count_now = count[0] + 1
 
-        cursor.execute(f'UPDATE public."Warns" SET count = \'{count_now}\' WHERE guild_id= \'{guild.id}\' AND member_id = \'{member_id}\';')
+        cursor.execute(f'UPDATE public."Warns" SET counts = \'{count_now}\' WHERE guild_id= \'{guild.id}\' AND member_id = \'{member_id}\';')
         conn.commit()
 
         cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
