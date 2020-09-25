@@ -97,6 +97,7 @@ bot.load_extension('cogs.commands.moderation.command.unmute')
 bot.load_extension('cogs.commands.moderation.commands_for_welcome.welcometexttitle')
 bot.load_extension('cogs.commands.moderation.commands_for_welcome.welcometextdescription')
 bot.load_extension('cogs.commands.moderation.commands_for_welcome.welcometextfooter')
+bot.load_extension('cogs.commands.moderation.command.warns.warn')
 
 
 ################################################## Cogs Music commands ###########################################################
