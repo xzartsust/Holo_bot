@@ -36,7 +36,7 @@ class Warns(commands.Cog):
         conn.commit()
         
         if memberDB is None:
-            cursor.execute(f'INSERT INTO public."Warns" (guild_id, member_id) VALUES (\'{guild.id}\',\'{member_id});')
+            cursor.execute(f'INSERT INTO public."Warns" (guild_id, member_id) VALUES (\'{guild.id}\',\'{member_id}\');')
             conn.commit()
         else:
             
