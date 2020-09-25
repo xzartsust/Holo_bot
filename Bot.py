@@ -117,7 +117,7 @@ bot.load_extension('cogs.commands.music.play')
 
 bot.load_extension('cogs.cogs_owner.out')
 bot.load_extension('cogs.cogs_owner._eval')
-#bot.load_extension('cogs.test')
+bot.load_extension('cogs.test')
 bot.load_extension('cogs.cogs_owner.tuser')
 
 
