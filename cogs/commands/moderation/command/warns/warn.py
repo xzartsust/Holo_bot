@@ -31,7 +31,7 @@ class Warns(commands.Cog):
         guild = ctx.message.guild
         member_id = member.id
 
-        cursor.execute(f'SELECT member_id FROM public."Warns" WHERE guild_id = \'{guild.id}\'')
+        cursor.execute(f'SELECT member_id FROM public."Warns" WHERE guild_id = \'{guild.id}\' WHERE member_id = \'{member_id}\';')
         memberDB = cursor.fetchone()
         conn.commit()
         
