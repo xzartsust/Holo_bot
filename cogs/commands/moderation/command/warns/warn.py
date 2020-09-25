@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-import asyncpg, asyncio
+import asyncpg
 import psycopg2
 import os
 
@@ -20,21 +20,25 @@ conn = psycopg2.connect(
 
 cursor = conn.cursor()
 
-class bot_join_guild(commands.Cog):
+class Warns(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
-    @commands.Cog.listener()
-    async def on_guild_remove(self, guild):
-        
-        cursor.execute(f'DELETE FROM public."myBD" WHERE guild_id = \'{guild.id}\';')
+
+    @commands.command()
+    @commands.is_owner()
+    async def warn(self, ctx, member: discord.Member):
+
+        guild = ctx.message.guild
+        member_id = member.id
+
+        print('member id ', member_id)
+
+        cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
+        count = cursor.fetchone()
         conn.commit()
 
-        cursor.execute(f'DELETE FROM public."Texts_For_Welcome" WHERE guild_id = \'{guild.id}\';')
-        conn.commit()
+        print('Warns ', count[0])
 
-        cursor.execute(f'DELETE FROM public."Warns" WHERE guild_id = \'{guild.id}\';')
-        conn.commit()
 
 def setup(bot):
-    bot.add_cog(bot_join_guild(bot))
+    bot.add_cog(Warns(bot))
