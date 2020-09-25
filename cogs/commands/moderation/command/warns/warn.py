@@ -34,10 +34,15 @@ class Warns(commands.Cog):
         cursor.execute(f'SELECT member_id FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
         memberDB = cursor.fetchone()
         conn.commit()
+
+        cursor.execute(f'SELECT guild_id FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
+        guildDB = cursor.fetchone()
+        conn.commit()
         
-        if memberDB[0] is None:
+        if memberDB[0] is None and guildDB[0] is None:
             cursor.execute(f'INSERT INTO public."Warns" (guild_id, member_id) VALUES (\'{guild.id}\',\'{member_id}\');')
             conn.commit()
+            
         else:
             
             print('member id ', member_id)
@@ -57,7 +62,7 @@ class Warns(commands.Cog):
             count_end = cursor.fetchone()
             conn.commit()
             
-            print('Count now ', count_end[0])
+            print('Warns now ', count_end[0])
 
 def setup(bot):
     bot.add_cog(Warns(bot))
