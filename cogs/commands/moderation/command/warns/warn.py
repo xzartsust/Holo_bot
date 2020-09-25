@@ -42,6 +42,17 @@ class Warns(commands.Cog):
         if memberDB is None and guildDB is None:
             cursor.execute(f'INSERT INTO public."Warns" (guild_id, member_id) VALUES (\'{guild.id}\',\'{member_id}\');')
             conn.commit()
+
+            cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
+            count = cursor.fetchone()
+            conn.commit()
+            
+            print('Warns ', count[0])
+            
+            count_now = count[0] + 1
+            
+            cursor.execute(f'UPDATE public."Warns" SET counts = \'{count_now}\' WHERE guild_id= \'{guild.id}\' AND member_id = \'{member_id}\';')
+            conn.commit()
             
         else:
             
