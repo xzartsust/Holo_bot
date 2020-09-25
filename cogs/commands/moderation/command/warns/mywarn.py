@@ -25,12 +25,12 @@ class MyWarns(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def mwarn(self, ctx):
-        
-        user = ctx.message.author.id
+    async def mwarn(self, ctx, member: discord.Member):
+
+        member = ctx.author if not member else member
         guild = ctx.message.guild
 
-        cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{user}\';')
+        cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member.id}\';')
         count = cursor.fetchone()
         conn.commit()
         
