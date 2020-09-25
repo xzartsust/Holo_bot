@@ -27,17 +27,31 @@ class MyWarns(commands.Cog):
     @commands.is_owner()
     async def mwarn(self, ctx, member: discord.Member):
 
-        member = ctx.author if not member else member
-        guild = ctx.message.guild
+        try:
+            member = ctx.author if not member else member
+            guild = ctx.message.guild
 
-        cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member.id}\';')
-        count = cursor.fetchone()
-        conn.commit()
+            cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member.id}\';')
+            count = cursor.fetchone()
+            conn.commit()
         
-        if count is None:
-            print('0')
-        else:
-            print(count[0])
+            if count is None:
+                emb = discord.Embed(
+                    title = 'Предупреждения',
+                    description = f'У пользователя {member.mention} есть 0 предупреждений',
+                    timestamp = ctx.message.created_at
+                )
+                await ctx.send(embed = emb)
+            else:
+                print(count[0])
+                emb = discord.Embed(
+                    title = 'Предупреждения',
+                    description = f'У пользователя {member.mention} есть {count[0]} предупреждений',
+                    timestamp = ctx.message.created_at
+                )
+                await ctx.send(embed = emb)
+        except Exception as e:
+            print(e)
 
 def setup(bot):
     bot.add_cog(MyWarns(bot))
