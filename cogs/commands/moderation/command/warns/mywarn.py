@@ -25,7 +25,7 @@ class MyWarns(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def mwarn(self, ctx, member: discord.Member):
+    async def mwarn(self, ctx, member: discord.Member = None):
 
         try:
             member = ctx.author if not member else member
