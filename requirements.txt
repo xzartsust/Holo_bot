@@ -4,7 +4,6 @@ appdirs==1.4.4
 arrow==0.15.8
 asgiref== 3.2.10
 astroid==2.4.2
-async-nekos.life-wrapper==0.0.1
 async-timeout==3.0.1
 asyncpg==0.20.1
 attrs==19.3.0
