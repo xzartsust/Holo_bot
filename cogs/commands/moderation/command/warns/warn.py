@@ -66,7 +66,7 @@ class Warns(commands.Cog):
                         value = f'{member.mention}'
                     )
                     warn.set_thumbnail(
-                        url = ''
+                        url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/warn.jpg?raw=true'
                     )
                     warn.add_field(
                         name = 'Модератор',
@@ -89,7 +89,7 @@ class Warns(commands.Cog):
                         value = f'{ctx.message.author.mention}'
                     )
                     warn.set_thumbnail(
-                        url = ''
+                        url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/warn.jpg?raw=true'
                     )
                     warn.add_field(
                         name = 'Причина',
@@ -119,7 +119,7 @@ class Warns(commands.Cog):
                         value = f'{member.mention}'
                     )
                     warn.set_thumbnail(
-                        url = ''
+                        url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/warn.jpg?raw=true'
                     )
                     warn.add_field(
                         name = 'Модератор',
@@ -142,7 +142,7 @@ class Warns(commands.Cog):
                         value = f'{ctx.message.author.mention}'
                     )
                     warn.set_thumbnail(
-                        url = ''
+                        url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/warn.jpg?raw=true'
                     )
                     warn.add_field(
                         name = 'Причина',
