@@ -24,7 +24,6 @@ class MyWarns(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.is_owner()
     async def mwarn(self, ctx, member: discord.Member = None):
 
         try:

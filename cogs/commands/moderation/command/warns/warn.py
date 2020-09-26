@@ -25,7 +25,7 @@ class Warns(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.is_owner()
+    @commands.has_permissions(manage_guild = True)
     async def warn(self, ctx, member: discord.Member, *, reason = None):
 
         guild = ctx.message.guild
