@@ -33,10 +33,10 @@ class Warns(commands.Cog):
 
         try:
             if member.bot is True:
-                await ctx.send('1')
+                await ctx.send('Ей, боту нельзя выдать предупреждение')
                 return
             if member is member:
-                await ctx.send('2')
+                await ctx.send('Ей, нельзя самому себе выдать предупреждение')
                 return 
             cursor.execute(f'SELECT member_id FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
             memberDB = cursor.fetchone()
