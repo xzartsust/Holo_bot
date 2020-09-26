@@ -28,6 +28,7 @@ class MyWarns(commands.Cog):
     async def mwarn(self, ctx, member: discord.Member = None):
 
         try:
+            
             member = ctx.author if not member else member
             guild = ctx.message.guild
 
@@ -42,6 +43,7 @@ class MyWarns(commands.Cog):
                     timestamp = ctx.message.created_at
                 )
                 await ctx.send(embed = emb)
+            
             else:
                 print(count[0])
                 emb = discord.Embed(
@@ -50,6 +52,7 @@ class MyWarns(commands.Cog):
                     timestamp = ctx.message.created_at
                 )
                 await ctx.send(embed = emb)
+        
         except Exception as e:
             print(e)
 
