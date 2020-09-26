@@ -26,7 +26,7 @@ class Warns(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def warn(self, ctx, member: discord.Member):
+    async def warn(self, ctx, member: discord.Member, *, reason = None):
 
         guild = ctx.message.guild
         member_id = member.id
@@ -54,6 +54,39 @@ class Warns(commands.Cog):
             
                 cursor.execute(f'UPDATE public."Warns" SET counts = \'{count_now}\' WHERE guild_id= \'{guild.id}\' AND member_id = \'{member_id}\';')
                 conn.commit()
+
+                if reason is None:
+                    warn = discord.Embed(
+                        title = f'{member} предупреждения',
+                        timestamp = ctx.message.created_at,
+                        colour = discord.Color.red()
+                    )
+                    warn.add_field(
+                        name = 'Пользователь',
+                        value = f'{member.mention}'
+                    )
+                    warn.add_field(
+                        name = 'Модератор',
+                        value = f'{ctx.message.author.mention}'
+                    )
+                else:
+                    warn = discord.Embed(
+                        title = f'{member} предупреждения',
+                        timestamp = ctx.message.created_at,
+                        colour = discord.Color.red()
+                    )
+                    warn.add_field(
+                        name = 'Пользователь',
+                        value = f'{member.mention}'
+                    )
+                    warn.add_field(
+                        name = 'Модератор',
+                        value = f'{ctx.message.author.mention}'
+                    )
+                    warn.add_field(
+                        name = 'Причина',
+                        value = f'{reason}'
+                    )
             
             else:
             
@@ -65,6 +98,39 @@ class Warns(commands.Cog):
             
                 cursor.execute(f'UPDATE public."Warns" SET counts = \'{count_now}\' WHERE guild_id= \'{guild.id}\' AND member_id = \'{member_id}\';')
                 conn.commit()
+
+                if reason is None:
+                    warn = discord.Embed(
+                        title = f'{member} предупреждения',
+                        timestamp = ctx.message.created_at,
+                        colour = discord.Color.red()
+                    )
+                    warn.add_field(
+                        name = 'Пользователь',
+                        value = f'{member.mention}'
+                    )
+                    warn.add_field(
+                        name = 'Модератор',
+                        value = f'{ctx.message.author.mention}'
+                    )
+                else:
+                    warn = discord.Embed(
+                        title = f'{member} предупреждения',
+                        timestamp = ctx.message.created_at,
+                        colour = discord.Color.red()
+                    )
+                    warn.add_field(
+                        name = 'Пользователь',
+                        value = f'{member.mention}'
+                    )
+                    warn.add_field(
+                        name = 'Модератор',
+                        value = f'{ctx.message.author.mention}'
+                    )
+                    warn.add_field(
+                        name = 'Причина',
+                        value = f'{reason}'
+                    )
         
         except Exception as e:
             print(e)
