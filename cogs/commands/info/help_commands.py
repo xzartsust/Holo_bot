@@ -178,7 +178,7 @@ class HelpCommands(commands.Cog):
 
         warn_embed = discord.Embed(
             title = 'Warn команды',
-            description = 'Ткперь у бота есть **warn** система\n\nКоманды с раздела *Warn команды* можут посмотреть как использовать, роли в которых есть права **Управлть Сервером**!'
+            description = 'Тeперь у бота есть **warn** система\n\nКоманды с раздела *Warn команды* можут посмотреть как использовать, роли в которых есть права **Управлть Сервером**!'
         )
         warn_embed.set_thumbnail(
             url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
@@ -789,9 +789,6 @@ class HelpCommands(commands.Cog):
             text = ctx.message.author, 
             icon_url = ctx.message.author.avatar_url
         )
-        warn.set_image(
-            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/footer.png?raw=true'
-        )
         await ctx.send(
             embed = warn
         ) 
@@ -811,9 +808,6 @@ class HelpCommands(commands.Cog):
         mwarn.set_footer(
             text = ctx.message.author, 
             icon_url = ctx.message.author.avatar_url
-        )
-        mwarn.set_image(
-            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/footer.png?raw=true'
         )
         await ctx.send(
             embed = mwarn
