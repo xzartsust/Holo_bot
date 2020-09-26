@@ -116,6 +116,7 @@ class HelpCommands(commands.Cog):
             value = f'`{prefix}memes`',
             inline = False
         )
+
         NSFW_emb = discord.Embed(
             title = 'NSFW команды',
             description = 'Эти команды можно использовать только в чате где включен режим **NSFW**'
@@ -147,6 +148,9 @@ class HelpCommands(commands.Cog):
             title = ':musical_note: :musical_note: Музыкальные команды :musical_note: :musical_note:',
             description = f'Если у вас возникли какие-то вопросы по поводу этого то вы можете написать в личку моему создателю или оставить этот вопрос на **Support server Tobi Bot**'
         )
+        emb_music.set_thumbnail(
+            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
+        )
         emb_music.add_field(
             name = '**Команды**',
             value = f'`{prefix}play` или `{prefix}pl` или `{prefix}p` \n`{prefix}pause` или `{prefix}pa` или `{prefix}pau` \n`{prefix}resume` или `{prefix}res` или `{prefix}r` \n`{prefix}stop` или `{prefix}st` или `{prefix}s` \n`{prefix}join` или `{prefix}jo` или `{prefix}j` \n`{prefix}leave` или `{prefix}lea` или `{prefix}l` или `{prefix}disconnect`  \n`{prefix}summon` или `{prefix}sum` или `{prefix}summ` \n`{prefix}now` или `{prefix}current` или `{prefix}playing` \n`{prefix}skip` или `{prefix}sk` \n`{prefix}queue` или `{prefix}qu` или `{prefix}q` \n`{prefix}shuffle` или `{prefix}shu` или `{prefix}sh` или `{prefix}shake` \n`{prefix}remove` или `{prefix}re` или `{prefix}rem`'
@@ -171,7 +175,23 @@ class HelpCommands(commands.Cog):
         welcome_emb.set_image(
             url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/help_welcome.jpg?raw=true'
         )
-        embeds = [emb, emb1, Moder, welcome_emb, emb_music, emb3, NSFW_emb]
+
+        warn_embed = discord.Embed(
+            title = 'Warn команды',
+            description = 'Ткперь у бота есть **warn** система\n\nКоманды с раздела *Warn команды* можут посмотреть как использовать, роли в которых есть права **Управлть Сервером**!'
+        )
+        warn_embed.set_thumbnail(
+            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
+        )
+        warn_embed.add_field(
+            name = '**Команды**',
+            value = f'`{prefix}warn`\n`{prefix}mwarn`'
+        )
+
+
+
+
+        embeds = [emb, emb1, Moder, warn_embed, welcome_emb, emb_music, emb3, NSFW_emb]
         message = await ctx.send(embed = emb)
         page = pag(self.bot, message, only = ctx.author, use_more = False, embeds = embeds, color = 0x008000, time_stamp = True)
     
@@ -751,6 +771,54 @@ class HelpCommands(commands.Cog):
         await ctx.send(
             embed = wfooter
         ) 
+
+
+    @help_for_commands.command(name = 'warn')
+    @commands.has_permissions(manage_guild = True)
+    async def warn_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        warn = discord.Embed(
+            title=f'Информация про команду: {prefix}warn', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[warn]`\n**Описание**: выдать предупреждение пользователю\n**Использования**: `{prefix}warn [пользователь]`\n\n**Пример**: `{prefix}warn @xZartsust#0000`'
+        )
+        warn.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        warn.set_image(
+            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/footer.png?raw=true'
+        )
+        await ctx.send(
+            embed = warn
+        ) 
+
+    @help_for_commands.command(name = 'mwarn')
+    @commands.has_permissions(manage_guild = True)
+    async def mwarn_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        mwarn = discord.Embed(
+            title=f'Информация про команду: {prefix}mwarn', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[mwarn]`\n**Описание**: выдать предупреждение пользователю\n**Использования**: Просто `{prefix}mwarn` или `{prefix}mwarn @пользователь`\n\n**Пример**: `{prefix}mwarn` или `{prefix}mwarn @xZartsust#0000`'
+        )
+        mwarn.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        mwarn.set_image(
+            url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/footer.png?raw=true'
+        )
+        await ctx.send(
+            embed = mwarn
+        ) 
+
 
 
 def setup(bot):
