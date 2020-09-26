@@ -40,7 +40,8 @@ class MyWarns(commands.Cog):
                 emb = discord.Embed(
                     title = 'Предупреждения',
                     description = f'У пользователя {member.mention} есть 0 предупреждений',
-                    timestamp = ctx.message.created_at
+                    timestamp = ctx.message.created_at,
+                    colour = discord.Color.green()
                 )
                 await ctx.send(embed = emb)
             
@@ -49,7 +50,8 @@ class MyWarns(commands.Cog):
                 emb = discord.Embed(
                     title = 'Предупреждения',
                     description = f'У пользователя {member.mention} есть {count[0]} предупреждений',
-                    timestamp = ctx.message.created_at
+                    timestamp = ctx.message.created_at,
+                    colour = discord.Color.green()
                 )
                 await ctx.send(embed = emb)
         
