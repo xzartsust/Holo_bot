@@ -158,6 +158,8 @@ class Warns(commands.Cog):
         
         except Exception as e:
             print(e)
-
+        
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        await ctx.send('Произошла ошибка: {}'.format(str(error)))
 def setup(bot):
     bot.add_cog(Warns(bot))
