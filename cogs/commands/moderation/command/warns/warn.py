@@ -57,7 +57,7 @@ class Warns(commands.Cog):
 
                 if reason is None:
                     warn = discord.Embed(
-                        title = f'{member} предупреждения',
+                        title = f'{member} предупреждения :exclamation::exclamation:',
                         timestamp = ctx.message.created_at,
                         colour = discord.Color.red()
                     )
@@ -76,7 +76,7 @@ class Warns(commands.Cog):
                 
                 else:
                     warn = discord.Embed(
-                        title = f'{member} предупреждения',
+                        title = f'{member} предупреждения :exclamation::exclamation:',
                         timestamp = ctx.message.created_at,
                         colour = discord.Color.red()
                     )
@@ -110,7 +110,7 @@ class Warns(commands.Cog):
 
                 if reason is None:
                     warn = discord.Embed(
-                        title = f'{member} предупреждения',
+                        title = f'{member} предупреждения :exclamation::exclamation:',
                         timestamp = ctx.message.created_at,
                         colour = discord.Color.red()
                     )
@@ -129,7 +129,7 @@ class Warns(commands.Cog):
                 
                 else:
                     warn = discord.Embed(
-                        title = f'{member} предупреждения',
+                        title = f'{member} предупреждения :exclamation::exclamation:',
                         timestamp = ctx.message.created_at,
                         colour = discord.Color.red()
                     )
