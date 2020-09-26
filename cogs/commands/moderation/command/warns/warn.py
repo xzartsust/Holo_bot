@@ -65,6 +65,9 @@ class Warns(commands.Cog):
                         name = 'Пользователь',
                         value = f'{member.mention}'
                     )
+                    warn.set_thumbnail(
+                        url = ''
+                    )
                     warn.add_field(
                         name = 'Модератор',
                         value = f'{ctx.message.author.mention}'
@@ -84,6 +87,9 @@ class Warns(commands.Cog):
                     warn.add_field(
                         name = 'Модератор',
                         value = f'{ctx.message.author.mention}'
+                    )
+                    warn.set_thumbnail(
+                        url = ''
                     )
                     warn.add_field(
                         name = 'Причина',
@@ -112,6 +118,9 @@ class Warns(commands.Cog):
                         name = 'Пользователь',
                         value = f'{member.mention}'
                     )
+                    warn.set_thumbnail(
+                        url = ''
+                    )
                     warn.add_field(
                         name = 'Модератор',
                         value = f'{ctx.message.author.mention}'
@@ -131,6 +140,9 @@ class Warns(commands.Cog):
                     warn.add_field(
                         name = 'Модератор',
                         value = f'{ctx.message.author.mention}'
+                    )
+                    warn.set_thumbnail(
+                        url = ''
                     )
                     warn.add_field(
                         name = 'Причина',
