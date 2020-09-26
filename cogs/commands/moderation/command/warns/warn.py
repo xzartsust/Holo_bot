@@ -69,6 +69,8 @@ class Warns(commands.Cog):
                         name = 'Модератор',
                         value = f'{ctx.message.author.mention}'
                     )
+                    await ctx.send(embed = warn)
+                
                 else:
                     warn = discord.Embed(
                         title = f'{member} предупреждения',
@@ -87,6 +89,7 @@ class Warns(commands.Cog):
                         name = 'Причина',
                         value = f'{reason}'
                     )
+                    await ctx.send(embed = warn)
             
             else:
             
@@ -113,6 +116,8 @@ class Warns(commands.Cog):
                         name = 'Модератор',
                         value = f'{ctx.message.author.mention}'
                     )
+                    await ctx.send(embed = warn)
+                
                 else:
                     warn = discord.Embed(
                         title = f'{member} предупреждения',
@@ -131,6 +136,7 @@ class Warns(commands.Cog):
                         name = 'Причина',
                         value = f'{reason}'
                     )
+                    await ctx.send(embed = warn)
         
         except Exception as e:
             print(e)
