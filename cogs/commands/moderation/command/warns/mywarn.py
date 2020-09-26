@@ -46,7 +46,6 @@ class MyWarns(commands.Cog):
                 await ctx.send(embed = emb)
             
             else:
-                print(count[0])
                 emb = discord.Embed(
                     title = 'Предупреждения',
                     description = f'У пользователя {member.mention} есть {count[0]} предупреждений',
