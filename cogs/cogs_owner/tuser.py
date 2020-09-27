@@ -13,10 +13,19 @@ class TotalUser(commands.Cog):
     @commands.is_owner()
     async def tuser(self, ctx):
 
-        all_users = set([])
-        for user in self.bot.get_all_members():
-            all_users.add(user)
-        await ctx.send(str(len(all_users)))
+        try:
+            
+            all_users = set([])
+            for user in self.bot.get_all_members():
+                all_users.add(user)
+            await ctx.send(f'```{len(all_users)}```')
+
+        except Exception as e:
+            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
+
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
 
 def setup(bot):
     bot.add_cog(TotalUser(bot))

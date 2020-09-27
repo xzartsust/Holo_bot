@@ -11,18 +11,24 @@ class FunKitsuneEro(commands.Cog):
     @commands.command()
     @commands.is_nsfw()
     async def kitsunero(self, ctx):
-        request = requests.get('https://nekos.life/api/v2/img/erok')
-        json_data = json.loads(request.text)
 
-        embed = discord.Embed(
-            title = 'Лисичка... Как еротишненько :relaxed:',
-            timestamp = ctx.message.created_at,
-            colour = discord.Color.blue()
-        )
-        embed.set_image(
-            url = json_data['url']
-        )
-        await ctx.send(embed = embed)
+        try:
+
+            request = requests.get('https://nekos.life/api/v2/img/erok')
+            json_data = json.loads(request.text)
+
+            embed = discord.Embed(
+                title = 'Лисичка... Как еротишненько :relaxed:',
+                timestamp = ctx.message.created_at,
+                colour = discord.Color.blue()
+            )
+            embed.set_image(
+                url = json_data['url']
+            )
+            await ctx.send(embed = embed)
+        
+        except Exception as e:
+            print(e)
 
     @kitsunero.error
     async def kitsunero_error(self, ctx, error):

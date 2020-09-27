@@ -11,19 +11,25 @@ class FunKeta(commands.Cog):
     @commands.command()
     @commands.is_nsfw()
     async def keta(self, ctx):
-        request = requests.get('https://nekos.life/api/v2/img/keta')
-        json_data = json.loads(request.text)
 
-        embed = discord.Embed(
-            title = 'Keta Hentai 18+',
-            timestamp = ctx.message.created_at,
-            colour = discord.Color.blue()
-        )
-        embed.set_image(
-            url = json_data['url']
-        )
-        await ctx.send(embed = embed)
-    
+        try:
+            
+            request = requests.get('https://nekos.life/api/v2/img/keta')
+            json_data = json.loads(request.text)
+
+            embed = discord.Embed(
+                title = 'Keta Hentai 18+',
+                timestamp = ctx.message.created_at,
+                colour = discord.Color.blue()
+            )
+            embed.set_image(
+                url = json_data['url']
+            )
+            await ctx.send(embed = embed)
+        
+        except Exception as e:
+            print(e)
+        
     @keta.error
     async def keta_error(self, ctx, error):
         if isinstance(error, commands.NSFWChannelRequired):

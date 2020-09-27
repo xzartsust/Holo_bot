@@ -27,14 +27,18 @@ class bot_join_guild(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
         
-        cursor.execute(f'DELETE FROM public."myBD" WHERE guild_id = \'{guild.id}\';')
-        conn.commit()
+        try:
+            cursor.execute(f'DELETE FROM public."myBD" WHERE guild_id = \'{guild.id}\';')
+            conn.commit()
 
-        cursor.execute(f'DELETE FROM public."Texts_For_Welcome" WHERE guild_id = \'{guild.id}\';')
-        conn.commit()
+            cursor.execute(f'DELETE FROM public."Texts_For_Welcome" WHERE guild_id = \'{guild.id}\';')
+            conn.commit()
 
-        cursor.execute(f'DELETE FROM public."Warns" WHERE guild_id = \'{guild.id}\';')
-        conn.commit()
+            cursor.execute(f'DELETE FROM public."Warns" WHERE guild_id = \'{guild.id}\';')
+            conn.commit()
+        
+        except Exception as e:
+            print(f'[{guild.name}] [{guild.owner}] - [{e}]')
 
 def setup(bot):
     bot.add_cog(bot_join_guild(bot))

@@ -11,18 +11,23 @@ class FunAnimeErotic(commands.Cog):
     @commands.command()
     @commands.is_nsfw()
     async def aniero(self, ctx):
-        request = requests.get('https://nekos.life/api/v2/img/erofeet')
-        json_data = json.loads(request.text)
+        try:
+         
+            request = requests.get('https://nekos.life/api/v2/img/erofeet')
+            json_data = json.loads(request.text)
 
-        embed = discord.Embed(
-            title = 'Как еротишненько :relaxed:',
-            timestamp = ctx.message.created_at,
-            colour = discord.Color.blue()
-        )
-        embed.set_image(
-            url = json_data['url']
-        )
-        await ctx.send(embed = embed)
+            embed = discord.Embed(
+                title = 'Как еротишненько :relaxed:',
+                timestamp = ctx.message.created_at,
+                colour = discord.Color.blue()
+            )
+            embed.set_image(
+                url = json_data['url']
+            )
+            await ctx.send(embed = embed)
+        
+        except Exception as e:
+            print(e)
 
     @aniero.error
     async def aniero_error(self, ctx, error):

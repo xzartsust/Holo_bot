@@ -26,13 +26,17 @@ class bot_join_guild(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild): 
+
+        try:
         
-        cursor.execute(f'INSERT INTO public."myBD" (guild_id, prefix_guild) VALUES ({guild.id}, \'t!\');')
-        conn.commit()
+            cursor.execute(f'INSERT INTO public."myBD" (guild_id, prefix_guild) VALUES ({guild.id}, \'t!\');')
+            conn.commit()
         
-        cursor.execute(f'INSERT INTO public."Texts_For_Welcome" (guild_id) VALUES ({guild.id});')
-        conn.commit()
+            cursor.execute(f'INSERT INTO public."Texts_For_Welcome" (guild_id) VALUES ({guild.id});')
+            conn.commit()
         
+        except Exception as e:
+            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
 
 def setup(bot):
     bot.add_cog(bot_join_guild(bot))

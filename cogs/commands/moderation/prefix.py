@@ -33,20 +33,20 @@ class prefix(commands.Cog):
 
         guildid = ctx.guild.id
         try:
+            
             cursor.execute(f'UPDATE public."myBD" SET prefix_guild=\'{prefix}\' WHERE guild_id = \'{guildid}\';')
             conn.commit()
             emb = discord.Embed(title = 'Выполнено успешно!', description = f'Префикс сервера изменений на "** {prefix} **"', colour = discord.Color.green(), timestamp = ctx.message.created_at)
             emb.set_footer(text = ctx.message.author)
             await ctx.send(embed = emb)
-        
-        except commands.CheckFailure:
-            emb = discord.Embed(timestamp = ctx.message.created_at, title = 'Ошибка!!!', colour = discord.Color.red(), description = 'Эту команду может использовать только владелец сервера')
-            emb.set_footer(text = ctx.message.author)
-            await ctx.channel.purge(limit=1)
-            await ctx.send(embed = emb)
 
         except Exception as e:
-            print(e)
+            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
+        
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
+
 
 def setup(bot):
     bot.add_cog(prefix(bot))

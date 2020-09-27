@@ -7,15 +7,19 @@ class Avatar(commands.Cog):
 
     @commands.command(aliases = ['av', 'a'])
     async def avatar(self, ctx):
-        
-        embed = discord.Embed(
-            timestamp = ctx.message.created_at,
-            colour = discord.Color.blue()
-        )
-        embed.set_image(
-            url = ctx.message.author.avatar_url
-        )
-        await ctx.send(embed = embed)
+        try:
+
+            embed = discord.Embed(
+                timestamp = ctx.message.created_at,
+                colour = discord.Color.blue()
+            )
+            embed.set_image(
+                url = ctx.message.author.avatar_url
+            )
+            await ctx.send(embed = embed)
+
+        except Exception as e:
+            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
 
 def setup(bot):
     bot.add_cog(Avatar(bot))

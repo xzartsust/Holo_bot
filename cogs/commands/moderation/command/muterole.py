@@ -37,23 +37,32 @@ class MuteRole(commands.Cog):
         guild = ctx.message.guild
         role = ctx.message.guild.get_role(role_id)
 
-        cursor.execute(f'UPDATE public."myBD" SET role_for_mute = \'{role_id}\' WHERE guild_id = \'{guild.id}\';')
-        conn.commit()
+        try:
 
-        emb = discord.Embed(
-            title= 'Успешно!',
-            description = f'Роль {role.mention} была установленна для команды `mute`',
-            timestamp = ctx.message.created_at
-            )
-        emb.set_footer(
-            text = 'Запросил: ' + f'{ctx.author}',
-            icon_url = ctx.author.avatar_url
-            )
+            cursor.execute(f'UPDATE public."myBD" SET role_for_mute = \'{role_id}\' WHERE guild_id = \'{guild.id}\';')
+            conn.commit()
+
+            emb = discord.Embed(
+                title= 'Успешно!',
+                description = f'Роль {role.mention} была установленна для команды `mute`',
+                timestamp = ctx.message.created_at
+                )
+            emb.set_footer(
+                text = 'Запросил: ' + f'{ctx.author}',
+                icon_url = ctx.author.avatar_url
+                )
         
-        if ctx.guild.system_channel is not None:
-            await ctx.guild.system_channel.send(embed = emb)
-        elif ctx.guild.system_channel is None:
-            await ctx.send(embed = emb)
+            if ctx.guild.system_channel is not None:
+                await ctx.guild.system_channel.send(embed = emb)
+            elif ctx.guild.system_channel is None:
+                await ctx.send(embed = emb)
+        
+        except Exception as e:
+            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
+    
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
 
 def setup(bot):
     bot.add_cog(MuteRole(bot))

@@ -35,6 +35,7 @@ class member_greeting(commands.Cog):
         description_defolt = 'Каждый участник этого сервере равен перед другими. Поэтому настоятельно просим ознакомиться с правилами сервера\nЗаранее благодарим Вас за вежливость и адекватность.'
 
         try:
+            
             cursor.execute(f'SELECT welcome_channel FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
             chan = cursor.fetchone()
             conn.commit()
@@ -93,8 +94,9 @@ class member_greeting(commands.Cog):
             
             if f'{yes_or_not[0]}' == str('False'):
                 pass
+        
         except Exception as e:
-            print(e)
+            print(f'[{e}]')
 
     @commands.command(aliases=['wlc'])
     @commands.check(is_owner_guild)
@@ -121,11 +123,14 @@ class member_greeting(commands.Cog):
             elif ctx.guild.system_channel is None:
                 await ctx.send(embed = emb)
 
-        except commands.BadArgument:
-            await ctx.send('Второй аргумент может быть только тип: Число, третий аргумент может быть только true или false')
-
         except Exception as e:
-            print(e)
+            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
+    
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
+
+
 
 def setup(bot):
     bot.add_cog(member_greeting(bot))

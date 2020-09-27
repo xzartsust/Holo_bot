@@ -33,12 +33,15 @@ class Warns(commands.Cog):
         user = ctx.message.author.id
 
         try:
+            
             if member.bot is True:
                 await ctx.send('Ей, боту нельзя выдать предупреждение')
                 return
+            
             if member_id is user:
                 await ctx.send('Ей, нельзя самому себе выдать предупреждение')
                 return 
+            
             cursor.execute(f'SELECT member_id FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
             memberDB = cursor.fetchone()
             conn.commit()
@@ -77,6 +80,10 @@ class Warns(commands.Cog):
                     warn.add_field(
                         name = 'Модератор',
                         value = f'{ctx.message.author.mention}'
+                    )
+                    warn.add_field(
+                        name = 'Причина',
+                        value = 'Не указана'
                     )
                     await ctx.send(embed = warn)
                 
@@ -131,6 +138,10 @@ class Warns(commands.Cog):
                         name = 'Модератор',
                         value = f'{ctx.message.author.mention}'
                     )
+                    warn.add_field(
+                        name = 'Причина',
+                        value = 'Не указана'
+                    )
                     await ctx.send(embed = warn)
                 
                 else:
@@ -157,9 +168,11 @@ class Warns(commands.Cog):
                     await ctx.send(embed = warn)
         
         except Exception as e:
-            print(e)
+            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
         
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
+
 def setup(bot):
     bot.add_cog(Warns(bot))

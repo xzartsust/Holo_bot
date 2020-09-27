@@ -36,6 +36,7 @@ class MuteCommand(commands.Cog):
         
         guild = ctx.message.guild
         try:
+            
             cursor.execute(f'SELECT role_for_mute FROM public."myBD" WHERE guild_id = \'{guild.id}\';')
             role_mute = cursor.fetchone()
             conn.commit()
@@ -56,7 +57,11 @@ class MuteCommand(commands.Cog):
             pass
         
         except Exception as e:
-            print(e)
+            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
+    
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
         
 
         '''

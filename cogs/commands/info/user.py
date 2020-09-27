@@ -130,7 +130,10 @@ class user(commands.Cog):
 
             await ctx.channel.purge(limit=1)
             await ctx.send(embed=emb)
-
+    
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
 
 def setup(bot):
     bot.add_cog(user(bot))

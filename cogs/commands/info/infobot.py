@@ -48,7 +48,7 @@ class InfoBot(commands.Cog):
             value = "[Click]({0.server})".format(self),
             inline = False
         )
-        await ctx.send(embed=embed)
+        await ctx.send(embed = embed)
 
 def setup(bot):
     bot.add_cog(InfoBot(bot))

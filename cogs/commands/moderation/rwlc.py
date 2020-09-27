@@ -35,20 +35,25 @@ class AuthoAddRole(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member):
 
-        cursor.execute(f'SELECT wlc_role_t_or_f FROM public."myBD" WHERE guild_id = {member.guild.id};')
-        on_or_off = cursor.fetchone()
-        conn.commit()
+        try:
 
-        cursor.execute(f'SELECT wlc_role FROM public."myBD" WHERE guild_id = {member.guild.id};')
-        role = cursor.fetchone()
-        conn.commit()
+            cursor.execute(f'SELECT wlc_role_t_or_f FROM public."myBD" WHERE guild_id = {member.guild.id};')
+            on_or_off = cursor.fetchone()
+            conn.commit()
 
-        role_1 = member.guild.get_role(role[0])
+            cursor.execute(f'SELECT wlc_role FROM public."myBD" WHERE guild_id = {member.guild.id};')
+            role = cursor.fetchone()
+            conn.commit()
 
-        if f'{on_or_off[0]}' == str('True'):
-            await member.add_roles(role_1)
-        elif f'{on_or_off[0]}' == str('False'):
-            pass
+            role_1 = member.guild.get_role(role[0])
+
+            if f'{on_or_off[0]}' == str('True'):
+                await member.add_roles(role_1)
+            elif f'{on_or_off[0]}' == str('False'):
+                pass
+
+        except Exception as e:
+            print(f'[{e}]')
 
     @commands.command()
     @commands.check(is_owner_guild)
@@ -74,11 +79,13 @@ class AuthoAddRole(commands.Cog):
             elif ctx.guild.system_channel is None:
                 await ctx.send(embed = emb)
         
-        except commands.BadArgument:
-            await ctx.send('Второй аргумент может быть только тип: Число, третий аргумент может быть только true или false')
-
         except Exception as e:
-            print(e)
+            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
+
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
+
 
 
 def setup(bot):

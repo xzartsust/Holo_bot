@@ -13,6 +13,7 @@ class UnBanUser(commands.Cog):
         member_name, member_discriminator = member.split('#')
         
         try:
+            
             for ban_entry in banned_users:
                 user = ban_entry.user
 
@@ -24,9 +25,17 @@ class UnBanUser(commands.Cog):
         except discord.Forbidden:
             await ctx.send("У меня нет разрешения на разблокировку.")
             return
+        
         except discord.HTTPException:
             await ctx.send("Разблокировать этого пользователя не удалось.")
             return
+        except Exception as e:
+            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
+
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
+
 
 def setup(bot):
     bot.add_cog(UnBanUser(bot))

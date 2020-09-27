@@ -30,10 +30,20 @@ class PrefixServer(commands.Cog):
     async def prefixserver(self, ctx):
         guild = ctx.message.guild
 
-        cursor.execute(f'SELECT prefix_guild FROM public."myBD" WHERE guild_id = \'{guild.id}\';')
-        prefix = cursor.fetchone()
+        try:
+        
+            cursor.execute(f'SELECT prefix_guild FROM public."myBD" WHERE guild_id = \'{guild.id}\';')
+            prefix = cursor.fetchone()
 
-        await ctx.send(f'Server Prefix: \"**{prefix[0]}**\"')
+            await ctx.send(f'Server Prefix: \"**{prefix[0]}**\"')
+
+        except Exception as e:
+            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
+
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
+
 
 def setup(bot):
     bot.add_cog(PrefixServer(bot))

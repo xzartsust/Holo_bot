@@ -26,14 +26,17 @@ class comp_code(commands.Cog):
     async def run_code(self, ctx, *, code: str):
 
         try:
+            
             c = eval(f'{code}')
             await ctx.send(f'```{c}```')
 
-        except commands.errors.NotOwner:
-            await ctx.send('Эту команду имеет право использовать только создатель бота')
         except Exception as e:
-            print(e)
-
+            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
+    
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
+        
 def setup(bot):
     bot.add_cog(comp_code(bot))
 

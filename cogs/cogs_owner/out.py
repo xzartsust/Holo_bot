@@ -14,11 +14,13 @@ class logout(commands.Cog):
     async def logout(self, ctx):
         try:
             await self.bot.logout()
-        except commands.errors.NotOwner:
-            await ctx.send('Эту команду имеет право использовать только создатель бота')
+        
         except Exception as e:
             print(e)
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        await ctx.send('Произошла ошибка: {}'.format(str(error)))
 
+        
 def setup(bot):
     bot.add_cog(logout(bot))
 
