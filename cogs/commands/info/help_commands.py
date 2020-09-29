@@ -823,7 +823,7 @@ class HelpCommands(commands.Cog):
         resetwarn = discord.Embed(
             title=f'Информация про команду: {prefix}resetwarn', 
             colour = discord.Color.teal(), 
-            description=f'**Команда**: `[resetwarn]`\n**Описание**: очистить все предупреждения\n**Использования**: `{prefix}resetwarn [пользователь]`\n\n**Пример**: `{prefix}resetwarn @xZartsust#0000`'
+            description=f'**Команда**: `[resetwarn]`\n**Предостережение:** Эту команду можут использовать роли в которых есть права **Администратор и Управлять сервером**!\n\n**Описание**: очистить все предупреждения\n**Использования**: `{prefix}resetwarn [пользователь]`\n\n**Пример**: `{prefix}resetwarn @xZartsust#0000`'
         )
         resetwarn.set_footer(
             text = ctx.message.author, 

@@ -47,17 +47,14 @@ class member_greeting(commands.Cog):
             cursor.execute(f'SELECT title FROM public."Texts_For_Welcome" WHERE guild_id = \'{member.guild.id}\';')
             title = cursor.fetchone()
             conn.commit()
-            print('title:', title[0])
 
             cursor.execute(f'SELECT description FROM public."Texts_For_Welcome" WHERE guild_id = \'{member.guild.id}\';')
             description = cursor.fetchone()
             conn.commit()
-            print('description:', description[0])
 
             cursor.execute(f'SELECT footer FROM public."Texts_For_Welcome" WHERE guild_id = \'{member.guild.id}\';')
             footer = cursor.fetchone()
             conn.commit()
-            print('footer:', footer[0])
             
             channel = self.bot.get_channel(chan[0])
             
