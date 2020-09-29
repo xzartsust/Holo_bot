@@ -29,9 +29,9 @@ class BanUsers(commands.Cog):
                 name = 'Пользователь',
                 value = f'{member.mention}'
                 )
-            ban.set_thumbnail(
-                url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/warn.jpg?raw=true'
-                )
+            #ban.set_thumbnail(
+                #url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/warn.jpg?raw=true'
+                #)
             ban.add_field(
                 name = 'Модератор',
                 value = f'{ctx.message.author.mention}'
@@ -53,9 +53,9 @@ class BanUsers(commands.Cog):
                 name = 'Пользователь',
                 value = f'{member.mention}'
                 )
-            ban.set_thumbnail(
-                url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/warn.jpg?raw=true'
-                )
+            #ban.set_thumbnail(
+                #url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/warn.jpg?raw=true'
+                #)
             ban.add_field(
                 name = 'Модератор',
                 value = f'{ctx.message.author.mention}'

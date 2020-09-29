@@ -41,9 +41,17 @@ class ResetWarns(commands.Cog):
             guildDB = cursor.fetchone()
             conn.commit()
 
+            cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
+            counts = cursor.fetchone()
+            conn.commit()
+
             if memberDB is None and guildDB is None:
                 
                 await ctx.send('1')
+            
+            elif counts[0] == '0':
+
+                await ctx.send('2')
             
             else:
 
