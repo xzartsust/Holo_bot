@@ -32,7 +32,7 @@ class MuteCommand(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(kick_members = True)
-    async def mute(self, ctx, who: discord.Member, reason = None):
+    async def mute(self, ctx, who: discord.Member, reason: str = None):
         
         guild = ctx.message.guild
         try:
@@ -45,13 +45,50 @@ class MuteCommand(commands.Cog):
             await ctx.channel.purge(limit = 1)
         
             if reason is None:
-                await ctx.send(f'{who} получил мут')
+                
+                mute = discord.Embed(
+                    title = f'{who} получил мут',
+                    timestamp = ctx.message.created_at,
+                    colour = discord.Color.green()
+                    ) 
+                mute.add_field(
+                    name = 'Пользователь',
+                    value = f'{who.mention}'
+                    )
+                mute.add_field(
+                    name = 'Модератор',
+                    value = f'{ctx.message.author.mention}'
+                    )
+                mute.add_field(
+                    name = 'Причина',
+                    value = 'Не указана'
+                )
+                
+                await ctx.send(embed = mute)
                 await who.add_roles(role)
-                await who.move_to(None)
+            
             else:
-                await ctx.send(f'{who} получил мут по причине: {reason}')
+                
+                mute = discord.Embed(
+                    title = f'{who} получил мут',
+                    timestamp = ctx.message.created_at,
+                    colour = discord.Color.green()
+                    ) 
+                mute.add_field(
+                    name = 'Пользователь',
+                    value = f'{who.mention}'
+                    )
+                mute.add_field(
+                    name = 'Модератор',
+                    value = f'{ctx.message.author.mention}'
+                    )
+                mute.add_field(
+                    name = 'Причина',
+                    value = f'{reason}'
+                )
+                
+                await ctx.send(embed = mute)
                 await who.add_roles(role)
-                await who.move_to(None)
         
         except AttributeError:
             pass
