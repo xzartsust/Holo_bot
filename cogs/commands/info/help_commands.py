@@ -185,7 +185,7 @@ class HelpCommands(commands.Cog):
         )
         warn_embed.add_field(
             name = '**Команды**',
-            value = f'`{prefix}warn`\n`{prefix}mwarn`'
+            value = f'`{prefix}warn`\n`{prefix}mwarn`\n`{prefix}resetwarn`'
         )
 
 
@@ -813,6 +813,25 @@ class HelpCommands(commands.Cog):
             embed = mwarn
         ) 
 
+    @help_for_commands.command(name = 'resetwarn')
+    @commands.has_permissions(manage_guild = True)
+    async def resetwarn_subcommands(self, ctx):
+
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        resetwarn = discord.Embed(
+            title=f'Информация про команду: {prefix}resetwarn', 
+            colour = discord.Color.teal(), 
+            description=f'**Команда**: `[resetwarn]`\n**Описание**: очистить все предупреждения\n**Использования**: `{prefix}resetwarn [пользователь]`\n\n**Пример**: `{prefix}resetwarn @xZartsust#0000`'
+        )
+        resetwarn.set_footer(
+            text = ctx.message.author, 
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(
+            embed = resetwarn
+        ) 
 
 
 def setup(bot):
