@@ -47,11 +47,11 @@ class ResetWarns(commands.Cog):
 
             if memberDB is None and guildDB is None:
                 
-                await ctx.send('1')
+                await ctx.send('У этого пользователя не предупреждений')
             
             elif counts[0] == '0':
 
-                await ctx.send('2')
+                await ctx.send('У этого пользователя не предупреждений')
             
             else:
 
