@@ -42,6 +42,10 @@ class Warns(commands.Cog):
                 await ctx.send('Ей, нельзя самому себе выдать предупреждение')
                 return 
             
+            if member_id is ctx.guild.owner.id:
+                await ctx.send('Ей, нельзя владельцу сервера выдать предупреждение')
+                return
+
             cursor.execute(f'SELECT member_id FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
             memberDB = cursor.fetchone()
             conn.commit()
