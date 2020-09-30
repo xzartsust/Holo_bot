@@ -23,7 +23,7 @@ class news(commands.Cog):
                 icon_url = ctx.message.author.avatar_url
                 )
         
-            await channel.send(embed=emb)
+            await channel.send(embed = emb)
         
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
