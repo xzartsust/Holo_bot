@@ -6,7 +6,9 @@ class Avatar(commands.Cog):
         self.bot = bot
 
     @commands.command(aliases = ['av', 'a'])
-    async def avatar(self, ctx):
+    async def avatar(self, ctx, member: discord.Member):
+        member = ctx.author if not member else member
+        
         try:
 
             embed = discord.Embed(
@@ -14,7 +16,7 @@ class Avatar(commands.Cog):
                 colour = discord.Color.blue()
             )
             embed.set_image(
-                url = ctx.message.author.avatar_url
+                url = member.avatar_url
             )
             await ctx.send(embed = embed)
 
