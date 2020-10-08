@@ -10,9 +10,7 @@ class Test(commands.Cog):
     @commands.is_owner()
     async def test(self, ctx):
         try:
-            
             pass
-
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
         
