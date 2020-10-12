@@ -100,6 +100,7 @@ bot.load_extension('cogs.commands.moderation.commands_for_welcome.welcometextfoo
 bot.load_extension('cogs.commands.moderation.command.warns.warn')
 bot.load_extension('cogs.commands.moderation.command.warns.mywarn')
 bot.load_extension('cogs.commands.moderation.command.warns.resetwarn')
+bot.load_extension('cogs.commands.moderation.send')
 
 
 ################################################## Cogs Music commands ###########################################################
