@@ -1,5 +1,5 @@
 import discord
-from discrod.ext import commands
+from discord.ext import commands
 
 class SendMessage(commands.Cog):
     def __init__(self, bot):
