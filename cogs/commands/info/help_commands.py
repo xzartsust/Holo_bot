@@ -78,7 +78,7 @@ class HelpCommands(commands.Cog):
         )
         Moder.add_field(
             name = '**Команды**',
-            value = f'`{prefix}prefix`\n`{prefix}news`\n`{prefix}vote`\n`{prefix}rwlc`\n`{prefix}muterole`'
+            value = f'`{prefix}prefix`\n`{prefix}news`\n`{prefix}vote`\n`{prefix}rwlc`\n`{prefix}muterole`\n`{prefix}send`'
         )
         Moder.add_field(
             name = '**Команды для действий с пользователями**',
@@ -831,7 +831,24 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(
             embed = resetwarn
-        ) 
+        )
+     
+    @help_for_commands.command(name = 'send')
+    async def send_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        send_emb=discord.Embed(
+            timestamp= ctx.message.created_at, 
+            title=f'Информация про команду: `{prefix}send`', 
+            colour = discord.Color.teal(), 
+            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Администратор**!\n**Команда**: `[send]`\n**Описание**: написать сообщения от имени бота\n**Использования**: `{prefix}send *text*`\n\n\n**Пример:** `{prefix}send Hello server`'
+        )
+        send_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(embed = send_emb)
 
 
 def setup(bot):
