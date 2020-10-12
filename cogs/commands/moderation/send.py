@@ -15,7 +15,9 @@ class SendMessage(commands.Cog):
             await ctx.message.delete()
         
         except Exception as e:
-             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
+            if str(e) == str('403 Forbidden (error code: 50013): Missing Permissions'):
+                print(1)
+            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
         
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))
