@@ -9,7 +9,9 @@ class SendMessage(commands.Cog):
     @commands.has_permissions(administrator = True)
     async def send(self, ctx, *, text: str):
         
-        await ctx.send(text)
+        message = await ctx.send(text)
+        message_id = message.id
+        await ctx.message.delete()
         
 def setup(bot):
     bot.add_cog(SendMessage(bot))
