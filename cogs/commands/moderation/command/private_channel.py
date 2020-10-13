@@ -27,7 +27,7 @@ class PrivateChannel(commands.Cog):
     
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
-        try: 
+         
             
             cursor.execute(f'SELECT start_voice_channel FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
             v_c = cursor.fetchone()
@@ -48,8 +48,7 @@ class PrivateChannel(commands.Cog):
                     await self.bot.wait_for('voice_channel_update', check = check)
                     await channel2.delete()
         
-        except Exception as e:
-            print(f'[{e}]')
+        
             
     @commands.command()
     @commands.has_permissions(administrator = True)
@@ -64,7 +63,7 @@ class PrivateChannel(commands.Cog):
             channel1 = self.bot.get_channel(channel)
             
             emb = (discord.Embed(title = 'Успешно!', 
-                                 description = f'Канал {channel.name} был установлен как начальний канал для создания частного голосового канала в категории {channel.category}',
+                                 description = f'Канал {channel1.name} был установлен как начальний канал для создания частного голосового канала в категории {channel1.category}',
                                  colour = discord.Color.green(),
                                  timestamp = ctx.message.created_at)
                    .add_footer(text = ctx.message.author, icon_url = ctx.author.avatar_url))
