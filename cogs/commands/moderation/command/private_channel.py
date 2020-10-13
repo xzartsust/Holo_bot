@@ -41,7 +41,7 @@ class PrivateChannel(commands.Cog):
                 if after.channel.id == voice_channel:
                     for guild in self.bot.guilds:
                         maincategori = get(guild.categories, id = channel_category)
-                        channel2 = await guild.create_voice_channel(name = f'Приватний(member.display_name)', category = maincategori)
+                        channel2 = await guild.create_voice_channel(name = f'Приватний({member.display_name})', category = maincategori)
                         await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
                         await member.move_to(channel2)
                         def check(self, x):
