@@ -68,7 +68,7 @@ class PrivateChannel(commands.Cog):
                                  timestamp = ctx.message.created_at)
                    .set_footer(text = ctx.message.author, icon_url = ctx.author.avatar_url))
             
-            await ctx.send(embed = embed)
+            await ctx.send(embed = emb)
         
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
