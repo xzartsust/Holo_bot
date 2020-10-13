@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+form discord.utils import get
 import os
 import asyncio, asyncpg
 import psycopg2
@@ -60,7 +61,7 @@ class PrivateChannel(commands.Cog):
             cursor.execute(f'UPDATE public."myBD" SET start_voice_channel = \'{channel}\', categori = \'{categori}\' WHERE guild_id = \'{guild.id}\';')
             conn.commit()
             
-            channel1 = bot.get_channel(channel)
+            channel1 = self.bot.get_channel(channel)
             
             emb = (discord.Embed(title = 'Успешно!', 
                                  description = f'Канал {channel.name} был установлен как начальний канал для создания частного голосового канала в категории {channel.category}',
