@@ -63,7 +63,7 @@ class PrivateChannel(commands.Cog):
             channel1 = self.bot.get_channel(channel)
             
             emb = (discord.Embed(title = 'Успешно!', 
-                                 description = f'Канал {channel1.name} был установлен как начальний канал для создания частного голосового канала в категории {channel1.category}',
+                                 description = f'Канал `{channel1.name}` был установлен как начальний канал для создания частного голосового канала в категории `{channel1.category}`',
                                  colour = discord.Color.green(),
                                  timestamp = ctx.message.created_at)
                    .set_footer(text = ctx.message.author, icon_url = ctx.author.avatar_url))
