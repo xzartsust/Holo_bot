@@ -36,17 +36,20 @@ class PrivateChannel(commands.Cog):
             cursor.execute(f'SELECT categori FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
             c_c = cursor.fetchone()
             channel_category = c_c[0]
-        
-            if after.channel.id == voice_channel:
-                for guild in self.bot.guilds:
-                    maincategori = get(guild.categories, id = channel_category)
-                    channel2 = await guild.create_voice_channel(name = f'Приватний(member.display_name)', category = maincategori)
-                    await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
-                    await member.move_to(channel2)
-                    def check(self, x):
-                        return len(channel2.members) == 0
-                    await self.bot.wait_for('voice_channel_update', check = check)
-                    await channel2.delete()
+
+            if voice_channel is not None and channel_category is not None:
+                if after.channel.id == voice_channel:
+                    for guild in self.bot.guilds:
+                        maincategori = get(guild.categories, id = channel_category)
+                        channel2 = await guild.create_voice_channel(name = f'Приватний(member.display_name)', category = maincategori)
+                        await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
+                        await member.move_to(channel2)
+                        def check(self, x):
+                            return len(channel2.members) == 0
+                        await self.bot.wait_for('voice_channel_update', check = check)
+                        await channel2.delete()
+            else: 
+                pass
         
         
             
