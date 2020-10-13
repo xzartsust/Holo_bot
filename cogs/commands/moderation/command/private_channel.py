@@ -45,7 +45,7 @@ class PrivateChannel(commands.Cog):
                     await member.move_to(channel2)
                     def check(self, x):
                         return len(channel2.members) == 0
-                    await self.bot.wait_for('voice_channel_update', check = check(self, x))
+                    await self.bot.wait_for('voice_channel_update', check = check)
                     await channel2.delete()
             else: 
                 pass
