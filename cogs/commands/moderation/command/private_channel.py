@@ -38,6 +38,8 @@ class PrivateChannel(commands.Cog):
             channel_category = c_c[0]
 
             if voice_channel is not None and channel_category is not None:
+                print(before)
+                print(after)
                 print(before.channel.id)
                 print(after.channel.id)
                 if after.channel.id == voice_channel:
