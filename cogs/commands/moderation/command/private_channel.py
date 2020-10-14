@@ -39,7 +39,7 @@ class PrivateChannel(commands.Cog):
 
             if voice_channel is not None and channel_category is not None: 
                 if after.channel is None:
-                    await voice_channel.delete()
+                    await channel2.delete()
                 elif after.channel.id == voice_channel:
                     maincategori = get(member.guild.categories, id = channel_category)
                     channel2 = await member.guild.create_voice_channel(name = f'Приватный({member.display_name})', category = maincategori)
