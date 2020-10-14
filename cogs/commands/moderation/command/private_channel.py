@@ -38,15 +38,13 @@ class PrivateChannel(commands.Cog):
             channel_category = c_c[0]
 
             if voice_channel is not None and channel_category is not None: 
-                if after.channel.id == voice_channel:
+                if after.channel is None:
+                    await voise_channel.delete()
+                elif after.channel.id == voice_channel:
                     maincategori = get(member.guild.categories, id = channel_category)
                     channel2 = await member.guild.create_voice_channel(name = f'Приватный({member.display_name})', category = maincategori)
                     await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
                     await member.move_to(channel2)
-                    def check(self):
-                        return len(channel2.members) == 0
-                    await self.bot.wait_for('voice_channel_update', check = check)
-                    await channel2.delete()
             else: 
                 pass
         
