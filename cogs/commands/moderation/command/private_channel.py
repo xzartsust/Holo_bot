@@ -27,26 +27,25 @@ class PrivateChannel(commands.Cog):
     
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before: discord.VoiceState, after: discord.VoiceState):
-         
-            
-            cursor.execute(f'SELECT start_voice_channel FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
-            v_c = cursor.fetchone()
-            voice_channel = v_c[0]
         
-            cursor.execute(f'SELECT categori FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
-            c_c = cursor.fetchone()
-            channel_category = c_c[0]
+        cursor.execute(f'SELECT start_voice_channel FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
+        v_c = cursor.fetchone()
+        voice_channel = v_c[0]
+        
+        cursor.execute(f'SELECT categori FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
+        c_c = cursor.fetchone()
+        channel_category = c_c[0]
 
             #if voice_channel is not None and channel_category is not None:
-             if after.channel.id == 754072936541061213:
-                 maincategori = get(member.guild.categories, id = 743780552024260670)
-                 channel2 = await member.guild.create_voice_channel(name = f'Приватный({member.display_name})', category = maincategori)
-                 await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
-                 await member.move_to(channel2)
-                 def check(self, x):
-                     return len(channel2.members) == 0
-                 await self.bot.wait_for('voice_channel_update', check = check)
-                 await channel2.delete()     
+        if after.channel.id == 754072936541061213:
+            maincategori = get(member.guild.categories, id = 743780552024260670)
+            channel2 = await member.guild.create_voice_channel(name = f'Приватный({member.display_name})', category = maincategori)
+            await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
+            await member.move_to(channel2)
+            def check(self, x):
+                 return len(channel2.members) == 0
+            await self.bot.wait_for('voice_channel_update', check = check)
+            await channel2.delete()     
             #else: 
                 #pass
         
