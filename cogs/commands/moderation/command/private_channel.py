@@ -42,7 +42,7 @@ class PrivateChannel(commands.Cog):
             channel2 = await member.guild.create_voice_channel(name = f'Приватный({member.display_name})', category = maincategori)
             await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
             await member.move_to(channel2)
-            def check(self, x):
+            def check(x, y, z):
                  return len(channel2.members) == 0
             await self.bot.wait_for('voice_channel_update', check = check)
             await channel2.delete()     
