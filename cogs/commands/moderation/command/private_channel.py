@@ -26,7 +26,7 @@ class PrivateChannel(commands.Cog):
         self.bot = bot
     
     @commands.Cog.listener()
-    async def on_voice_state_update(self, member, before, after):
+    async def on_voice_state_update(self, member, before: discord.VoiceState, after: discord.VoiceState):
          
             
             cursor.execute(f'SELECT start_voice_channel FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
@@ -38,8 +38,8 @@ class PrivateChannel(commands.Cog):
             channel_category = c_c[0]
 
             if voice_channel is not None and channel_category is not None:
-                print(before.voice.channel.id)
-                print(after.voice.channel.id)
+                print(before.channel.id)
+                print(after.channel.id)
                 if after.channel.id == voice_channel:
                     maincategori = get(member.guild.categories, id = channel_category)
                     channel2 = await member.guild.create_voice_channel(name = f'Приватный({member.display_name})', category = maincategori)
