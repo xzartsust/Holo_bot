@@ -38,8 +38,8 @@ class PrivateChannel(commands.Cog):
             channel_category = c_c[0]
 
             if voice_channel is not None and channel_category is not None:
-                print(before.channel.id)
-                print(after.channel.id)
+                print(before.member.voice.channel.id)
+                print(after.member.voice.channel.id)
                 if after.channel.id == voice_channel:
                     maincategori = get(member.guild.categories, id = channel_category)
                     channel2 = await member.guild.create_voice_channel(name = f'Приватный({member.display_name})', category = maincategori)
