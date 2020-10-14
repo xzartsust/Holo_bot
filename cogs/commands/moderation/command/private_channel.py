@@ -37,13 +37,9 @@ class PrivateChannel(commands.Cog):
             c_c = cursor.fetchone()
             channel_category = c_c[0]
 
-            if voice_channel is not None and channel_category is not None:
-                print(f'\n Перший before: {before}\n')
-                print(f'\n Перший after: {after}\n')
-                print(f'\n Другий before: {before.channel.id}\n')
-                print(f'\n Другий after: {after.channel.id}\n')
-                if after.channel.id == int(voice_channel):
-                    maincategori = get(member.guild.categories, id = channel_category)
+            #if voice_channel is not None and channel_category is not None:
+                if after.channel.id == 754072936541061213:
+                    maincategori = get(member.guild.categories, id = 743780552024260670)
                     channel2 = await member.guild.create_voice_channel(name = f'Приватный({member.display_name})', category = maincategori)
                     await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
                     await member.move_to(channel2)
