@@ -42,7 +42,7 @@ class PrivateChannel(commands.Cog):
                 print(f'\n Перший after: {after}\n')
                 print(f'\n Другий before: {before.channel.id}\n')
                 print(f'\n Другий after: {after.channel.id}\n')
-                if after.channel.id == voice_channel:
+                if after.channel.id == int(voice_channel):
                     maincategori = get(member.guild.categories, id = channel_category)
                     channel2 = await member.guild.create_voice_channel(name = f'Приватный({member.display_name})', category = maincategori)
                     await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
