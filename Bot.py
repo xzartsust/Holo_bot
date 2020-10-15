@@ -76,7 +76,7 @@ async def on_voice_state_update(member, before: discord.VoiceState, after: disco
         await member.move_to(channel2)
         def check(x, y, z):
             return len(channel2.members) == 0
-        await self.bot.wait_for('voice_channel_update', check = check)
+        await bot.wait_for('voice_channel_update', check = check)
         await channel2.delete()
 ################################################## Cogs Info commands ############################################################
 
