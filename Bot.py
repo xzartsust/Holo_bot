@@ -69,7 +69,7 @@ status=['t!help', 'Модернизирует свой код', 'Сайт: https
 
 @bot.event
 async def on_voice_state_update(member,before,after):
-    if  after.channel.id == 754072936541061213:
+    if  before.channel.id or before.channel.id == 754072936541061213:
         maincategori = get(member.guild.categories, id = 743780552024260670)
         channel2 = await member.guild.create_voice_channel(name = f'Приватный({member.display_name})', category = maincategori)
         await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
