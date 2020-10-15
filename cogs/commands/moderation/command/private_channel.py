@@ -37,7 +37,7 @@ class PrivateChannel(commands.Cog):
         channel_category = c_c[0]
 
             #if voice_channel is not None and channel_category is not None:
-        channel_1 = get(member.guild.voice_channels, id=str(before.channel.id))
+        channel_1 = get(member.guild.voice_channels, id=str(after.channel.id))
         print(channel_1)
         if channel_1 == 754072936541061213:
             maincategori = get(member.guild.categories, id = 743780552024260670)
