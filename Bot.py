@@ -69,8 +69,8 @@ status=['t!help', 'Модернизирует свой код', 'Сайт: https
 
 @bot.event
 async def on_voice_state_update(member,before,after):
-    print(before)
-    print(after)
+    print0(f'{before}')
+    print(f'{after}\n')
        
     #if after.channel.id == 754072936541061213:
         #maincategory = get(member.guild.categories, id = 743780552024260670)
