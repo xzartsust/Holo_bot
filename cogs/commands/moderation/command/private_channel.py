@@ -37,7 +37,7 @@ class PrivateChannel(commands.Cog):
         channel_category = c_c[0]
 
             #if voice_channel is not None and channel_category is not None:
-        if after.channel.id == 754072936541061213:
+        if before.channel.id == 754072936541061213:
             maincategori = get(member.guild.categories, id = 743780552024260670)
             channel2 = await member.guild.create_voice_channel(name = f'Приватный({member.display_name})', category = maincategori)
             await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
