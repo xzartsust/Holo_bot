@@ -36,7 +36,6 @@ class PrefixServer(commands.Cog):
             prefix = cursor.fetchone()
 
             await ctx.send(f'Server Prefix: \"**{prefix[0]}**\"')
-            conn.close()
 
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
