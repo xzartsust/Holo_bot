@@ -70,8 +70,8 @@ status=['t!help', 'Модернизирует свой код', 'Сайт: https
 @bot.event
 async def on_voice_state_update(member,before,after):
     print(member.voice.channel.id)
-    if before.channel.id == 754072936541061213:
-        print('all ok')
+    print(before) 
+       
     #if after.channel.id == 754072936541061213:
         #maincategory = get(member.guild.categories, id = 743780552024260670)
         #channel2 = await member.guild.create_voice_channel(name = f'Privat {member.display_name}', category = maincategory)
