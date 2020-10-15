@@ -67,6 +67,17 @@ async def change_status():
 status=['t!help', 'Модернизирует свой код', 'Сайт: https://github.com/xzartsust/Tobi-Bot#tobi-bot', 'Серевер поддержки: https://discord.gg/8f4KUp']
 
 
+@bot.event
+async def on_voice_state_update(member, before: discord.VoiceState, after: discord.VoiceState):
+    if after.channel.id == 754072936541061213:
+        maincategori = get(member.guild.categories, id = 743780552024260670)
+        channel2 = await member.guild.create_voice_channel(name = f'Приватный({member.display_name})', category = maincategori)
+        await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
+        await member.move_to(channel2)
+        def check(x, y, z):
+            return len(channel2.members) == 0
+        await self.bot.wait_for('voice_channel_update', check = check)
+        await channel2.delete()
 ################################################## Cogs Info commands ############################################################
 
 
@@ -101,7 +112,7 @@ bot.load_extension('cogs.commands.moderation.command.warns.warn')
 bot.load_extension('cogs.commands.moderation.command.warns.mywarn')
 bot.load_extension('cogs.commands.moderation.command.warns.resetwarn')
 bot.load_extension('cogs.commands.moderation.send')
-bot.load_extension('cogs.commands.moderation.command.private_channel')
+#bot.load_extension('cogs.commands.moderation.command.private_channel')
 
 
 ################################################## Cogs Music commands ###########################################################
