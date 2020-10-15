@@ -78,10 +78,8 @@ async def on_voice_state_update(member,before,after):
         await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
         await member.move_to(channel2)
     elif after.channel is None:
-        def check(x, y, z):
-            return len(channel2.members) == 0
-        await bot.wait_for('voice_state_update', check = check)
-        await channel2.delete()
+        if len(channel2.members) == 0:
+            await channel2.delete()
     #if after.channel.id == 754072936541061213:
         #maincategory = get(member.guild.categories, id = 743780552024260670)
         #channel2 = await member.guild.create_voice_channel(name = f'Privat {member.display_name}', category = maincategory)
