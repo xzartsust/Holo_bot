@@ -76,7 +76,7 @@ async def on_voice_state_update(member,before,after):
         channel2 = await member.guild.create_voice_channel(name = f'Privat {member.display_name}', category = maincategory)
         await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
         await member.move_to(channel2)
-    elif after.cahnnel.id is None:
+    elif after.channel.id is None:
         def check(x, y, z):
             return len(channel2.members) == 0
         await bot.wait_for('voice_state_update', check = check)
