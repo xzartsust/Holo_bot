@@ -69,7 +69,7 @@ status=['t!help', 'Модернизирует свой код', 'Сайт: https
 
 @bot.event
 async def on_voice_state_update(member,before,after):
-    print0(f'{before}')
+    print(f'{before}')
     print(f'{after}\n')
        
     #if after.channel.id == 754072936541061213:
