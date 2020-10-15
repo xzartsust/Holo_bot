@@ -69,15 +69,16 @@ status=['t!help', 'Модернизирует свой код', 'Сайт: https
 
 @bot.event
 async def on_voice_state_update(member,before,after):
-    if after.channel.id == 754072936541061213:
-        maincategory = get(member.guild.categories, id = 743780552024260670)
-        channel2 = await member.guild.create_voice_channel(name = f'Privat {member.display_name}', category = maincategory)
-        await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
-        await member.move_to(channel2)
-        def check(x, y, z):
-            return len(channel2.members) == 0
-        await bot.wait_for('on_voice_state_update', check = check)
-        await channel2.delete()
+    print(member.voice.channel.id)
+    #if after.channel.id == 754072936541061213:
+        #maincategory = get(member.guild.categories, id = 743780552024260670)
+        #channel2 = await member.guild.create_voice_channel(name = f'Privat {member.display_name}', category = maincategory)
+        #await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
+        #await member.move_to(channel2)
+        #def check(x, y, z):
+            #return len(channel2.members) == 0
+        #await bot.wait_for('on_voice_state_update', check = check)
+        #await channel2.delete()
         
         
 ################################################## Cogs Info commands ############################################################
