@@ -70,11 +70,11 @@ class PrivateChannel(commands.Cog):
         
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
-            if str(e) == str('You are missing Administrator permission(s) to run this command.'):
-                await ctx.send(f'{ctx.message.author.mention} У вас нету прав Администратора')
     
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         #await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        if str(error) == str('You are missing Administrator permission(s) to run this command.'):
+                await ctx.send(f'{ctx.message.author.mention} У вас нету прав Администратора')
         print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
 
     @commands.command()
@@ -98,11 +98,11 @@ class PrivateChannel(commands.Cog):
         
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
-            if str(e) == str('You are missing Administrator permission(s) to run this command.'):
-                await ctx.send(f'{ctx.message.author.mention} У вас нету прав Администратора')
         
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         #await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        if str(error) == str('You are missing Administrator permission(s) to run this command.'):
+                await ctx.send(f'{ctx.message.author.mention} У вас нету прав Администратора')
         print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
 
         
