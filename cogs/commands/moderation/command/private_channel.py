@@ -50,7 +50,7 @@ class PrivateChannel(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator = True)
-    async def privatchnl(self, ctx, categori: int, category: int):
+    async def privatchnl(self, ctx, channel: int, category: int):
         
         try:
             
