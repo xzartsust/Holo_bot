@@ -17,6 +17,7 @@ import psycopg2
 import asyncpg, asyncio
 import youtube_dl
 import shutil
+import logging
 
 
 ########################################################## Connect to SQL ###################################################
@@ -51,6 +52,8 @@ def get_prefix(bot, message):
     return prefix
 
 bot = commands.Bot(command_prefix = get_prefix, help_command = None)
+
+logging.basicConfig(level=logging.INFO)
 
 
 ############################################################# Events bot #################################################
