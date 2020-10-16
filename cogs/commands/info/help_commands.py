@@ -89,7 +89,7 @@ class HelpCommands(commands.Cog):
             title='Команды для развлечения', 
             description=f'Команды для развлечения на сервере'
         )
-        diferend_photodiferend_photodiferend_photo.set_thumbnail(
+        diferend_photo.set_thumbnail(
             url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
         diferend_photo.add_field(
