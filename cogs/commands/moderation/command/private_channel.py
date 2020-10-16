@@ -47,12 +47,10 @@ class PrivateChannel(commands.Cog):
                 await channel2.delete()
         else:
             pass
-        
-        
-            
+
     @commands.command()
     @commands.has_permissions(administrator = True)
-    async def privatchnl(self, ctx, channel: int, categori: int):
+    async def privatchnl(self, ctx, categori: int, category: int):
         
         try:
             
@@ -72,10 +70,41 @@ class PrivateChannel(commands.Cog):
         
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
+            if str(e) == str('You are missing Administrator permission(s) to run this command.'):
+                await ctx.send(f'{ctx.message.author.mention} У вас нету прав Администратора')
     
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
-        await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        #await ctx.send('Произошла ошибка: {}'.format(str(error)))
         print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
+
+    @commands.command()
+    @command.has_permissions(administrator = True)
+    async def resetprivchannel(self, ctx):
+
+        try:
+            
+            guild = ctx.message.guild
+
+            cursor.execute(f'UPDATE public."myBD" SET start_voice_channel = \'{Null}\', categori = \'{Null}\' WHERE guild_id = \'{guild.id}\';')
+            conn.commit()
+
+            emb = (discord.Embed(title = 'Успешно!',
+                                 description = 'Канал и категория были успешно сброшение',
+                                 colour = discord.Color.green(),
+                                 timestamp = ctx.message.created_at)
+                    .set_footer(text = ctx.message.author, icon_url = ctx.author.avatar_url))
+
+            await ctx.send(embed = emb)
+        
+        except Exception as e:
+            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
+            if str(e) == str('You are missing Administrator permission(s) to run this command.'):
+                await ctx.send(f'{ctx.message.author.mention} У вас нету прав Администратора')
+        
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        #await ctx.send('Произошла ошибка: {}'.format(str(error)))
+        print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
+
         
 def setup(bot):
     bot.add_cog(PrivateChannel(bot))
