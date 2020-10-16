@@ -65,21 +65,6 @@ async def change_status():
         await bot.change_presence(activity = discord.Game(name=next_status))
         await asyncio.sleep(9)
 status=['t!help', 'Модернизирует свой код', 'Сайт: https://github.com/xzartsust/Tobi-Bot#tobi-bot', 'Серевер поддержки: https://discord.gg/8f4KUp']
-
-
-@bot.event
-async def on_voice_state_update(member,before,after):
-    print(f'\n{before}')
-    print(f'{after}\n')
-    if after.channel is not None and member.voice.channel.id == 754072936541061213 and member.voice.channel is not None:
-        global channel2
-        maincategory = get(member.guild.categories, id = 743780552024260670)
-        channel2 = await member.guild.create_voice_channel(name = f'Privat {member.display_name}', category = maincategory)
-        await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
-        await member.move_to(channel2)
-    elif after.channel is None and channel2.id:
-        if len(channel2.members) == 0:
-            await channel2.delete()
         
         
 ################################################## Cogs Info commands ############################################################
