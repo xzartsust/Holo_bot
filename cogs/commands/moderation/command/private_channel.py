@@ -85,7 +85,7 @@ class PrivateChannel(commands.Cog):
             
             guild = ctx.message.guild
 
-            cursor.execute(f'UPDATE public."myBD" SET start_voice_channel = \'{Null}\', categori = \'{Null}\' WHERE guild_id = \'{guild.id}\';')
+            cursor.execute(f'UPDATE public."myBD" SET start_voice_channel = Null, categori = Null WHERE guild_id = \'{guild.id}\';')
             conn.commit()
 
             emb = (discord.Embed(title = 'Успешно!',
