@@ -197,7 +197,7 @@ class HelpCommands(commands.Cog):
         privat_channel_embed.add_field(
             name = 'Команды',
             value = f'''
-            `{prefix}privatchnl`\n
+            `{prefix}privatchnl`
             `{prefix}resetprivchannel`
             ''')
 
