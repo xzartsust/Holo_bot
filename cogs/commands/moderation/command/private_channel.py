@@ -55,7 +55,7 @@ class PrivateChannel(commands.Cog):
         try:
             
             guild = ctx.message.guild
-            cursor.execute(f'UPDATE public."myBD" SET start_voice_channel = \'{channel}\', categori = \'{categori}\' WHERE guild_id = \'{guild.id}\';')
+            cursor.execute(f'UPDATE public."myBD" SET start_voice_channel = \'{channel}\', categori = \'{category}\' WHERE guild_id = \'{guild.id}\';')
             conn.commit()
             
             channel1 = self.bot.get_channel(channel)
