@@ -35,7 +35,7 @@ class PrivateChannel(commands.Cog):
         cursor.execute(f'SELECT categori FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
         c_c = cursor.fetchone()
         channel_category = c_c[0]
-
+        
         if channel_category and voice_cahnnel is not None:
             if after.channel is not None and member.voice.channel.id == 754072936541061213 and member.voice.channel is not None:
                 global channel2
@@ -46,7 +46,7 @@ class PrivateChannel(commands.Cog):
             elif after.channel is None and channel2.id:
                 if len(channel2.members) == 0:
                 await channel2.delete()
-         else:
+        else:
             pass
         
         
