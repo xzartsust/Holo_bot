@@ -78,7 +78,7 @@ class PrivateChannel(commands.Cog):
         print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
 
     @commands.command()
-    @command.has_permissions(administrator = True)
+    @commands.has_permissions(administrator = True)
     async def resetprivchannel(self, ctx):
 
         try:
