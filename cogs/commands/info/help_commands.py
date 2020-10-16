@@ -867,11 +867,11 @@ class HelpCommands(commands.Cog):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
 
-        privatchnl_emb=discord.Embed(
-            timestamp= ctx.message.created_at, 
-            title=f'Информация про команду: `{prefix}privatchnl`', 
+        privatchnl_emb = discord.Embed(
+            timestamp = ctx.message.created_at, 
+            title = f'Информация про команду: `{prefix}privatchnl`', 
             colour = discord.Color.teal(), 
-            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Администратор**!\n**Команда**: `[privatchnl]`\n**Описание**: задать канал и категорию для создания приватных голосовых каналов\n**Использования**: `{prefix}privatchnl *channel_id* *categori_id*`\n\n\n**Пример:** `{prefix}privatchnl 88416261844689851 181351848653489`'
+            description = f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Администратор**!\n**Команда**: `[privatchnl]`\n**Описание**: задать канал и категорию для создания приватных голосовых каналов\n**Использования**: `{prefix}privatchnl *channel_id* *categori_id*`\n\n\n**Пример:** `{prefix}privatchnl 88416261844689851 181351848653489`'
         )
         privatchnl_emb.set_footer(
             text = ctx.message.author,
@@ -880,7 +880,7 @@ class HelpCommands(commands.Cog):
         await ctx.send(embed = privatchnl_emb)
 
     @help_for_commands.command(name = 'resetprivchannel')
-    async def privatchnl_subcommands(self, ctx):
+    async def resetprivchannel_subcommands(self, ctx):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
 
