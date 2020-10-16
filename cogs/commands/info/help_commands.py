@@ -871,7 +871,7 @@ class HelpCommands(commands.Cog):
             timestamp = ctx.message.created_at, 
             title = f'Информация про команду: `{prefix}privatchnl`', 
             colour = discord.Color.teal(), 
-            description = f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Администратор**!\n**Команда**: `[privatchnl]`\n**Описание**: задать канал и категорию для создания приватных голосовых каналов\n**Использования**: `{prefix}privatchnl *channel_id* *categori_id*`\n\n\n**Пример:** `{prefix}privatchnl 88416261844689851 181351848653489`'
+            description = f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Администратор**!\n**Команда**: `[privatchnl]`\n**Описание**: задать канал и категорию для создания приватных голосовых каналов\n**Использования**: `{prefix}privatchnl *channel_id* *categori_id*`\n\n**Пример:** `{prefix}privatchnl 88416261844689851 181351848653489`'
         )
         privatchnl_emb.set_footer(
             text = ctx.message.author,
@@ -888,7 +888,7 @@ class HelpCommands(commands.Cog):
             timestamp= ctx.message.created_at, 
             title=f'Информация про команду: `{prefix}resetprivchannel`', 
             colour = discord.Color.teal(), 
-            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Администратор**!\n**Команда**: `[resetprivchannel]`\n**Описание**: скинуть канал и категорию для создания приватных голосовых каналов\n**Использования**: `{prefix}resetprivchannel`\n\n\n**Пример:** `{prefix}privatchnl`'
+            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Администратор**!\n**Команда**: `[resetprivchannel]`\n**Описание**: скинуть канал и категорию для создания приватных голосовых каналов\n**Использования**: `{prefix}resetprivchannel`\n\n**Пример:** `{prefix}privatchnl`'
         )
         resetprivchannel_emb.set_footer(
             text = ctx.message.author,
