@@ -43,9 +43,9 @@ class PrivateChannel(commands.Cog):
                 channel2 = await member.guild.create_voice_channel(name = f'Privat {member.display_name}', category = maincategory)
                 await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
                 await member.move_to(channel2)
-            elif after.channel is None and channel2.id:
+            elif after.channel is None:
                 if len(channel2.members) == 0:
-                await channel2.delete()
+                    await channel2.delete()
         else:
             pass
         
