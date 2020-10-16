@@ -7,7 +7,7 @@ class KickUsers(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    #@commands.has_permissions(kick_members = True)
+    @commands.has_permissions(kick_members = True)
     async def kick(self, ctx, member: discord.Member, *, reason = None):
         try:
             
