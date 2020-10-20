@@ -105,6 +105,7 @@ bot.load_extension('cogs.commands.moderation.command.warns.mywarn')
 bot.load_extension('cogs.commands.moderation.command.warns.resetwarn')
 bot.load_extension('cogs.commands.moderation.send')
 bot.load_extension('cogs.commands.moderation.command.private_channel')
+bot.load_extension('cogs.commands.moderation.command.lockchannel')
 
 
 ################################################## Cogs Music commands ###########################################################
