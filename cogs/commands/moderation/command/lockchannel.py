@@ -7,7 +7,7 @@ class LockPrivateChannel(commands.Cog):
     
     @commands.command()
     async def lock(self, ctx, member: discord.Member):
-        voice_channel = ctx.message.author.channel
+        voice_channel = ctx.message.author.voice.channel
         await voice_channel.set_permissions(member, connect = False)
         await member.move_to(None)
 
