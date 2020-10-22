@@ -407,7 +407,7 @@ class Music(commands.Cog):
         await ctx.message.add_reaction('✅')
 
     @commands.command(name='play', aliases = ['p', 'pl'])
-    @commands.cooldown(1, 20, commands.BucketType.member)
+    @commands.cooldown(1, 3, commands.BucketType.member)
     async def _play(self, ctx: commands.Context, *, search: str):
         """Plays a song.
 

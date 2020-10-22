@@ -17,6 +17,7 @@ import psycopg2
 import asyncpg, asyncio
 import youtube_dl
 import shutil
+import logging
 
 
 ########################################################## Connect to SQL ###################################################
@@ -52,6 +53,8 @@ def get_prefix(bot, message):
 
 bot = commands.Bot(command_prefix = get_prefix, help_command = None)
 
+logging.basicConfig()
+
 
 ############################################################# Events bot #################################################
 
@@ -65,8 +68,8 @@ async def change_status():
         await bot.change_presence(activity = discord.Game(name=next_status))
         await asyncio.sleep(9)
 status=['t!help', 'Модернизирует свой код', 'Сайт: https://github.com/xzartsust/Tobi-Bot#tobi-bot', 'Серевер поддержки: https://discord.gg/8f4KUp']
-
-
+        
+        
 ################################################## Cogs Info commands ############################################################
 
 
@@ -100,6 +103,9 @@ bot.load_extension('cogs.commands.moderation.commands_for_welcome.welcometextfoo
 bot.load_extension('cogs.commands.moderation.command.warns.warn')
 bot.load_extension('cogs.commands.moderation.command.warns.mywarn')
 bot.load_extension('cogs.commands.moderation.command.warns.resetwarn')
+bot.load_extension('cogs.commands.moderation.send')
+bot.load_extension('cogs.commands.moderation.command.private_channel')
+bot.load_extension('cogs.commands.moderation.command.lockchannel')
 
 
 ################################################## Cogs Music commands ###########################################################

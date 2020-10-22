@@ -42,30 +42,30 @@ class HelpCommands(commands.Cog):
         prefix_1 = prefix_in_guild(self.bot, ctx.message)
         prefix = prefix_1[0]
         
-        emb = discord.Embed(
+        start = discord.Embed(
             title=f'Команды бота {self.bot.user.name}', 
             description=f'Здесь вы узнаете информацию про все команды бота\nНапишите `{prefix}invite` чтобы получить ссылки бота'
         )
-        emb.add_field(
+        start.add_field(
             name='**Другая информация**',
             value=f'Чтобы получить больше информации о какой либо команде, вы можете написать: `{prefix}help *команда*` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n'
         )
-        emb.add_field(
+        start.add_field(
             name = 'Поддержите бота на мониторингах:',
             value = '[{0.server}]({0.server_link})'.format(self),
             inline = False
         )
-        emb.set_thumbnail(
+        start.set_thumbnail(
             url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
-        emb1= discord.Embed(
+        information = discord.Embed(
             title='Команды информации', 
             description=f'Что бы узнать больше о команде напишите `{prefix}help [команда]`. \n**Пример**: `{prefix}help user`'
         )
-        emb1.set_thumbnail(
+        information.set_thumbnail(
             url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
-        emb1.add_field(
+        information.add_field(
             name='**Команды**', 
             value=f'`{prefix}user`\n`{prefix}infobot`\n`{prefix}serverinfo` или `{prefix}si` или `{prefix}is`\n`{prefix}serverprefix` или `{prefix}sp` или `{prefix}ps`\n`{prefix}avatar` или `{prefix}av` или `{prefix}a`'
         )
@@ -78,40 +78,40 @@ class HelpCommands(commands.Cog):
         )
         Moder.add_field(
             name = '**Команды**',
-            value = f'`{prefix}prefix`\n`{prefix}news`\n`{prefix}vote`\n`{prefix}rwlc`\n`{prefix}muterole`'
+            value = f'`{prefix}prefix`\n`{prefix}news`\n`{prefix}vote`\n`{prefix}rwlc`\n`{prefix}muterole`\n`{prefix}send`'
         )
         Moder.add_field(
             name = '**Команды для действий с пользователями**',
             value = f'`{prefix}ban`\n`{prefix}unban`\n`{prefix}mute`\n`{prefix}unmute`\n`{prefix}kick`'
         )
 
-        emb3 = discord.Embed(
+        diferend_photo = discord.Embed(
             title='Команды для развлечения', 
             description=f'Команды для развлечения на сервере'
         )
-        emb3.set_thumbnail(
+        diferend_photo.set_thumbnail(
             url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
-        emb3.add_field(
+        diferend_photo.add_field(
             name = '**Команды**',
             value = 'Категории',
             inline = False
         )
-        emb3.add_field(
+        diferend_photo.add_field(
             name = f'**Категория Anime**',
             value = f'`{prefix}wink`\n`{prefix}pat`\n`{prefix}hug`\n`{prefix}neko`\n`{prefix}holo`\n`{prefix}tickle`\n`{prefix}poke`',
             inline = True
         )
-        emb3.add_field(
+        diferend_photo.add_field(
             name = '**Категория Animal**',
             value = f'`{prefix}fox`\n`{prefix}dog`\n`{prefix}cat`\n`{prefix}panda`\n`{prefix}redpanda`\n`{prefix}koala`',
             inline = True
         )
-        emb3.add_field(
+        diferend_photo.add_field(
             name = '**Категория Text**',
             value = f'`{prefix}tcat`'
         )
-        emb3.add_field(
+        diferend_photo.add_field(
             name = f'**Категория Memes**',
             value = f'`{prefix}memes`',
             inline = False
@@ -188,11 +188,22 @@ class HelpCommands(commands.Cog):
             value = f'`{prefix}warn`\n`{prefix}mwarn`\n`{prefix}resetwarn`'
         )
 
+        privat_channel_embed = discord.Embed(
+            title = 'Прививатные голосовие канали',
+            description = '''
+            Команды с раздела *Команды* могут использовать те кто имеют права **Администратора**
+            ''')
+        privat_channel_embed.set_thumbnail(url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true')
+        privat_channel_embed.add_field(
+            name = 'Команды',
+            value = f'''
+            `{prefix}privatchnl`
+            `{prefix}resetprivchannel`
+            ''')
 
 
-
-        embeds = [emb, emb1, Moder, warn_embed, welcome_emb, emb_music, emb3, NSFW_emb]
-        message = await ctx.send(embed = emb)
+        embeds = [start, information, Moder, warn_embed, privat_channel_embed, welcome_emb, emb_music, diferend_photo, NSFW_emb]
+        message = await ctx.send(embed = start)
         page = pag(self.bot, message, only = ctx.author, use_more = False, embeds = embeds, color = 0x008000, time_stamp = True)
     
         await page.start()
@@ -831,7 +842,59 @@ class HelpCommands(commands.Cog):
         )
         await ctx.send(
             embed = resetwarn
-        ) 
+        )
+     
+    @help_for_commands.command(name = 'send')
+    async def send_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        send_emb=discord.Embed(
+            timestamp= ctx.message.created_at, 
+            title=f'Информация про команду: `{prefix}send`', 
+            colour = discord.Color.teal(), 
+            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Администратор**!\n**Команда**: `[send]`\n**Описание**: написать сообщения от имени бота\n**Использования**: `{prefix}send *text*`\n\n\n**Пример:** `{prefix}send Hello server`'
+        )
+        send_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(embed = send_emb)
+
+
+    @help_for_commands.command(name = 'privatchnl')
+    async def privatchnl_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        privatchnl_emb = discord.Embed(
+            timestamp = ctx.message.created_at, 
+            title = f'Информация про команду: `{prefix}privatchnl`', 
+            colour = discord.Color.teal(), 
+            description = f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Администратор**!\n**Команда**: `[privatchnl]`\n**Описание**: задать канал и категорию для создания приватных голосовых каналов\n**Использования**: `{prefix}privatchnl *channel_id* *categori_id*`\n\n**Пример:** `{prefix}privatchnl 88416261844689851 181351848653489`'
+        )
+        privatchnl_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(embed = privatchnl_emb)
+
+    @help_for_commands.command(name = 'resetprivchannel')
+    async def resetprivchannel_subcommands(self, ctx):
+        prefix_1 = prefix_in_guild(self.bot, ctx.message)
+        prefix = prefix_1[0]
+
+        resetprivchannel_emb=discord.Embed(
+            timestamp= ctx.message.created_at, 
+            title=f'Информация про команду: `{prefix}resetprivchannel`', 
+            colour = discord.Color.teal(), 
+            description=f'**Предостережение:** Эту команду можут использовать роли в которых есть права **Администратор**!\n**Команда**: `[resetprivchannel]`\n**Описание**: скинуть канал и категорию для создания приватных голосовых каналов\n**Использования**: `{prefix}resetprivchannel`\n\n**Пример:** `{prefix}privatchnl`'
+        )
+        resetprivchannel_emb.set_footer(
+            text = ctx.message.author,
+            icon_url = ctx.message.author.avatar_url
+        )
+        await ctx.send(embed = resetprivchannel_emb)
 
 
 def setup(bot):
