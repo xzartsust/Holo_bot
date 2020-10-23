@@ -20,6 +20,7 @@ class ResetWarns(commands.Cog):
     async def resetwarn(self, ctx, member: discord.Member):
         guild = ctx.message.guild
         member_id = member.id
+        
         try:
             conn = psycopg2.connect(
                 database = f"{database}", 
