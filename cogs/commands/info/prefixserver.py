@@ -10,15 +10,6 @@ password = os.environ.get('PASSWORD')
 host = os.environ.get('HOST')
 port = os.environ.get('PORT')
 
-conn = psycopg2.connect(
-    database = f"{database}", 
-    user = f"{user}", 
-    password = f"{password}", 
-    host = f"{host}", 
-    port = "5432"
-)
-
-cursor = conn.cursor()
 
 ################################################################################################################################
 
@@ -28,6 +19,17 @@ class PrefixServer(commands.Cog):
 
     @commands.command(aliases = ['ps','sp'])
     async def prefixserver(self, ctx):
+
+        conn = psycopg2.connect(
+            database = f"{database}", 
+            user = f"{user}", 
+            password = f"{password}", 
+            host = f"{host}", 
+            port = "5432"
+        )
+
+        cursor = conn.cursor()
+
         guild = ctx.message.guild
 
         try:
@@ -36,10 +38,12 @@ class PrefixServer(commands.Cog):
             prefix = cursor.fetchone()
 
             await ctx.send(f'Server Prefix: \"**{prefix[0]}**\"')
-
+        
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
-
+        
+        conn.close()
+    
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))
         print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
