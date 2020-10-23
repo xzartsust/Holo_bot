@@ -10,15 +10,6 @@ password = os.environ.get('PASSWORD')
 host = os.environ.get('HOST')
 port = os.environ.get('PORT')
 
-conn = psycopg2.connect(
-    database = f"{database}", 
-    user = f"{user}", 
-    password = f"{password}", 
-    host = f"{host}", 
-    port = "5432"
-)
-
-cursor = conn.cursor()
 
 class Warns(commands.Cog):
     def __init__(self, bot):
@@ -27,10 +18,19 @@ class Warns(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_guild = True)
     async def warn(self, ctx, member: discord.Member, *, reason = None):
+        conn = psycopg2.connect(
+            database = f"{database}", 
+            user = f"{user}", 
+            password = f"{password}", 
+            host = f"{host}", 
+            port = "5432"
+        )
 
+        cursor = conn.cursor()
+        
         guild = ctx.message.guild
         member_id = member.id
-        user = ctx.message.author.id
+        userr = ctx.message.author.id
 
         try:
             
@@ -38,7 +38,7 @@ class Warns(commands.Cog):
                 await ctx.send('Ей, боту нельзя выдать предупреждение')
                 return
             
-            if member_id is user:
+            if member_id is userr:
                 await ctx.send('Ей, нельзя самому себе выдать предупреждение')
                 return 
             
@@ -174,6 +174,8 @@ class Warns(commands.Cog):
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
         
+        conn.close()
+
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))
         print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')

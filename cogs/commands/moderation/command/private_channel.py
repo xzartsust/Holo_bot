@@ -11,15 +11,6 @@ password = os.environ.get('PASSWORD')
 host = os.environ.get('HOST')
 port = os.environ.get('PORT')
 
-conn = psycopg2.connect(
-    database = f"{database}", 
-    user = f"{user}", 
-    password = f"{password}", 
-    host = f"{host}", 
-    port = "5432"
-)
-
-cursor = conn.cursor()
 
 class PrivateChannel(commands.Cog):
     def __init__(self, bot):
@@ -27,6 +18,15 @@ class PrivateChannel(commands.Cog):
     
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
+        conn = psycopg2.connect(
+            database = f"{database}", 
+            user = f"{user}", 
+            password = f"{password}", 
+            host = f"{host}", 
+            port = "5432"
+        )
+
+        cursor = conn.cursor()
         
         cursor.execute(f'SELECT start_voice_channel FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
         v_c = cursor.fetchone()
@@ -45,12 +45,25 @@ class PrivateChannel(commands.Cog):
                 await member.move_to(channel2)
             elif after.channel is None and len(channel2.members) == 0:
                 await channel2.delete()
+            else:
+                pass
         else:
             pass
-
+        
+        conn.close()
+    
     @commands.command()
     @commands.has_permissions(administrator = True)
     async def privatchnl(self, ctx, channel: int, category: int):
+        conn = psycopg2.connect(
+            database = f"{database}", 
+            user = f"{user}", 
+            password = f"{password}", 
+            host = f"{host}", 
+            port = "5432"
+        )
+
+        cursor = conn.cursor()
         
         try:
             
@@ -70,16 +83,21 @@ class PrivateChannel(commands.Cog):
         
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
+        
+        conn.close()
     
-    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
-        #await ctx.send('Произошла ошибка: {}'.format(str(error)))
-        if str(error) == str('You are missing Administrator permission(s) to run this command.'):
-                await ctx.send(f'{ctx.message.author.mention} У вас нету прав Администратора')
-        print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
-
     @commands.command()
     @commands.has_permissions(administrator = True)
     async def resetprivchannel(self, ctx):
+        conn = psycopg2.connect(
+            database = f"{database}", 
+            user = f"{user}", 
+            password = f"{password}", 
+            host = f"{host}", 
+            port = "5432"
+        )
+
+        cursor = conn.cursor()
 
         try:
             
@@ -99,12 +117,13 @@ class PrivateChannel(commands.Cog):
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
         
+        conn.close()
+    
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         #await ctx.send('Произошла ошибка: {}'.format(str(error)))
         if str(error) == str('You are missing Administrator permission(s) to run this command.'):
                 await ctx.send(f'{ctx.message.author.mention} У вас нету прав Администратора')
         print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
-
         
 def setup(bot):
     bot.add_cog(PrivateChannel(bot))

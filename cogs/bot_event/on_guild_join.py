@@ -10,15 +10,6 @@ password = os.environ.get('PASSWORD')
 host = os.environ.get('HOST')
 port = os.environ.get('PORT')
 
-conn = psycopg2.connect(
-    database = f"{database}", 
-    user = f"{user}", 
-    password = f"{password}", 
-    host = f"{host}", 
-    port = "5432"
-)
-
-cursor = conn.cursor()
 
 class bot_join_guild(commands.Cog):
     def __init__(self, bot):
@@ -26,6 +17,15 @@ class bot_join_guild(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild): 
+        conn = psycopg2.connect(
+            database = f"{database}", 
+            user = f"{user}", 
+            password = f"{password}", 
+            host = f"{host}", 
+            port = "5432"
+        )
+
+        cursor = conn.cursor()
 
         try:
         
@@ -36,7 +36,7 @@ class bot_join_guild(commands.Cog):
             conn.commit()
         
         except Exception as e:
-            print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
-
+            print(f'[Event: on_guild_join] [{guild.name}] [{guild.owner}] - [{e}]')
+        conn.close()
 def setup(bot):
     bot.add_cog(bot_join_guild(bot))

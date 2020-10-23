@@ -4,26 +4,11 @@ import os
 import asyncpg, asyncio
 import psycopg2
 
-####################################################################################################################
-
 database = os.environ.get('DATABASE')
 user = os.environ.get('USER')
 password = os.environ.get('PASSWORD')
 host = os.environ.get('HOST')
 port = os.environ.get('PORT')
-
-conn = psycopg2.connect(
-    database = f"{database}", 
-    user = f"{user}", 
-    password = f"{password}", 
-    host = f"{host}", 
-    port = "5432"
-)
-
-cursor = conn.cursor()
-
-
-####################################################################################################################
 
 def is_owner_guild(ctx):
     return ctx.author.id == ctx.guild.owner.id

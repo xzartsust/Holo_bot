@@ -10,15 +10,6 @@ password = os.environ.get('PASSWORD')
 host = os.environ.get('HOST')
 port = os.environ.get('PORT')
 
-conn = psycopg2.connect(
-    database = f"{database}", 
-    user = f"{user}", 
-    password = f"{password}", 
-    host = f"{host}", 
-    port = "5432"
-)
-
-cursor = conn.cursor()
 
 class ResetWarns(commands.Cog):
     def __init__(self, bot):
@@ -27,6 +18,16 @@ class ResetWarns(commands.Cog):
     @commands.command()
     @commands.has_permissions(administrator = True)
     async def resetwarn(self, ctx, member: discord.Member):
+        
+        conn = psycopg2.connect(
+            database = f"{database}", 
+            user = f"{user}", 
+            password = f"{password}", 
+            host = f"{host}", 
+            port = "5432"
+        )
+
+        cursor = conn.cursor()
         
         try:
 
@@ -60,6 +61,8 @@ class ResetWarns(commands.Cog):
 
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
+        
+        conn.close()
     
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))

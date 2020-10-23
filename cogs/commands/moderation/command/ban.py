@@ -65,6 +65,7 @@ class BanUsers(commands.Cog):
                 value = f'{reason}'
                 )
             await ctx.send(embed = ban)
+    
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))
         print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
