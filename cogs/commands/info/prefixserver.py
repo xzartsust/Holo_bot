@@ -10,9 +10,16 @@ password = os.environ.get('PASSWORD')
 host = os.environ.get('HOST')
 port = os.environ.get('PORT')
 
+conn = psycopg2.connect(
+    database = f"{database}", 
+    user = f"{user}", 
+    password = f"{password}", 
+    host = f"{host}", 
+    port = "5432"
+)
 
-################################################################################################################################
-
+cursor = conn.cursor()
+ 
 class PrefixServer(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -20,15 +27,6 @@ class PrefixServer(commands.Cog):
     @commands.command(aliases = ['ps','sp'])
     async def prefixserver(self, ctx):
 
-        conn = psycopg2.connect(
-            database = f"{database}", 
-            user = f"{user}", 
-            password = f"{password}", 
-            host = f"{host}", 
-            port = "5432"
-        )
-
-        cursor = conn.cursor()
 
         guild = ctx.message.guild
 
@@ -42,6 +40,7 @@ class PrefixServer(commands.Cog):
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
         
+        cursor.close()
         conn.close()
     
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
