@@ -31,6 +31,16 @@ class prefix(commands.Cog):
     @commands.check(is_owner_guild)
     async def prefix(self, ctx, prefix):
 
+        conn = psycopg2.connect(
+            database = f"{database}", 
+            user = f"{user}", 
+            password = f"{password}", 
+            host = f"{host}", 
+            port = "5432"
+        )
+
+        cursor = conn.cursor()
+
         guildid = ctx.guild.id
         try:
             
@@ -43,6 +53,8 @@ class prefix(commands.Cog):
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
         
+        conn.close()
+    
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))
         print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
