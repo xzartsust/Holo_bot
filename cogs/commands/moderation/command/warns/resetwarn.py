@@ -18,21 +18,19 @@ class ResetWarns(commands.Cog):
     @commands.command()
     @commands.has_permissions(administrator = True)
     async def resetwarn(self, ctx, member: discord.Member):
-        
-        conn = psycopg2.connect(
-            database = f"{database}", 
-            user = f"{user}", 
-            password = f"{password}", 
-            host = f"{host}", 
-            port = "5432"
-        )
-
-        cursor = conn.cursor()
-        
+        guild = ctx.message.guild
+        member_id = member.id
         try:
+            conn = psycopg2.connect(
+                database = f"{database}", 
+                user = f"{user}", 
+                password = f"{password}", 
+                host = f"{host}", 
+                port = "5432"
+            )
+            cursor = conn.cursor()
 
-            guild = ctx.message.guild
-            member_id = member.id
+            
 
             cursor.execute(f'SELECT member_id FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
             memberDB = cursor.fetchone()
@@ -45,6 +43,17 @@ class ResetWarns(commands.Cog):
             cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
             counts = cursor.fetchone()
             conn.commit()
+        
+        except (Exception, psycopg2.Error) as error:
+            print ("Error while connecting to PostgreSQL", error)
+        finally:
+            if(conn):
+                cursor.close()
+                conn.close()
+                print("PostgreSQL connection is closed")
+        
+        try:
+            
 
             if memberDB is None and guildDB is None:
                 

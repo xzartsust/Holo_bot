@@ -16,25 +16,32 @@ class MyWarns(commands.Cog):
 
     @commands.command()
     async def mwarn(self, ctx, member: discord.Member = None):
-
-        conn = psycopg2.connect(
-            database = f"{database}", 
-            user = f"{user}", 
-            password = f"{password}", 
-            host = f"{host}", 
-            port = "5432"
-        )
-
-        cursor = conn.cursor()
+        member = ctx.author if not member else member
+        guild = ctx.message.guild
         
         try:
-            
-            member = ctx.author if not member else member
-            guild = ctx.message.guild
+            conn = psycopg2.connect(
+                database = f"{database}", 
+                user = f"{user}", 
+                password = f"{password}", 
+                host = f"{host}", 
+                port = "5432"
+            )
+            cursor = conn.cursor()
 
             cursor.execute(f'SELECT counts FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member.id}\';')
             count = cursor.fetchone()
             conn.commit()
+        
+        except (Exception, psycopg2.Error) as error:
+            print ("Error while connecting to PostgreSQL", error)
+        finally:
+            if(conn):
+                cursor.close()
+                conn.close()
+                print("PostgreSQL connection is closed")
+        
+        try:
         
             if count is None:
                 emb = discord.Embed(
@@ -57,7 +64,6 @@ class MyWarns(commands.Cog):
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
         
-        conn.close()
    
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))
