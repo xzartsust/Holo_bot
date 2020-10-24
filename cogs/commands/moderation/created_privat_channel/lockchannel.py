@@ -6,10 +6,13 @@ class LockPrivateChannel(commands.Cog):
         self.bot = bot
     
     @commands.command()
-    async def lock(self, ctx, member: discord.Member):
+    async def lock(self, ctx, member):
         voice_channel = ctx.message.author.voice.channel
-        await voice_channel.set_permissions(member, connect = False)
-        await member.move_to(None)
+        if member is discord.Member:
+            await voice_channel.set_permissions(member, connect = False)
+            await member.move_to(None)
+        elif member is discord.Role:
+            await voice_channel.set_permissions(member, connect = False)
 
 def setup(bot):
     bot.add_cog(LockPrivateChannel(bot))
