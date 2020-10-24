@@ -13,20 +13,26 @@ password = os.environ.get('PASSWORD')
 host = os.environ.get('HOST')
 port = os.environ.get('PORT')
 
-conn = psycopg2.connect(
-    database = f"{database}", 
-    user = f"{user}", 
-    password = f"{password}", 
-    host = f"{host}", 
-    port = "5432"
-)
-cursor = conn.cursor()
 
 def prefix_in_guild(bot, message):
     guildid = message.guild.id
-    cursor.execute(f'SELECT prefix_guild FROM public."myBD" WHERE guild_id = \'{guildid}\';')
-    prefix = cursor.fetchone()
-    conn.commit()
+    try:
+        conn = psycopg2.connect(
+            database = f"{database}", 
+            user = f"{user}", 
+            password = f"{password}", 
+            host = f"{host}", 
+            port = "5432"
+        )
+        cursor = conn.cursor()
+        cursor.execute(f'SELECT prefix_guild FROM public."myBD" WHERE guild_id = \'{guildid}\';')
+        prefix = cursor.fetchone()
+        conn.commit()
+    finally:
+            if(conn):
+                cursor.close()
+                conn.close()
+                print("PostgreSQL connection is closed")
     return prefix
 
 class HelpCommands(commands.Cog):

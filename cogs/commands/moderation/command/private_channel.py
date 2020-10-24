@@ -18,54 +18,64 @@ class PrivateChannel(commands.Cog):
     
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
-        conn = psycopg2.connect(
-            database = f"{database}", 
-            user = f"{user}", 
-            password = f"{password}", 
-            host = f"{host}", 
-            port = "5432"
-        )
+        
+        try:
+            conn = psycopg2.connect(
+                database = f"{database}", 
+                user = f"{user}", 
+                password = f"{password}", 
+                host = f"{host}", 
+                port = "5432"
+            )
 
-        cursor = conn.cursor()
+            cursor = conn.cursor()
         
-        cursor.execute(f'SELECT start_voice_channel FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
-        v_c = cursor.fetchone()
-        voice_channel = v_c[0]
+            cursor.execute(f'SELECT start_voice_channel FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
+            v_c = cursor.fetchone()
+            voice_channel = v_c[0]
         
-        cursor.execute(f'SELECT categori FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
-        c_c = cursor.fetchone()
-        channel_category = c_c[0]
+            cursor.execute(f'SELECT categori FROM public."myBD" WHERE guild_id = \'{member.guild.id}\';')
+            c_c = cursor.fetchone()
+            channel_category = c_c[0]
         
-        if channel_category and voice_channel is not None:
-            if after.channel is not None and member.voice.channel.id == voice_channel and member.voice.channel is not None:
-                global channel2
-                maincategory = get(member.guild.categories, id = channel_category)
-                channel2 = await member.guild.create_voice_channel(name = f'приватный({member.display_name})', category = maincategory)
-                await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
-                await member.move_to(channel2)
-            elif after.channel is None and len(channel2.members) == 0:
-                await channel2.delete()
+            if channel_category and voice_channel is not None:
+                if after.channel is not None and member.voice.channel.id == voice_channel and member.voice.channel is not None:
+                    global channel2
+                    maincategory = get(member.guild.categories, id = channel_category)
+                    channel2 = await member.guild.create_voice_channel(name = f'приватный({member.display_name})', category = maincategory)
+                    await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
+                    await member.move_to(channel2)
+                elif after.channel is None and len(channel2.members) == 0:
+                    await channel2.delete()
+                else:
+                    pass
             else:
                 pass
-        else:
-            pass
+        except Exception as e:
+            print(f'[Error on privat channel] [{e}]')
+        finally:
+            if(conn):
+                cursor.close()
+                conn.close()
+                print("PostgreSQL connection is closed")
         
-        conn.close()
+       
     
     @commands.command()
     @commands.has_permissions(administrator = True)
     async def privatchnl(self, ctx, channel: int, category: int):
-        conn = psycopg2.connect(
-            database = f"{database}", 
-            user = f"{user}", 
-            password = f"{password}", 
-            host = f"{host}", 
-            port = "5432"
-        )
-
-        cursor = conn.cursor()
+        
         
         try:
+            conn = psycopg2.connect(
+                database = f"{database}", 
+                user = f"{user}", 
+                password = f"{password}", 
+                host = f"{host}", 
+                port = "5432"
+            )
+
+            cursor = conn.cursor()
             
             guild = ctx.message.guild
             cursor.execute(f'UPDATE public."myBD" SET start_voice_channel = \'{channel}\', categori = \'{category}\' WHERE guild_id = \'{guild.id}\';')
@@ -84,22 +94,27 @@ class PrivateChannel(commands.Cog):
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
         
-        conn.close()
+        finally:
+            if(conn):
+                cursor.close()
+                conn.close()
+                print("PostgreSQL connection is closed")
     
     @commands.command()
     @commands.has_permissions(administrator = True)
     async def resetprivchannel(self, ctx):
-        conn = psycopg2.connect(
-            database = f"{database}", 
-            user = f"{user}", 
-            password = f"{password}", 
-            host = f"{host}", 
-            port = "5432"
-        )
-
-        cursor = conn.cursor()
+        
 
         try:
+            conn = psycopg2.connect(
+                database = f"{database}", 
+                user = f"{user}", 
+                password = f"{password}", 
+                host = f"{host}", 
+                port = "5432"
+            )
+
+            cursor = conn.cursor()
             
             guild = ctx.message.guild
 
@@ -117,7 +132,11 @@ class PrivateChannel(commands.Cog):
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
         
-        conn.close()
+        finally:
+            if(conn):
+                cursor.close()
+                conn.close()
+                print("PostgreSQL connection is closed")
     
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         #await ctx.send('Произошла ошибка: {}'.format(str(error)))

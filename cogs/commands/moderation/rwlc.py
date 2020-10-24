@@ -20,17 +20,18 @@ class AuthoAddRole(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member):
 
-        conn = psycopg2.connect(
-            database = f"{database}", 
-            user = f"{user}", 
-            password = f"{password}", 
-            host = f"{host}", 
-            port = "5432"
-        )
-
-        cursor = conn.cursor()
+        
 
         try:
+            conn = psycopg2.connect(
+                database = f"{database}", 
+                user = f"{user}", 
+                password = f"{password}", 
+                host = f"{host}", 
+                port = "5432"
+            )
+
+            cursor = conn.cursor()
 
             cursor.execute(f'SELECT wlc_role_t_or_f FROM public."myBD" WHERE guild_id = {member.guild.id};')
             on_or_off = cursor.fetchone()
@@ -50,26 +51,30 @@ class AuthoAddRole(commands.Cog):
         except Exception as e:
             print(f'[{e}]')
         
-        conn.close()
+        finally:
+            if(conn):
+                cursor.close()
+                conn.close()
+                print("PostgreSQL connection is closed")
     
     @commands.command()
     @commands.check(is_owner_guild)
     async def rwlc(self, ctx, role: int, types: bool):
 
-        conn = psycopg2.connect(
-            database = f"{database}", 
-            user = f"{user}", 
-            password = f"{password}", 
-            host = f"{host}", 
-            port = "5432"
-        )
-
-        cursor = conn.cursor()
+        
 
         guild = ctx.message.guild
 
         try:
-            
+            conn = psycopg2.connect(
+                database = f"{database}", 
+                user = f"{user}", 
+                password = f"{password}", 
+                host = f"{host}", 
+                port = "5432"
+            )
+
+            cursor = conn.cursor()
             cursor.execute(f'UPDATE public."myBD" SET wlc_role=\'{role}\', wlc_role_t_or_f=\'{types}\' WHERE guild_id = \'{guild.id}\';')
             conn.commit()
             
@@ -90,7 +95,11 @@ class AuthoAddRole(commands.Cog):
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
         
-        conn.close()
+        finally:
+            if(conn):
+                cursor.close()
+                conn.close()
+                print("PostgreSQL connection is closed")
     
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))

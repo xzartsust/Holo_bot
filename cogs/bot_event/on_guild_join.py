@@ -17,18 +17,19 @@ class bot_join_guild(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild): 
-        conn = psycopg2.connect(
-            database = f"{database}", 
-            user = f"{user}", 
-            password = f"{password}", 
-            host = f"{host}", 
-            port = "5432"
-        )
-
-        cursor = conn.cursor()
+        
 
         try:
-        
+            conn = psycopg2.connect(
+                database = f"{database}", 
+                user = f"{user}", 
+                password = f"{password}", 
+                host = f"{host}", 
+                port = "5432"
+            )
+
+            cursor = conn.cursor()
+            
             cursor.execute(f'INSERT INTO public."myBD" (guild_id, prefix_guild) VALUES ({guild.id}, \'t!\');')
             conn.commit()
         
@@ -37,6 +38,10 @@ class bot_join_guild(commands.Cog):
         
         except Exception as e:
             print(f'[Event: on_guild_join] [{guild.name}] [{guild.owner}] - [{e}]')
-        conn.close()
+        finally:
+            if(conn):
+                cursor.close()
+                conn.close()
+                print("PostgreSQL connection is closed")
 def setup(bot):
     bot.add_cog(bot_join_guild(bot))

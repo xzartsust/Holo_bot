@@ -31,8 +31,6 @@ class ResetWarns(commands.Cog):
             )
             cursor = conn.cursor()
 
-            
-
             cursor.execute(f'SELECT member_id FROM public."Warns" WHERE guild_id = \'{guild.id}\' AND member_id = \'{member_id}\';')
             memberDB = cursor.fetchone()
             conn.commit()
@@ -72,7 +70,6 @@ class ResetWarns(commands.Cog):
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
         
-        conn.close()
     
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))

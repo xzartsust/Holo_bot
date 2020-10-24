@@ -20,21 +20,22 @@ class MuteRole(commands.Cog):
     @commands.command()
     @commands.check(is_owner_guild)
     async def muterole(self, ctx, role_id: int):
-        conn = psycopg2.connect(
-            database = f"{database}", 
-            user = f"{user}", 
-            password = f"{password}", 
-            host = f"{host}", 
-            port = "5432"
-        )
-
-        cursor = conn.cursor()
+        
 
         guild = ctx.message.guild
         role = ctx.message.guild.get_role(role_id)
 
         try:
+            conn = psycopg2.connect(
+                database = f"{database}", 
+                user = f"{user}", 
+                password = f"{password}", 
+                host = f"{host}", 
+                port = "5432"
+            )
 
+            cursor = conn.cursor()
+            
             cursor.execute(f'UPDATE public."myBD" SET role_for_mute = \'{role_id}\' WHERE guild_id = \'{guild.id}\';')
             conn.commit()
 
@@ -55,7 +56,11 @@ class MuteRole(commands.Cog):
         
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
-        conn.close()
+        finally:
+            if(conn):
+                cursor.close()
+                conn.close()
+                print("PostgreSQL connection is closed")
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))
         print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')

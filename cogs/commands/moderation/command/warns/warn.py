@@ -18,21 +18,22 @@ class Warns(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_guild = True)
     async def warn(self, ctx, member: discord.Member, *, reason = None):
-        conn = psycopg2.connect(
-            database = f"{database}", 
-            user = f"{user}", 
-            password = f"{password}", 
-            host = f"{host}", 
-            port = "5432"
-        )
-
-        cursor = conn.cursor()
+        
         
         guild = ctx.message.guild
         member_id = member.id
         userr = ctx.message.author.id
 
         try:
+            conn = psycopg2.connect(
+                database = f"{database}", 
+                user = f"{user}", 
+                password = f"{password}", 
+                host = f"{host}", 
+                port = "5432"
+            )
+
+            cursor = conn.cursor()
             
             if member.bot is True:
                 await ctx.send('Ей, боту нельзя выдать предупреждение')
@@ -174,7 +175,11 @@ class Warns(commands.Cog):
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
         
-        conn.close()
+        finally:
+            if(conn):
+                cursor.close()
+                conn.close()
+                print("PostgreSQL connection is closed")
 
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))
