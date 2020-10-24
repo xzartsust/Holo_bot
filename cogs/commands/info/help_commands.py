@@ -204,8 +204,7 @@ class HelpCommands(commands.Cog):
             name = 'Команды',
             value = f'''
             `{prefix}privatchnl`
-            `{prefix}resetprivchannel`
-            ''')
+            `{prefix}resetprivchannel`''')
 
 
         embeds = [start, information, Moder, warn_embed, privat_channel_embed, welcome_emb, emb_music, diferend_photo, NSFW_emb]
