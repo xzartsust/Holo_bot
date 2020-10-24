@@ -43,7 +43,7 @@ class PrivateChannel(commands.Cog):
                     global channel2
                     maincategory = get(member.guild.categories, id = channel_category)
                     channel2 = await member.guild.create_voice_channel(name = f'Приватный ({member.display_name})', category = maincategory)
-                    await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
+                    await channel2.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True, manage_roles = True)
                     await member.move_to(channel2)
                 elif after.channel is None and len(channel2.members) == 0:
                     await channel2.delete()

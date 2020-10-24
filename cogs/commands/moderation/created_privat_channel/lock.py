@@ -13,7 +13,7 @@ class LockPrivateChannel(commands.Cog):
             await voice_channel.set_permissions(member, connect = False)
             await member.move_to(None)
 
-            emd = (discord.Embed(title = f'Приватный канал {voice_channel.name} успешно заблокирован для {member.name}', 
+            emd = (discord.Embed(title = f'Приватный канал успешно заблокирован для {member.name}', 
                                 colour = discord.Color.red()))
             await ctx.send(embed = emd)
         
@@ -22,9 +22,9 @@ class LockPrivateChannel(commands.Cog):
 
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         #await ctx.send('Произошла ошибка: {}'.format(str(error)))
-        #if str(error) == str('You are missing Administrator permission(s) to run this command.'):
-                await ctx.send(f'{ctx.message.author.mention} У вас нету прав Администратора')
-        #print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
+        if str(error) == str('\'NoneType\' object has no attribute \'channel\''):
+                await ctx.send(f'{ctx.message.author.mention} вас нет в приватном голосовом канале, сначала создайте свой приватный голосовой канал')
+        print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{error}]')
         
 
 def setup(bot):
