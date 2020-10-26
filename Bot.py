@@ -107,6 +107,7 @@ bot.load_extension('cogs.commands.moderation.utilit.send')
 bot.load_extension('cogs.commands.moderation.created_privat_channel.private_channel')
 bot.load_extension('cogs.commands.moderation.created_privat_channel.lock')
 bot.load_extension('cogs.commands.moderation.created_privat_channel.unlock')
+bot.load_extension('cogs.commands.moderation.report_system.report')
 
 
 ################################################## Cogs Music commands ###########################################################
