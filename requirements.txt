@@ -29,7 +29,7 @@ mccabe==0.6.1
 moment==0.10
 multidict==4.7.6
 nekos.py==1.0.3
-pip==20.2.2
+pip==20.2.4
 prettytable==0.7.2
 psutil==5.7.2
 psycopg2==2.8.5
