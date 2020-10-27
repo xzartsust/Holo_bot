@@ -208,7 +208,18 @@ class HelpCommands(commands.Cog):
             value = f'''
             `{prefix}privatchnl`
             `{prefix}resetprivchannel`''')
-
+        
+        report_system_embed = discord.Embed(
+            title = 'Репорт система',
+            description = f'''
+            *Внимания!!!* Использувать команду `{prefix}report` можно кожный 6 часов
+            ''')
+        report_system_embed.set_thumbnail(url = 'https://github.com/xzartsust/Tobi-Bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true')
+        report_system_embed.add_field(
+            name = 'Команды',
+            value = f'''
+            `{prefix}report`
+            `{prefix}reportchannel`''')
 
         embeds = [start, information, Moder, warn_embed, privat_channel_embed, welcome_emb, emb_music, diferend_photo, NSFW_emb]
         message = await ctx.send(embed = start)
