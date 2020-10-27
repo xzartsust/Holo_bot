@@ -6,7 +6,7 @@ class ReportUser(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command
+    @commands.command()
     @commands.cooldown(1, 21600, commands.BucketType.member)
     async def report(self, ctx, member: discord.Member, reason: str = None):
         
@@ -16,6 +16,6 @@ class ReportUser(commands.Cog):
             if user.guild_permissions.administrator:
                 us = self.bot.get_user(user.id)
                 await us.send('1')
-                
+
 def setup(bot):
     bot.add_cog(ReportUser(bot))
