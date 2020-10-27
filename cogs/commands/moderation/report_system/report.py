@@ -45,7 +45,7 @@ class ReportUser(commands.Cog):
                 await ctx.send('Укажите, пожалуйста, пользователя на которого вы хотите пожаловаться!', delete_after = 5)
             else:
                 channel = self.bot.get_channel(chanel[0])
-                await channel.send(f'Пользователь {member.mention} получил жадолобу от {user.mention} по причине: {reason}')
+                await channel.send(f'Пользователь {member.mention} получил жалобу от {user.mention} по причине: {reason}')
             
 
         except Exception as e:
