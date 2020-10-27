@@ -33,7 +33,7 @@ class ReportChannel(commands.Cog):
             cursor = conn.cursor()
             
             if isinstance(channel, int) is True:
-                cursor.execute(f'UPDATE public."myBD" SET channel_report = \'{channel}\' WHERE guild_id = \'{guild.id}\';')
+                cursor.execute(f'UPDATE public."myBD" SET report_channel = \'{channel}\' WHERE guild_id = \'{guild.id}\';')
                 conn.commit()
             elif isinstance(channel, int) is False:
                 await ctx.send('Ошибка! Вы можете указать только айди канала!', delete_after = 5)
