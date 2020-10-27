@@ -16,7 +16,7 @@ class ReportUser(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.cooldown(1, 21600, commands.BucketType.member)
+    #@commands.cooldown(1, 21600, commands.BucketType.member)
     async def report(self, ctx, member: discord.Member = None, *, reason: str = None):
         
         guild = ctx.message.guild
