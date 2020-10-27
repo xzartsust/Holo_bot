@@ -17,7 +17,7 @@ class ReportChannel(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator = True)
-    async def reportchannel(self, ctx, channel: int = None):
+    async def reportchannel(self, ctx, channel = None):
         
         guild = ctx.message.guild
 
