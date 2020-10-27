@@ -12,7 +12,7 @@ class ReportUser(commands.Cog):
         
         guild = ctx.message.guild
         if member and reason is None:
-            for user in guild.members:
+            async for user in guild.members:
                 print(user)
 
 def setup(bot):
