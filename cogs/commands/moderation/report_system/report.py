@@ -36,7 +36,7 @@ class ReportUser(commands.Cog):
             cursor.execute(f'SELECT report_channel FROM public."myBD" WHERE guild_id = {guild.id};')
             chanel = cursor.fetchone()
             conn.commit()
-
+            '''
             if chanel[0] is None:
                 await ctx.send('Ошибка! У вас не указан канал для репортов. Установить канал вы можете с помощю команди reportchannel', delete_after = 10)
             if reason is None:
@@ -44,8 +44,9 @@ class ReportUser(commands.Cog):
             elif member is None:
                 await ctx.send('Укажите, пожалуйста, пользователя на которого вы хотите пожаловаться!', delete_after = 5)
             else:
-                channel = self.bot.get_channel(chanel[0])
-                await channel.send(f'Пользователь {member.mention} получил жалобу от {user.mention} по причине: {reason}')
+                '''
+            channel = self.bot.get_channel(chanel[0])
+            await channel.send(f'Пользователь {member.mention} получил жалобу от {user.mention} по причине: {reason}')
             
 
         except Exception as e:
