@@ -11,7 +11,7 @@ host = os.environ.get('HOST')
 port = os.environ.get('PORT')
 
 def is_owner_guild(ctx):
-    return ctx.author.id == ctx.guild.owner.id
+    return ctx.message.author.id == ctx.guild.owner.id
 
 class prefix(commands.Cog):
     def __init__(self,bot):
@@ -21,9 +21,8 @@ class prefix(commands.Cog):
     @commands.check(is_owner_guild)
     async def prefix(self, ctx, prefix):
 
-        
-
         guildid = ctx.guild.id
+        
         try:
             conn = psycopg2.connect(
                 database = f"{database}", 
