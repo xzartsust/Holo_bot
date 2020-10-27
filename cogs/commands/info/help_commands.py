@@ -221,7 +221,7 @@ class HelpCommands(commands.Cog):
             `{prefix}report`
             `{prefix}reportchannel`''')
 
-        embeds = [start, information, Moder, warn_embed, privat_channel_embed, welcome_emb, emb_music, diferend_photo, NSFW_emb]
+        embeds = [start, information, Moder, warn_embed, report_system_embed, privat_channel_embed, welcome_emb, emb_music, diferend_photo, NSFW_emb]
         message = await ctx.send(embed = start)
         page = pag(self.bot, message, only = ctx.author, use_more = False, embeds = embeds, color = 0x008000, time_stamp = True)
     

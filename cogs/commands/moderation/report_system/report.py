@@ -22,6 +22,7 @@ class ReportUser(commands.Cog):
         guild = ctx.message.guild
         user = ctx.message.author
         try:
+            
             conn = psycopg2.connect(
                 database = f"{database}", 
                 user = f"{user}", 

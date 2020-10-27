@@ -35,6 +35,8 @@ class ReportChannel(commands.Cog):
             if isinstance(channel, int) is True:
                 cursor.execute(f'UPDATE public."myBD" SET report_channel = \'{channel}\' WHERE guild_id = \'{guild.id}\';')
                 conn.commit()
+                canal = self.bot.get_channel(channel)
+                await ctx.send(f'Канала {canal.mention} был установлен для *Репортов*')
             elif channel is None:
                 await ctx.send('Ошибка! Укажите айди канала!', delete_after = 5)
             elif isinstance(channel, int) is False:
