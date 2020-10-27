@@ -39,8 +39,6 @@ class ReportChannel(commands.Cog):
                 await ctx.send(f'Канала {canal.mention} был установлен для *Репортов*')
             elif channel is None:
                 await ctx.send('Ошибка! Укажите айди канала!', delete_after = 5)
-            elif isinstance(channel, int) is False:
-                await ctx.send('Ошибка! Вы можете указать только айди канала!', delete_after = 5)
         
         
         except Exception as e:
