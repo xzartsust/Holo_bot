@@ -11,7 +11,7 @@ host = os.environ.get('HOST')
 port = os.environ.get('PORT')
 
 def is_owner_guild(ctx):
-    return ctx.message.author.id == ctx.guild.owner.id
+    return ctx.author.id == ctx.guild.owner.id
 
 class prefix(commands.Cog):
     def __init__(self,bot):
