@@ -51,7 +51,7 @@ class ReportUser(commands.Cog):
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
 
         finally:
-            if conn:
+            if(conn):
                 cursor.close()
                 conn.close()
 
