@@ -35,10 +35,11 @@ class ReportChannel(commands.Cog):
             if isinstance(channel, int) is True:
                 cursor.execute(f'UPDATE public."myBD" SET report_channel = \'{channel}\' WHERE guild_id = \'{guild.id}\';')
                 conn.commit()
-            elif isinstance(channel, int) is False:
-                await ctx.send('Ошибка! Вы можете указать только айди канала!', delete_after = 5)
             elif channel is None:
                 await ctx.send('Ошибка! Укажите айди канала!', delete_after = 5)
+            elif isinstance(channel, int) is False:
+                await ctx.send('Ошибка! Вы можете указать только айди канала!', delete_after = 5)
+        
         
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
