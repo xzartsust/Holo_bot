@@ -32,7 +32,7 @@ class ReportChannel(commands.Cog):
 
             cursor = conn.cursor()
             
-            if isinstance(channel, int) is True:
+            if isinstance(channel, str) is True:
                 cursor.execute(f'UPDATE public."myBD" SET report_channel = \'{channel}\' WHERE guild_id = \'{guild.id}\';')
                 conn.commit()
                 canal = self.bot.get_channel(channel)
