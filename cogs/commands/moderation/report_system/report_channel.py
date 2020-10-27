@@ -17,7 +17,7 @@ class ReportChannel(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator = True)
-    async def reportchannel(self, ctx, channel = None):
+    async def reportchannel(self, ctx, channel: int = None):
         
         guild = ctx.message.guild
 
@@ -32,12 +32,13 @@ class ReportChannel(commands.Cog):
 
             cursor = conn.cursor()
             
-            if isinstance(channel, str) is True:
-                cursor.execute(f'UPDATE public."myBD" SET report_channel = \'{channel}\' WHERE guild_id = \'{guild.id}\';')
-                conn.commit()
-                canal = self.bot.get_channel(channel)
-                await ctx.send(f'Канала **{canal}** был установлен для **Репортов**')
-            elif channel is None:
+            cursor.execute(f'UPDATE public."myBD" SET report_channel = \'{channel}\' WHERE guild_id = \'{guild.id}\';')
+            conn.commit()
+            
+            canal = self.bot.get_channel(channel)
+            await ctx.send(f'Канала **{canal}** был установлен для **Репортов**')
+            
+            if channel is None:
                 await ctx.send('Ошибка! Укажите айди канала!', delete_after = 5)
         
         
