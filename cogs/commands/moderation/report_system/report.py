@@ -51,10 +51,9 @@ class ReportUser(commands.Cog):
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
         finally:
-            if 'conn' in locals():
-                if (conn):
-                    cursor.close()
-                    conn.close()
+            if (conn):
+                cursor.close()
+                conn.close()
 
 def setup(bot):
     bot.add_cog(ReportUser(bot))
