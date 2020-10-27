@@ -13,7 +13,7 @@ class ReportUser(commands.Cog):
         guild = ctx.message.guild
 
         for user in guild.members:
-            if user.guild_permissions.administrator:
+            if user.guild_permissions.administrator is True:
                 us = self.bot.get_user(user.id)
                 await us.send('1')
 
