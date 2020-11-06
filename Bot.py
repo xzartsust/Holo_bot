@@ -51,9 +51,7 @@ def get_prefix(bot, message):
     
     return prefix
 
-intents = discord.Intents.default()
-intents.members = True
-bot = commands.Bot(command_prefix = get_prefix, help_command = None, intents = intents)
+bot = commands.Bot(command_prefix = get_prefix, help_command = None, intents = intents=discord.Intents.all())
 
 logging.basicConfig()
 
