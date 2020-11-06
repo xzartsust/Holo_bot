@@ -14,7 +14,7 @@ import asyncio
 from itertools import cycle
 from Cybernator import Paginator as pag
 import psycopg2
-import asyncpg, asyncio
+import asyncpg
 import youtube_dl
 import shutil
 import logging
