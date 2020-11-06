@@ -45,6 +45,6 @@ class bot_join_guild(commands.Cog):
             if(conn):
                 cursor.close()
                 conn.close()
-                print("PostgreSQL connection is closed")
+                
 def setup(bot):
     bot.add_cog(bot_join_guild(bot))

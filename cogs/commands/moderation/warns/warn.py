@@ -179,7 +179,7 @@ class Warns(commands.Cog):
             if(conn):
                 cursor.close()
                 conn.close()
-                print("PostgreSQL connection is closed")
+                
 
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))

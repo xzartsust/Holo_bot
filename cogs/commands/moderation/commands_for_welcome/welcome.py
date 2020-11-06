@@ -101,7 +101,7 @@ class member_greeting(commands.Cog):
             if(conn):
                 cursor.close()
                 conn.close()
-                print("PostgreSQL connection is closed")
+                
 
     @commands.command(aliases=['wlc'])
     @commands.check(is_owner_guild)
@@ -145,7 +145,7 @@ class member_greeting(commands.Cog):
             if(conn):
                 cursor.close()
                 conn.close()
-                print("PostgreSQL connection is closed")
+                
     
     async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
         await ctx.send('Произошла ошибка: {}'.format(str(error)))

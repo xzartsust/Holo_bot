@@ -39,7 +39,7 @@ class MyWarns(commands.Cog):
             if(conn):
                 cursor.close()
                 conn.close()
-                print("PostgreSQL connection is closed")
+                
         
         try:
         

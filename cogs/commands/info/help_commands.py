@@ -32,7 +32,7 @@ def prefix_in_guild(bot, message):
             if(conn):
                 cursor.close()
                 conn.close()
-                print("PostgreSQL connection is closed")
+                
     return prefix
 
 class HelpCommands(commands.Cog):
