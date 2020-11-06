@@ -8,7 +8,6 @@ from discord.ext.commands import Bot
 from discord.utils import get
 import os
 from datetime import datetime
-import logging
 import time
 import asyncio
 from itertools import cycle
