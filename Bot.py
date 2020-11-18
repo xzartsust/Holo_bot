@@ -115,12 +115,12 @@ bot.load_extension('cogs.commands.moderation.report_system.report_channel')
 
 #bot.load_extension('cogs.commands.music.join')
 #bot.load_extension('cogs.commands.music.leave')
-bot.load_extension('cogs.commands.music.pause')
-bot.load_extension('cogs.commands.music.resume')
-bot.load_extension('cogs.commands.music.stop')
+#bot.load_extension('cogs.commands.music.pause')
+#bot.load_extension('cogs.commands.music.resume')
+#bot.load_extension('cogs.commands.music.stop')
 #bot.load_extension('cogs.commands.music.next')
 #bot.load_extension('cogs.commands.music.play')
-bot.load_extension('cogs.commands.music.play')
+#bot.load_extension('cogs.commands.music.play')
 
 
 ################################################## Cogs Owner commands ############################################################
