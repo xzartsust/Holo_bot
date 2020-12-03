@@ -58,7 +58,7 @@ class AuthoAddRole(commands.Cog):
                 
     
     @commands.command()
-    @commands.check(is_owner_guild)
+    @commands.has_permissions(administrator = True)
     async def rwlc(self, ctx, role: int, types: bool):
 
         

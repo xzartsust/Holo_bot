@@ -18,7 +18,7 @@ class MuteRole(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.check(is_owner_guild)
+    @commands.has_permissions(administrator = True)
     async def muterole(self, ctx, role_id: int):
         
 

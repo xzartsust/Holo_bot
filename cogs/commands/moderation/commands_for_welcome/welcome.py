@@ -104,7 +104,7 @@ class member_greeting(commands.Cog):
                 
 
     @commands.command(aliases=['wlc'])
-    @commands.check(is_owner_guild)
+    @commands.has_permissions(administrator = True)
     async def welcome(self, ctx, channel: int, types: bool):
 
         
