@@ -50,7 +50,9 @@ def get_prefix(bot, message):
     
     return prefix
 
-bot = commands.Bot(command_prefix = get_prefix, help_command = None, intents = discord.Intents.all())
+intents = discord.Intents.all()
+
+bot = commands.Bot(command_prefix = get_prefix, help_command = None, intents = intents)
 
 logging.basicConfig()
 
