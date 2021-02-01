@@ -52,15 +52,15 @@ class HelpCommands(commands.Cog):
         prefix = prefix_1[0]
         
         start = discord.Embed(
-            title=f'Команды бота {self.bot.user.name}', 
-            description=f'Здесь вы узнаете информацию про все команды бота\nНапишите `{prefix}invite` чтобы получить ссылки бота'
+            title=f'Commands bot {self.bot.user.name}', 
+            description=f'Here you will find information about all the bot commands\nWrite `{prefix}invite` to get bot links'
         )
         start.add_field(
-            name='**Другая информация**',
-            value=f'Чтобы получить больше информации о какой либо команде, вы можете написать: `{prefix}help *команда*` \nТак же, вы можете нажать на реакцию под сообщением, чтобы переключить страницу.\n'
+            name='**Other information**',
+            value=f'To get more information about a command, you can write: `{prefix}help *command*` \nAlso, you can click on the reaction below the message to switch the page.\n'
         )
         start.add_field(
-            name = 'Поддержите Suport sever бота на мониторингах:',
+            name = 'Support the bot Support server on monitoring:',
             value = '[{0.server}]({0.server_link})\n[{0.server_2}]({0.server_link_2})'.format(self),
             inline = False
         )
@@ -68,29 +68,29 @@ class HelpCommands(commands.Cog):
             url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
         information = discord.Embed(
-            title='Команды информации', 
-            description=f'Что бы узнать больше о команде напишите `{prefix}help [команда]`. \n**Пример**: `{prefix}help user`'
+            title='Information of commands', 
+            description=f'To learn more about the team write `{prefix}help [command]`. \n**For example**: `{prefix}help user`'
         )
         information.set_thumbnail(
             url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
         information.add_field(
-            name='**Команды**', 
-            value=f'`{prefix}user`\n`{prefix}infobot`\n`{prefix}serverinfo` или `{prefix}si` или `{prefix}is`\n`{prefix}serverprefix` или `{prefix}sp` или `{prefix}ps`\n`{prefix}avatar` или `{prefix}av` или `{prefix}a`'
+            name='**Commands**', 
+            value=f'`{prefix}user`\n`{prefix}infobot`\n`{prefix}serverinfo` or `{prefix}si` or `{prefix}is`\n`{prefix}serverprefix` or `{prefix}sp` or `{prefix}ps`\n`{prefix}avatar` or `{prefix}av` or `{prefix}a`'
         )
         Moder = discord.Embed(
-            title='Команды для администрации и модерации сервера', 
-            description=f'Команды для модерации сервера'
+            title='Commands for server administration and moderation', 
+            description=f'Server Moderation Commands'
         )
         Moder.set_thumbnail(
             url = 'https://github.com/xzartsust/holo_bot/blob/master/files/image/c8c4113dda8117f63cc993c981f2732d.png?raw=true'
         )
         Moder.add_field(
-            name = '**Команды**',
+            name = '**Commands**',
             value = f'`{prefix}prefix`\n`{prefix}news`\n`{prefix}vote`\n`{prefix}rwlc`\n`{prefix}muterole`\n`{prefix}send`'
         )
         Moder.add_field(
-            name = '**Команды для действий с пользователями**',
+            name = '**Commands for actions with users**',
             value = f'`{prefix}ban`\n`{prefix}unban`\n`{prefix}mute`\n`{prefix}unmute`\n`{prefix}kick`'
         )
 
@@ -235,9 +235,9 @@ class HelpCommands(commands.Cog):
 
         user_emb=discord.Embed(
             timestamp= ctx.message.created_at, 
-            title=f'Информация про команду: {prefix}user', 
+            title=f'Team information: {prefix}user', 
             colour = discord.Color.teal(), 
-            description=f'**Команда**: `[user]` или `[userinfo]` или `[infouser]` или `[iu]` или `[ui]`\n**Описание**: показивает информацию про пользователя\n**Использования**: `{prefix}user` или `{prefix}userinfo` или `{prefix}infouser` или `{prefix}iu` или `{prefix}ui`, или если вы хотите узнать информацию о другом пользователя, то после команды пропишите тег пользователя о котором хотите узнать информацию\n**Пример**: `{prefix}user @имя_пользователя`'
+            description=f'**Команда**: `[user]` or `[userinfo]` or `[infouser]` or `[iu]` or `[ui]`\n**Description**: shows information about the user\n**Usage**: `{prefix}user` or `{prefix}userinfo` or `{prefix}infouser` or `{prefix}iu` or `{prefix}ui`, or if you want to find out information about another user, then after the command write the user tag about which you want to find out information\n**For example**: `{prefix}user @user_name`'
         )
         user_emb.set_footer(
             text = ctx.message.author,

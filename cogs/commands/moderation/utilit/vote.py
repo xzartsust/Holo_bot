@@ -28,8 +28,8 @@ class Vote(commands.Cog):
                     url = '{0}'.format(image)
                 )
                 message = await ctx.send(embed = emb)
-                await message.add_reaction('<a:yes:754079238151340053>')
-                await message.add_reaction('<a:no:754079450827718716>')
+                await message.add_reaction('⭕')
+                await message.add_reaction('❌')
         
             if image is None:
             
@@ -44,8 +44,8 @@ class Vote(commands.Cog):
                     icon_url = ctx.message.author.avatar_url
                 )
                 message = await ctx.send(embed = emb)
-                await message.add_reaction('<a:yes:754079238151340053>')
-                await message.add_reaction('<a:no:754079450827718716>')
+                await message.add_reaction('⭕')
+                await message.add_reaction('❌')
         
         except Exception as e:
             print(f'[{ctx.message.created_at}] [{ctx.message.guild.name}] [{ctx.message.guild.owner}] - [{e}]')
