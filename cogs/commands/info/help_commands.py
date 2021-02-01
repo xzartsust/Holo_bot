@@ -223,7 +223,7 @@ class HelpCommands(commands.Cog):
 
         embeds = [start, information, Moder, warn_embed, report_system_embed, privat_channel_embed, welcome_emb, diferend_photo, NSFW_emb]
         message = await ctx.send(embed = start)
-        page = pag(self.bot, message, only = ctx.author, use_more = False, embeds = embeds, color = 0x008000, time_stamp = True, language = 'en')
+        page = pag(self.bot, message, only = ctx.author, use_more = False, embeds = embeds, color = 0x008000, time_stamp = False, language = 'en')
     
         await page.start()
     

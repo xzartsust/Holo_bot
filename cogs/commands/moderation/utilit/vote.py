@@ -17,7 +17,6 @@ class Vote(commands.Cog):
                 emb = discord.Embed(
                     title = f'{caption}',
                     description = f'{text}',
-                    timestamp = ctx.message.created_at,
                     colour = discord.Color.orange()
                 )
                 emb.set_footer(
@@ -36,7 +35,6 @@ class Vote(commands.Cog):
                 emb = discord.Embed(
                     title = f'{caption}',
                     description = f'{text}',
-                    timestamp = ctx.message.created_at,
                     colour = discord.Color.orange()
                 )
                 emb.set_footer(

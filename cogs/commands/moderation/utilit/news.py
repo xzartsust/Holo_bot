@@ -17,9 +17,9 @@ class news(commands.Cog):
                 title = f'{title}', 
                 description=f'{text}', 
                 colour= discord.Color.gold(), 
-                timestamp=ctx.message.created_at)
+                )
             emb.set_footer(
-                text=f'{ctx.message.author}' + ' создал эту новость!',
+                text=f'{ctx.message.author}' + ' created this news!',
                 icon_url = ctx.message.author.avatar_url
                 )
         
